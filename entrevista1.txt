@@ -1,0 +1,48 @@
+We:--¿Han experimentado algún problema de seguridad con su sistema actual? 
+Irma:--Mas que una planilla de Excel no manejamos, no hemos tenido ningún problema de seguridad.
+We:--Podemos proponer un sistema a través de internet, usted en su casa pone que tiene tal libro y de repente todos lo ven en el mismo momento y sabe que cookbook tiene un libro nuevo.
+Irma:--Eso es muy bueno, eso es publicidad , eso va a tener muy buena llegada a la gente.
+We:--¿Cuál es su objetivo vender a una o mas ciudades u otros países? 
+Irma:--Hace 6 años que estamos en esto y siempre tratamos de ser nacionales por un tema de costos, porque si no se dispara mucho el precio. Queremos llegar a todo el publico nacional, no queremos irnos mas allá. 
+We:--¿La venta por correo la quisieran mantener?
+Irma--Si. Hoy en día nos manejamos por correo, si no nos manejamos por teléfono. Como todo se va a manejar todo por internet, esperemos que no suene el teléfono todo el día.
+We:--¿Usted pretende seguir recibiendo llamados por teléfono? 
+Irma:--Si
+
+¿Desea que haya busqueda por tema, autor, titulo?
+Sí. Me gusta. Es cómodo para el usuario.
+
+¿Desea que el catálogo aparezca?
+Sí. Me gusta la idea.
+
+Método de pago.
+Queremos implementar el pago con tarjeta.
+
+El pago con tarjeta por las legislaciones actuales requiere que los clientes se registren. ¿Está de acuerdo con esto?
+Sí. ¿Es seguro?
+Disponemos de seguridad de nivel internacional (por PayPal).
+
+¿Qué información manejan de los clientes?
+El nombre, apellido, dirección de envíos, DNI, edad.
+
+¿Desea que creemos cuentas de usuario para sus clientes actuales?
+La idea sería que lo que ya tenemos ya esté de nuevo en el sistema que propone.
+
+¿Desea que haya un carrito de compras?
+Sí. Buenísimo.
+
+1. Tiene clientes conocidos para que podamos tener contacto con el fin de saber sus necesidades ya que van a ser los que usuarios finales del Sistema?.Si, me podría poner en contacto con ellos y los que estén interesados los podría poner en contacto con ustedes. Yo creo que no tendrían inconvenientes
+
+2. En caso de que algo salga mal la Ley obliga a tener una forma de recibir reclamos? Le parece bien poner un formulario en el Sistema y que le lleguen los reclamos a través de mail? . Si estaría bárbaro.
+
+3. Le interesa tener algún tipo de estadísticas del Negocio, por ejemplo facturación anual, mensual?. Si habría que preguntarle a Rubén que es el que se encarga de los números.
+
+4. Podríamos tener acceso a los documentos que describen la funcionalidad Negocio? Si , van a poder ver la información que maneja Rubén de los Libros y de los clientes que tenemos actualmente en una planilla Excel. Pueden tener acceso al catálogo también pasa que ahí no van a tener toda la información.
+
+5. Manejan algún tipo de garantía en caso de que el libro sea usado?. Manejamos solamente libros nuevos de primera calidad, en ese sentido somos muy quisquillosos.
+
+6. Qué tipo de facturación manejan?. No en este momento nada, no poseemos de ningún tipo.
+
+7. Tienen algún logo?. Si hay un logo de la empresa que se lo podríamos facilitar, Rubén tiene unos dibujos que le mando el diseñador en algún momento.
+
+Están en la maquinita de Rubén?. Si creo que lo tiene ahí.
