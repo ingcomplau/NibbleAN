@@ -8,6 +8,8 @@ package Operaciones;
 import excepciones.ErrorAutor;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
@@ -41,6 +43,20 @@ public class Operaciones extends Conexion{
         return resultado;
     }
     
+     private static boolean insertar(String sql){
+        boolean valor = true;
+        conectar();
+        try {
+            consulta.executeUpdate(sql);
+        } catch (SQLException e) {
+                valor = false;
+                JOptionPane.showMessageDialog(null, e.getMessage());
+            }      
+        finally{  
+           cerrar();
+        }
+        return valor;
+     }
     private static void cerrar(){
         try
          {
@@ -196,23 +212,58 @@ public class Operaciones extends Conexion{
      }
     }
     
-    public static void agregarAutor(String nombre, String apellido, String 
-            pais_id, String fecha_nacimiento, String sexo, String acerca_de) throws ErrorAutor {
+    public static void agregarAutor(String nombre, String apellido, Integer 
+            pais_id, String fecha_nacimiento, Integer sexo, String acerca_de) throws ErrorAutor {
         ErrorAutor e = new ErrorAutor();
+        boolean correcto = true;
+        char sx = 'M';
+        pais_id++;
         if ((nombre.length() == 0) | (nombre.equals("Nombre"))) {
                 e.setNombreCorto();
+                correcto = false;
             } else if (nombre.length() > 100) {
                 e.setNombreLargo();
+                correcto = false;
             } else if (!(nombre.matches("[a-zA-Z\\s]+$"))){
                 e.setNombreInvalido();
+                correcto = false;
             }
          if ((apellido.length() == 0) | (apellido.equals("Apellido"))) {
                 e.setApellidoCorto();
+                correcto = false;
             } else if (apellido.length() > 100) {
                 e.setApellidoLargo();
+                correcto = false;
             } else if (!(apellido.matches("[a-zA-Z\\s]+$"))){
                 e.setApellidoInvalido();
+                correcto = false;
             }
+       /// try {
+       //     resultado = null;
+       //     resultado = consultar("SELECT nombre, apellido from autores where apellido='"+ apellido +"'"
+       //          + " and nombre='"+ nombre +"'");
+        //    if (resultado.next()){
+       //         e.setAutorExistente();
+       //         correcto = false;
+       //     }
+       // } catch (SQLException ex) {
+       //     Logger.getLogger(Operaciones.class.getName()).log(Level.SEVERE, null, ex);
+      //  }
+        if (sexo == 1){
+            sx = 'F';
+         }
+         if (correcto) {
+            insertar("insert into autores values("+nombre
+                    +",'"+apellido
+                    +"','"+pais_id
+                    +"','"+fecha_nacimiento
+                    +"','"+sx
+                    +"','"+acerca_de+"')");
+         } else {
+             throw e;
+         }
+             
     }
+     
     
 }

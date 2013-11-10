@@ -151,7 +151,6 @@ public class AgregarAutor extends javax.swing.JFrame {
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), null));
 
         sexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Masculino", "Femenino" }));
-        sexo.setSelectedIndex(-1);
         sexo.setName(""); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
@@ -282,13 +281,12 @@ public class AgregarAutor extends javax.swing.JFrame {
     private void buttonAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonAgregarMouseClicked
         try {
             Operaciones.agregarAutor(campoNombre.getText(), campoApellido.getText(), 
-            selectPais.getSelectedItem().toString(), fNac.getDateFormatString(), 
-            sexo.getSelectedItem().toString(), infAutor.getText());
+            selectPais.getSelectedIndex(), fNac.getDateFormatString(), 
+            sexo.getSelectedIndex(), infAutor.getText());
         } catch (ErrorAutor e){
-            
+            //TODO Manejar reporte visual de error.
         }
-        
-        
+
     }//GEN-LAST:event_buttonAgregarMouseClicked
 
     private void buttonAgregarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonAgregarMouseEntered
