@@ -19,9 +19,7 @@ public class ErrorAutor extends Throwable{
     private boolean apellidoLargo;
     private boolean apellidoCorto;
     private boolean apellidoInvalido;
-    private boolean sinPais;
     private boolean fechaInvalida;
-     private boolean sinSexo;
   
     
     public ErrorAutor() {
@@ -32,9 +30,7 @@ public class ErrorAutor extends Throwable{
         this.apellidoLargo = false;
         this.apellidoCorto = false;
         this.apellidoInvalido = false;
-        this.sinPais = false;
         this.fechaInvalida = false;
-        this.sinSexo = false;
     }
 
     public boolean isAutorExistente() {
@@ -65,17 +61,13 @@ public class ErrorAutor extends Throwable{
         return apellidoInvalido;
     }
 
-    public boolean isSinPais() {
-        return sinPais;
-    }
+
 
     public boolean isFechaInvalida() {
         return fechaInvalida;
     }
 
-    public boolean isSinSexo() {
-        return sinSexo;
-    }
+
     
       public void setAutorExistente() {
         this.autorExistente = true;
@@ -105,15 +97,11 @@ public class ErrorAutor extends Throwable{
         this.apellidoInvalido = true;
     }
 
-    public void setSinPais() {
-        this.sinPais = true;
-    }
+
 
     public void setFechaInvalida() {
         this.fechaInvalida = true;
     }
 
-    public void setSinSexo() {
-        this.sinSexo = true;
-    }
+
 }
