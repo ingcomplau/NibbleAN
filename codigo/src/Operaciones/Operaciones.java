@@ -281,7 +281,8 @@ public class Operaciones extends Conexion{
             ErrorLibro e = new ErrorLibro();
             boolean correcto = true;
             String fLanz = null;
-            autor_id++;
+            
+            
             idioma_id++;
              if ((isbn.length() < 13) | (isbn.equals(" I.S.B.N"))) {
                 e.setIsbncorto();
@@ -292,8 +293,19 @@ public class Operaciones extends Conexion{
             } else if (!(isbn.matches("[0-9]+$"))){
                 e.setIsbnincorrecto();
                 correcto = false;
-            }
-            
+            } else {
+                resultado = null;
+                resultado = consultar("SELECT isbn from libros where isbn='"+ isbn +"'");
+                try{
+                     if (resultado.next()) {
+                         e.setLibroExiste();
+                         correcto = false;
+                    }
+                }catch(SQLException ex){
+                }
+                cerrar();
+            }      
+             
             if ((titulo.length() == 0) | (titulo.equals(" Título"))) {
                 e.setTitulocorto();
                 correcto = false;
@@ -311,6 +323,7 @@ public class Operaciones extends Conexion{
                     correcto = false;
                 } else if (Integer.parseInt(cant_paginas) <= 0){
                    e.setPocaspags();
+                   correcto = false;
               }
             }
              
@@ -318,11 +331,13 @@ public class Operaciones extends Conexion{
                 e.setPrecioincorrecto();
                 correcto = false;
             } else {
-                if (!(precio.matches("[0-9]\\u002e+$"))){
+                if (!(precio.matches("\\d+$"))){ //arreglar chequeo de punto decimal
                   e.setPrecioincorrecto();
+                  System.err.println("aca");
                     correcto = false;
                 } else if (Float.parseFloat(precio) < 0){
                    e.setPrecionegativo();
+                   correcto = false;
               }
             }
             
@@ -333,11 +348,17 @@ public class Operaciones extends Conexion{
                 correcto = false;
             }
              
+            if (autor_id >= 0) {
+                autor_id++;
+            } else {
+                e.setSinAutor();
+                correcto = false;
+            }
          if (correcto) {
             insertar("insert into libros(isbn, titulo, cant_paginas, precio, "
                     + "fecha_lanzamiento, resumen, primeras_paginas, autor_id, idioma_id)"
                     + "values('"+ isbn +"', '"+titulo+"',"+Integer.parseInt(cant_paginas)+","
-                    + "'"+fLanz+"','"+resumen+"','"+primeras_paginas+","+autor_id+","+idioma_id+"');");
+                    +precio+",'"+fLanz+"','"+resumen+"','"+primeras_paginas+"',"+autor_id+","+idioma_id+");");
             return true;
          } else {
              throw e;

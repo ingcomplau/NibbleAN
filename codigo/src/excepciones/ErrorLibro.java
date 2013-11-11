@@ -11,6 +11,7 @@ package excepciones;
  * @author asCii
  */
 public class ErrorLibro extends Throwable{
+    private boolean libroExiste = false;
     private boolean isbnlargo = false;
     private boolean isbncorto = false;
     private boolean isbnincorrecto = false;
@@ -115,5 +116,11 @@ public class ErrorLibro extends Throwable{
         this.sinAutor = true;
     }
 
+public boolean isLibroExiste() {
+        return libroExiste;
+    }
 
+    public void setLibroExiste() {
+        this.libroExiste = true;
+    }
 }
