@@ -218,7 +218,7 @@ public class Operaciones extends Conexion{
         boolean correcto = true;
         char sx = 'M';
         pais_id++;
-        if ((nombre.length() == 0) | (nombre.equals("Nombre"))) {
+        if ((nombre.length() == 0) | (nombre.equals(" Nombre"))) {
                 e.setNombreCorto();
                 correcto = false;
             } else if (nombre.length() > 100) {
@@ -228,7 +228,7 @@ public class Operaciones extends Conexion{
                 e.setNombreInvalido();
                 correcto = false;
             }
-         if ((apellido.length() == 0) | (apellido.equals("Apellido"))) {
+         if ((apellido.length() == 0) | (apellido.equals(" Apellido"))) {
                 e.setApellidoCorto();
                 correcto = false;
             } else if (apellido.length() > 100) {
@@ -238,27 +238,25 @@ public class Operaciones extends Conexion{
                 e.setApellidoInvalido();
                 correcto = false;
             }
-       /// try {
-       //     resultado = null;
-       //     resultado = consultar("SELECT nombre, apellido from autores where apellido='"+ apellido +"'"
-       //          + " and nombre='"+ nombre +"'");
-        //    if (resultado.next()){
-       //         e.setAutorExistente();
-       //         correcto = false;
-       //     }
-       // } catch (SQLException ex) {
-       //     Logger.getLogger(Operaciones.class.getName()).log(Level.SEVERE, null, ex);
-      //  }
+     
+          resultado = null;
+          resultado = consultar("SELECT nombre, apellido from autores where apellido='"+ apellido +"'"
+                + " and nombre='"+ nombre +"'");
+          try{
+              if (resultado.next()) {
+                e.setAutorExistente();
+                correcto = false;
+               }
+         }catch(SQLException ex){
+        }
+          cerrar();
+       
         if (sexo == 1){
             sx = 'F';
          }
          if (correcto) {
-            insertar("insert into autores values("+nombre
-                    +",'"+apellido
-                    +"','"+pais_id
-                    +"','"+fecha_nacimiento
-                    +"','"+sx
-                    +"','"+acerca_de+"')");
+            insertar("insert into Autores(nombre, apellido, pais_id, fecha_nacimiento, sexo, acerca_de)"
+                    + "values('"+ nombre +"', '"+apellido+"',"+pais_id+",'"+fecha_nacimiento+"','"+sx+"','"+acerca_de+"');");
          } else {
              throw e;
          }

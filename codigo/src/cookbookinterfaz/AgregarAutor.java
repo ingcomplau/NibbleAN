@@ -18,9 +18,6 @@ import javax.swing.DefaultComboBoxModel;
 public class AgregarAutor extends javax.swing.JFrame {
   AgregarLibro AL;
   Operaciones operaciones;
-  private boolean click1=true;
-  private boolean click2=true;
-  private boolean click3=true;
     /**
      * Creates new form AgregarAutor
      */
@@ -66,6 +63,7 @@ public class AgregarAutor extends javax.swing.JFrame {
         });
 
         jPanel1.setBackground(new java.awt.Color(218, 216, 218));
+        jPanel1.setFocusCycleRoot(true);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cookbookinterfaz/imagen/Resource/PanelAgregarAutor.png"))); // NOI18N
 
@@ -73,9 +71,12 @@ public class AgregarAutor extends javax.swing.JFrame {
         campoNombre.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         campoNombre.setForeground(new java.awt.Color(153, 153, 153));
         campoNombre.setText(" Nombre");
-        campoNombre.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                campoNombreMouseClicked(evt);
+        campoNombre.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                campoNombreFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                campoNombreFocusLost(evt);
             }
         });
 
@@ -83,9 +84,12 @@ public class AgregarAutor extends javax.swing.JFrame {
         campoApellido.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         campoApellido.setForeground(new java.awt.Color(153, 153, 153));
         campoApellido.setText(" Apellido");
-        campoApellido.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                campoApellidoMouseClicked(evt);
+        campoApellido.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                campoApellidoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                campoApellidoFocusLost(evt);
             }
         });
 
@@ -196,9 +200,12 @@ public class AgregarAutor extends javax.swing.JFrame {
         infAutor.setForeground(new java.awt.Color(153, 153, 153));
         infAutor.setRows(5);
         infAutor.setText(" Información del autor");
-        infAutor.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                infAutorMouseClicked(evt);
+        infAutor.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                infAutorFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                infAutorFocusLost(evt);
             }
         });
         jScrollPane1.setViewportView(infAutor);
@@ -262,22 +269,6 @@ public class AgregarAutor extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void campoNombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoNombreMouseClicked
-          if (click1) {
-            campoNombre.setText(null);
-            click1=false;
-            campoNombre.setForeground(Color.black);
-    }
-    }//GEN-LAST:event_campoNombreMouseClicked
-
-    private void campoApellidoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoApellidoMouseClicked
-           if (click2) {
-            campoApellido.setText(null);
-            click2=false;
-            campoApellido.setForeground(Color.black);
-    }
-    }//GEN-LAST:event_campoApellidoMouseClicked
-
     private void buttonAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonAgregarMouseClicked
         try {
             Operaciones.agregarAutor(campoNombre.getText(), campoApellido.getText(), 
@@ -285,6 +276,7 @@ public class AgregarAutor extends javax.swing.JFrame {
             sexo.getSelectedIndex(), infAutor.getText());
         } catch (ErrorAutor e){
             //TODO Manejar reporte visual de error.
+            System.err.println(e.isAutorExistente());
         }
 
     }//GEN-LAST:event_buttonAgregarMouseClicked
@@ -297,18 +289,53 @@ public class AgregarAutor extends javax.swing.JFrame {
         buttonAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cookbookinterfaz/imagen/Resource/ButtonAgregar.png")));
     }//GEN-LAST:event_buttonAgregarMouseExited
 
-    private void infAutorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_infAutorMouseClicked
-             if (click3) {
-            infAutor.setText(null);
-            click3=false;
-            infAutor.setForeground(Color.black);
-    }
-    }//GEN-LAST:event_infAutorMouseClicked
-
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         this.dispose();
         AL.setEnabled(true);
     }//GEN-LAST:event_formWindowClosing
+
+    private void campoNombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoNombreFocusGained
+           if (campoNombre.getText().equals(" Nombre")) {
+            campoNombre.setText(null);
+            campoNombre.setForeground(Color.BLACK);
+    }
+    }//GEN-LAST:event_campoNombreFocusGained
+
+    private void campoApellidoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoApellidoFocusGained
+              if (campoApellido.getText().equals(" Apellido")) {
+            campoApellido.setText(null);
+            campoApellido.setForeground(Color.BLACK);
+    }
+    }//GEN-LAST:event_campoApellidoFocusGained
+
+    private void campoNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoNombreFocusLost
+        if (campoNombre.getText().equals("")){
+             campoNombre.setText(" Nombre");
+            campoNombre.setForeground(new java.awt.Color(153, 153, 153));
+        }
+       
+    }//GEN-LAST:event_campoNombreFocusLost
+
+    private void infAutorFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_infAutorFocusGained
+            if (infAutor.getText().equals(" Información del autor")) {
+                infAutor.setText(null);
+                infAutor.setForeground(Color.BLACK);
+            }
+    }//GEN-LAST:event_infAutorFocusGained
+
+    private void campoApellidoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoApellidoFocusLost
+         if (campoApellido.getText().equals("")){
+             campoApellido.setText(" Apellido");
+            campoApellido.setForeground(new java.awt.Color(153, 153, 153));
+        }
+    }//GEN-LAST:event_campoApellidoFocusLost
+
+    private void infAutorFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_infAutorFocusLost
+          if (infAutor.getText().equals("")){
+             infAutor.setText(" Información del autor");
+             infAutor.setForeground(new java.awt.Color(153, 153, 153));
+        }
+    }//GEN-LAST:event_infAutorFocusLost
 
     /**
      * @param args the command line arguments
