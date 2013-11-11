@@ -37,6 +37,7 @@ codigo/dist/
 codigo/nbdist/
 codigo/nbactions.xml
 codigo/nb-configuration.xml
+codigo/nbproject/
 
 # Class Files #
 *.class
