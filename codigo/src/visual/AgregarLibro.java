@@ -1,12 +1,12 @@
-package cookbookinterfaz;
+package visual;
 
 
 
-import Operaciones.Operaciones;
+import motor.Operaciones;
 import excepciones.ErrorLibro;
 import java.awt.Color;
-import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
+import motor.Libro;
 
         
 /*
@@ -161,7 +161,7 @@ public class AgregarLibro extends javax.swing.JFrame {
             }
         });
 
-        encabezado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cookbookinterfaz/imagen/Resource/PanelAgregarLibro.png"))); // NOI18N
+        encabezado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/PanelAgregarLibro.png"))); // NOI18N
 
         jScrollPaneAreaDesc.setToolTipText("");
 
@@ -180,7 +180,7 @@ public class AgregarLibro extends javax.swing.JFrame {
         });
         jScrollPaneAreaDesc.setViewportView(areaDesc);
 
-        agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cookbookinterfaz/imagen/Resource/ButtonAgregar.png"))); // NOI18N
+        agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonAgregar.png"))); // NOI18N
         agregar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 agregarMouseClicked(evt);
@@ -198,7 +198,7 @@ public class AgregarLibro extends javax.swing.JFrame {
         jLayeredPane1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         Añadir.setBackground(new java.awt.Color(218, 216, 218));
-        Añadir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cookbookinterfaz/imagen/Resource/ButtonNuevoAutor.png"))); // NOI18N
+        Añadir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonNuevoAutor.png"))); // NOI18N
         Añadir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 AñadirMouseClicked(evt);
@@ -451,7 +451,7 @@ public class AgregarLibro extends javax.swing.JFrame {
                 .addGap(19, 19, 19)
                 .addGroup(AgregarLibroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(campoCantPag, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(AgregarLibroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(campoTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -469,7 +469,7 @@ public class AgregarLibro extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(AgregarLibroPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 777, Short.MAX_VALUE)
+            .addComponent(AgregarLibroPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 777, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -592,9 +592,9 @@ public class AgregarLibro extends javax.swing.JFrame {
     private void agregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregarMouseClicked
           boolean agregado = false;
         try {
-            agregado = Operaciones.agregarLibro(campoIsbn.getText(), campoTitulo.getText(),
+            agregado = Operaciones.agregarLibro(new Libro(campoIsbn.getText(), campoTitulo.getText(),
                     campoCantPag.getText(),campoPrecio.getText(), fLanz.getDate(), areaDesc.getText(),
-                    "test", listaAutores.getSelectedIndex(), selectIdioma.getSelectedIndex()); //hay que cambiar lo de la fecha y lo de las primeras paginas
+                    "test", listaAutores.getSelectedIndex(), selectIdioma.getSelectedIndex())); //hay que cambiar lo de la fecha y lo de las primeras paginas
         } catch (ErrorLibro e){
             System.err.println(e.isCantpagsincorrecto());
             System.err.println(e.isFechaInvalida());
@@ -636,12 +636,10 @@ public class AgregarLibro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JLayeredPane jLayeredPane2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanelImagen;
@@ -650,6 +648,5 @@ public class AgregarLibro extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane;
     private javax.swing.JList listaAutores;
     private javax.swing.JComboBox selectIdioma;
-    private javax.swing.JComboBox selectIdioma1;
     // End of variables declaration//GEN-END:variables
 }

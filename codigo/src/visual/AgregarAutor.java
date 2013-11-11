@@ -4,12 +4,13 @@
  * and open the template in the editor.
  */
 
-package cookbookinterfaz;
+package visual;
 
 import java.awt.Color;
-import Operaciones.Operaciones;
+import motor.Operaciones;
 import excepciones.ErrorAutor;
 import javax.swing.DefaultComboBoxModel;
+import motor.Autor;
 
 /**
  *
@@ -64,7 +65,7 @@ public class AgregarAutor extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(218, 216, 218));
         jPanel1.setFocusCycleRoot(true);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cookbookinterfaz/imagen/Resource/PanelAgregarAutor.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/PanelAgregarAutor.png"))); // NOI18N
 
         campoNombre.setBackground(new java.awt.Color(240, 238, 240));
         campoNombre.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
@@ -180,7 +181,7 @@ public class AgregarAutor extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        buttonAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cookbookinterfaz/imagen/Resource/ButtonAgregar.png"))); // NOI18N
+        buttonAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonAgregar.png"))); // NOI18N
         buttonAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 buttonAgregarMouseClicked(evt);
@@ -262,7 +263,7 @@ public class AgregarAutor extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 566, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 566, Short.MAX_VALUE)
         );
 
         pack();
@@ -271,9 +272,9 @@ public class AgregarAutor extends javax.swing.JFrame {
     private void buttonAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonAgregarMouseClicked
         boolean agregado = false;
         try {
-            agregado = Operaciones.agregarAutor(campoNombre.getText(), campoApellido.getText(), 
+            agregado = Operaciones.agregarAutor(new Autor(campoNombre.getText(), campoApellido.getText(), 
             selectPais.getSelectedIndex(), fNac.getDate(), 
-            sexo.getSelectedIndex(), infAutor.getText());
+            sexo.getSelectedIndex(), infAutor.getText()));
         } catch (ErrorAutor e){
             //TODO Manejar reporte visual de error.
         }

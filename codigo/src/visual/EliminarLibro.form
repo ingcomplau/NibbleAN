@@ -79,14 +79,14 @@
         <Component class="javax.swing.JLabel" name="Encabezado">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/cookbookinterfaz/imagen/Resource/PanelEliminarLibro.png"/>
+              <Image iconType="3" name="/visual/imagen/Resource/PanelEliminarLibro.png"/>
             </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="BotonSi">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/cookbookinterfaz/imagen/Resource/ButtonSi.png"/>
+              <Image iconType="3" name="/visual/imagen/Resource/ButtonSi.png"/>
             </Property>
           </Properties>
           <Events>
@@ -97,7 +97,7 @@
         <Component class="javax.swing.JLabel" name="BotonNo">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/cookbookinterfaz/imagen/Resource/ButtonNo.png"/>
+              <Image iconType="3" name="/visual/imagen/Resource/ButtonNo.png"/>
             </Property>
           </Properties>
           <Events>

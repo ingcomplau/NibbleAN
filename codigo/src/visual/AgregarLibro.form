@@ -104,7 +104,7 @@
                   <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="campoCantPag" pref="39" max="32767" attributes="0"/>
-                      <Component id="jPanel5" pref="0" max="32767" attributes="0"/>
+                      <Component id="jPanel5" pref="39" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -214,7 +214,7 @@
         <Component class="javax.swing.JLabel" name="encabezado">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/cookbookinterfaz/imagen/Resource/PanelAgregarLibro.png"/>
+              <Image iconType="3" name="/visual/imagen/Resource/PanelAgregarLibro.png"/>
             </Property>
           </Properties>
         </Component>
@@ -256,7 +256,7 @@
         <Component class="javax.swing.JLabel" name="agregar">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/cookbookinterfaz/imagen/Resource/ButtonAgregar.png"/>
+              <Image iconType="3" name="/visual/imagen/Resource/ButtonAgregar.png"/>
             </Property>
           </Properties>
           <Events>
@@ -332,7 +332,7 @@
                       <Color blue="da" green="d8" red="da" type="rgb"/>
                     </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/cookbookinterfaz/imagen/Resource/ButtonNuevoAutor.png"/>
+                      <Image iconType="3" name="/visual/imagen/Resource/ButtonNuevoAutor.png"/>
                     </Property>
                   </Properties>
                   <Events>

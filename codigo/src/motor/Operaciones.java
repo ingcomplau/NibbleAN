@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package Operaciones;
+package motor;
 
 
 import excepciones.ErrorAutor;
@@ -139,7 +139,7 @@ public class Operaciones extends Conexion{
         resultado = null;  
         tableModel.setRowCount(0);
         tableModel.setColumnCount(3);
-        String sql = "SELECT a.isbn,a.titulo,b.apellido ||' '||b.nombre from libros a INNER JOIN autores b on a.autor_id=b.id order by a.titulo";
+        String sql = "SELECT a.l.getIsbn(),a.l.getTitulo(),b.getApellido() ||' '||b.getNombre() from libros a INNER JOIN autores b on a.autor_id=b.id order by a.l.getTitulo()";
         try {
             resultado = consultar(sql);
             if(resultado != null){
@@ -165,7 +165,7 @@ public class Operaciones extends Conexion{
         resultado = null;
         tableModel.setRowCount(0);
         tableModel.setColumnCount(3);
-        String sql = "SELECT a.isbn,a.titulo,b.apellido ||' '||b.nombre FROM libros a INNER JOIN autores b on a.autor_id=b.id WHERE a.titulo='"+fraseClave+"'";
+        String sql = "SELECT a.l.getIsbn(),a.l.getTitulo(),b.getApellido() ||' '||b.getNombre() FROM libros a INNER JOIN autores b on a.autor_id=b.id WHERE a.l.getTitulo()='"+fraseClave+"'";
         try {
             resultado = consultar(sql);
             if(resultado != null){
@@ -192,8 +192,8 @@ public class Operaciones extends Conexion{
         resultado = null;
         tableModel.setRowCount(0);
         tableModel.setColumnCount(3);
-        String sql = "SELECT a.isbn,a.titulo,b.apellido ||' '||b.nombre FROM libros "
-                + "a INNER JOIN autores b on a.autor_id=b.id WHERE b.apellido='"+fraseClave+"'";
+        String sql = "SELECT a.l.getIsbn(),a.l.getTitulo(),b.getApellido() ||' '||b.getNombre() FROM libros "
+                + "a INNER JOIN autores b on a.autor_id=b.id WHERE b.getApellido()='"+fraseClave+"'";
         try {
             resultado = consultar(sql);
             if(resultado != null){
@@ -215,38 +215,36 @@ public class Operaciones extends Conexion{
      }
     }
     
-    public static boolean agregarAutor(String nombre, String apellido, Integer 
-            pais_id, Date fecha_nacimiento, Integer sexo, String acerca_de) throws ErrorAutor { 
+    public static boolean agregarAutor(Autor a) throws ErrorAutor { 
         ErrorAutor e = new ErrorAutor();
         boolean correcto = true;
         String fNac = null;
         char sx = 'M';
-        pais_id++;
-       
-        if ((nombre.length() == 0) | (nombre.equals(" Nombre"))) {
+               
+        if ((a.getNombre().length() == 0) | (a.getNombre().equals(" Nombre"))) {
                 e.setNombreCorto();
                 correcto = false;
-            } else if (nombre.length() > 100) {
+            } else if (a.getNombre().length() > 100) {
                 e.setNombreLargo();
                 correcto = false;
-            } else if (!(nombre.matches("[a-zA-Z\\s]+$"))){
+            } else if (!(a.getNombre().matches("[a-zA-Z\\s]+$"))){
                 e.setNombreInvalido();
                 correcto = false;
             }
-         if ((apellido.length() == 0) | (apellido.equals(" Apellido"))) {
+         if ((a.getApellido().length() == 0) | (a.getApellido().equals(" Apellido"))) {
                 e.setApellidoCorto();
                 correcto = false;
-            } else if (apellido.length() > 100) {
+            } else if (a.getApellido().length() > 100) {
                 e.setApellidoLargo();
                 correcto = false;
-            } else if (!(apellido.matches("[a-zA-Z\\s]+$"))){
+            } else if (!(a.getApellido().matches("[a-zA-Z\\s]+$"))){
                 e.setApellidoInvalido();
                 correcto = false;
             }
      
           resultado = null;
-          resultado = consultar("SELECT nombre, apellido from autores where apellido='"+ apellido +"'"
-                + " and nombre='"+ nombre +"'");
+          resultado = consultar("SELECT nombre, apellido from autores where apellido='"+ a.getApellido() +"'"
+                + " and nombre='"+ a.getNombre() +"'");
           try{
               if (resultado.next()) {
                 e.setAutorExistente();
@@ -256,18 +254,18 @@ public class Operaciones extends Conexion{
         }
           cerrar();
        
-       if (fecha_nacimiento != null){
-            fNac = new SimpleDateFormat("dd'-'MMM'-'yyyy").format(fecha_nacimiento);
+       if (a.getFechaNacimiento() != null){
+            fNac = new SimpleDateFormat("dd'-'MMM'-'yyyy").format(a.getFechaNacimiento());
         } else {
             e.setFechaInvalida();
             correcto = false;
         }
-        if (sexo == 1){
+        if (a.getSexo() == 1){
             sx = 'F';
          }
          if (correcto) {
             insertar("insert into Autores(nombre, apellido, pais_id, fecha_nacimiento, sexo, acerca_de)"
-                    + "values('"+ nombre +"', '"+apellido+"',"+pais_id+",'"+fNac+"','"+sx+"','"+acerca_de+"');");
+                    + "values('"+ a.getNombre() +"', '"+a.getApellido()+"',"+a.getPais()+",'"+fNac+"','"+sx+"','"+a.getInformacion()+"');");
             return true;
          } else {
              throw e;
@@ -275,27 +273,25 @@ public class Operaciones extends Conexion{
              
     }
      
-        public static boolean agregarLibro(String isbn, String titulo, String cant_paginas, 
-                String precio, Date fecha_lanzamiento, String resumen, String primeras_paginas,
-                Integer autor_id, Integer idioma_id) throws ErrorLibro {
+        public static boolean agregarLibro(Libro l) throws ErrorLibro {
             ErrorLibro e = new ErrorLibro();
             boolean correcto = true;
             String fLanz = null;
             
             
-            idioma_id++;
-             if ((isbn.length() < 13) | (isbn.equals(" I.S.B.N"))) {
+            
+             if ((l.getIsbn().length() < 13) | (l.getIsbn().equals(" I.S.B.N"))) {
                 e.setIsbncorto();
                 correcto = false;
-            } else if (isbn.length() > 13) {
+            } else if (l.getIsbn().length() > 13) {
                 e.setIsbnlargo();
                 correcto = false;
-            } else if (!(isbn.matches("[0-9]+$"))){
+            } else if (!(l.getIsbn().matches("[0-9]+$"))){
                 e.setIsbnincorrecto();
                 correcto = false;
             } else {
                 resultado = null;
-                resultado = consultar("SELECT isbn from libros where isbn='"+ isbn +"'");
+                resultado = consultar("SELECT l.getIsbn() from libros where l.getIsbn()='"+ l.getIsbn() +"'");
                 try{
                      if (resultado.next()) {
                          e.setLibroExiste();
@@ -306,59 +302,59 @@ public class Operaciones extends Conexion{
                 cerrar();
             }      
              
-            if ((titulo.length() == 0) | (titulo.equals(" Título"))) {
+            if ((l.getTitulo().length() == 0) | (l.getTitulo().equals(" Título"))) {
                 e.setTitulocorto();
                 correcto = false;
-            } else if (titulo.length() > 100) {
+            } else if (l.getTitulo().length() > 100) {
                 e.setTitulolargo();
                 correcto = false;
             }
             
-             if (cant_paginas.equals(" Cantidad de páginas")) {
+             if (l.getCant_paginas().equals(" Cantidad de páginas")) {
                 e.setPocaspags();
                 correcto = false;
             } else {
-                if (!(cant_paginas.matches("[0-9]+$"))){
+                if (!(l.getCant_paginas().matches("[0-9]+$"))){
                   e.setCantpagsincorrecto();
                     correcto = false;
-                } else if (Integer.parseInt(cant_paginas) <= 0){
+                } else if (Integer.parseInt(l.getCant_paginas()) <= 0){
                    e.setPocaspags();
                    correcto = false;
               }
             }
              
-            if (precio.equals(" Precio ($)")) {
+            if (l.getPrecio().equals(" Precio ($)")) {
                 e.setPrecioincorrecto();
                 correcto = false;
             } else {
-                if (!(precio.matches("\\d+$"))){ //arreglar chequeo de punto decimal
+                if (!(l.getPrecio().matches("\\d+$"))){ //arreglar chequeo de punto decimal
                   e.setPrecioincorrecto();
                   System.err.println("aca");
                     correcto = false;
-                } else if (Float.parseFloat(precio) < 0){
+                } else if (Float.parseFloat(l.getPrecio()) < 0){
                    e.setPrecionegativo();
                    correcto = false;
               }
             }
             
-             if (fecha_lanzamiento != null){
-                fLanz = new SimpleDateFormat("dd'-'MMM'-'yyyy").format(fecha_lanzamiento);
+             if (l.getFecha_lanzamiento() != null){
+                fLanz = new SimpleDateFormat("dd'-'MMM'-'yyyy").format(l.getFecha_lanzamiento());
             } else {
                 e.setFechaInvalida();
                 correcto = false;
             }
              
-            if (autor_id >= 0) {
-                autor_id++;
+            if (l.getAutor_id() >= 0) {
+                l.setAutor_id(l.getAutor_id()+1);
             } else {
                 e.setSinAutor();
                 correcto = false;
             }
          if (correcto) {
-            insertar("insert into libros(isbn, titulo, cant_paginas, precio, "
-                    + "fecha_lanzamiento, resumen, primeras_paginas, autor_id, idioma_id)"
-                    + "values('"+ isbn +"', '"+titulo+"',"+Integer.parseInt(cant_paginas)+","
-                    +precio+",'"+fLanz+"','"+resumen+"','"+primeras_paginas+"',"+autor_id+","+idioma_id+");");
+            insertar("insert into libros(l.getIsbn(), l.getTitulo(), l.getCant_paginas(), l.getPrecio(), "
+                    + "l.get_Fecha_lanzamiento(), resumen, primeras_paginas, autor_id, idioma_id)"
+                    + "values('"+ l.getIsbn() +"', '"+l.getTitulo()+"',"+Integer.parseInt(l.getCant_paginas())+","
+                    +l.getPrecio()+",'"+fLanz+"','"+l.getResumen()+"','"+l.getPrimeras_paginas()+"',"+l.getAutor_id()+","+l.getIdioma_id()+");");
             return true;
          } else {
              throw e;
