@@ -6,6 +6,8 @@
 
 package motor;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Date;
 
 /**
@@ -38,8 +40,30 @@ public class Libro {
         this.idioma_id = idioma_id + 1;
     }
   
-   public Libro (Integer id){
-       // TODO Cargar datos a partir de id.
+   public Libro (String isbn){
+        ResultSet resultado = null;  
+        String sql = "SELECT * from libros where isbn='"+isbn+"'";
+        try {
+            resultado = Operaciones.consultar(sql);
+            if(resultado != null){
+                this.isbn = isbn;
+                titulo = resultado.getString("titulo"); 
+                cant_paginas = new Integer(resultado.getInt("cant_paginas")).toString();
+                precio = new Float(resultado.getFloat("precio")).toString();
+                fecha_lanzamiento = resultado.getDate("fecha_lanzamiento");
+                resumen = resultado.getString("resumen");
+                primeras_paginas = resultado.getString("primeras_paginas");
+                autor_id = resultado.getInt("autor_id");
+                idioma_id = resultado.getInt("idioma_id");
+                
+            }
+        }catch(SQLException e){
+        }
+
+        finally
+     {
+        Operaciones.cerrar();
+     }
    }
    
     public String getIsbn() {

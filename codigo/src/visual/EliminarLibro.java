@@ -111,22 +111,22 @@ public class EliminarLibro extends javax.swing.JFrame {
 
     private void BotonSiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonSiMouseEntered
         // TODO add your handling code here:
-        BotonSi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cookbookinterfaz/imagen/Resource/ButtonSiFocus.png")));
+        BotonSi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonSiFocus.png")));
     }//GEN-LAST:event_BotonSiMouseEntered
 
     private void BotonSiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonSiMouseExited
         // TODO add your handling code here:
-        BotonSi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cookbookinterfaz/imagen/Resource/ButtonSi.png")));
+        BotonSi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonSi.png")));
     }//GEN-LAST:event_BotonSiMouseExited
 
     private void BotonNoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonNoMouseEntered
-        // TODO add your handling code here: getClass().getResource("/cookbookinterfaz/imagen/Resource/
-        BotonNo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cookbookinterfaz/imagen/Resource/ButtonNoFocus.png")));
+        // TODO add your handling code here: getClass().getResource("/visual/imagen/Resource/
+        BotonNo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonNoFocus.png")));
     }//GEN-LAST:event_BotonNoMouseEntered
 
     private void BotonNoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonNoMouseExited
         // TODO add your handling code here:
-        BotonNo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cookbookinterfaz/imagen/Resource/ButtonNo.png")));
+        BotonNo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonNo.png")));
     }//GEN-LAST:event_BotonNoMouseExited
 
     private void BotonNoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonNoMouseClicked

@@ -35,10 +35,6 @@ public class AgregarLibro extends javax.swing.JFrame {
     public AgregarLibro(VentanaAdmin V) {
         initComponents();
         VA=V;
-         //operaciones = new Operaciones();
-        // operaciones.conectar();
-         //operaciones.consultarIdioma((DefaultComboBoxModel)jComboBox1.getModel());
-         //Operaciones.llenarListaAutores(listaAutores);
         Operaciones.llenarListaIdiomas((DefaultComboBoxModel)selectIdioma.getModel());
     }
 
@@ -487,12 +483,12 @@ public class AgregarLibro extends javax.swing.JFrame {
 
     private void agregarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregarMouseEntered
         // TODO add your handling code here:
-        agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cookbookinterfaz/imagen/Resource/ButtonAgregarFocus.png")));
+        agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonAgregarFocus.png")));
     }//GEN-LAST:event_agregarMouseEntered
 
     private void agregarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregarMouseExited
         // TODO add your handling code here:
-        agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cookbookinterfaz/imagen/Resource/ButtonAgregar.png")));
+        agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonAgregar.png")));
     }//GEN-LAST:event_agregarMouseExited
 
     private void campoIsbnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoIsbnMouseClicked
@@ -567,11 +563,11 @@ public class AgregarLibro extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void AñadirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AñadirMouseExited
-        Añadir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cookbookinterfaz/imagen/Resource/ButtonNuevoAutor.png")));
+        Añadir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonNuevoAutor.png")));
     }//GEN-LAST:event_AñadirMouseExited
 
     private void AñadirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AñadirMouseEntered
-        Añadir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cookbookinterfaz/imagen/Resource/ButtonNuevoAutorFocus.png")));
+        Añadir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonNuevoAutorFocus.png")));
     }//GEN-LAST:event_AñadirMouseEntered
 
     private void AñadirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AñadirMouseClicked

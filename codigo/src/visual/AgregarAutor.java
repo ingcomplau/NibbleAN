@@ -285,11 +285,11 @@ public class AgregarAutor extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonAgregarMouseClicked
 
     private void buttonAgregarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonAgregarMouseEntered
-         buttonAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cookbookinterfaz/imagen/Resource/ButtonAgregarFocus.png")));
+         buttonAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonAgregarFocus.png")));
     }//GEN-LAST:event_buttonAgregarMouseEntered
 
     private void buttonAgregarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonAgregarMouseExited
-        buttonAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cookbookinterfaz/imagen/Resource/ButtonAgregar.png")));
+        buttonAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonAgregar.png")));
     }//GEN-LAST:event_buttonAgregarMouseExited
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing

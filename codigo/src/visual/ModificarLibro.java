@@ -1,6 +1,8 @@
 package visual;
 
+import javax.swing.DefaultComboBoxModel;
 import motor.Libro;
+import motor.Operaciones;
 
 /*
  * To change this template, choose Tools | Templates
@@ -16,20 +18,13 @@ public class ModificarLibro extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame
      */
-    private boolean click1 = true;
-    private boolean click2 = true;
-    private boolean click3 = true;
-    private boolean click4 = true;
-    private boolean click5 = true;
-    private boolean click6 = true;
-    private boolean click7 = true;
-    
     private Libro lib;
     
     public ModificarLibro(ListadoLibros L, Libro lib) {
+        this.lib = lib;
         initComponents();
         LL=L;
-        this.lib = lib;
+        Operaciones.llenarListaIdiomas((DefaultComboBoxModel)selectIdioma.getModel());
     }
 
     /**
@@ -46,7 +41,6 @@ public class ModificarLibro extends javax.swing.JFrame {
         CampoCantPag = new javax.swing.JTextField();
         CampoPrecio = new javax.swing.JTextField();
         CampoTitulo = new javax.swing.JTextField();
-        CampoFecha = new javax.swing.JTextField();
         CampoPrimPag = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -59,7 +53,10 @@ public class ModificarLibro extends javax.swing.JFrame {
         Agregar = new javax.swing.JLabel();
         jLayeredPane2 = new javax.swing.JLayeredPane();
         jLabel3 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
+        selectIdioma = new javax.swing.JComboBox();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        fLanz1 = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Modificar Libro");
@@ -76,7 +73,6 @@ public class ModificarLibro extends javax.swing.JFrame {
 
         CampoIsbn.setBackground(new java.awt.Color(240, 238, 240));
         CampoIsbn.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        CampoIsbn.setForeground(new java.awt.Color(153, 153, 153));
         CampoIsbn.setText(lib.getIsbn());
         CampoIsbn.setToolTipText("");
         CampoIsbn.setPreferredSize(new java.awt.Dimension(165, 34));
@@ -84,31 +80,21 @@ public class ModificarLibro extends javax.swing.JFrame {
 
         CampoCantPag.setBackground(new java.awt.Color(240, 238, 240));
         CampoCantPag.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        CampoCantPag.setForeground(new java.awt.Color(153, 153, 153));
         CampoCantPag.setText(lib.getCant_paginas());
         CampoCantPag.setPreferredSize(new java.awt.Dimension(165, 34));
 
         CampoPrecio.setBackground(new java.awt.Color(240, 238, 240));
         CampoPrecio.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        CampoPrecio.setForeground(new java.awt.Color(153, 153, 153));
         CampoPrecio.setText(lib.getPrecio());
 
         CampoTitulo.setBackground(new java.awt.Color(240, 238, 240));
         CampoTitulo.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        CampoTitulo.setForeground(new java.awt.Color(153, 153, 153));
         CampoTitulo.setText(lib.getTitulo());
         CampoTitulo.setDisabledTextColor(new java.awt.Color(110, 34, 83));
         CampoTitulo.setSelectionColor(new java.awt.Color(110, 34, 83));
 
-        CampoFecha.setBackground(new java.awt.Color(240, 238, 240));
-        CampoFecha.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        CampoFecha.setForeground(new java.awt.Color(153, 153, 153));
-        CampoFecha.setText(" Fecha de lanzamiento");
-        CampoFecha.setPreferredSize(new java.awt.Dimension(165, 34));
-
         CampoPrimPag.setBackground(new java.awt.Color(240, 238, 240));
         CampoPrimPag.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        CampoPrimPag.setForeground(new java.awt.Color(153, 153, 153));
         CampoPrimPag.setText(" Primeras Paginas");
         CampoPrimPag.setPreferredSize(new java.awt.Dimension(165, 34));
 
@@ -119,7 +105,6 @@ public class ModificarLibro extends javax.swing.JFrame {
         AreaDesc.setBackground(new java.awt.Color(240, 238, 240));
         AreaDesc.setColumns(20);
         AreaDesc.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        AreaDesc.setForeground(new java.awt.Color(153, 153, 153));
         AreaDesc.setRows(5);
         AreaDesc.setText(lib.getResumen());
         AreaDesc.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -129,7 +114,6 @@ public class ModificarLibro extends javax.swing.JFrame {
         jLayeredPane1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(153, 153, 153));
         jLabel2.setText("Autor");
 
         jList1.setModel(new javax.swing.AbstractListModel() {
@@ -192,7 +176,7 @@ public class ModificarLibro extends javax.swing.JFrame {
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/TapaLibro.png"))); // NOI18N
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Idioma", "Español" }));
+        selectIdioma.setSelectedIndex(lib.getIdioma_id()-1);
 
         javax.swing.GroupLayout jLayeredPane2Layout = new javax.swing.GroupLayout(jLayeredPane2);
         jLayeredPane2.setLayout(jLayeredPane2Layout);
@@ -202,7 +186,7 @@ public class ModificarLibro extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(selectIdioma, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(51, Short.MAX_VALUE))
         );
         jLayeredPane2Layout.setVerticalGroup(
@@ -213,11 +197,43 @@ public class ModificarLibro extends javax.swing.JFrame {
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(jLayeredPane2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(selectIdioma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jLayeredPane2.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane2.setLayer(jComboBox1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane2.setLayer(selectIdioma, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jPanel6.setBackground(new java.awt.Color(240, 238, 240));
+        jPanel6.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), null));
+
+        jLabel7.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel7.setText("Fecha de lanzamiento: ");
+
+        fLanz1.setDate(lib.getFecha_lanzamiento());
+        fLanz1.setMinSelectableDate(new java.util.Date(-14830977525000L));
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(fLanz1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(fLanz1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout ModificarLibroPanelLayout = new javax.swing.GroupLayout(ModificarLibroPanel);
         ModificarLibroPanel.setLayout(ModificarLibroPanelLayout);
@@ -241,9 +257,9 @@ public class ModificarLibro extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(ModificarLibroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLayeredPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(CampoFecha, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(CampoPrimPag, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(CampoPrecio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(CampoPrecio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(ModificarLibroPanelLayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(Agregar)))
@@ -259,9 +275,9 @@ public class ModificarLibro extends javax.swing.JFrame {
                     .addComponent(CampoPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(ModificarLibroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(CampoFecha, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CampoCantPag, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(CampoCantPag, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(ModificarLibroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CampoTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(CampoPrimPag, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -293,19 +309,19 @@ public class ModificarLibro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void AñadirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AñadirMouseEntered
-        Añadir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cookbookinterfaz/imagen/Resource/ButtonAñadirFocus.png")));
+        Añadir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonAñadirFocus.png")));
     }//GEN-LAST:event_AñadirMouseEntered
 
     private void AñadirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AñadirMouseExited
-        Añadir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cookbookinterfaz/imagen/Resource/ButtonAñadir.png")));
+        Añadir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonAñadir.png")));
     }//GEN-LAST:event_AñadirMouseExited
 
     private void AgregarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AgregarMouseEntered
-        Agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cookbookinterfaz/imagen/Resource/ButtonAgregarFocus.png")));
+        Agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonAgregarFocus.png")));
     }//GEN-LAST:event_AgregarMouseEntered
 
     private void AgregarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AgregarMouseExited
-        Agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cookbookinterfaz/imagen/Resource/ButtonAgregar.png")));
+        Agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonAgregar.png")));
     }//GEN-LAST:event_AgregarMouseExited
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
@@ -323,20 +339,22 @@ public class ModificarLibro extends javax.swing.JFrame {
     private javax.swing.JTextArea AreaDesc;
     private javax.swing.JLabel Añadir;
     private javax.swing.JTextField CampoCantPag;
-    private javax.swing.JTextField CampoFecha;
     private javax.swing.JTextField CampoIsbn;
     private javax.swing.JTextField CampoPrecio;
     private javax.swing.JTextField CampoPrimPag;
     private javax.swing.JTextField CampoTitulo;
     private javax.swing.JPanel ModificarLibroPanel;
-    private javax.swing.JComboBox jComboBox1;
+    private com.toedter.calendar.JDateChooser fLanz1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JLayeredPane jLayeredPane2;
     private javax.swing.JList jList1;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JComboBox selectIdioma;
     // End of variables declaration//GEN-END:variables
 }

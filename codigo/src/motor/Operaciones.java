@@ -17,7 +17,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -36,7 +35,7 @@ public class Operaciones extends Conexion{
     }
     
   
-    private static ResultSet consultar(String sql){
+    protected static ResultSet consultar(String sql){
         conectar();
         resultado = null;
         try {
@@ -65,7 +64,7 @@ public class Operaciones extends Conexion{
         }
         return valor;
      }
-    private static void cerrar(){
+    protected static void cerrar(){
         try
          {
              Operaciones.consulta.close();
@@ -140,16 +139,8 @@ public class Operaciones extends Conexion{
      }
     }
      
-     public void llenarTablaLibros(JTable table){
+     public static void llenarTablaLibros(DefaultTableModel tableModel){
         resultado = null;  
-        DefaultTableModel tableModel=new DefaultTableModel();
-        tableModel.setRowCount(0);
-        tableModel.setColumnCount(0);
-        tableModel.addColumn("Isbn");
-        tableModel.addColumn("Titulo");
-        tableModel.addColumn("Autor: Apellido y nombre");
-        tableModel.addColumn("Tapa");
-        //Modifique esta linea porque no andaba para poder probar String sql = "SELECT a.l.getIsbn(),a.l.getTitulo(),b.getApellido() ||' '||b.getNombre() from libros a INNER JOIN autores b on a.autor_id=b.id order by a.l.getTitulo()";
         String sql = "SELECT a.isbn,a.titulo,b.apellido ||' '||b.nombre from libros a INNER JOIN autores b on a.autor_id=b.id order by a.titulo";
         try {
             resultado = consultar(sql);
@@ -162,10 +153,6 @@ public class Operaciones extends Conexion{
                     }
                     tableModel.addRow(objetos);
                 }
-                table.setModel(tableModel);
-                table.setRowHeight(180);
-                table.getColumnModel().getColumn(3).setCellRenderer(new ImageRenderer());
-              //no lo puedo hacer andar con SCROLL
             }
         }catch(SQLException e){
         }
@@ -176,18 +163,7 @@ public class Operaciones extends Conexion{
      }
     }
      
-     class ImageRenderer extends DefaultTableCellRenderer {
-  JLabel lbl = new JLabel();
 
-  ImageIcon icon = new ImageIcon(getClass().getResource("/visual/imagen/Resource/TapaLibro.png"));
-
-  public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected,
-      boolean hasFocus, int row, int column) {
-    lbl.setText((String) value);
-    lbl.setIcon(icon);
-    return lbl;
-  }
-}
      
          public static void buscadorTituloLibro(DefaultTableModel tableModel,String fraseClave){
         resultado = null;

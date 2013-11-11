@@ -18,18 +18,15 @@ import javax.swing.JOptionPane;
 public class Conexion{
 	static Connection conexion;
 	static Statement consulta;
-	static public final String ruta = "D:\\Programas\\Backup Capturas\\Documents\\Documents\\Ingenieria de Software\\Proyecto\\BD_COOKBOOK\\cookbook.sqlite";
+	static public final String ruta = "D:\\Mis documentos\\GitHub\\NibbleAN\\codigo\\cookbook.sqlite";
 
     /**
      * Constructor for objects of class Conexion
      */
-   // public Conexion()
-   // {
-      // ruta = "C:\\cookbook.sqlite";
-      //  String C=System.getProperty("user.name");
-      //  ruta = "C:\\Users\\" +C +"\\Documents\\NetBeansProjects\\CookBookInterfaz";
-       //this.getClass().
-   // }
+    public Conexion()
+    {
+
+    }
     public static void conectar(){
 		try {
 	            Class.forName("org.sqlite.JDBC");

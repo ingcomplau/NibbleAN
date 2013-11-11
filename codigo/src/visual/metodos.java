@@ -103,7 +103,7 @@ public class metodos {
                 //Se guarda la imagen
                 guardar_imagen(url);            
         }
-        String url="/cookbookinterfaz/imagen/Resource/";
+        String url="/visual/imagen/Resource/";
         String namefile = fileChooser.getSelectedFile().getName();                                            
                                                  
                 //Se guarda la imagen

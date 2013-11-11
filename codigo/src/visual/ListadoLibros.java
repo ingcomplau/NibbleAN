@@ -8,7 +8,11 @@ package visual;
 
 import motor.Operaciones;
 import java.awt.Color;
-import javax.swing.DefaultComboBoxModel;
+import java.awt.Component;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import motor.Libro;
 
@@ -17,8 +21,24 @@ import motor.Libro;
  * @author Manu
  */
 public class ListadoLibros extends javax.swing.JFrame {
+    
+    class ImageRenderer extends DefaultTableCellRenderer {
+        JLabel lbl;
+        ImageIcon icon;
+        public ImageRenderer(String URL) {
+            lbl = new JLabel();
+            icon = new ImageIcon(getClass().getResource(URL));
+        }
+        
+        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected,
+            boolean hasFocus, int row, int column) {
+            lbl.setText((String) value);
+            lbl.setIcon(icon);
+        return lbl;
+        }
+    }
+    
     VentanaAdmin VA;
-    Operaciones operaciones;
     private boolean click=true;
     /**
      * Creates new form ListadoDeLibros
@@ -26,9 +46,7 @@ public class ListadoLibros extends javax.swing.JFrame {
     public ListadoLibros(VentanaAdmin V) {
         initComponents();
         VA=V;
-         operaciones = new Operaciones();
-        operaciones.conectar();
-         operaciones.llenarTablaLibros(TablaLibros);
+         Operaciones.llenarTablaLibros((DefaultTableModel)tablaLibros.getModel());
     }
 
     /**
@@ -40,12 +58,12 @@ public class ListadoLibros extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        ListadoDeLibrosPanel = new javax.swing.JPanel();
-        Encabezado = new javax.swing.JLabel();
-        BotonModificar = new javax.swing.JLabel();
-        BotonEliminar = new javax.swing.JLabel();
+        listadoDeLibrosPanel = new javax.swing.JPanel();
+        encabezado = new javax.swing.JLabel();
+        botonModificar = new javax.swing.JLabel();
+        botonEliminar = new javax.swing.JLabel();
         jScrollPaneTablaLibros = new javax.swing.JScrollPane();
-        TablaLibros = new javax.swing.JTable();
+        tablaLibros = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         campoBuscador = new javax.swing.JTextField();
         selectBuscar = new javax.swing.JComboBox();
@@ -62,57 +80,80 @@ public class ListadoLibros extends javax.swing.JFrame {
             }
         });
 
-        ListadoDeLibrosPanel.setBackground(new java.awt.Color(218, 216, 218));
+        listadoDeLibrosPanel.setBackground(new java.awt.Color(218, 216, 218));
 
-        Encabezado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/PanelListadoLibros.png"))); // NOI18N
+        encabezado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/PanelListadoLibros.png"))); // NOI18N
 
-        BotonModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonModificar.png"))); // NOI18N
-        BotonModificar.addMouseListener(new java.awt.event.MouseAdapter() {
+        botonModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonModificar.png"))); // NOI18N
+        botonModificar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                BotonModificarMouseClicked(evt);
+                botonModificarMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                BotonModificarMouseEntered(evt);
+                botonModificarMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                BotonModificarMouseExited(evt);
+                botonModificarMouseExited(evt);
             }
         });
 
-        BotonEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonEliminar.png"))); // NOI18N
-        BotonEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                BotonEliminarMouseExited(evt);
-            }
+        botonEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonEliminar.png"))); // NOI18N
+        botonEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                BotonEliminarMouseClicked(evt);
+                botonEliminarMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                BotonEliminarMouseEntered(evt);
+                botonEliminarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                botonEliminarMouseExited(evt);
             }
         });
 
         jScrollPaneTablaLibros.setBackground(new java.awt.Color(218, 216, 218));
 
-        TablaLibros.setBackground(new java.awt.Color(218, 216, 218));
-        TablaLibros.setModel(new javax.swing.table.DefaultTableModel(
+        tablaLibros.setBackground(new java.awt.Color(218, 216, 218));
+        tablaLibros.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-
+                "Isbn", "Titulo", "Autor", "Tapa"
             }
-        ));
-        TablaLibros.setFocusable(false);
-        TablaLibros.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        TablaLibros.setShowVerticalLines(false);
-        TablaLibros.getTableHeader().setReorderingAllowed(false);
-        TablaLibros.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                TablaLibrosMouseClicked(evt);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
-        jScrollPaneTablaLibros.setViewportView(TablaLibros);
+        tablaLibros.setFocusable(false);
+        tablaLibros.setRowHeight(180);
+        tablaLibros.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tablaLibros.setShowVerticalLines(false);
+        tablaLibros.getTableHeader().setReorderingAllowed(false);
+        tablaLibros.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaLibrosMouseClicked(evt);
+            }
+        });
+        jScrollPaneTablaLibros.setViewportView(tablaLibros);
+        if (tablaLibros.getColumnModel().getColumnCount() > 0) {
+            tablaLibros.getColumnModel().getColumn(0).setResizable(false);
+            tablaLibros.getColumnModel().getColumn(1).setResizable(false);
+            tablaLibros.getColumnModel().getColumn(2).setResizable(false);
+            tablaLibros.getColumnModel().getColumn(3).setResizable(false);
+            tablaLibros.getColumnModel().getColumn(3).setCellRenderer(new ImageRenderer("/visual/imagen/Resource/TapaLibro.png"));
+        }
 
         jPanel1.setBackground(new java.awt.Color(110, 34, 83));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
@@ -190,37 +231,37 @@ public class ListadoLibros extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
-        javax.swing.GroupLayout ListadoDeLibrosPanelLayout = new javax.swing.GroupLayout(ListadoDeLibrosPanel);
-        ListadoDeLibrosPanel.setLayout(ListadoDeLibrosPanelLayout);
-        ListadoDeLibrosPanelLayout.setHorizontalGroup(
-            ListadoDeLibrosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Encabezado, javax.swing.GroupLayout.DEFAULT_SIZE, 785, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ListadoDeLibrosPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout listadoDeLibrosPanelLayout = new javax.swing.GroupLayout(listadoDeLibrosPanel);
+        listadoDeLibrosPanel.setLayout(listadoDeLibrosPanelLayout);
+        listadoDeLibrosPanelLayout.setHorizontalGroup(
+            listadoDeLibrosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(encabezado, javax.swing.GroupLayout.DEFAULT_SIZE, 785, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, listadoDeLibrosPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(ListadoDeLibrosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ListadoDeLibrosPanelLayout.createSequentialGroup()
+                .addGroup(listadoDeLibrosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, listadoDeLibrosPanelLayout.createSequentialGroup()
                         .addComponent(jScrollPaneTablaLibros)
                         .addGap(19, 19, 19))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ListadoDeLibrosPanelLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, listadoDeLibrosPanelLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(ListadoDeLibrosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ListadoDeLibrosPanelLayout.createSequentialGroup()
-                                .addComponent(BotonEliminar)
+                        .addGroup(listadoDeLibrosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, listadoDeLibrosPanelLayout.createSequentialGroup()
+                                .addComponent(botonEliminar)
                                 .addGap(130, 130, 130)
-                                .addComponent(BotonModificar)
+                                .addComponent(botonModificar)
                                 .addGap(179, 179, 179))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ListadoDeLibrosPanelLayout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, listadoDeLibrosPanelLayout.createSequentialGroup()
                                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(113, 113, 113))))))
         );
-        ListadoDeLibrosPanelLayout.setVerticalGroup(
-            ListadoDeLibrosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(ListadoDeLibrosPanelLayout.createSequentialGroup()
-                .addComponent(Encabezado)
+        listadoDeLibrosPanelLayout.setVerticalGroup(
+            listadoDeLibrosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(listadoDeLibrosPanelLayout.createSequentialGroup()
+                .addComponent(encabezado)
                 .addGap(39, 39, 39)
-                .addGroup(ListadoDeLibrosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(BotonModificar)
-                    .addComponent(BotonEliminar))
+                .addGroup(listadoDeLibrosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(botonModificar)
+                    .addComponent(botonEliminar))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -232,52 +273,53 @@ public class ListadoLibros extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(ListadoDeLibrosPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(listadoDeLibrosPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(ListadoDeLibrosPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(listadoDeLibrosPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BotonEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonEliminarMouseClicked
-        if(this.TablaLibros.getSelectedRowCount()!=0){
+    private void botonEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonEliminarMouseClicked
+        if(this.tablaLibros.getSelectedRowCount()!=0){
              EliminarLibro venEli= new EliminarLibro (this);
              venEli.setLocationRelativeTo(this);
              venEli.setVisible(true);
              this.setEnabled(false);
         }
 
-    }//GEN-LAST:event_BotonEliminarMouseClicked
+    }//GEN-LAST:event_botonEliminarMouseClicked
 
-    private void BotonModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonModificarMouseClicked
-       if(this.TablaLibros.getSelectedRowCount()!=0){
-            ModificarLibro ML=new ModificarLibro(this, new Libro(this.TablaLibros.getSelectedRowCount()));
+    private void botonModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonModificarMouseClicked
+       if(this.tablaLibros.getSelectedRowCount()!=0){
+            ModificarLibro ML=new ModificarLibro(this, new Libro(tablaLibros.getValueAt(tablaLibros.getSelectedRow(), 0).toString()));
             ML.setVisible(true);
             ML.setLocationRelativeTo(this);
             this.setEnabled(false);
+
         }
-    }//GEN-LAST:event_BotonModificarMouseClicked
+    }//GEN-LAST:event_botonModificarMouseClicked
 
     private void buttonBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonBuscarMouseClicked
         // TODO add your handling code here:
         if("Titulo del Libro".equals(selectBuscar.getSelectedItem().toString())){
-        Operaciones.buscadorTituloLibro((DefaultTableModel)TablaLibros.getModel(),campoBuscador.getText());
+            Operaciones.buscadorTituloLibro((DefaultTableModel)tablaLibros.getModel(),campoBuscador.getText());
         }
         else{
             if("Apellido del Autor".equals(selectBuscar.getSelectedItem().toString())){
-                 Operaciones.buscadorApellidoAutor((DefaultTableModel)TablaLibros.getModel(),campoBuscador.getText());
+                 Operaciones.buscadorApellidoAutor((DefaultTableModel)tablaLibros.getModel(),campoBuscador.getText());
             }
         }
     }//GEN-LAST:event_buttonBuscarMouseClicked
 
-    private void TablaLibrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaLibrosMouseClicked
+    private void tablaLibrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaLibrosMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_TablaLibrosMouseClicked
+    }//GEN-LAST:event_tablaLibrosMouseClicked
 
     private void buttonBuscarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonBuscarMouseEntered
         // TODO add your handling code here:
@@ -301,7 +343,7 @@ public class ListadoLibros extends javax.swing.JFrame {
 
     private void buttonListarTodoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonListarTodoMouseClicked
         // TODO add your handling code here:
-       operaciones.llenarTablaLibros(TablaLibros);
+       Operaciones.llenarTablaLibros((DefaultTableModel)tablaLibros.getModel());
     }//GEN-LAST:event_buttonListarTodoMouseClicked
 
     private void campoBuscadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoBuscadorMouseClicked
@@ -319,25 +361,25 @@ public class ListadoLibros extends javax.swing.JFrame {
         VA.setEnabled(true);
     }//GEN-LAST:event_formWindowClosing
 
-    private void BotonEliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonEliminarMouseEntered
+    private void botonEliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonEliminarMouseEntered
         // TODO add your handling code here:
-          BotonEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonEliminarFocus.png")));
-    }//GEN-LAST:event_BotonEliminarMouseEntered
+          botonEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonEliminarFocus.png")));
+    }//GEN-LAST:event_botonEliminarMouseEntered
 
-    private void BotonEliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonEliminarMouseExited
+    private void botonEliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonEliminarMouseExited
         // TODO add your handling code here:
-        BotonEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonEliminar.png")));
-    }//GEN-LAST:event_BotonEliminarMouseExited
+        botonEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonEliminar.png")));
+    }//GEN-LAST:event_botonEliminarMouseExited
 
-    private void BotonModificarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonModificarMouseEntered
+    private void botonModificarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonModificarMouseEntered
         // TODO add your handling code here:
-        BotonModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonModificarFocus.png")));
-    }//GEN-LAST:event_BotonModificarMouseEntered
+        botonModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonModificarFocus.png")));
+    }//GEN-LAST:event_botonModificarMouseEntered
 
-    private void BotonModificarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonModificarMouseExited
+    private void botonModificarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonModificarMouseExited
         // TODO add your handling code here:
-        BotonModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonModificar.png")));
-    }//GEN-LAST:event_BotonModificarMouseExited
+        botonModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonModificar.png")));
+    }//GEN-LAST:event_botonModificarMouseExited
 
     /**
      * @param args the command line arguments
@@ -345,16 +387,16 @@ public class ListadoLibros extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel BotonEliminar;
-    private javax.swing.JLabel BotonModificar;
-    private javax.swing.JLabel Encabezado;
-    private javax.swing.JPanel ListadoDeLibrosPanel;
-    private javax.swing.JTable TablaLibros;
+    private javax.swing.JLabel botonEliminar;
+    private javax.swing.JLabel botonModificar;
     private javax.swing.JLabel buttonBuscar;
     private javax.swing.JLabel buttonListarTodo;
     private javax.swing.JTextField campoBuscador;
+    private javax.swing.JLabel encabezado;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPaneTablaLibros;
+    private javax.swing.JPanel listadoDeLibrosPanel;
     private javax.swing.JComboBox selectBuscar;
+    private javax.swing.JTable tablaLibros;
     // End of variables declaration//GEN-END:variables
 }
