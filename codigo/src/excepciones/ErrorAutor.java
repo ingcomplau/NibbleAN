@@ -60,7 +60,7 @@ public class ErrorAutor extends Throwable{
     public boolean isApellidoInvalido() {
         return apellidoInvalido;
     }
-
+    
 
 
     public boolean isFechaInvalida() {
@@ -101,7 +101,7 @@ public class ErrorAutor extends Throwable{
 
     public void setFechaInvalida() {
         this.fechaInvalida = true;
-    }
+}
 
 
 }

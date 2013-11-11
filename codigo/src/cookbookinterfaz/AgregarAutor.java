@@ -17,8 +17,7 @@ import javax.swing.DefaultComboBoxModel;
  */
 public class AgregarAutor extends javax.swing.JFrame {
   AgregarLibro AL;
-  Operaciones operaciones;
-    /**
+      /**
      * Creates new form AgregarAutor
      */
     public AgregarAutor(AgregarLibro A) {
@@ -270,13 +269,16 @@ public class AgregarAutor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonAgregarMouseClicked
+        boolean agregado = false;
         try {
-            Operaciones.agregarAutor(campoNombre.getText(), campoApellido.getText(), 
-            selectPais.getSelectedIndex(), fNac.getDateFormatString(), 
+            agregado = Operaciones.agregarAutor(campoNombre.getText(), campoApellido.getText(), 
+            selectPais.getSelectedIndex(), fNac.getDate(), 
             sexo.getSelectedIndex(), infAutor.getText());
         } catch (ErrorAutor e){
             //TODO Manejar reporte visual de error.
-            System.err.println(e.isAutorExistente());
+        }
+        if (agregado){
+           // TODO Código para cerrar ventana.              
         }
 
     }//GEN-LAST:event_buttonAgregarMouseClicked

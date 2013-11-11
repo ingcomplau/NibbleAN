@@ -6,10 +6,11 @@ package Operaciones;
 
 
 import excepciones.ErrorAutor;
+import excepciones.ErrorLibro;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
@@ -21,6 +22,8 @@ public class Operaciones extends Conexion{
      * Constructor for objects of class Operaciones
      */
     private static ResultSet resultado = null;
+
+
     
     public Operaciones()
     {
@@ -212,12 +215,14 @@ public class Operaciones extends Conexion{
      }
     }
     
-    public static void agregarAutor(String nombre, String apellido, Integer 
-            pais_id, String fecha_nacimiento, Integer sexo, String acerca_de) throws ErrorAutor {
+    public static boolean agregarAutor(String nombre, String apellido, Integer 
+            pais_id, Date fecha_nacimiento, Integer sexo, String acerca_de) throws ErrorAutor { 
         ErrorAutor e = new ErrorAutor();
         boolean correcto = true;
+        String fNac = null;
         char sx = 'M';
         pais_id++;
+       
         if ((nombre.length() == 0) | (nombre.equals(" Nombre"))) {
                 e.setNombreCorto();
                 correcto = false;
@@ -251,17 +256,111 @@ public class Operaciones extends Conexion{
         }
           cerrar();
        
+       if (fecha_nacimiento != null){
+            fNac = new SimpleDateFormat("dd'-'MMM'-'yyyy").format(fecha_nacimiento);
+        } else {
+            e.setFechaInvalida();
+            correcto = false;
+        }
         if (sexo == 1){
             sx = 'F';
          }
          if (correcto) {
             insertar("insert into Autores(nombre, apellido, pais_id, fecha_nacimiento, sexo, acerca_de)"
-                    + "values('"+ nombre +"', '"+apellido+"',"+pais_id+",'"+fecha_nacimiento+"','"+sx+"','"+acerca_de+"');");
+                    + "values('"+ nombre +"', '"+apellido+"',"+pais_id+",'"+fNac+"','"+sx+"','"+acerca_de+"');");
+            return true;
          } else {
              throw e;
          }
              
     }
      
-    
+        public static boolean agregarLibro(String isbn, String titulo, String cant_paginas, 
+                String precio, Date fecha_lanzamiento, String resumen, String primeras_paginas,
+                Integer autor_id, Integer idioma_id) throws ErrorLibro {
+            ErrorLibro e = new ErrorLibro();
+            boolean correcto = true;
+            String fLanz = null;
+            autor_id++;
+            idioma_id++;
+             if ((isbn.length() < 13) | (isbn.equals(" I.S.B.N"))) {
+                e.setIsbncorto();
+                correcto = false;
+            } else if (isbn.length() > 13) {
+                e.setIsbnlargo();
+                correcto = false;
+            } else if (!(isbn.matches("[0-9]+$"))){
+                e.setIsbnincorrecto();
+                correcto = false;
+            }
+            
+            if ((titulo.length() == 0) | (titulo.equals(" Título"))) {
+                e.setTitulocorto();
+                correcto = false;
+            } else if (titulo.length() > 100) {
+                e.setTitulolargo();
+                correcto = false;
+            }
+            
+             if (cant_paginas.equals(" Cantidad de páginas")) {
+                e.setPocaspags();
+                correcto = false;
+            } else {
+                if (!(cant_paginas.matches("[0-9]+$"))){
+                  e.setCantpagsincorrecto();
+                    correcto = false;
+                } else if (Integer.parseInt(cant_paginas) <= 0){
+                   e.setPocaspags();
+              }
+            }
+             
+            if (precio.equals(" Precio ($)")) {
+                e.setPrecioincorrecto();
+                correcto = false;
+            } else {
+                if (!(precio.matches("[0-9]\\u002e+$"))){
+                  e.setPrecioincorrecto();
+                    correcto = false;
+                } else if (Float.parseFloat(precio) < 0){
+                   e.setPrecionegativo();
+              }
+            }
+            
+             if (fecha_lanzamiento != null){
+                fLanz = new SimpleDateFormat("dd'-'MMM'-'yyyy").format(fecha_lanzamiento);
+            } else {
+                e.setFechaInvalida();
+                correcto = false;
+            }
+             
+         if (correcto) {
+            insertar("insert into libros(isbn, titulo, cant_paginas, precio, "
+                    + "fecha_lanzamiento, resumen, primeras_paginas, autor_id, idioma_id)"
+                    + "values('"+ isbn +"', '"+titulo+"',"+Integer.parseInt(cant_paginas)+","
+                    + "'"+fLanz+"','"+resumen+"','"+primeras_paginas+","+autor_id+","+idioma_id+"');");
+            return true;
+         } else {
+             throw e;
+         }
+    }
+        
+     public static void llenarListaIdiomas(DefaultComboBoxModel comboModel){
+        resultado = null;
+        String sql = "select nombre from idiomas";
+        try {
+            resultado = consultar(sql);
+            if(resultado != null){
+                while(resultado.next()){
+                   comboModel.addElement(resultado.getObject(1)); 
+                }
+            }
+        }catch(SQLException e){
+            
+        }
+
+        finally
+     {
+         cerrar();
+     }
+    }
 }

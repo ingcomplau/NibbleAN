@@ -1,13 +1,12 @@
 package cookbookinterfaz;
 
 
-import javax.swing.DefaultComboBoxModel;
 
 import Operaciones.Operaciones;
+import excepciones.ErrorLibro;
 import java.awt.Color;
-import javax.swing.DefaultListModel;
-import javax.swing.ListModel;
-import javax.swing.table.DefaultTableModel;
+import java.util.Date;
+import javax.swing.DefaultComboBoxModel;
 
         
 /*
@@ -39,7 +38,8 @@ public class AgregarLibro extends javax.swing.JFrame {
          //operaciones = new Operaciones();
         // operaciones.conectar();
          //operaciones.consultarIdioma((DefaultComboBoxModel)jComboBox1.getModel());
-         Operaciones.llenarListaAutores(listaAutores);
+         //Operaciones.llenarListaAutores(listaAutores);
+        Operaciones.llenarListaIdiomas((DefaultComboBoxModel)selectIdioma.getModel());
     }
 
     /**
@@ -52,15 +52,15 @@ public class AgregarLibro extends javax.swing.JFrame {
     private void initComponents() {
 
         AgregarLibroPanel = new javax.swing.JPanel();
-        CampoIsbn = new javax.swing.JTextField();
-        CampoCantPag = new javax.swing.JTextField();
-        CampoPrecio = new javax.swing.JTextField();
-        CampoTitulo = new javax.swing.JTextField();
-        CampoFecha = new javax.swing.JTextField();
-        Encabezado = new javax.swing.JLabel();
+        campoIsbn = new javax.swing.JTextField();
+        campoCantPag = new javax.swing.JTextField();
+        campoPrecio = new javax.swing.JTextField();
+        campoTitulo = new javax.swing.JTextField();
+        campoFecha = new javax.swing.JTextField();
+        encabezado = new javax.swing.JLabel();
         jScrollPaneAreaDesc = new javax.swing.JScrollPane();
-        AreaDesc = new javax.swing.JTextArea();
-        Agregar = new javax.swing.JLabel();
+        areaDesc = new javax.swing.JTextArea();
+        agregar = new javax.swing.JLabel();
         jTabbedPane = new javax.swing.JTabbedPane();
         jLayeredPane1 = new javax.swing.JLayeredPane();
         Añadir = new javax.swing.JLabel();
@@ -74,12 +74,19 @@ public class AgregarLibro extends javax.swing.JFrame {
         jPanelImagen = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        jComboBox1 = new javax.swing.JComboBox();
+        selectIdioma = new javax.swing.JComboBox();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Agregar Libro");
         setResizable(false);
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+            }
+        });
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
@@ -90,109 +97,113 @@ public class AgregarLibro extends javax.swing.JFrame {
         AgregarLibroPanel.setToolTipText("");
         AgregarLibroPanel.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
 
-        CampoIsbn.setBackground(new java.awt.Color(240, 238, 240));
-        CampoIsbn.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        CampoIsbn.setForeground(new java.awt.Color(153, 153, 153));
-        CampoIsbn.setText(" I.S.B.N");
-        CampoIsbn.setToolTipText("Solo numeros");
-        CampoIsbn.setPreferredSize(new java.awt.Dimension(165, 34));
-        CampoIsbn.setSelectionColor(new java.awt.Color(110, 34, 83));
-        CampoIsbn.addMouseListener(new java.awt.event.MouseAdapter() {
+        campoIsbn.setBackground(new java.awt.Color(240, 238, 240));
+        campoIsbn.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        campoIsbn.setForeground(new java.awt.Color(153, 153, 153));
+        campoIsbn.setText(" I.S.B.N");
+        campoIsbn.setToolTipText("Solo numeros");
+        campoIsbn.setPreferredSize(new java.awt.Dimension(165, 34));
+        campoIsbn.setSelectionColor(new java.awt.Color(110, 34, 83));
+        campoIsbn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                CampoIsbnMouseClicked(evt);
+                campoIsbnMouseClicked(evt);
             }
         });
-        CampoIsbn.addActionListener(new java.awt.event.ActionListener() {
+        campoIsbn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CampoIsbnActionPerformed(evt);
+                campoIsbnActionPerformed(evt);
             }
         });
 
-        CampoCantPag.setBackground(new java.awt.Color(240, 238, 240));
-        CampoCantPag.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        CampoCantPag.setForeground(new java.awt.Color(153, 153, 153));
-        CampoCantPag.setText(" Cantidad de paginas");
-        CampoCantPag.setPreferredSize(new java.awt.Dimension(165, 34));
-        CampoCantPag.addMouseListener(new java.awt.event.MouseAdapter() {
+        campoCantPag.setBackground(new java.awt.Color(240, 238, 240));
+        campoCantPag.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        campoCantPag.setForeground(new java.awt.Color(153, 153, 153));
+        campoCantPag.setText(" Cantidad de páginas");
+        campoCantPag.setToolTipText("");
+        campoCantPag.setPreferredSize(new java.awt.Dimension(165, 34));
+        campoCantPag.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                CampoCantPagMouseClicked(evt);
+                campoCantPagMouseClicked(evt);
             }
         });
-        CampoCantPag.addActionListener(new java.awt.event.ActionListener() {
+        campoCantPag.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CampoCantPagActionPerformed(evt);
+                campoCantPagActionPerformed(evt);
             }
         });
 
-        CampoPrecio.setBackground(new java.awt.Color(240, 238, 240));
-        CampoPrecio.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        CampoPrecio.setForeground(new java.awt.Color(153, 153, 153));
-        CampoPrecio.setText(" Precio ($)");
-        CampoPrecio.addMouseListener(new java.awt.event.MouseAdapter() {
+        campoPrecio.setBackground(new java.awt.Color(240, 238, 240));
+        campoPrecio.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        campoPrecio.setForeground(new java.awt.Color(153, 153, 153));
+        campoPrecio.setText(" Precio ($)");
+        campoPrecio.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                CampoPrecioMouseClicked(evt);
+                campoPrecioMouseClicked(evt);
             }
         });
-        CampoPrecio.addActionListener(new java.awt.event.ActionListener() {
+        campoPrecio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CampoPrecioActionPerformed(evt);
+                campoPrecioActionPerformed(evt);
             }
         });
 
-        CampoTitulo.setBackground(new java.awt.Color(240, 238, 240));
-        CampoTitulo.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        CampoTitulo.setForeground(new java.awt.Color(153, 153, 153));
-        CampoTitulo.setText(" Título");
-        CampoTitulo.setDisabledTextColor(new java.awt.Color(110, 34, 83));
-        CampoTitulo.setSelectionColor(new java.awt.Color(110, 34, 83));
-        CampoTitulo.addMouseListener(new java.awt.event.MouseAdapter() {
+        campoTitulo.setBackground(new java.awt.Color(240, 238, 240));
+        campoTitulo.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        campoTitulo.setForeground(new java.awt.Color(153, 153, 153));
+        campoTitulo.setText(" Título");
+        campoTitulo.setDisabledTextColor(new java.awt.Color(110, 34, 83));
+        campoTitulo.setSelectionColor(new java.awt.Color(110, 34, 83));
+        campoTitulo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                CampoTituloMouseClicked(evt);
+                campoTituloMouseClicked(evt);
             }
         });
 
-        CampoFecha.setBackground(new java.awt.Color(240, 238, 240));
-        CampoFecha.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        CampoFecha.setForeground(new java.awt.Color(153, 153, 153));
-        CampoFecha.setText(" Fecha de lanzamiento");
-        CampoFecha.setPreferredSize(new java.awt.Dimension(165, 34));
-        CampoFecha.addMouseListener(new java.awt.event.MouseAdapter() {
+        campoFecha.setBackground(new java.awt.Color(240, 238, 240));
+        campoFecha.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        campoFecha.setForeground(new java.awt.Color(153, 153, 153));
+        campoFecha.setText(" Fecha de lanzamiento");
+        campoFecha.setPreferredSize(new java.awt.Dimension(165, 34));
+        campoFecha.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                CampoFechaMouseClicked(evt);
+                campoFechaMouseClicked(evt);
             }
         });
-        CampoFecha.addActionListener(new java.awt.event.ActionListener() {
+        campoFecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CampoFechaActionPerformed(evt);
+                campoFechaActionPerformed(evt);
             }
         });
 
-        Encabezado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cookbookinterfaz/imagen/Resource/PanelAgregarLibro.png"))); // NOI18N
+        encabezado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cookbookinterfaz/imagen/Resource/PanelAgregarLibro.png"))); // NOI18N
 
         jScrollPaneAreaDesc.setToolTipText("");
 
-        AreaDesc.setBackground(new java.awt.Color(240, 238, 240));
-        AreaDesc.setColumns(20);
-        AreaDesc.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        AreaDesc.setForeground(new java.awt.Color(153, 153, 153));
-        AreaDesc.setRows(5);
-        AreaDesc.setText("Descripción del producto");
-        AreaDesc.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        AreaDesc.setFocusCycleRoot(true);
-        AreaDesc.addMouseListener(new java.awt.event.MouseAdapter() {
+        areaDesc.setBackground(new java.awt.Color(240, 238, 240));
+        areaDesc.setColumns(20);
+        areaDesc.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        areaDesc.setForeground(new java.awt.Color(153, 153, 153));
+        areaDesc.setRows(5);
+        areaDesc.setText("Descripción del producto");
+        areaDesc.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        areaDesc.setFocusCycleRoot(true);
+        areaDesc.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                AreaDescMouseClicked(evt);
+                areaDescMouseClicked(evt);
             }
         });
-        jScrollPaneAreaDesc.setViewportView(AreaDesc);
+        jScrollPaneAreaDesc.setViewportView(areaDesc);
 
-        Agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cookbookinterfaz/imagen/Resource/ButtonAgregar.png"))); // NOI18N
-        Agregar.addMouseListener(new java.awt.event.MouseAdapter() {
+        agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cookbookinterfaz/imagen/Resource/ButtonAgregar.png"))); // NOI18N
+        agregar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                agregarMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                AgregarMouseEntered(evt);
+                agregarMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                AgregarMouseExited(evt);
+                agregarMouseExited(evt);
             }
         });
 
@@ -351,10 +362,10 @@ public class AgregarLibro extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(240, 238, 240));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), null));
 
-        jComboBox1.setBackground(new java.awt.Color(218, 216, 218));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        selectIdioma.setBackground(new java.awt.Color(218, 216, 218));
+        selectIdioma.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                selectIdiomaActionPerformed(evt);
             }
         });
 
@@ -369,7 +380,7 @@ public class AgregarLibro extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel2)
                 .addGap(38, 38, 38)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(selectIdioma, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(124, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -377,7 +388,7 @@ public class AgregarLibro extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(selectIdioma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addContainerGap())
         );
@@ -387,7 +398,7 @@ public class AgregarLibro extends javax.swing.JFrame {
         AgregarLibroPanelLayout.setHorizontalGroup(
             AgregarLibroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AgregarLibroPanelLayout.createSequentialGroup()
-                .addComponent(Encabezado)
+                .addComponent(encabezado)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(AgregarLibroPanelLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
@@ -397,46 +408,46 @@ public class AgregarLibro extends javax.swing.JFrame {
                             .addComponent(jScrollPaneAreaDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 724, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(AgregarLibroPanelLayout.createSequentialGroup()
                                 .addGroup(AgregarLibroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(CampoCantPag, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
-                                    .addComponent(CampoIsbn, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
-                                    .addComponent(CampoTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE))
+                                    .addComponent(campoCantPag, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
+                                    .addComponent(campoIsbn, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
+                                    .addComponent(campoTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(AgregarLibroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(AgregarLibroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(CampoFecha, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
-                                        .addComponent(CampoPrecio, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)))))
+                                        .addComponent(campoFecha, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
+                                        .addComponent(campoPrecio, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)))))
                         .addGap(29, 29, 29))
                     .addGroup(AgregarLibroPanelLayout.createSequentialGroup()
                         .addGroup(AgregarLibroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 724, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AgregarLibroPanelLayout.createSequentialGroup()
-                                .addComponent(Agregar)
+                                .addComponent(agregar)
                                 .addGap(14, 14, 14)))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         AgregarLibroPanelLayout.setVerticalGroup(
             AgregarLibroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AgregarLibroPanelLayout.createSequentialGroup()
-                .addComponent(Encabezado, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(encabezado, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(AgregarLibroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CampoIsbn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CampoPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(campoIsbn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campoPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(AgregarLibroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(CampoFecha, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CampoCantPag, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(campoFecha, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campoCantPag, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(AgregarLibroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(CampoTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campoTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(19, 19, 19)
                 .addComponent(jScrollPaneAreaDesc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jTabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(186, 186, 186))
         );
 
@@ -456,86 +467,86 @@ public class AgregarLibro extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void CampoIsbnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoIsbnActionPerformed
+    private void campoIsbnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoIsbnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CampoIsbnActionPerformed
+    }//GEN-LAST:event_campoIsbnActionPerformed
 
-    private void AgregarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AgregarMouseEntered
+    private void agregarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregarMouseEntered
         // TODO add your handling code here:
-        Agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cookbookinterfaz/imagen/Resource/ButtonAgregarFocus.png")));
-    }//GEN-LAST:event_AgregarMouseEntered
+        agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cookbookinterfaz/imagen/Resource/ButtonAgregarFocus.png")));
+    }//GEN-LAST:event_agregarMouseEntered
 
-    private void AgregarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AgregarMouseExited
+    private void agregarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregarMouseExited
         // TODO add your handling code here:
-        Agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cookbookinterfaz/imagen/Resource/ButtonAgregar.png")));
-    }//GEN-LAST:event_AgregarMouseExited
+        agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cookbookinterfaz/imagen/Resource/ButtonAgregar.png")));
+    }//GEN-LAST:event_agregarMouseExited
 
-    private void CampoIsbnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CampoIsbnMouseClicked
+    private void campoIsbnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoIsbnMouseClicked
         // TODO add your handling code here:
         
         if (click1) {
-            CampoIsbn.setText(null);
+            campoIsbn.setText(null);
             click1=false;
-            CampoIsbn.setForeground(Color.black);
+            campoIsbn.setForeground(Color.black);
     }
-    }//GEN-LAST:event_CampoIsbnMouseClicked
+    }//GEN-LAST:event_campoIsbnMouseClicked
 
-    private void CampoCantPagMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CampoCantPagMouseClicked
+    private void campoCantPagMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoCantPagMouseClicked
         // TODO add your handling code here:
         if (click2) {
-            CampoCantPag.setText(null);
+            campoCantPag.setText(null);
             click2=false;
-            CampoCantPag.setForeground(Color.black);
+            campoCantPag.setForeground(Color.black);
     }
-    }//GEN-LAST:event_CampoCantPagMouseClicked
+    }//GEN-LAST:event_campoCantPagMouseClicked
 
-    private void CampoTituloMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CampoTituloMouseClicked
+    private void campoTituloMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoTituloMouseClicked
         // TODO add your handling code here:
         if (click3) {
-            CampoTitulo.setText(null);
+            campoTitulo.setText(null);
             click3=false;
-            CampoTitulo.setForeground(Color.black);
+            campoTitulo.setForeground(Color.black);
     }
-    }//GEN-LAST:event_CampoTituloMouseClicked
+    }//GEN-LAST:event_campoTituloMouseClicked
 
-    private void CampoPrecioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CampoPrecioMouseClicked
+    private void campoPrecioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoPrecioMouseClicked
         // TODO add your handling code here:
         if (click4) {
-            CampoPrecio.setText(null);
+            campoPrecio.setText(null);
             click4=false;
-            CampoPrecio.setForeground(Color.black);
+            campoPrecio.setForeground(Color.black);
     }
-    }//GEN-LAST:event_CampoPrecioMouseClicked
+    }//GEN-LAST:event_campoPrecioMouseClicked
 
-    private void CampoFechaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CampoFechaMouseClicked
+    private void campoFechaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoFechaMouseClicked
         // TODO add your handling code here:
         if (click5) {
-            CampoFecha.setText(null);
+            campoFecha.setText(null);
             click5=false;
-            CampoFecha.setForeground(Color.black);
+            campoFecha.setForeground(Color.black);
     }
-    }//GEN-LAST:event_CampoFechaMouseClicked
+    }//GEN-LAST:event_campoFechaMouseClicked
 
-    private void AreaDescMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AreaDescMouseClicked
+    private void areaDescMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_areaDescMouseClicked
         // TODO add your handling code here:
         if (click7) {
-            AreaDesc.setText(null);
+            areaDesc.setText(null);
             click7=false;
-            AreaDesc.setForeground(Color.black);
+            areaDesc.setForeground(Color.black);
     }
-    }//GEN-LAST:event_AreaDescMouseClicked
+    }//GEN-LAST:event_areaDescMouseClicked
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void selectIdiomaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectIdiomaActionPerformed
 
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_selectIdiomaActionPerformed
 
-    private void CampoCantPagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoCantPagActionPerformed
+    private void campoCantPagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoCantPagActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CampoCantPagActionPerformed
+    }//GEN-LAST:event_campoCantPagActionPerformed
 
-    private void CampoFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoFechaActionPerformed
+    private void campoFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoFechaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CampoFechaActionPerformed
+    }//GEN-LAST:event_campoFechaActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
@@ -555,26 +566,42 @@ public class AgregarLibro extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void AñadirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AñadirMouseExited
-        // TODO add your handling code here:
         Añadir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cookbookinterfaz/imagen/Resource/ButtonNuevoAutor.png")));
     }//GEN-LAST:event_AñadirMouseExited
 
     private void AñadirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AñadirMouseEntered
-        // TODO add your handling code here:
         Añadir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cookbookinterfaz/imagen/Resource/ButtonNuevoAutorFocus.png")));
     }//GEN-LAST:event_AñadirMouseEntered
 
     private void AñadirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AñadirMouseClicked
-        // TODO add your handling code here:
         AgregarAutor AA=new AgregarAutor(this);
         AA.setLocationRelativeTo(this);
         AA.setVisible(true);
         this.setEnabled(false);
     }//GEN-LAST:event_AñadirMouseClicked
 
-    private void CampoPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoPrecioActionPerformed
+    private void campoPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoPrecioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CampoPrecioActionPerformed
+    }//GEN-LAST:event_campoPrecioActionPerformed
+
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+        Operaciones.llenarListaAutores(listaAutores);
+    }//GEN-LAST:event_formWindowGainedFocus
+
+    private void agregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregarMouseClicked
+          boolean agregado = false;
+        try {
+            agregado = Operaciones.agregarLibro(campoIsbn.getText(), campoTitulo.getText(),
+                    campoCantPag.getText(),campoPrecio.getText(), new Date(), areaDesc.getText(),
+                    "test", listaAutores.getSelectedIndex(), selectIdioma.getSelectedIndex()); //hay que cambiar lo de la fecha y lo de las primeras paginas
+        } catch (ErrorLibro e){
+            //TODO Manejar reporte visual de error.
+        }
+        if (agregado){
+           // TODO Código para cerrar ventana.              
+        }
+        
+    }//GEN-LAST:event_agregarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -582,19 +609,18 @@ public class AgregarLibro extends javax.swing.JFrame {
     
   metodos m=new metodos();  
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Agregar;
     private javax.swing.JPanel AgregarLibroPanel;
-    private javax.swing.JTextArea AreaDesc;
     private javax.swing.JLabel Añadir;
-    private javax.swing.JTextField CampoCantPag;
-    private javax.swing.JTextField CampoFecha;
-    private javax.swing.JTextField CampoIsbn;
-    private javax.swing.JTextField CampoPrecio;
-    private javax.swing.JTextField CampoTitulo;
-    private javax.swing.JLabel Encabezado;
+    private javax.swing.JLabel agregar;
+    private javax.swing.JTextArea areaDesc;
+    private javax.swing.JTextField campoCantPag;
+    private javax.swing.JTextField campoFecha;
+    private javax.swing.JTextField campoIsbn;
+    private javax.swing.JTextField campoPrecio;
+    private javax.swing.JTextField campoTitulo;
+    private javax.swing.JLabel encabezado;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLayeredPane jLayeredPane1;
@@ -607,5 +633,6 @@ public class AgregarLibro extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPaneAreaDesc;
     private javax.swing.JTabbedPane jTabbedPane;
     private javax.swing.JList listaAutores;
+    private javax.swing.JComboBox selectIdioma;
     // End of variables declaration//GEN-END:variables
 }
