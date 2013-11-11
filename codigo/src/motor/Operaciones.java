@@ -7,18 +7,13 @@ package motor;
 
 import excepciones.ErrorAutor;
 import excepciones.ErrorLibro;
-import java.awt.Component;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 public class Operaciones extends Conexion{
@@ -169,7 +164,7 @@ public class Operaciones extends Conexion{
         resultado = null;
         tableModel.setRowCount(0);
         tableModel.setColumnCount(3);
-        String sql = "SELECT a.l.getIsbn(),a.l.getTitulo(),b.getApellido() ||' '||b.getNombre() FROM libros a INNER JOIN autores b on a.autor_id=b.id WHERE a.l.getTitulo()='"+fraseClave+"'";
+        String sql = "SELECT a.isbn,a.titulo,b.apellido ||' '||b.nombre FROM libros a INNER JOIN autores b on a.autor_id=b.id WHERE a.titulo='"+fraseClave+"'";
         try {
             resultado = consultar(sql);
             if(resultado != null){
@@ -196,8 +191,8 @@ public class Operaciones extends Conexion{
         resultado = null;
         tableModel.setRowCount(0);
         tableModel.setColumnCount(3);
-        String sql = "SELECT a.l.getIsbn(),a.l.getTitulo(),b.getApellido() ||' '||b.getNombre() FROM libros "
-                + "a INNER JOIN autores b on a.autor_id=b.id WHERE b.getApellido()='"+fraseClave+"'";
+        String sql = "SELECT a.isbn,a.titulo,b.apellido ||' '||b.nombre FROM libros "
+                + "a INNER JOIN autores b on a.autor_id=b.id WHERE b.apellido='"+fraseClave+"'";
         try {
             resultado = consultar(sql);
             if(resultado != null){
@@ -295,7 +290,7 @@ public class Operaciones extends Conexion{
                 correcto = false;
             } else {
                 resultado = null;
-                resultado = consultar("SELECT l.getIsbn() from libros where l.getIsbn()='"+ l.getIsbn() +"'");
+                resultado = consultar("SELECT * from libros where isbn='"+ l.getIsbn() +"'");
                 try{
                      if (resultado.next()) {
                          e.setLibroExiste();
@@ -355,8 +350,8 @@ public class Operaciones extends Conexion{
                 correcto = false;
             }
          if (correcto) {
-            insertar("insert into libros(l.getIsbn(), l.getTitulo(), l.getCant_paginas(), l.getPrecio(), "
-                    + "l.get_Fecha_lanzamiento(), resumen, primeras_paginas, autor_id, idioma_id)"
+            insertar("insert into libros(isbn, titulo, cant_paginas, precio, "
+                    + "fecha_lanzamiento, resumen, primeras_paginas, autor_id, idioma_id)"
                     + "values('"+ l.getIsbn() +"', '"+l.getTitulo()+"',"+Integer.parseInt(l.getCant_paginas())+","
                     +l.getPrecio()+",'"+fLanz+"','"+l.getResumen()+"','"+l.getPrimeras_paginas()+"',"+l.getAutor_id()+","+l.getIdioma_id()+");");
             return true;

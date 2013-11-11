@@ -342,7 +342,36 @@ public class ListadoLibros extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonListarTodoMouseExited
 
     private void buttonListarTodoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonListarTodoMouseClicked
-        // TODO add your handling code here:
+       tablaLibros.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Isbn", "Titulo", "Autor", "Tapa"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+       if (tablaLibros.getColumnModel().getColumnCount() > 0) {
+            tablaLibros.getColumnModel().getColumn(0).setResizable(false);
+            tablaLibros.getColumnModel().getColumn(1).setResizable(false);
+            tablaLibros.getColumnModel().getColumn(2).setResizable(false);
+            tablaLibros.getColumnModel().getColumn(3).setResizable(false);
+            tablaLibros.getColumnModel().getColumn(3).setCellRenderer(new ImageRenderer("/visual/imagen/Resource/TapaLibro.png"));
+        }
        Operaciones.llenarTablaLibros((DefaultTableModel)tablaLibros.getModel());
     }//GEN-LAST:event_buttonListarTodoMouseClicked
 

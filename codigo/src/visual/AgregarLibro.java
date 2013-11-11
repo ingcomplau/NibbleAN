@@ -19,7 +19,6 @@ import motor.Libro;
  * @author launote
  */
 public class AgregarLibro extends javax.swing.JFrame {
-  Operaciones operaciones;
   VentanaAdmin VA;
     /**
      * Creates new form NewJFrame
@@ -207,7 +206,8 @@ public class AgregarLibro extends javax.swing.JFrame {
             }
         });
 
-        listaAutores.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        listaAutores.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        listaAutores.setToolTipText("");
         jScrollPane1.setViewportView(listaAutores);
 
         jLabel1.setText("Lista de autores");
@@ -447,7 +447,7 @@ public class AgregarLibro extends javax.swing.JFrame {
                 .addGap(19, 19, 19)
                 .addGroup(AgregarLibroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(campoCantPag, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 39, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(AgregarLibroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(campoTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -465,7 +465,7 @@ public class AgregarLibro extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(AgregarLibroPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 777, Short.MAX_VALUE)
+            .addComponent(AgregarLibroPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 777, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

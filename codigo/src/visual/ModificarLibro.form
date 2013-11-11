@@ -67,16 +67,16 @@
                               <Component id="jScrollPane2" min="-2" pref="724" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="CampoCantPag" pref="320" max="32767" attributes="0"/>
-                                      <Component id="CampoIsbn" max="32767" attributes="0"/>
-                                      <Component id="CampoTitulo" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="campoCantPag" pref="320" max="32767" attributes="0"/>
+                                      <Component id="campoIsbn" max="32767" attributes="0"/>
+                                      <Component id="campoTitulo" alignment="0" max="32767" attributes="0"/>
                                       <Component id="jLayeredPane1" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jLayeredPane2" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="CampoPrimPag" alignment="1" min="-2" pref="320" max="-2" attributes="0"/>
-                                      <Component id="CampoPrecio" alignment="1" min="-2" pref="320" max="-2" attributes="0"/>
+                                      <Component id="campoPrimPag" alignment="1" min="-2" pref="320" max="-2" attributes="0"/>
+                                      <Component id="campoPrecio" alignment="1" min="-2" pref="320" max="-2" attributes="0"/>
                                       <Component id="jPanel6" alignment="1" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -84,7 +84,7 @@
                       </Group>
                       <Group type="102" attributes="0">
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="Agregar" min="-2" max="-2" attributes="0"/>
+                          <Component id="modificar" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
@@ -97,18 +97,18 @@
                   <Component id="jLabel1" min="-2" pref="63" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="CampoIsbn" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="CampoPrecio" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                      <Component id="campoIsbn" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="campoPrecio" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="CampoCantPag" min="-2" pref="34" max="-2" attributes="0"/>
+                      <Component id="campoCantPag" min="-2" pref="34" max="-2" attributes="0"/>
                       <Component id="jPanel6" pref="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="CampoTitulo" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                      <Component id="CampoPrimPag" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                      <Component id="campoTitulo" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                      <Component id="campoPrimPag" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jScrollPane2" min="-2" max="-2" attributes="0"/>
@@ -118,14 +118,14 @@
                       <Component id="jLayeredPane2" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="Agregar" min="-2" pref="41" max="-2" attributes="0"/>
+                  <Component id="modificar" min="-2" pref="41" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="213" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JTextField" name="CampoIsbn">
+        <Component class="javax.swing.JTextField" name="campoIsbn">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="f0" green="ee" red="f0" type="rgb"/>
@@ -144,8 +144,12 @@
               <Color blue="53" green="22" red="6e" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campoIsbnFocusLost"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="campoIsbnKeyTyped"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="CampoCantPag">
+        <Component class="javax.swing.JTextField" name="campoCantPag">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="f0" green="ee" red="f0" type="rgb"/>
@@ -160,8 +164,12 @@
               <Dimension value="[165, 34]"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campoCantPagFocusLost"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="campoCantPagKeyTyped"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="CampoPrecio">
+        <Component class="javax.swing.JTextField" name="campoPrecio">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="f0" green="ee" red="f0" type="rgb"/>
@@ -173,8 +181,12 @@
               <Connection code="lib.getPrecio()" type="code"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campoPrecioFocusLost"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="campoPrecioKeyTyped"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="CampoTitulo">
+        <Component class="javax.swing.JTextField" name="campoTitulo">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="f0" green="ee" red="f0" type="rgb"/>
@@ -192,8 +204,12 @@
               <Color blue="53" green="22" red="6e" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campoTituloFocusLost"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="campoTituloKeyTyped"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="CampoPrimPag">
+        <Component class="javax.swing.JTextField" name="campoPrimPag">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="f0" green="ee" red="f0" type="rgb"/>
@@ -224,7 +240,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTextArea" name="AreaDesc">
+            <Component class="javax.swing.JTextArea" name="creaDesc">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="f0" green="ee" red="f0" type="rgb"/>
@@ -242,6 +258,9 @@
                 </Property>
                 <Property name="focusCycleRoot" type="boolean" value="true"/>
               </Properties>
+              <Events>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="creaDescFocusLost"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -302,17 +321,12 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JList" name="jList1">
+                <Component class="javax.swing.JList" name="listaAutores">
                   <Properties>
                     <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                      <StringArray count="5">
-                        <StringItem index="0" value="Item 1"/>
-                        <StringItem index="1" value="Item 2"/>
-                        <StringItem index="2" value="Item 3"/>
-                        <StringItem index="3" value="Item 4"/>
-                        <StringItem index="4" value="Item 5"/>
-                      </StringArray>
+                      <StringArray count="0"/>
                     </Property>
+                    <Property name="selectionMode" type="int" value="0"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -330,15 +344,16 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JLabel" name="Agregar">
+        <Component class="javax.swing.JLabel" name="modificar">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/visual/imagen/Resource/ButtonAgregar.png"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="AgregarMouseEntered"/>
-            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="AgregarMouseExited"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="modificarMouseClicked"/>
+            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="modificarMouseEntered"/>
+            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="modificarMouseExited"/>
           </Events>
         </Component>
         <Container class="javax.swing.JLayeredPane" name="jLayeredPane2">
@@ -387,11 +402,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JComboBox" name="selectIdioma">
-              <Properties>
-                <Property name="selectedIndex" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="lib.getIdioma_id()-1" type="code"/>
-                </Property>
-              </Properties>
             </Component>
           </SubComponents>
         </Container>
