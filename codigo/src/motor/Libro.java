@@ -22,11 +22,7 @@ public class Libro {
    private Date fecha_lanzamiento; 
    private String resumen; 
   private  String primeras_paginas;
-  private  Autor autor; 
-
-    public void setAutor_id(Integer autor_id) {
-        this.autor_id = autor_id;
-    }
+  private  Autor autor;
   private  Integer autor_id;
    private Integer idioma_id;
 
@@ -41,18 +37,11 @@ public class Libro {
         this.autor_id = autor_id;
         this.idioma_id = idioma_id + 1;
     }
-    public Libro(String isbn, String titulo, String cant_paginas, String precio, Date fecha_lanzamiento, String resumen, String primeras_paginas, Autor autor, Integer idioma_id) {
-        this.isbn = isbn;
-        this.titulo = titulo;
-        this.cant_paginas = cant_paginas;
-        this.precio = precio;
-        this.fecha_lanzamiento = fecha_lanzamiento;
-        this.resumen = resumen;
-        this.primeras_paginas = primeras_paginas;
-        this.autor = autor;
-        this.idioma_id = idioma_id + 1;
-    }
-
+  
+   public Libro (Integer id){
+       // TODO Cargar datos a partir de id.
+   }
+   
     public String getIsbn() {
         return isbn;
     }
@@ -92,4 +81,8 @@ public class Libro {
     public Integer getIdioma_id() {
         return idioma_id;
     }
+     public void setAutor_id(Integer autor_id) {
+        this.autor_id = autor_id;
+    }
+    
 }

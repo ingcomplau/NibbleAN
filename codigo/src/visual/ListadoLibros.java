@@ -10,6 +10,7 @@ import motor.Operaciones;
 import java.awt.Color;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
+import motor.Libro;
 
 /**
  *
@@ -249,7 +250,6 @@ public class ListadoLibros extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotonEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonEliminarMouseClicked
-        // TODO add your handling code here:
         if(this.TablaLibros.getSelectedRowCount()!=0){
              EliminarLibro venEli= new EliminarLibro (this);
              venEli.setLocationRelativeTo(this);
@@ -260,9 +260,8 @@ public class ListadoLibros extends javax.swing.JFrame {
     }//GEN-LAST:event_BotonEliminarMouseClicked
 
     private void BotonModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonModificarMouseClicked
-        // TODO add your handling code here:
-        if(this.TablaLibros.getSelectedRowCount()!=0){
-            ModificarLibro ML=new ModificarLibro(this);
+       if(this.TablaLibros.getSelectedRowCount()!=0){
+            ModificarLibro ML=new ModificarLibro(this, new Libro(this.TablaLibros.getSelectedRowCount()));
             ML.setVisible(true);
             ML.setLocationRelativeTo(this);
             this.setEnabled(false);

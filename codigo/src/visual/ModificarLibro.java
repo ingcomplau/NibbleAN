@@ -1,5 +1,7 @@
 package visual;
 
+import motor.Libro;
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -22,9 +24,12 @@ public class ModificarLibro extends javax.swing.JFrame {
     private boolean click6 = true;
     private boolean click7 = true;
     
-    public ModificarLibro(ListadoLibros L) {
+    private Libro lib;
+    
+    public ModificarLibro(ListadoLibros L, Libro lib) {
         initComponents();
         LL=L;
+        this.lib = lib;
     }
 
     /**
@@ -72,75 +77,40 @@ public class ModificarLibro extends javax.swing.JFrame {
         CampoIsbn.setBackground(new java.awt.Color(240, 238, 240));
         CampoIsbn.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         CampoIsbn.setForeground(new java.awt.Color(153, 153, 153));
-        CampoIsbn.setText(" I.S.B.N");
+        CampoIsbn.setText(lib.getIsbn());
         CampoIsbn.setToolTipText("");
         CampoIsbn.setPreferredSize(new java.awt.Dimension(165, 34));
         CampoIsbn.setSelectionColor(new java.awt.Color(110, 34, 83));
-        CampoIsbn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                CampoIsbnMouseClicked(evt);
-            }
-        });
-        CampoIsbn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CampoIsbnActionPerformed(evt);
-            }
-        });
 
         CampoCantPag.setBackground(new java.awt.Color(240, 238, 240));
         CampoCantPag.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         CampoCantPag.setForeground(new java.awt.Color(153, 153, 153));
-        CampoCantPag.setText(" Cantidad de paginas");
+        CampoCantPag.setText(lib.getCant_paginas());
         CampoCantPag.setPreferredSize(new java.awt.Dimension(165, 34));
-        CampoCantPag.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                CampoCantPagMouseClicked(evt);
-            }
-        });
 
         CampoPrecio.setBackground(new java.awt.Color(240, 238, 240));
         CampoPrecio.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         CampoPrecio.setForeground(new java.awt.Color(153, 153, 153));
-        CampoPrecio.setText(" Precio");
-        CampoPrecio.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                CampoPrecioMouseClicked(evt);
-            }
-        });
+        CampoPrecio.setText(lib.getPrecio());
 
         CampoTitulo.setBackground(new java.awt.Color(240, 238, 240));
         CampoTitulo.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         CampoTitulo.setForeground(new java.awt.Color(153, 153, 153));
-        CampoTitulo.setText(" Título");
+        CampoTitulo.setText(lib.getTitulo());
         CampoTitulo.setDisabledTextColor(new java.awt.Color(110, 34, 83));
         CampoTitulo.setSelectionColor(new java.awt.Color(110, 34, 83));
-        CampoTitulo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                CampoTituloMouseClicked(evt);
-            }
-        });
 
         CampoFecha.setBackground(new java.awt.Color(240, 238, 240));
         CampoFecha.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         CampoFecha.setForeground(new java.awt.Color(153, 153, 153));
         CampoFecha.setText(" Fecha de lanzamiento");
         CampoFecha.setPreferredSize(new java.awt.Dimension(165, 34));
-        CampoFecha.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                CampoFechaMouseClicked(evt);
-            }
-        });
 
         CampoPrimPag.setBackground(new java.awt.Color(240, 238, 240));
         CampoPrimPag.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         CampoPrimPag.setForeground(new java.awt.Color(153, 153, 153));
         CampoPrimPag.setText(" Primeras Paginas");
         CampoPrimPag.setPreferredSize(new java.awt.Dimension(165, 34));
-        CampoPrimPag.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                CampoPrimPagMouseClicked(evt);
-            }
-        });
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/PanelModificarLibro.png"))); // NOI18N
 
@@ -151,14 +121,9 @@ public class ModificarLibro extends javax.swing.JFrame {
         AreaDesc.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         AreaDesc.setForeground(new java.awt.Color(153, 153, 153));
         AreaDesc.setRows(5);
-        AreaDesc.setText("Descripción del producto");
+        AreaDesc.setText(lib.getResumen());
         AreaDesc.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         AreaDesc.setFocusCycleRoot(true);
-        AreaDesc.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                AreaDescMouseClicked(evt);
-            }
-        });
         jScrollPane2.setViewportView(AreaDesc);
 
         jLayeredPane1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -304,7 +269,7 @@ public class ModificarLibro extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(ModificarLibroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLayeredPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
+                    .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, Short.MAX_VALUE)
                     .addComponent(jLayeredPane2))
                 .addGap(18, 18, 18)
                 .addComponent(Agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -315,7 +280,7 @@ public class ModificarLibro extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(ModificarLibroPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 777, Short.MAX_VALUE)
+            .addComponent(ModificarLibroPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 777, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -327,86 +292,21 @@ public class ModificarLibro extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void CampoIsbnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoIsbnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CampoIsbnActionPerformed
-
     private void AñadirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AñadirMouseEntered
-        // TODO add your handling code here:
         Añadir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cookbookinterfaz/imagen/Resource/ButtonAñadirFocus.png")));
     }//GEN-LAST:event_AñadirMouseEntered
 
     private void AñadirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AñadirMouseExited
-        // TODO add your handling code here:
         Añadir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cookbookinterfaz/imagen/Resource/ButtonAñadir.png")));
     }//GEN-LAST:event_AñadirMouseExited
 
     private void AgregarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AgregarMouseEntered
-        // TODO add your handling code here:
         Agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cookbookinterfaz/imagen/Resource/ButtonAgregarFocus.png")));
     }//GEN-LAST:event_AgregarMouseEntered
 
     private void AgregarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AgregarMouseExited
-        // TODO add your handling code here:
         Agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cookbookinterfaz/imagen/Resource/ButtonAgregar.png")));
     }//GEN-LAST:event_AgregarMouseExited
-
-    private void CampoIsbnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CampoIsbnMouseClicked
-        // TODO add your handling code here:
-        
-        if (click1) {
-            CampoIsbn.setText(null);
-            click1=false;
-    }
-    }//GEN-LAST:event_CampoIsbnMouseClicked
-
-    private void CampoCantPagMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CampoCantPagMouseClicked
-        // TODO add your handling code here:
-        if (click2) {
-            CampoCantPag.setText(null);
-            click2=false;
-    }
-    }//GEN-LAST:event_CampoCantPagMouseClicked
-
-    private void CampoTituloMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CampoTituloMouseClicked
-        // TODO add your handling code here:
-        if (click3) {
-            CampoTitulo.setText(null);
-            click3=false;
-    }
-    }//GEN-LAST:event_CampoTituloMouseClicked
-
-    private void CampoPrecioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CampoPrecioMouseClicked
-        // TODO add your handling code here:
-        if (click4) {
-            CampoPrecio.setText(null);
-            click4=false;
-    }
-    }//GEN-LAST:event_CampoPrecioMouseClicked
-
-    private void CampoFechaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CampoFechaMouseClicked
-        // TODO add your handling code here:
-        if (click5) {
-            CampoFecha.setText(null);
-            click5=false;
-    }
-    }//GEN-LAST:event_CampoFechaMouseClicked
-
-    private void CampoPrimPagMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CampoPrimPagMouseClicked
-        // TODO add your handling code here:
-        if (click6) {
-            CampoPrimPag.setText(null);
-            click6=false;
-    }
-    }//GEN-LAST:event_CampoPrimPagMouseClicked
-
-    private void AreaDescMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AreaDescMouseClicked
-        // TODO add your handling code here:
-        if (click7) {
-            AreaDesc.setText(null);
-            click7=false;
-    }
-    }//GEN-LAST:event_AreaDescMouseClicked
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
