@@ -18,7 +18,7 @@ import motor.Libro;
  */
 public class ListadoLibros extends javax.swing.JFrame {
     VentanaAdmin VA;
-    Operaciones operaciones;
+    //Operaciones operaciones;
     private boolean click=true;
     /**
      * Creates new form ListadoDeLibros
@@ -26,9 +26,9 @@ public class ListadoLibros extends javax.swing.JFrame {
     public ListadoLibros(VentanaAdmin V) {
         initComponents();
         VA=V;
-         operaciones = new Operaciones();
-        operaciones.conectar();
-         operaciones.llenarTablaLibros(TablaLibros);
+         //operaciones = new Operaciones();
+        // operaciones.conectar();
+         Operaciones.llenarTablaLibros((DefaultTableModel)TablaLibros.getModel());
     }
 
     /**
@@ -100,9 +100,17 @@ public class ListadoLibros extends javax.swing.JFrame {
 
             },
             new String [] {
-
+                "Isbn", "Titulo", "Apellido y Nombre del Autor"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         TablaLibros.setFocusable(false);
         TablaLibros.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         TablaLibros.setShowVerticalLines(false);
@@ -198,34 +206,33 @@ public class ListadoLibros extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ListadoDeLibrosPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(ListadoDeLibrosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ListadoDeLibrosPanelLayout.createSequentialGroup()
+                    .addGroup(ListadoDeLibrosPanelLayout.createSequentialGroup()
                         .addComponent(jScrollPaneTablaLibros)
                         .addGap(19, 19, 19))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ListadoDeLibrosPanelLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(ListadoDeLibrosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ListadoDeLibrosPanelLayout.createSequentialGroup()
-                                .addComponent(BotonEliminar)
-                                .addGap(130, 130, 130)
-                                .addComponent(BotonModificar)
-                                .addGap(179, 179, 179))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ListadoDeLibrosPanelLayout.createSequentialGroup()
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(113, 113, 113))))))
+                    .addGroup(ListadoDeLibrosPanelLayout.createSequentialGroup()
+                        .addGap(313, 313, 313)
+                        .addComponent(BotonEliminar)
+                        .addGap(46, 46, 46)
+                        .addComponent(BotonModificar)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(ListadoDeLibrosPanelLayout.createSequentialGroup()
+                .addGap(116, 116, 116)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         ListadoDeLibrosPanelLayout.setVerticalGroup(
             ListadoDeLibrosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(ListadoDeLibrosPanelLayout.createSequentialGroup()
                 .addComponent(Encabezado)
-                .addGap(39, 39, 39)
+                .addGap(102, 102, 102)
                 .addGroup(ListadoDeLibrosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(BotonModificar)
-                    .addComponent(BotonEliminar))
-                .addGap(18, 18, 18)
+                    .addComponent(BotonEliminar)
+                    .addComponent(BotonModificar))
+                .addGap(57, 57, 57)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPaneTablaLibros, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPaneTablaLibros, javax.swing.GroupLayout.PREFERRED_SIZE, 486, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -236,9 +243,7 @@ public class ListadoLibros extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(ListadoDeLibrosPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(ListadoDeLibrosPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -281,27 +286,27 @@ public class ListadoLibros extends javax.swing.JFrame {
 
     private void buttonBuscarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonBuscarMouseEntered
         // TODO add your handling code here:
-        buttonBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/Buscador.png")));
+        buttonBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cookbookinterfaz/imagen/Resource/Buscador.png")));
     }//GEN-LAST:event_buttonBuscarMouseEntered
 
     private void buttonBuscarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonBuscarMouseExited
         // TODO add your handling code here:
-         buttonBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/Buscador2.png")));
+         buttonBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cookbookinterfaz/imagen/Resource/Buscador2.png")));
     }//GEN-LAST:event_buttonBuscarMouseExited
 
     private void buttonListarTodoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonListarTodoMouseEntered
         // TODO add your handling code here:
-        buttonListarTodo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonTodosLibrosFocus.png")));
+        buttonListarTodo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cookbookinterfaz/imagen/Resource/ButtonTodosLibrosFocus.png")));
     }//GEN-LAST:event_buttonListarTodoMouseEntered
 
     private void buttonListarTodoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonListarTodoMouseExited
         // TODO add your handling code here:
-        buttonListarTodo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonTodosLibros.png")));
+        buttonListarTodo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cookbookinterfaz/imagen/Resource/ButtonTodosLibros.png")));
     }//GEN-LAST:event_buttonListarTodoMouseExited
 
     private void buttonListarTodoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonListarTodoMouseClicked
         // TODO add your handling code here:
-       operaciones.llenarTablaLibros(TablaLibros);
+       Operaciones.llenarTablaLibros((DefaultTableModel)TablaLibros.getModel());
     }//GEN-LAST:event_buttonListarTodoMouseClicked
 
     private void campoBuscadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoBuscadorMouseClicked
@@ -321,22 +326,22 @@ public class ListadoLibros extends javax.swing.JFrame {
 
     private void BotonEliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonEliminarMouseEntered
         // TODO add your handling code here:
-          BotonEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonEliminarFocus.png")));
+          BotonEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cookbookinterfaz/imagen/Resource/ButtonEliminarFocus.png")));
     }//GEN-LAST:event_BotonEliminarMouseEntered
 
     private void BotonEliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonEliminarMouseExited
         // TODO add your handling code here:
-        BotonEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonEliminar.png")));
+        BotonEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cookbookinterfaz/imagen/Resource/ButtonEliminar.png")));
     }//GEN-LAST:event_BotonEliminarMouseExited
 
     private void BotonModificarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonModificarMouseEntered
         // TODO add your handling code here:
-        BotonModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonModificarFocus.png")));
+        BotonModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cookbookinterfaz/imagen/Resource/ButtonModificarFocus.png")));
     }//GEN-LAST:event_BotonModificarMouseEntered
 
     private void BotonModificarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonModificarMouseExited
         // TODO add your handling code here:
-        BotonModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonModificar.png")));
+        BotonModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cookbookinterfaz/imagen/Resource/ButtonModificar.png")));
     }//GEN-LAST:event_BotonModificarMouseExited
 
     /**
