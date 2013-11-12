@@ -23,6 +23,7 @@ public class AgregarLibro extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame
      */
+  private Libro lib;
     private boolean click1 = true;
     private boolean click2 = true;
     private boolean click3 = true;
@@ -32,6 +33,7 @@ public class AgregarLibro extends javax.swing.JFrame {
     private boolean click7 = true;
     
     public AgregarLibro(VentanaAdmin V) {
+        lib = new Libro();
         initComponents();
         VA=V;
         Operaciones.llenarListaIdiomas((DefaultComboBoxModel)selectIdioma.getModel());
@@ -91,7 +93,6 @@ public class AgregarLibro extends javax.swing.JFrame {
         });
 
         AgregarLibroPanel.setBackground(new java.awt.Color(218, 216, 218));
-        AgregarLibroPanel.setToolTipText("");
         AgregarLibroPanel.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
 
         campoIsbn.setBackground(new java.awt.Color(240, 238, 240));
@@ -111,12 +112,21 @@ public class AgregarLibro extends javax.swing.JFrame {
                 campoIsbnActionPerformed(evt);
             }
         });
+        campoIsbn.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                campoIsbnFocusLost(evt);
+            }
+        });
+        campoIsbn.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                campoIsbnKeyTyped(evt);
+            }
+        });
 
         campoCantPag.setBackground(new java.awt.Color(240, 238, 240));
         campoCantPag.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         campoCantPag.setForeground(new java.awt.Color(153, 153, 153));
         campoCantPag.setText(" Cantidad de páginas");
-        campoCantPag.setToolTipText("");
         campoCantPag.setPreferredSize(new java.awt.Dimension(165, 34));
         campoCantPag.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -126,6 +136,16 @@ public class AgregarLibro extends javax.swing.JFrame {
         campoCantPag.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoCantPagActionPerformed(evt);
+            }
+        });
+        campoCantPag.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                campoCantPagFocusLost(evt);
+            }
+        });
+        campoCantPag.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                campoCantPagKeyTyped(evt);
             }
         });
 
@@ -143,6 +163,16 @@ public class AgregarLibro extends javax.swing.JFrame {
                 campoPrecioActionPerformed(evt);
             }
         });
+        campoPrecio.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                campoPrecioFocusLost(evt);
+            }
+        });
+        campoPrecio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                campoPrecioKeyTyped(evt);
+            }
+        });
 
         campoTitulo.setBackground(new java.awt.Color(240, 238, 240));
         campoTitulo.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
@@ -153,6 +183,16 @@ public class AgregarLibro extends javax.swing.JFrame {
         campoTitulo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 campoTituloMouseClicked(evt);
+            }
+        });
+        campoTitulo.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                campoTituloFocusLost(evt);
+            }
+        });
+        campoTitulo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                campoTituloKeyTyped(evt);
             }
         });
 
@@ -171,6 +211,11 @@ public class AgregarLibro extends javax.swing.JFrame {
         areaDesc.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 areaDescMouseClicked(evt);
+            }
+        });
+        areaDesc.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                areaDescFocusLost(evt);
             }
         });
         jScrollPaneAreaDesc.setViewportView(areaDesc);
@@ -208,6 +253,11 @@ public class AgregarLibro extends javax.swing.JFrame {
 
         listaAutores.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         listaAutores.setToolTipText("");
+        listaAutores.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                listaAutoresValueChanged(evt);
+            }
+        });
         jScrollPane1.setViewportView(listaAutores);
 
         jLabel1.setText("Lista de autores");
@@ -226,7 +276,7 @@ public class AgregarLibro extends javax.swing.JFrame {
                     .addGroup(jLayeredPane1Layout.createSequentialGroup()
                         .addGap(60, 60, 60)
                         .addComponent(jLabel1)))
-                .addContainerGap(544, Short.MAX_VALUE))
+                .addContainerGap(541, Short.MAX_VALUE))
         );
         jLayeredPane1Layout.setVerticalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -345,6 +395,11 @@ public class AgregarLibro extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), null));
 
         selectIdioma.setBackground(new java.awt.Color(218, 216, 218));
+        selectIdioma.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                selectIdiomaItemStateChanged(evt);
+            }
+        });
         selectIdioma.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 selectIdiomaActionPerformed(evt);
@@ -382,6 +437,12 @@ public class AgregarLibro extends javax.swing.JFrame {
         jLabel3.setText("Fecha de lanzamiento: ");
 
         fLanz.setMinSelectableDate(new java.util.Date(-14830977525000L));
+        fLanz.getDateEditor().setEnabled(false);
+        fLanz.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                fLanzPropertyChange(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -586,31 +647,112 @@ public class AgregarLibro extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowGainedFocus
 
     private void agregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregarMouseClicked
-          boolean agregado = false;
-        try {
-            agregado = Operaciones.agregarLibro(new Libro(campoIsbn.getText(), campoTitulo.getText(),
-                    campoCantPag.getText(),campoPrecio.getText(), fLanz.getDate(), areaDesc.getText(),
-                    "test", listaAutores.getSelectedIndex(), selectIdioma.getSelectedIndex())); //hay que cambiar lo de la fecha y lo de las primeras paginas
-        } catch (ErrorLibro e){
-            System.err.println(e.isCantpagsincorrecto());
-            System.err.println(e.isFechaInvalida());
-            System.err.println(e.isIsbncorto());
-            System.err.println(e.isIsbnincorrecto());
-            System.err.println(e.isIsbnlargo());
-            System.err.println(e.isPocaspags());
-            System.err.println(e.isPrecioincorrecto());
-            System.err.println(e.isPrecionegativo());
-            System.err.println(e.isSinAutor());
-            System.err.println(e.isTitulocorto());
-            System.err.println(e.isTitulolargo());
-            System.err.println("");
-        }
-        if (agregado){
-           // TODO Código para cerrar ventana.              
-        }
-        
+         try {
+             System.out.println(1);
+             lib.agregar();
+         } catch (ErrorLibro e){
+             // Libro ya existe.
+         }
     }//GEN-LAST:event_agregarMouseClicked
 
+    private void campoIsbnFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoIsbnFocusLost
+                if (((javax.swing.JTextField) evt.getSource()).getName() != null) {
+            try {
+                lib.setIsbn(((javax.swing.JTextField) evt.getSource()).getText());
+                ((javax.swing.JTextField) evt.getSource()).setName(null);
+                agregar.setEnabled(true);
+            } catch (ErrorLibro e) {
+                //Procesar visualización de error.
+                agregar.setEnabled(false);
+                ((javax.swing.JTextField) evt.getSource()).requestFocus();
+            }
+    } 
+    }//GEN-LAST:event_campoIsbnFocusLost
+
+    private void campoCantPagFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoCantPagFocusLost
+       if (((javax.swing.JTextField) evt.getSource()).getName() != null) {
+            try {
+                lib.setCant_paginas(((javax.swing.JTextField) evt.getSource()).getText());
+                ((javax.swing.JTextField) evt.getSource()).setName(null);
+                agregar.setEnabled(true);
+            } catch (ErrorLibro e) {
+                //Procesar visualización de error.
+                agregar.setEnabled(false);
+                ((javax.swing.JTextField) evt.getSource()).requestFocus();
+            }
+        }
+    }//GEN-LAST:event_campoCantPagFocusLost
+
+    private void campoIsbnKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoIsbnKeyTyped
+        ((javax.swing.JTextField) evt.getSource()).setName("ch");
+    }//GEN-LAST:event_campoIsbnKeyTyped
+
+    private void campoCantPagKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoCantPagKeyTyped
+        ((javax.swing.JTextField) evt.getSource()).setName("ch");
+    }//GEN-LAST:event_campoCantPagKeyTyped
+
+    private void campoTituloKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoTituloKeyTyped
+        ((javax.swing.JTextField) evt.getSource()).setName("ch");
+    }//GEN-LAST:event_campoTituloKeyTyped
+
+    private void campoPrecioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoPrecioKeyTyped
+       ((javax.swing.JTextField) evt.getSource()).setName("ch");
+    }//GEN-LAST:event_campoPrecioKeyTyped
+
+    private void campoTituloFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoTituloFocusLost
+         if (((javax.swing.JTextField) evt.getSource()).getName() != null) {
+            try {
+                lib.setTitulo(((javax.swing.JTextField) evt.getSource()).getText());
+                ((javax.swing.JTextField) evt.getSource()).setName(null);
+                agregar.setEnabled(true);
+            } catch (ErrorLibro e) {
+                //Procesar visualización de error.
+                agregar.setEnabled(false);
+                ((javax.swing.JTextField) evt.getSource()).requestFocus();
+            }
+        }
+    }//GEN-LAST:event_campoTituloFocusLost
+
+    private void campoPrecioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoPrecioFocusLost
+       if (((javax.swing.JTextField) evt.getSource()).getName() != null) {
+            try {
+                lib.setPrecio(((javax.swing.JTextField) evt.getSource()).getText());
+                ((javax.swing.JTextField) evt.getSource()).setName(null);
+                agregar.setEnabled(true);
+            } catch (ErrorLibro e) {
+                //Procesar visualización de error.
+                agregar.setEnabled(false);
+                ((javax.swing.JTextField) evt.getSource()).requestFocus();
+            }
+        }
+    }//GEN-LAST:event_campoPrecioFocusLost
+
+    private void areaDescFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_areaDescFocusLost
+        lib.setResumen(((javax.swing.JTextArea) evt.getSource()).getText());
+    }//GEN-LAST:event_areaDescFocusLost
+
+    private void fLanzPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_fLanzPropertyChange
+         if ("date".equals(evt.getPropertyName())){
+            try {
+            lib.setFecha_lanzamiento(((com.toedter.calendar.JDateChooser) evt.getSource()).getDate());
+        } catch (ErrorLibro e) {
+            //Mostrar que está mal la fecha... no va a suceder.
+        }
+        }
+    }//GEN-LAST:event_fLanzPropertyChange
+
+    private void selectIdiomaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_selectIdiomaItemStateChanged
+         lib.setIdioma_id(selectIdioma.getSelectedIndex());
+    }//GEN-LAST:event_selectIdiomaItemStateChanged
+
+    private void listaAutoresValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaAutoresValueChanged
+         try {
+            lib.setAutor_id(listaAutores.getSelectedIndex());
+        }catch (ErrorLibro e){
+            //Ningun error podría ocurrir
+        }
+    }//GEN-LAST:event_listaAutoresValueChanged
+            
     /**
      * @param args the command line arguments
      */

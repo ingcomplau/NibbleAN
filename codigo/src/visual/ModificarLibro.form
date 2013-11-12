@@ -46,7 +46,6 @@
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="da" green="d8" red="da" type="rgb"/>
         </Property>
-        <Property name="toolTipText" type="java.lang.String" value=""/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="SansSerif" size="14" style="0"/>
         </Property>
@@ -240,7 +239,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTextArea" name="creaDesc">
+            <Component class="javax.swing.JTextArea" name="areaDesc">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="f0" green="ee" red="f0" type="rgb"/>
@@ -259,7 +258,7 @@
                 <Property name="focusCycleRoot" type="boolean" value="true"/>
               </Properties>
               <Events>
-                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="creaDescFocusLost"/>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="areaDescFocusLost"/>
               </Events>
             </Component>
           </SubComponents>
@@ -328,6 +327,9 @@
                     </Property>
                     <Property name="selectionMode" type="int" value="0"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="valueChanged" listener="javax.swing.event.ListSelectionListener" parameters="javax.swing.event.ListSelectionEvent" handler="listaAutoresValueChanged"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -402,6 +404,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JComboBox" name="selectIdioma">
+              <Events>
+                <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="selectIdiomaItemStateChanged"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -426,7 +431,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="fLanz1" min="-2" pref="141" max="-2" attributes="0"/>
+                      <Component id="fecha" min="-2" pref="141" max="-2" attributes="0"/>
                       <EmptySpace pref="14" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -436,7 +441,7 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="fLanz1" max="32767" attributes="0"/>
+                          <Component id="fecha" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -456,7 +461,7 @@
                 <Property name="text" type="java.lang.String" value="Fecha de lanzamiento: "/>
               </Properties>
             </Component>
-            <Component class="com.toedter.calendar.JDateChooser" name="fLanz1">
+            <Component class="com.toedter.calendar.JDateChooser" name="fecha">
               <Properties>
                 <Property name="date" type="java.util.Date" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                   <Connection code="lib.getFecha_lanzamiento()" type="code"/>
@@ -465,6 +470,12 @@
                   <SerializedValue value="-84,-19,0,5,115,114,0,14,106,97,118,97,46,117,116,105,108,46,68,97,116,101,104,106,-127,1,75,89,116,25,3,0,0,120,112,119,8,-1,-1,-14,-126,-28,-38,90,-8,120"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="fechaPropertyChange"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="fecha.getDateEditor().setEnabled(false);"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>

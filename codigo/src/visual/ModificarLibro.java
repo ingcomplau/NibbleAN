@@ -1,8 +1,8 @@
 package visual;
 
 import excepciones.ErrorLibro;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import motor.Libro;
 import motor.Operaciones;
@@ -11,26 +11,27 @@ import motor.Operaciones;
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author launote
  */
 public class ModificarLibro extends javax.swing.JFrame {
+
     ListadoLibros LL;
     /**
      * Creates new form NewJFrame
      */
     private Libro lib;
-    
+
     public ModificarLibro(ListadoLibros L, Libro lib) {
         this.lib = lib;
         initComponents();
-        LL=L;
-        Operaciones.llenarListaIdiomas((DefaultComboBoxModel)selectIdioma.getModel());
+        LL = L;
+        int idioma_id = lib.getIdioma_id() - 1;
+        Operaciones.llenarListaIdiomas((DefaultComboBoxModel) selectIdioma.getModel());
         Operaciones.llenarListaAutores(listaAutores);
-        selectIdioma.setSelectedIndex(lib.getIdioma_id()-1);
-        listaAutores.setSelectedIndex(lib.getAutor_id()-1);
+        selectIdioma.setSelectedIndex(idioma_id);
+        listaAutores.setSelectedIndex(lib.getAutor_id() - 1);
     }
 
     /**
@@ -50,7 +51,7 @@ public class ModificarLibro extends javax.swing.JFrame {
         campoPrimPag = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        creaDesc = new javax.swing.JTextArea();
+        areaDesc = new javax.swing.JTextArea();
         jLayeredPane1 = new javax.swing.JLayeredPane();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -62,7 +63,7 @@ public class ModificarLibro extends javax.swing.JFrame {
         selectIdioma = new javax.swing.JComboBox();
         jPanel6 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        fLanz1 = new com.toedter.calendar.JDateChooser();
+        fecha = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Modificar Libro");
@@ -74,7 +75,6 @@ public class ModificarLibro extends javax.swing.JFrame {
         });
 
         ModificarLibroPanel.setBackground(new java.awt.Color(218, 216, 218));
-        ModificarLibroPanel.setToolTipText("");
         ModificarLibroPanel.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
 
         campoIsbn.setBackground(new java.awt.Color(240, 238, 240));
@@ -148,19 +148,19 @@ public class ModificarLibro extends javax.swing.JFrame {
 
         jScrollPane2.setToolTipText("");
 
-        creaDesc.setBackground(new java.awt.Color(240, 238, 240));
-        creaDesc.setColumns(20);
-        creaDesc.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        creaDesc.setRows(5);
-        creaDesc.setText(lib.getResumen());
-        creaDesc.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        creaDesc.setFocusCycleRoot(true);
-        creaDesc.addFocusListener(new java.awt.event.FocusAdapter() {
+        areaDesc.setBackground(new java.awt.Color(240, 238, 240));
+        areaDesc.setColumns(20);
+        areaDesc.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        areaDesc.setRows(5);
+        areaDesc.setText(lib.getResumen());
+        areaDesc.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        areaDesc.setFocusCycleRoot(true);
+        areaDesc.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
-                creaDescFocusLost(evt);
+                areaDescFocusLost(evt);
             }
         });
-        jScrollPane2.setViewportView(creaDesc);
+        jScrollPane2.setViewportView(areaDesc);
 
         jLayeredPane1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -168,6 +168,11 @@ public class ModificarLibro extends javax.swing.JFrame {
         jLabel2.setText("Autor");
 
         listaAutores.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        listaAutores.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                listaAutoresValueChanged(evt);
+            }
+        });
         jScrollPane1.setViewportView(listaAutores);
 
         Añadir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonAñadir.png"))); // NOI18N
@@ -226,6 +231,12 @@ public class ModificarLibro extends javax.swing.JFrame {
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/TapaLibro.png"))); // NOI18N
 
+        selectIdioma.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                selectIdiomaItemStateChanged(evt);
+            }
+        });
+
         javax.swing.GroupLayout jLayeredPane2Layout = new javax.swing.GroupLayout(jLayeredPane2);
         jLayeredPane2.setLayout(jLayeredPane2Layout);
         jLayeredPane2Layout.setHorizontalGroup(
@@ -257,8 +268,14 @@ public class ModificarLibro extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel7.setText("Fecha de lanzamiento: ");
 
-        fLanz1.setDate(lib.getFecha_lanzamiento());
-        fLanz1.setMinSelectableDate(new java.util.Date(-14830977525000L));
+        fecha.setDate(lib.getFecha_lanzamiento());
+        fecha.setMinSelectableDate(new java.util.Date(-14830977525000L));
+        fecha.getDateEditor().setEnabled(false);
+        fecha.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                fechaPropertyChange(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -268,7 +285,7 @@ public class ModificarLibro extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(fLanz1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(14, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
@@ -276,7 +293,7 @@ public class ModificarLibro extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(fLanz1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(fecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -380,34 +397,39 @@ public class ModificarLibro extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     private void modificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarMouseClicked
-        if (modificar.isEnabled()){
-            System.out.println("muerte");
+        if (modificar.isEnabled()) {
+            try {
+                lib.modificar();
+            } catch (ErrorLibro e){
+                //Visualizar error de libro existente (isbn duplicado).
+            }
+            
         }
     }//GEN-LAST:event_modificarMouseClicked
 
     private void campoIsbnFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoIsbnFocusLost
-       if (((javax.swing.JTextField) evt.getSource()).getName() != null){
-        try {
-           lib.setIsbn(((javax.swing.JTextField) evt.getSource()).getText());
-           ((javax.swing.JTextField) evt.getSource()).setName(null);
-           modificar.setEnabled(true);
-       } catch (ErrorLibro e) {
-           //Procesar visualización de error.
-           modificar.setEnabled(false);
-           ((javax.swing.JTextField) evt.getSource()).requestFocus();
-       }
+        if (((javax.swing.JTextField) evt.getSource()).getName() != null) {
+            try {
+                lib.setIsbn(((javax.swing.JTextField) evt.getSource()).getText());
+                ((javax.swing.JTextField) evt.getSource()).setName(null);
+                modificar.setEnabled(true);
+            } catch (ErrorLibro e) {
+                //Procesar visualización de error.
+                modificar.setEnabled(false);
+                ((javax.swing.JTextField) evt.getSource()).requestFocus();
+            }
     }//GEN-LAST:event_campoIsbnFocusLost
     }
     private void campoCantPagFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoCantPagFocusLost
-        if (((javax.swing.JTextField) evt.getSource()).getName() != null){
-        try {
-           lib.setCant_paginas(((javax.swing.JTextField) evt.getSource()).getText());
-           ((javax.swing.JTextField) evt.getSource()).setName(null);
-           modificar.setEnabled(true);
-       } catch (ErrorLibro e) {
-           //Procesar visualización de error.
-           modificar.setEnabled(false);
-           ((javax.swing.JTextField) evt.getSource()).requestFocus();
+        if (((javax.swing.JTextField) evt.getSource()).getName() != null) {
+            try {
+                lib.setCant_paginas(((javax.swing.JTextField) evt.getSource()).getText());
+                ((javax.swing.JTextField) evt.getSource()).setName(null);
+                modificar.setEnabled(true);
+            } catch (ErrorLibro e) {
+                //Procesar visualización de error.
+                modificar.setEnabled(false);
+                ((javax.swing.JTextField) evt.getSource()).requestFocus();
             }
         }
     }//GEN-LAST:event_campoCantPagFocusLost
@@ -421,7 +443,7 @@ public class ModificarLibro extends javax.swing.JFrame {
     }//GEN-LAST:event_campoCantPagKeyTyped
 
     private void campoTituloKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoTituloKeyTyped
-       ((javax.swing.JTextField) evt.getSource()).setName("ch");
+        ((javax.swing.JTextField) evt.getSource()).setName("ch");
     }//GEN-LAST:event_campoTituloKeyTyped
 
     private void campoPrecioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoPrecioKeyTyped
@@ -429,52 +451,75 @@ public class ModificarLibro extends javax.swing.JFrame {
     }//GEN-LAST:event_campoPrecioKeyTyped
 
     private void campoTituloFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoTituloFocusLost
-        if (((javax.swing.JTextField) evt.getSource()).getName() != null){
-        try {
-           lib.setTitulo(((javax.swing.JTextField) evt.getSource()).getText());
-           ((javax.swing.JTextField) evt.getSource()).setName(null);
-           modificar.setEnabled(true);
-        } catch (ErrorLibro e) {
-           //Procesar visualización de error.
-           modificar.setEnabled(false);
-           ((javax.swing.JTextField) evt.getSource()).requestFocus();
+        if (((javax.swing.JTextField) evt.getSource()).getName() != null) {
+            try {
+                lib.setTitulo(((javax.swing.JTextField) evt.getSource()).getText());
+                ((javax.swing.JTextField) evt.getSource()).setName(null);
+                modificar.setEnabled(true);
+            } catch (ErrorLibro e) {
+                //Procesar visualización de error.
+                modificar.setEnabled(false);
+                ((javax.swing.JTextField) evt.getSource()).requestFocus();
             }
         }
     }//GEN-LAST:event_campoTituloFocusLost
 
     private void campoPrecioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoPrecioFocusLost
-        if (((javax.swing.JTextField) evt.getSource()).getName() != null){
-        try {
-           lib.setPrecio(((javax.swing.JTextField) evt.getSource()).getText());
-           ((javax.swing.JTextField) evt.getSource()).setName(null);
-           modificar.setEnabled(true);
-        } catch (ErrorLibro e) {
-           //Procesar visualización de error.
-           modificar.setEnabled(false);
-           ((javax.swing.JTextField) evt.getSource()).requestFocus();
+        if (((javax.swing.JTextField) evt.getSource()).getName() != null) {
+            try {
+                lib.setPrecio(((javax.swing.JTextField) evt.getSource()).getText());
+                ((javax.swing.JTextField) evt.getSource()).setName(null);
+                modificar.setEnabled(true);
+            } catch (ErrorLibro e) {
+                //Procesar visualización de error.
+                modificar.setEnabled(false);
+                ((javax.swing.JTextField) evt.getSource()).requestFocus();
             }
         }
+        
     }//GEN-LAST:event_campoPrecioFocusLost
 
-    private void creaDescFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_creaDescFocusLost
-        
-    }//GEN-LAST:event_creaDescFocusLost
+    private void areaDescFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_areaDescFocusLost
+        lib.setResumen(((javax.swing.JTextArea) evt.getSource()).getText());
+    }//GEN-LAST:event_areaDescFocusLost
+
+    private void fechaPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_fechaPropertyChange
+        if ("date".equals(evt.getPropertyName())){
+            try {
+            lib.setFecha_lanzamiento(((com.toedter.calendar.JDateChooser) evt.getSource()).getDate());
+        } catch (ErrorLibro e) {
+            //Mostrar que está mal la fecha... no va a suceder.
+        }
+        }
+    }//GEN-LAST:event_fechaPropertyChange
+
+    private void selectIdiomaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_selectIdiomaItemStateChanged
+        lib.setIdioma_id(selectIdioma.getSelectedIndex());
+    }//GEN-LAST:event_selectIdiomaItemStateChanged
+
+    private void listaAutoresValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaAutoresValueChanged
+        try {
+            lib.setAutor_id(listaAutores.getSelectedIndex());
+        }catch (ErrorLibro e){
+            //Ningun error podría ocurrir
+        }
+    }//GEN-LAST:event_listaAutoresValueChanged
     // agregar cambios a las otras cosas.
-    
+
     /**
      * @param args the command line arguments
      */
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Añadir;
     private javax.swing.JPanel ModificarLibroPanel;
+    private javax.swing.JTextArea areaDesc;
     private javax.swing.JTextField campoCantPag;
     private javax.swing.JTextField campoIsbn;
     private javax.swing.JTextField campoPrecio;
     private javax.swing.JTextField campoPrimPag;
     private javax.swing.JTextField campoTitulo;
-    private javax.swing.JTextArea creaDesc;
-    private com.toedter.calendar.JDateChooser fLanz1;
+    private com.toedter.calendar.JDateChooser fecha;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

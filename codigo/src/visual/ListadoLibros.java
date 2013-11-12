@@ -141,11 +141,6 @@ public class ListadoLibros extends javax.swing.JFrame {
         tablaLibros.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tablaLibros.setShowVerticalLines(false);
         tablaLibros.getTableHeader().setReorderingAllowed(false);
-        tablaLibros.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tablaLibrosMouseClicked(evt);
-            }
-        });
         jScrollPaneTablaLibros.setViewportView(tablaLibros);
         if (tablaLibros.getColumnModel().getColumnCount() > 0) {
             tablaLibros.getColumnModel().getColumn(0).setResizable(false);
@@ -185,14 +180,14 @@ public class ListadoLibros extends javax.swing.JFrame {
 
         buttonListarTodo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonTodosLibros.png"))); // NOI18N
         buttonListarTodo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                buttonListarTodoMouseExited(evt);
-            }
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 buttonListarTodoMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 buttonListarTodoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                buttonListarTodoMouseExited(evt);
             }
         });
 
@@ -287,7 +282,7 @@ public class ListadoLibros extends javax.swing.JFrame {
 
     private void botonEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonEliminarMouseClicked
         if(this.tablaLibros.getSelectedRowCount()!=0){
-             EliminarLibro venEli= new EliminarLibro (this);
+             EliminarLibro venEli= new EliminarLibro(this, new Libro(tablaLibros.getValueAt(tablaLibros.getSelectedRow(), 0).toString()));
              venEli.setLocationRelativeTo(this);
              venEli.setVisible(true);
              this.setEnabled(false);
@@ -317,27 +312,23 @@ public class ListadoLibros extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_buttonBuscarMouseClicked
 
-    private void tablaLibrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaLibrosMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tablaLibrosMouseClicked
-
     private void buttonBuscarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonBuscarMouseEntered
-        // TODO add your handling code here:
+        
         buttonBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/Buscador.png")));
     }//GEN-LAST:event_buttonBuscarMouseEntered
 
     private void buttonBuscarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonBuscarMouseExited
-        // TODO add your handling code here:
+        
          buttonBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/Buscador2.png")));
     }//GEN-LAST:event_buttonBuscarMouseExited
 
     private void buttonListarTodoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonListarTodoMouseEntered
-        // TODO add your handling code here:
+       
         buttonListarTodo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonTodosLibrosFocus.png")));
     }//GEN-LAST:event_buttonListarTodoMouseEntered
 
     private void buttonListarTodoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonListarTodoMouseExited
-        // TODO add your handling code here:
+        
         buttonListarTodo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonTodosLibros.png")));
     }//GEN-LAST:event_buttonListarTodoMouseExited
 

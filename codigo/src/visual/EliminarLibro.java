@@ -6,16 +6,20 @@
 
 package visual;
 
+import motor.Libro;
+
 /**
  *
  * @author Manu
  */
 public class EliminarLibro extends javax.swing.JFrame {
     ListadoLibros LL;
+    Libro lib;
     /**
      * Creates new form Eliminar
      */
-    public EliminarLibro(ListadoLibros L) {
+    public EliminarLibro(ListadoLibros L, Libro lib) {
+        this.lib = lib;
         initComponents();
         LL=L;
     }
@@ -49,6 +53,9 @@ public class EliminarLibro extends javax.swing.JFrame {
 
         BotonSi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonSi.png"))); // NOI18N
         BotonSi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BotonSiMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 BotonSiMouseEntered(evt);
             }
@@ -110,22 +117,18 @@ public class EliminarLibro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotonSiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonSiMouseEntered
-        // TODO add your handling code here:
         BotonSi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonSiFocus.png")));
     }//GEN-LAST:event_BotonSiMouseEntered
 
     private void BotonSiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonSiMouseExited
-        // TODO add your handling code here:
-        BotonSi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonSi.png")));
+         BotonSi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonSi.png")));
     }//GEN-LAST:event_BotonSiMouseExited
 
     private void BotonNoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonNoMouseEntered
-        // TODO add your handling code here: getClass().getResource("/visual/imagen/Resource/
         BotonNo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonNoFocus.png")));
     }//GEN-LAST:event_BotonNoMouseEntered
 
     private void BotonNoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonNoMouseExited
-        // TODO add your handling code here:
         BotonNo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonNo.png")));
     }//GEN-LAST:event_BotonNoMouseExited
 
@@ -143,6 +146,10 @@ public class EliminarLibro extends javax.swing.JFrame {
         this.dispose();
         LL.setEnabled(true);
     }//GEN-LAST:event_formWindowClosing
+
+    private void BotonSiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonSiMouseClicked
+        lib.eliminar();
+    }//GEN-LAST:event_BotonSiMouseClicked
 
     /**
      * @param args the command line arguments

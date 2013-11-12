@@ -45,7 +45,7 @@ public class Operaciones extends Conexion{
         return resultado;
     }
     
-     private static boolean insertar(String sql){
+     protected static boolean insertar(String sql){
         boolean valor = true;
         conectar();
         try {
