@@ -74,7 +74,7 @@ public class AgregarLibro extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        fLanz = new com.toedter.calendar.JDateChooser();
+        fecha = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Agregar Libro");
@@ -436,11 +436,11 @@ public class AgregarLibro extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel3.setText("Fecha de lanzamiento: ");
 
-        fLanz.setMinSelectableDate(new java.util.Date(-14830977525000L));
-        fLanz.getDateEditor().setEnabled(false);
-        fLanz.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+        fecha.setMinSelectableDate(new java.util.Date(-14830977525000L));
+        fecha.getDateEditor().setEnabled(false);
+        fecha.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                fLanzPropertyChange(evt);
+                fechaPropertyChange(evt);
             }
         });
 
@@ -452,7 +452,7 @@ public class AgregarLibro extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(fLanz, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
@@ -460,7 +460,7 @@ public class AgregarLibro extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(fLanz, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(fecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel3)))
@@ -731,7 +731,7 @@ public class AgregarLibro extends javax.swing.JFrame {
         lib.setResumen(((javax.swing.JTextArea) evt.getSource()).getText());
     }//GEN-LAST:event_areaDescFocusLost
 
-    private void fLanzPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_fLanzPropertyChange
+    private void fechaPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_fechaPropertyChange
          if ("date".equals(evt.getPropertyName())){
             try {
             lib.setFecha_lanzamiento(((com.toedter.calendar.JDateChooser) evt.getSource()).getDate());
@@ -739,7 +739,7 @@ public class AgregarLibro extends javax.swing.JFrame {
             //Mostrar que está mal la fecha... no va a suceder.
         }
         }
-    }//GEN-LAST:event_fLanzPropertyChange
+    }//GEN-LAST:event_fechaPropertyChange
 
     private void selectIdiomaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_selectIdiomaItemStateChanged
          lib.setIdioma_id(selectIdioma.getSelectedIndex());
@@ -768,7 +768,7 @@ public class AgregarLibro extends javax.swing.JFrame {
     private javax.swing.JTextField campoPrecio;
     private javax.swing.JTextField campoTitulo;
     private javax.swing.JLabel encabezado;
-    private com.toedter.calendar.JDateChooser fLanz;
+    private com.toedter.calendar.JDateChooser fecha;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;

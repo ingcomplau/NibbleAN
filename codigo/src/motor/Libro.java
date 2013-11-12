@@ -36,18 +36,6 @@ public class Libro{
     public Libro() {
     }
 
-   public Libro(String isbn, String titulo, String cant_paginas, String precio, Date fecha_lanzamiento, String resumen, String primeras_paginas, Integer autor_id, Integer idioma_id) {
-       existente = false; 
-       this.isbn = isbn;
-        this.titulo = titulo;
-        this.cant_paginas = cant_paginas;
-        this.precio = precio;
-        this.fecha_lanzamiento = new SimpleDateFormat("dd'-'MMM'-'yyyy").format(fecha_lanzamiento);
-        this.resumen = resumen;
-        this.primeras_paginas = primeras_paginas;
-        this.autor_id = autor_id;
-        this.idioma_id = idioma_id + 1;
-    }
   
    public Libro (String isbn){
         existente = true;
