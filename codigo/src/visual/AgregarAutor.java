@@ -18,6 +18,7 @@ import motor.Autor;
  */
 public class AgregarAutor extends javax.swing.JFrame {
   AgregarLibro AL;
+  ModificarLibro ML;
       /**
      * Creates new form AgregarAutor
      */
@@ -25,6 +26,12 @@ public class AgregarAutor extends javax.swing.JFrame {
         initComponents();
         Operaciones.consultarPaises((DefaultComboBoxModel)selectPais.getModel());
         AL=A;
+    }
+    
+    public AgregarAutor(ModificarLibro A) {
+        initComponents();
+        Operaciones.consultarPaises((DefaultComboBoxModel)selectPais.getModel());
+        ML=A;
     }
 
     /**
@@ -52,6 +59,9 @@ public class AgregarAutor extends javax.swing.JFrame {
         buttonAgregar = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         infAutor = new javax.swing.JTextArea();
+        errorNombre = new javax.swing.JLabel();
+        errorApellido = new javax.swing.JLabel();
+        errorFecha = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Agregar Autor");
@@ -167,7 +177,7 @@ public class AgregarAutor extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
                 .addComponent(sexo, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(105, 105, 105))
         );
@@ -210,6 +220,12 @@ public class AgregarAutor extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(infAutor);
 
+        errorNombre.setForeground(new java.awt.Color(255, 0, 0));
+
+        errorApellido.setForeground(new java.awt.Color(255, 0, 0));
+
+        errorFecha.setForeground(new java.awt.Color(255, 0, 0));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -223,16 +239,18 @@ public class AgregarAutor extends javax.swing.JFrame {
                             .addComponent(campoApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(campoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(errorNombre)
+                            .addComponent(errorApellido)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(errorFecha)
+                            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(buttonAgregar)
-                .addGap(28, 28, 28))
+                .addGap(61, 61, 61))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -240,19 +258,25 @@ public class AgregarAutor extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(campoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(1, 1, 1)
+                .addComponent(errorNombre)
+                .addGap(3, 3, 3)
                 .addComponent(campoApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(1, 1, 1)
+                .addComponent(errorApellido)
+                .addGap(3, 3, 3)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(errorFecha)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(buttonAgregar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -263,7 +287,7 @@ public class AgregarAutor extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 566, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -275,13 +299,47 @@ public class AgregarAutor extends javax.swing.JFrame {
             agregado = Operaciones.agregarAutor(new Autor(campoNombre.getText(), campoApellido.getText(), 
             selectPais.getSelectedIndex(), fNac.getDate(), 
             sexo.getSelectedIndex(), infAutor.getText()));
+            
+            this.dispose();
+            if(AL==null){
+               ML.actualizarLA();
+               ML.setEnabled(true);
+            }else{
+        //       AL.actualizar();
+               AL.setEnabled(true);             
+            }
+            
         } catch (ErrorAutor e){
             //TODO Manejar reporte visual de error.
+            if(e.isNombreCorto()){
+                errorNombre.setText("Nombre Corto");
+            } else if (e.isNombreLargo()){
+                errorNombre.setText("Nombre Largo");
+            } else if (e.isNombreInvalido()){
+                errorNombre.setText("Nobre invalido");
+            } else errorNombre.setText(null);
+            if(e.isApellidoCorto()){
+                errorApellido.setText("Apellido corto");
+            } else if(e.isApellidoLargo()){
+                errorApellido.setText("Apellido Largo");
+            } 
+            else if(e.isApellidoInvalido()){
+                errorApellido.setText("Apellido Invalido");
+            }else if(e.isAutorExistente()){
+                errorApellido.setText("Autor Existe");
+            } else errorApellido.setText(null);
+            if(e.isFechaInvalida()){
+                errorFecha.setText("Fecha invalida");
+            } else errorFecha.setText(null);
         }
         if (agregado){
-           // TODO Código para cerrar ventana.              
-        }
-
+           this.dispose();
+           if(AL==null){
+             ML.setEnabled(true);
+           }
+           else
+             AL.setEnabled(true);         
+        }     
     }//GEN-LAST:event_buttonAgregarMouseClicked
 
     private void buttonAgregarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonAgregarMouseEntered
@@ -294,7 +352,12 @@ public class AgregarAutor extends javax.swing.JFrame {
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         this.dispose();
-        AL.setEnabled(true);
+        if(AL==null)
+           ML.setEnabled(true);
+        else
+           AL.setEnabled(true);
+        
+        
     }//GEN-LAST:event_formWindowClosing
 
     private void campoNombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoNombreFocusGained
@@ -324,6 +387,7 @@ public class AgregarAutor extends javax.swing.JFrame {
                 infAutor.setText(null);
                 infAutor.setForeground(Color.BLACK);
             }
+            
     }//GEN-LAST:event_infAutorFocusGained
 
     private void campoApellidoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoApellidoFocusLost
@@ -331,6 +395,16 @@ public class AgregarAutor extends javax.swing.JFrame {
              campoApellido.setText(" Apellido");
             campoApellido.setForeground(new java.awt.Color(153, 153, 153));
         }
+         /*if (((javax.swing.JTextField) evt.getSource()).getName() != null) {
+            try {
+                lib.setPrecio(((javax.swing.JTextField) evt.getSource()).getText());
+                modificar.setEnabled(true);
+            } catch (ErrorLibro e) {
+                //Procesar visualización de error.
+                modificar.setEnabled(false);
+                ((javax.swing.JTextField) evt.getSource()).requestFocus();
+            }
+        }*/
     }//GEN-LAST:event_campoApellidoFocusLost
 
     private void infAutorFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_infAutorFocusLost
@@ -349,6 +423,9 @@ public class AgregarAutor extends javax.swing.JFrame {
     private javax.swing.JLabel buttonAgregar;
     private javax.swing.JTextField campoApellido;
     private javax.swing.JTextField campoNombre;
+    private javax.swing.JLabel errorApellido;
+    private javax.swing.JLabel errorFecha;
+    private javax.swing.JLabel errorNombre;
     private com.toedter.calendar.JDateChooser fNac;
     private javax.swing.JTextArea infAutor;
     private javax.swing.JLabel jLabel1;

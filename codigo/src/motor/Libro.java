@@ -31,6 +31,7 @@ public class Libro{
   private  String primeras_paginas;
   private  Integer autor_id;
    private Integer idioma_id;
+   private String urltapa;
    private boolean existente;
 
     public Libro() {
@@ -49,11 +50,12 @@ public class Libro{
                 titulo = resultado.getString("titulo"); 
                 cant_paginas = new Integer(resultado.getInt("cant_paginas")).toString();
                 precio = new Float(resultado.getFloat("precio")).toString();
-                fecha_lanzamiento = resultado.getDate("fecha_lanzamiento").toString();//mirar esto
+                fecha_lanzamiento = resultado.getString("fecha_lanzamiento");
                 resumen = resultado.getString("resumen");
                 primeras_paginas = resultado.getString("primeras_paginas");
                 autor_id = resultado.getInt("autor_id");
                 this.idioma_id = resultado.getInt("idioma_id");
+                this.urltapa = resultado.getString("urltapa");
                 
                         
                 
@@ -138,7 +140,6 @@ public class Libro{
             } else {
                 if (!(precio.matches("\\d+$"))){ //arreglar chequeo de punto decimal
                   e.setPrecioincorrecto();
-                  System.err.println("aca");
                     correcto = false;
                 } else if (Float.parseFloat(precio) < 0){
                    e.setPrecionegativo();
@@ -212,6 +213,14 @@ public class Libro{
     public String getResumen() {
         return resumen;
     }
+    
+    public String getUrlTapa(){
+        return urltapa;
+    }
+    
+    public void setUrlTapa(String s){
+        this.urltapa=s;
+    }
 
     public String getPrimeras_paginas() {
         return primeras_paginas;
@@ -235,9 +244,10 @@ public class Libro{
         
     }
     
-     public void agregar() throws ErrorLibro{
+     public boolean agregar() throws ErrorLibro{
+         boolean agregado = false;
           if   (isbn != null & titulo != null & cant_paginas != null & precio != null
-                 & fecha_lanzamiento != null & autor_id != null){
+                 & fecha_lanzamiento != null & autor_id != null ){
               System.out.println(2);
                 ResultSet resultado = null;
                 resultado = Operaciones.consultar("SELECT * from libros where isbn='"+ this.isbn +"'");
@@ -253,11 +263,21 @@ public class Libro{
                 }catch(SQLException ex){
                 }
                 
-                Operaciones.insertar("insert into libros(isbn, titulo, cant_paginas, precio, "
+                agregado = true;
+                if (urltapa!=null){
+                     Operaciones.insertar("insert into libros(isbn, titulo, cant_paginas, precio, "
+                    + "fecha_lanzamiento, resumen, primeras_paginas, autor_id, idioma_id, urltapa)"
+                    + "values('"+ this.isbn +"', '"+this.titulo+"',"+Integer.parseInt(this.cant_paginas)+","
+                    +this.precio+",'"+this.fecha_lanzamiento+"','"+this.resumen+"','"+this.primeras_paginas+"',"+this.autor_id+","+this.idioma_id+",'"+this.urltapa+"');");
+                } else {
+                     Operaciones.insertar("insert into libros(isbn, titulo, cant_paginas, precio, "
                     + "fecha_lanzamiento, resumen, primeras_paginas, autor_id, idioma_id)"
                     + "values('"+ this.isbn +"', '"+this.titulo+"',"+Integer.parseInt(this.cant_paginas)+","
                     +this.precio+",'"+this.fecha_lanzamiento+"','"+this.resumen+"','"+this.primeras_paginas+"',"+this.autor_id+","+this.idioma_id+");");
-            }      
+                }
+               
+            } 
+          return agregado;
      }
      
      public void modificar() throws ErrorLibro {

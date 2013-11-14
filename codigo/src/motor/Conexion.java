@@ -18,7 +18,8 @@ import javax.swing.JOptionPane;
 public class Conexion{
 	static Connection conexion;
 	static Statement consulta;
-	static public final String ruta = "D:\\Mis documentos\\GitHub\\NibbleAN\\codigo\\cookbook.sqlite";
+	static public final String ruta = System.getProperty("user.dir")+"\\cookbook.sqlite";
+      
 
     /**
      * Constructor for objects of class Conexion

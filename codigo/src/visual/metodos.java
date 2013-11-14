@@ -17,7 +17,7 @@ public class metodos {
     private BufferedImage _image = null;    
     private FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivo de Imagen","jpg","png");
     private JFileChooser fileChooser = new JFileChooser(); 
-    private String namefile=new String();
+    public String namefile=new String();
     /**
      * Constructor de clase
      */
@@ -55,7 +55,7 @@ public class metodos {
             //se extrae el fomato de la cadena "f" que contiene la direccion
             String formato = (f.endsWith(".jpg")) ? "jpg" : "png";   
             //ImageIO.write(_image, "jpg", new File("e:/carpeta/imagen2.jpg"));
-            ImageIO.write(_image, formato, new File(f));
+            ImageIO.write(_image, formato, new File(f));   //f: nombre archivo
  } catch (IOException e) {            
             System.out.println("Error al crear el archivo");
  }
@@ -81,13 +81,12 @@ public class metodos {
                 p.add(new mipanel(Obtener_imagen_de_Buffer(), p.getSize()));
                 p.setVisible(true);
                 p.repaint();
-     //           guardar_imagen(namefile);           
+                guardar_imagen(namefile);           
             } 
             catch (IOException ex) {                
                 System.err.println( ex.getMessage() );
             } 
         }
-       
     }
 }
     

@@ -30,8 +30,9 @@ public class VentanaAdmin extends javax.swing.JFrame {
     private void initComponents() {
 
         VentanaAdminPanel = new javax.swing.JPanel();
-        BotonAgregarLibro = new javax.swing.JButton();
-        BotonVisualizarLibros = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        botonAgregarLibro = new javax.swing.JLabel();
+        botonVisualizarLibro = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ventana Administrador");
@@ -39,17 +40,31 @@ public class VentanaAdmin extends javax.swing.JFrame {
 
         VentanaAdminPanel.setBackground(new java.awt.Color(218, 216, 218));
 
-        BotonAgregarLibro.setText("agregar libro");
-        BotonAgregarLibro.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/PanelAdministrador.png"))); // NOI18N
+
+        botonAgregarLibro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonAgregarLibro.png"))); // NOI18N
+        botonAgregarLibro.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                BotonAgregarLibroMouseClicked(evt);
+                botonAgregarLibroMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                botonAgregarLibroMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                botonAgregarLibroMouseExited(evt);
             }
         });
 
-        BotonVisualizarLibros.setText("visualizar libros");
-        BotonVisualizarLibros.addMouseListener(new java.awt.event.MouseAdapter() {
+        botonVisualizarLibro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonVisualizarLibros.png"))); // NOI18N
+        botonVisualizarLibro.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                BotonVisualizarLibrosMouseClicked(evt);
+                botonVisualizarLibroMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                botonVisualizarLibroMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                botonVisualizarLibroMouseExited(evt);
             }
         });
 
@@ -58,20 +73,22 @@ public class VentanaAdmin extends javax.swing.JFrame {
         VentanaAdminPanelLayout.setHorizontalGroup(
             VentanaAdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(VentanaAdminPanelLayout.createSequentialGroup()
-                .addGap(53, 53, 53)
-                .addComponent(BotonAgregarLibro)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
-                .addComponent(BotonVisualizarLibros)
-                .addGap(60, 60, 60))
+                .addGap(75, 75, 75)
+                .addComponent(botonAgregarLibro)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(botonVisualizarLibro)
+                .addGap(72, 72, 72))
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         VentanaAdminPanelLayout.setVerticalGroup(
             VentanaAdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(VentanaAdminPanelLayout.createSequentialGroup()
-                .addGap(132, 132, 132)
-                .addGroup(VentanaAdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BotonAgregarLibro)
-                    .addComponent(BotonVisualizarLibros))
-                .addContainerGap(145, Short.MAX_VALUE))
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(82, 82, 82)
+                .addGroup(VentanaAdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(botonAgregarLibro)
+                    .addComponent(botonVisualizarLibro))
+                .addContainerGap(140, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -88,22 +105,46 @@ public class VentanaAdmin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BotonAgregarLibroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonAgregarLibroMouseClicked
+    private void botonAgregarLibroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonAgregarLibroMouseClicked
         // TODO add your handling code here:
         AgregarLibro AL=new AgregarLibro(this);
         AL.setLocationRelativeTo(this);
         AL.setVisible(true);
         this.setEnabled(false);
-    }//GEN-LAST:event_BotonAgregarLibroMouseClicked
+        
+        /*;*/
+    }//GEN-LAST:event_botonAgregarLibroMouseClicked
 
-    private void BotonVisualizarLibrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonVisualizarLibrosMouseClicked
+    private void botonAgregarLibroMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonAgregarLibroMouseEntered
+        // TODO add your handling code here:
+        botonAgregarLibro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonAgregarLibroFocus.png")));
+        
+    }//GEN-LAST:event_botonAgregarLibroMouseEntered
+
+    private void botonVisualizarLibroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonVisualizarLibroMouseClicked
         // TODO add your handling code here:
         ListadoLibros LL=new ListadoLibros(this);
         LL.setVisible(true);
         LL.setLocationRelativeTo(this);
         this.setEnabled(false);
-    }//GEN-LAST:event_BotonVisualizarLibrosMouseClicked
+    }//GEN-LAST:event_botonVisualizarLibroMouseClicked
 
+    private void botonVisualizarLibroMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonVisualizarLibroMouseEntered
+        // TODO add your handling code here:
+         botonVisualizarLibro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonVisualizarLibrosFocus.png")));
+    }//GEN-LAST:event_botonVisualizarLibroMouseEntered
+
+    private void botonAgregarLibroMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonAgregarLibroMouseExited
+        // TODO add your handling code here:
+         botonAgregarLibro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonAgregarLibro.png")));
+    }//GEN-LAST:event_botonAgregarLibroMouseExited
+
+    private void botonVisualizarLibroMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonVisualizarLibroMouseExited
+        // TODO add your handling code here:
+        botonVisualizarLibro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonVisualizarLibros.png")));
+    }//GEN-LAST:event_botonVisualizarLibroMouseExited
+
+    
     /**
      * @param args the command line arguments
      */
@@ -140,8 +181,9 @@ public class VentanaAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BotonAgregarLibro;
-    private javax.swing.JButton BotonVisualizarLibros;
     private javax.swing.JPanel VentanaAdminPanel;
+    private javax.swing.JLabel botonAgregarLibro;
+    private javax.swing.JLabel botonVisualizarLibro;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

@@ -46,7 +46,7 @@ public class ListadoLibros extends javax.swing.JFrame {
     public ListadoLibros(VentanaAdmin V) {
         initComponents();
         VA=V;
-         Operaciones.llenarTablaLibros((DefaultTableModel)tablaLibros.getModel());
+        Operaciones.llenarTablaLibros((DefaultTableModel)tablaLibros.getModel());
     }
 
     /**
@@ -282,7 +282,7 @@ public class ListadoLibros extends javax.swing.JFrame {
 
     private void botonEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonEliminarMouseClicked
         if(this.tablaLibros.getSelectedRowCount()!=0){
-             EliminarLibro venEli= new EliminarLibro(this, new Libro(tablaLibros.getValueAt(tablaLibros.getSelectedRow(), 0).toString()));
+             ConfEliminarLibro venEli= new ConfEliminarLibro(this, new Libro(tablaLibros.getValueAt(tablaLibros.getSelectedRow(), 0).toString()));
              venEli.setLocationRelativeTo(this);
              venEli.setVisible(true);
              this.setEnabled(false);
@@ -333,37 +333,7 @@ public class ListadoLibros extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonListarTodoMouseExited
 
     private void buttonListarTodoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonListarTodoMouseClicked
-       tablaLibros.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Isbn", "Titulo", "Autor", "Tapa"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-       if (tablaLibros.getColumnModel().getColumnCount() > 0) {
-            tablaLibros.getColumnModel().getColumn(0).setResizable(false);
-            tablaLibros.getColumnModel().getColumn(1).setResizable(false);
-            tablaLibros.getColumnModel().getColumn(2).setResizable(false);
-            tablaLibros.getColumnModel().getColumn(3).setResizable(false);
-            tablaLibros.getColumnModel().getColumn(3).setCellRenderer(new ImageRenderer("/visual/imagen/Resource/TapaLibro.png"));
-        }
-       Operaciones.llenarTablaLibros((DefaultTableModel)tablaLibros.getModel());
+       this.actualizar();
     }//GEN-LAST:event_buttonListarTodoMouseClicked
 
     private void campoBuscadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoBuscadorMouseClicked
@@ -401,6 +371,41 @@ public class ListadoLibros extends javax.swing.JFrame {
         botonModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonModificar.png")));
     }//GEN-LAST:event_botonModificarMouseExited
 
+    public void actualizar(){
+           tablaLibros.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Isbn", "Titulo", "Autor", "Tapa"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+       if (tablaLibros.getColumnModel().getColumnCount() > 0) {
+            tablaLibros.getColumnModel().getColumn(0).setResizable(false);
+            tablaLibros.getColumnModel().getColumn(1).setResizable(false);
+            tablaLibros.getColumnModel().getColumn(2).setResizable(false);
+            tablaLibros.getColumnModel().getColumn(3).setResizable(false);
+            tablaLibros.getColumnModel().getColumn(3).setCellRenderer(new ImageRenderer("/visual/imagen/Resource/TapaLibro.png"));
+        }
+       Operaciones.llenarTablaLibros((DefaultTableModel)tablaLibros.getModel());
+ 
+    }
+    
     /**
      * @param args the command line arguments
      */

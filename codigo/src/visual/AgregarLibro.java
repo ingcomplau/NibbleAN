@@ -37,6 +37,7 @@ public class AgregarLibro extends javax.swing.JFrame {
         initComponents();
         VA=V;
         Operaciones.llenarListaIdiomas((DefaultComboBoxModel)selectIdioma.getModel());
+        
     }
 
     /**
@@ -75,6 +76,11 @@ public class AgregarLibro extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         fecha = new com.toedter.calendar.JDateChooser();
+        errorIsbn = new javax.swing.JLabel();
+        errorCantPag = new javax.swing.JLabel();
+        errorPrecio = new javax.swing.JLabel();
+        errorFecha = new javax.swing.JLabel();
+        errorTitulo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Agregar Libro");
@@ -414,20 +420,18 @@ public class AgregarLibro extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jLabel2)
-                .addGap(38, 38, 38)
+                .addGap(45, 45, 45)
                 .addComponent(selectIdioma, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(124, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(selectIdioma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addContainerGap())
+                    .addComponent(jLabel2)
+                    .addComponent(selectIdioma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jPanel5.setBackground(new java.awt.Color(240, 238, 240));
@@ -451,21 +455,27 @@ public class AgregarLibro extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(fecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel3)))
-                .addContainerGap())
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addComponent(jLabel3)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(fecha, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
         );
+
+        errorIsbn.setForeground(new java.awt.Color(255, 0, 0));
+
+        errorCantPag.setForeground(new java.awt.Color(255, 0, 0));
+
+        errorPrecio.setForeground(new java.awt.Color(255, 0, 0));
+
+        errorFecha.setForeground(new java.awt.Color(255, 0, 0));
+
+        errorTitulo.setForeground(new java.awt.Color(255, 0, 0));
 
         javax.swing.GroupLayout AgregarLibroPanelLayout = new javax.swing.GroupLayout(AgregarLibroPanel);
         AgregarLibroPanel.setLayout(AgregarLibroPanelLayout);
@@ -476,25 +486,35 @@ public class AgregarLibro extends javax.swing.JFrame {
                 .addGap(40, 40, 40)
                 .addGroup(AgregarLibroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(AgregarLibroPanelLayout.createSequentialGroup()
-                        .addGroup(AgregarLibroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(campoCantPag, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
-                            .addComponent(campoIsbn, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
-                            .addComponent(campoTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE))
+                        .addGroup(AgregarLibroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(AgregarLibroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(campoCantPag, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
+                                .addComponent(campoIsbn, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
+                                .addComponent(campoTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE))
+                            .addComponent(errorCantPag)
+                            .addComponent(errorTitulo))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(AgregarLibroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(campoPrecio, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
-                            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(AgregarLibroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(AgregarLibroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(campoPrecio, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
+                                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(errorFecha))
                         .addGap(96, 96, 96))
                     .addGroup(AgregarLibroPanelLayout.createSequentialGroup()
                         .addComponent(jScrollPaneAreaDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 724, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(AgregarLibroPanelLayout.createSequentialGroup()
                         .addGroup(AgregarLibroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 724, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AgregarLibroPanelLayout.createSequentialGroup()
-                                .addComponent(agregar)
-                                .addGap(14, 14, 14)))
+                            .addGroup(AgregarLibroPanelLayout.createSequentialGroup()
+                                .addComponent(errorIsbn)
+                                .addGap(328, 328, 328)
+                                .addComponent(errorPrecio))
+                            .addGroup(AgregarLibroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 724, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AgregarLibroPanelLayout.createSequentialGroup()
+                                    .addComponent(agregar)
+                                    .addGap(14, 14, 14))))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         AgregarLibroPanelLayout.setVerticalGroup(
@@ -503,18 +523,28 @@ public class AgregarLibro extends javax.swing.JFrame {
                 .addComponent(encabezado, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(AgregarLibroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(campoIsbn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campoPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19)
-                .addGroup(AgregarLibroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(campoCantPag, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 39, Short.MAX_VALUE))
+                    .addComponent(campoIsbn, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campoPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(AgregarLibroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(campoTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(errorPrecio)
+                    .addComponent(errorIsbn))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(AgregarLibroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(campoCantPag, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(AgregarLibroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(errorCantPag)
+                    .addComponent(errorFecha))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(AgregarLibroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(campoTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19)
-                .addComponent(jScrollPaneAreaDesc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(errorTitulo)
+                .addGap(7, 7, 7)
+                .addComponent(jScrollPaneAreaDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jTabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -530,9 +560,7 @@ public class AgregarLibro extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(AgregarLibroPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 719, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(AgregarLibroPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 719, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -621,6 +649,7 @@ public class AgregarLibro extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         m.Abrir_Dialogo(jPanelImagen);
+        lib.setUrlTapa(System.getProperty("user.dir")+m.namefile);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void AñadirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AñadirMouseExited
@@ -647,22 +676,35 @@ public class AgregarLibro extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowGainedFocus
 
     private void agregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregarMouseClicked
-         try {
-             System.out.println(1);
-             lib.agregar();
+        boolean agregado = false; 
+        try {
+             agregado = lib.agregar();
          } catch (ErrorLibro e){
              // Libro ya existe.
+         }
+         if (agregado){
+           this.dispose();
+           VA.setEnabled(true);
+        } else {
+             // Mostrar algo que diga por que no se agrego
          }
     }//GEN-LAST:event_agregarMouseClicked
 
     private void campoIsbnFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoIsbnFocusLost
                 if (((javax.swing.JTextField) evt.getSource()).getName() != null) {
             try {
-                lib.setIsbn(((javax.swing.JTextField) evt.getSource()).getText());
-                ((javax.swing.JTextField) evt.getSource()).setName(null);
+                lib.setIsbn(campoIsbn.getText());                
                 agregar.setEnabled(true);
+                errorIsbn.setText(null);                              
             } catch (ErrorLibro e) {
                 //Procesar visualización de error.
+                if(e.isIsbncorto()){
+                    errorIsbn.setText("Codigo I.S.B.N corto");
+                } else if(e.isIsbnincorrecto()){
+                    errorIsbn.setText("Codigo I.S.B.N incorrecto");
+                } else if(e.isIsbnlargo()){
+                    errorIsbn.setText("Codigo I.S.B.N largo");
+                }
                 agregar.setEnabled(false);
                 ((javax.swing.JTextField) evt.getSource()).requestFocus();
             }
@@ -672,11 +714,14 @@ public class AgregarLibro extends javax.swing.JFrame {
     private void campoCantPagFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoCantPagFocusLost
        if (((javax.swing.JTextField) evt.getSource()).getName() != null) {
             try {
-                lib.setCant_paginas(((javax.swing.JTextField) evt.getSource()).getText());
-                ((javax.swing.JTextField) evt.getSource()).setName(null);
+                lib.setCant_paginas(campoCantPag.getText());
+                errorCantPag.setText(null);
                 agregar.setEnabled(true);
             } catch (ErrorLibro e) {
                 //Procesar visualización de error.
+                if(e.isCantpagsincorrecto()){
+                    errorCantPag.setText("Cantidad de paginas incorrectas");
+                }
                 agregar.setEnabled(false);
                 ((javax.swing.JTextField) evt.getSource()).requestFocus();
             }
@@ -702,11 +747,16 @@ public class AgregarLibro extends javax.swing.JFrame {
     private void campoTituloFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoTituloFocusLost
          if (((javax.swing.JTextField) evt.getSource()).getName() != null) {
             try {
-                lib.setTitulo(((javax.swing.JTextField) evt.getSource()).getText());
-                ((javax.swing.JTextField) evt.getSource()).setName(null);
+                lib.setTitulo(campoTitulo.getText());
+                errorTitulo.setText(null);
                 agregar.setEnabled(true);
             } catch (ErrorLibro e) {
                 //Procesar visualización de error.
+                if(e.isTitulocorto()){
+                    errorTitulo.setText("Titulo demasiodo corto");
+                } else if (e.isTitulolargo()){
+                    errorTitulo.setText("Titulo demasiodo largo");
+            }
                 agregar.setEnabled(false);
                 ((javax.swing.JTextField) evt.getSource()).requestFocus();
             }
@@ -716,11 +766,16 @@ public class AgregarLibro extends javax.swing.JFrame {
     private void campoPrecioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoPrecioFocusLost
        if (((javax.swing.JTextField) evt.getSource()).getName() != null) {
             try {
-                lib.setPrecio(((javax.swing.JTextField) evt.getSource()).getText());
-                ((javax.swing.JTextField) evt.getSource()).setName(null);
+                lib.setPrecio(campoPrecio.getText());
+                errorPrecio.setText(null);
                 agregar.setEnabled(true);
             } catch (ErrorLibro e) {
                 //Procesar visualización de error.
+                if(e.isPrecioincorrecto()){
+                    errorPrecio.setText("Precio incorrecto");
+                } else if(e.isPrecionegativo()){
+                    errorPrecio.setText("Precio negativo");
+                }
                 agregar.setEnabled(false);
                 ((javax.swing.JTextField) evt.getSource()).requestFocus();
             }
@@ -735,7 +790,11 @@ public class AgregarLibro extends javax.swing.JFrame {
          if ("date".equals(evt.getPropertyName())){
             try {
             lib.setFecha_lanzamiento(((com.toedter.calendar.JDateChooser) evt.getSource()).getDate());
+            errorFecha.setText(null);
         } catch (ErrorLibro e) {
+            if(e.isFechaInvalida()){
+                errorFecha.setText("Fecha Invalida");
+            }
             //Mostrar que está mal la fecha... no va a suceder.
         }
         }
@@ -745,6 +804,12 @@ public class AgregarLibro extends javax.swing.JFrame {
          lib.setIdioma_id(selectIdioma.getSelectedIndex());
     }//GEN-LAST:event_selectIdiomaItemStateChanged
 
+    public void actualizar(){
+        Operaciones.llenarListaAutores(listaAutores);
+    //    listaAutores.setSelectedIndex(lib.getAutor_id() - 1);
+        
+    }
+    
     private void listaAutoresValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaAutoresValueChanged
          try {
             lib.setAutor_id(listaAutores.getSelectedIndex());
@@ -768,6 +833,11 @@ public class AgregarLibro extends javax.swing.JFrame {
     private javax.swing.JTextField campoPrecio;
     private javax.swing.JTextField campoTitulo;
     private javax.swing.JLabel encabezado;
+    private javax.swing.JLabel errorCantPag;
+    private javax.swing.JLabel errorFecha;
+    private javax.swing.JLabel errorIsbn;
+    private javax.swing.JLabel errorPrecio;
+    private javax.swing.JLabel errorTitulo;
     private com.toedter.calendar.JDateChooser fecha;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
