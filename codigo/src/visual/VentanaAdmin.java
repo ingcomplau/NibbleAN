@@ -83,8 +83,8 @@ public class VentanaAdmin extends javax.swing.JFrame {
         VentanaAdminPanelLayout.setVerticalGroup(
             VentanaAdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(VentanaAdminPanelLayout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(82, 82, 82)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(93, 93, 93)
                 .addGroup(VentanaAdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(botonAgregarLibro)
                     .addComponent(botonVisualizarLibro))

@@ -140,6 +140,7 @@ public class Libro{
             } else {
                 if (!(precio.matches("\\d+$"))){ //arreglar chequeo de punto decimal
                   e.setPrecioincorrecto();
+                  System.err.println("aca");
                     correcto = false;
                 } else if (Float.parseFloat(precio) < 0){
                    e.setPrecionegativo();
