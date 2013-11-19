@@ -12,11 +12,11 @@ package visual;
  */
 public class VentanaAdmin extends javax.swing.JFrame {
 
-    /**
-     * Creates new form VentanaAdmin
-     */
-    public VentanaAdmin() {
+    Home home;
+    
+    public VentanaAdmin(Home h) {
         initComponents();
+        home=h;
         this.setLocationRelativeTo(null);
         
     }
@@ -31,17 +31,23 @@ public class VentanaAdmin extends javax.swing.JFrame {
     private void initComponents() {
 
         VentanaAdminPanel = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        encabezado = new javax.swing.JLabel();
         botonAgregarLibro = new javax.swing.JLabel();
         botonVisualizarLibro = new javax.swing.JLabel();
+        botonPedidos = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Ventana Administrador");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         VentanaAdminPanel.setBackground(new java.awt.Color(218, 216, 218));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/PanelAdministrador.png"))); // NOI18N
+        encabezado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/PanelAdministrador.png"))); // NOI18N
 
         botonAgregarLibro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonAgregarLibro.png"))); // NOI18N
         botonAgregarLibro.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -69,27 +75,38 @@ public class VentanaAdmin extends javax.swing.JFrame {
             }
         });
 
+        botonPedidos.setText("PEDIDOS");
+        botonPedidos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botonPedidosMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout VentanaAdminPanelLayout = new javax.swing.GroupLayout(VentanaAdminPanel);
         VentanaAdminPanel.setLayout(VentanaAdminPanelLayout);
         VentanaAdminPanelLayout.setHorizontalGroup(
             VentanaAdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(encabezado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(VentanaAdminPanelLayout.createSequentialGroup()
                 .addGap(75, 75, 75)
-                .addComponent(botonAgregarLibro)
+                .addGroup(VentanaAdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(botonAgregarLibro)
+                    .addComponent(botonPedidos, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(botonVisualizarLibro)
                 .addGap(72, 72, 72))
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         VentanaAdminPanelLayout.setVerticalGroup(
             VentanaAdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(VentanaAdminPanelLayout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(encabezado, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(93, 93, 93)
                 .addGroup(VentanaAdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(botonAgregarLibro)
                     .addComponent(botonVisualizarLibro))
-                .addContainerGap(140, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addComponent(botonPedidos, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -125,8 +142,8 @@ public class VentanaAdmin extends javax.swing.JFrame {
     private void botonVisualizarLibroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonVisualizarLibroMouseClicked
         // TODO add your handling code here:
         ListadoLibros LL=new ListadoLibros(this);
-        LL.setVisible(true);
         LL.setLocationRelativeTo(this);
+        LL.setVisible(true);
         this.setEnabled(false);
     }//GEN-LAST:event_botonVisualizarLibroMouseClicked
 
@@ -145,46 +162,30 @@ public class VentanaAdmin extends javax.swing.JFrame {
         botonVisualizarLibro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonVisualizarLibros.png")));
     }//GEN-LAST:event_botonVisualizarLibroMouseExited
 
+    private void botonPedidosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonPedidosMouseClicked
+        // TODO add your handling code here:
+        PedidosAdmin PA=new PedidosAdmin(this);
+        PA.setLocationRelativeTo(this);
+        PA.setVisible(true);
+        this.setEnabled(false);
+    }//GEN-LAST:event_botonPedidosMouseClicked
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        this.dispose();
+        home.setEnabled(true);
+    }//GEN-LAST:event_formWindowClosing
+
     
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VentanaAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VentanaAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VentanaAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VentanaAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VentanaAdmin().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel VentanaAdminPanel;
     private javax.swing.JLabel botonAgregarLibro;
+    private javax.swing.JLabel botonPedidos;
     private javax.swing.JLabel botonVisualizarLibro;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel encabezado;
     // End of variables declaration//GEN-END:variables
 }
