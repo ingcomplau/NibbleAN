@@ -38,6 +38,7 @@ codigo/nbdist/
 codigo/nbactions.xml
 codigo/nb-configuration.xml
 codigo/nbproject/
+codigo/cookbook.sqlite
 
 # Class Files #
 *.class
