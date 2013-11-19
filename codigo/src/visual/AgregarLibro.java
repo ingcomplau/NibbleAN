@@ -31,6 +31,7 @@ public class AgregarLibro extends javax.swing.JFrame {
     private boolean click5 = true;
     private boolean click6 = true;
     private boolean click7 = true;
+    metodos m=new metodos(); 
     
     public AgregarLibro(VentanaAdmin V) {
         lib = new Libro();
@@ -145,6 +146,9 @@ public class AgregarLibro extends javax.swing.JFrame {
             }
         });
         campoCantPag.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                campoCantPagFocusGained(evt);
+            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 campoCantPagFocusLost(evt);
             }
@@ -170,6 +174,9 @@ public class AgregarLibro extends javax.swing.JFrame {
             }
         });
         campoPrecio.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                campoPrecioFocusGained(evt);
+            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 campoPrecioFocusLost(evt);
             }
@@ -192,6 +199,9 @@ public class AgregarLibro extends javax.swing.JFrame {
             }
         });
         campoTitulo.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                campoTituloFocusGained(evt);
+            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 campoTituloFocusLost(evt);
             }
@@ -220,6 +230,9 @@ public class AgregarLibro extends javax.swing.JFrame {
             }
         });
         areaDesc.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                areaDescFocusGained(evt);
+            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 areaDescFocusLost(evt);
             }
@@ -678,7 +691,7 @@ public class AgregarLibro extends javax.swing.JFrame {
     private void agregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregarMouseClicked
         boolean agregado = false; 
         try {
-             agregado = lib.agregar();
+            agregado = lib.agregar();
          } catch (ErrorLibro e){
              // Libro ya existe.
          }
@@ -817,12 +830,48 @@ public class AgregarLibro extends javax.swing.JFrame {
             //Ningun error podría ocurrir
         }
     }//GEN-LAST:event_listaAutoresValueChanged
+
+    private void campoPrecioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoPrecioFocusGained
+        // TODO add your handling code here:
+        if (click4) {
+            campoPrecio.setText(null);
+            click4=false;
+            campoPrecio.setForeground(Color.black);
+    }
+    }//GEN-LAST:event_campoPrecioFocusGained
+
+    private void campoCantPagFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoCantPagFocusGained
+        // TODO add your handling code here:
+        if (click2) {
+            campoCantPag.setText(null);
+            click2=false;
+            campoCantPag.setForeground(Color.black);
+    }
+    }//GEN-LAST:event_campoCantPagFocusGained
+
+    private void areaDescFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_areaDescFocusGained
+        // TODO add your handling code here:
+        if (click7) {
+            areaDesc.setText(null);
+            click7=false;
+            areaDesc.setForeground(Color.black);
+    }
+    }//GEN-LAST:event_areaDescFocusGained
+
+    private void campoTituloFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoTituloFocusGained
+        // TODO add your handling code here:
+        if (click3) {
+            campoTitulo.setText(null);
+            click3=false;
+            campoTitulo.setForeground(Color.black);
+    }
+    }//GEN-LAST:event_campoTituloFocusGained
             
     /**
      * @param args the command line arguments
      */
     
-  metodos m=new metodos();  
+   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel AgregarLibroPanel;
     private javax.swing.JLabel Añadir;

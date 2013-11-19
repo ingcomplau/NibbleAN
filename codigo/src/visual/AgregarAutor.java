@@ -305,7 +305,7 @@ public class AgregarAutor extends javax.swing.JFrame {
                ML.actualizarLA();
                ML.setEnabled(true);
             }else{
-        //       AL.actualizar();
+               AL.actualizar();
                AL.setEnabled(true);             
             }
             
