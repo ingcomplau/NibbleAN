@@ -28,9 +28,11 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
     private boolean click8=true;
     private boolean click9=true;
     private boolean click10=true;
+    Home home;
     
-    public ModificarDatosUsuario() {
+    public ModificarDatosUsuario(Home h) {
         initComponents();
+        home=h;
     }
 
     /**
@@ -67,8 +69,14 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         botonGuardar = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Modificar Datos");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(218, 216, 218));
 
@@ -567,40 +575,14 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_campoConfirmarContraseñaFocusGained
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ModificarDatosUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ModificarDatosUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ModificarDatosUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ModificarDatosUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        this.dispose();
+        home.setEnabled(true);
+    }//GEN-LAST:event_formWindowClosing
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ModificarDatosUsuario().setVisible(true);
-            }
-        });
-    }
+ 
+  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel apellido;
