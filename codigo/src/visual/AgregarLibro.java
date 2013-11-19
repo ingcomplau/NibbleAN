@@ -31,6 +31,7 @@ public class AgregarLibro extends javax.swing.JFrame {
     private boolean click5 = true;
     private boolean click6 = true;
     private boolean click7 = true;
+    boolean presiono= false;
     metodos m=new metodos(); 
     
     public AgregarLibro(VentanaAdmin V) {
@@ -125,6 +126,9 @@ public class AgregarLibro extends javax.swing.JFrame {
             }
         });
         campoIsbn.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                campoIsbnKeyPressed(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 campoIsbnKeyTyped(evt);
             }
@@ -135,11 +139,6 @@ public class AgregarLibro extends javax.swing.JFrame {
         campoCantPag.setForeground(new java.awt.Color(153, 153, 153));
         campoCantPag.setText(" Cantidad de páginas");
         campoCantPag.setPreferredSize(new java.awt.Dimension(165, 34));
-        campoCantPag.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                campoCantPagMouseClicked(evt);
-            }
-        });
         campoCantPag.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoCantPagActionPerformed(evt);
@@ -163,11 +162,6 @@ public class AgregarLibro extends javax.swing.JFrame {
         campoPrecio.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         campoPrecio.setForeground(new java.awt.Color(153, 153, 153));
         campoPrecio.setText(" Precio ($)");
-        campoPrecio.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                campoPrecioMouseClicked(evt);
-            }
-        });
         campoPrecio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoPrecioActionPerformed(evt);
@@ -193,11 +187,6 @@ public class AgregarLibro extends javax.swing.JFrame {
         campoTitulo.setText(" Título");
         campoTitulo.setDisabledTextColor(new java.awt.Color(110, 34, 83));
         campoTitulo.setSelectionColor(new java.awt.Color(110, 34, 83));
-        campoTitulo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                campoTituloMouseClicked(evt);
-            }
-        });
         campoTitulo.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 campoTituloFocusGained(evt);
@@ -224,11 +213,6 @@ public class AgregarLibro extends javax.swing.JFrame {
         areaDesc.setText("Descripción del producto");
         areaDesc.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         areaDesc.setFocusCycleRoot(true);
-        areaDesc.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                areaDescMouseClicked(evt);
-            }
-        });
         areaDesc.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 areaDescFocusGained(evt);
@@ -603,42 +587,6 @@ public class AgregarLibro extends javax.swing.JFrame {
     }
     }//GEN-LAST:event_campoIsbnMouseClicked
 
-    private void campoCantPagMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoCantPagMouseClicked
-        // TODO add your handling code here:
-        if (click2) {
-            campoCantPag.setText(null);
-            click2=false;
-            campoCantPag.setForeground(Color.black);
-    }
-    }//GEN-LAST:event_campoCantPagMouseClicked
-
-    private void campoTituloMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoTituloMouseClicked
-        // TODO add your handling code here:
-        if (click3) {
-            campoTitulo.setText(null);
-            click3=false;
-            campoTitulo.setForeground(Color.black);
-    }
-    }//GEN-LAST:event_campoTituloMouseClicked
-
-    private void campoPrecioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoPrecioMouseClicked
-        // TODO add your handling code here:
-        if (click4) {
-            campoPrecio.setText(null);
-            click4=false;
-            campoPrecio.setForeground(Color.black);
-    }
-    }//GEN-LAST:event_campoPrecioMouseClicked
-
-    private void areaDescMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_areaDescMouseClicked
-        // TODO add your handling code here:
-        if (click7) {
-            areaDesc.setText(null);
-            click7=false;
-            areaDesc.setForeground(Color.black);
-    }
-    }//GEN-LAST:event_areaDescMouseClicked
-
     private void selectIdiomaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectIdiomaActionPerformed
 
     }//GEN-LAST:event_selectIdiomaActionPerformed
@@ -866,6 +814,18 @@ public class AgregarLibro extends javax.swing.JFrame {
             campoTitulo.setForeground(Color.black);
     }
     }//GEN-LAST:event_campoTituloFocusGained
+
+    private void campoIsbnKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoIsbnKeyPressed
+        // TODO add your handling code here:
+        if(presiono==false){
+            if (click1) {
+             campoIsbn.setText(null);
+             click1=false;
+             campoIsbn.setForeground(Color.black);
+             }
+            presiono=true;
+        }
+    }//GEN-LAST:event_campoIsbnKeyPressed
             
     /**
      * @param args the command line arguments

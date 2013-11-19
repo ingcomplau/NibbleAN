@@ -6,21 +6,28 @@
 
 package visual;
 
-import javax.swing.table.DefaultTableModel;
-import motor.Operaciones;
+import motor.Compra;
 
 /**
  *
  * @author Franco
  */
 public class Carrito extends javax.swing.JFrame {
-
-    /**
-     * Creates new form Carrito
-     */
-    public Carrito() {
+    
+    private Compra listaCarrito;
+    Home home;
+    
+    public Carrito(Home h){           //despues este se borra
         initComponents();
+        home=h;
     }
+    
+    public Carrito(Home h,Compra l) {
+        initComponents();
+        listaCarrito=l;  
+        home=h;
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -31,26 +38,170 @@ public class Carrito extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        carritoPanel = new javax.swing.JPanel();
+        encabezado = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jPanel2 = new javax.swing.JPanel();
+        panelPrueba = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        botonComprar = new javax.swing.JLabel();
+        imagenTotal = new javax.swing.JLabel();
+        total = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Carrito");
+        setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
+
+        carritoPanel.setBackground(new java.awt.Color(218, 216, 218));
+
+        encabezado.setText("Panel Carrito");
+
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        jPanel2.setBackground(new java.awt.Color(218, 216, 218));
+
+        jLabel5.setText("Tapa libro");
+
+        jLabel6.setText("Titulo");
+
+        jLabel7.setText("Precio");
+
+        jLabel8.setText("Cantidad");
+
+        jLabel9.setText("Boton eliminar");
+
+        javax.swing.GroupLayout panelPruebaLayout = new javax.swing.GroupLayout(panelPrueba);
+        panelPrueba.setLayout(panelPruebaLayout);
+        panelPruebaLayout.setHorizontalGroup(
+            panelPruebaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelPruebaLayout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(jLabel5)
+                .addGap(105, 105, 105)
+                .addGroup(panelPruebaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelPruebaLayout.createSequentialGroup()
+                        .addGroup(panelPruebaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel8))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(panelPruebaLayout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
+                        .addComponent(jLabel9)
+                        .addGap(52, 52, 52))))
+        );
+        panelPruebaLayout.setVerticalGroup(
+            panelPruebaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelPruebaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel6)
+                .addGap(11, 11, 11)
+                .addGroup(panelPruebaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel9))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel8)
+                .addContainerGap(18, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(panelPrueba, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 43, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(panelPrueba, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 230, Short.MAX_VALUE))
+        );
+
+        jScrollPane1.setViewportView(jPanel2);
+
+        botonComprar.setText("Comprar");
+
+        imagenTotal.setText("Total: $");
+
+        total.setText("00");
+
+        javax.swing.GroupLayout carritoPanelLayout = new javax.swing.GroupLayout(carritoPanel);
+        carritoPanel.setLayout(carritoPanelLayout);
+        carritoPanelLayout.setHorizontalGroup(
+            carritoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(encabezado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 454, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, carritoPanelLayout.createSequentialGroup()
+                .addGap(65, 65, 65)
+                .addComponent(imagenTotal)
+                .addGap(18, 18, 18)
+                .addComponent(total)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(botonComprar)
+                .addContainerGap())
+        );
+        carritoPanelLayout.setVerticalGroup(
+            carritoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(carritoPanelLayout.createSequentialGroup()
+                .addComponent(encabezado, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addGroup(carritoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonComprar)
+                    .addComponent(imagenTotal)
+                    .addComponent(total))
+                .addGap(23, 23, 23))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 785, Short.MAX_VALUE)
+            .addComponent(carritoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 509, Short.MAX_VALUE)
+            .addComponent(carritoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        this.dispose();
+        home.setEnabled(true);
+    }//GEN-LAST:event_formWindowClosing
+
+   
+    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel botonComprar;
+    private javax.swing.JPanel carritoPanel;
+    private javax.swing.JLabel encabezado;
+    private javax.swing.JLabel imagenTotal;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel panelPrueba;
+    private javax.swing.JLabel total;
     // End of variables declaration//GEN-END:variables
 }

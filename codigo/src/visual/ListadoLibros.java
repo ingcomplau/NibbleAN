@@ -293,8 +293,8 @@ public class ListadoLibros extends javax.swing.JFrame {
     private void botonModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonModificarMouseClicked
        if(this.tablaLibros.getSelectedRowCount()!=0){
             ModificarLibro ML=new ModificarLibro(this, new Libro(tablaLibros.getValueAt(tablaLibros.getSelectedRow(), 0).toString()));
-            ML.setVisible(true);
             ML.setLocationRelativeTo(this);
+            ML.setVisible(true);
             this.setEnabled(false);
 
         }
