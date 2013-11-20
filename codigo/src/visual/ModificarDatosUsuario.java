@@ -8,10 +8,7 @@ package visual;
 
 import java.awt.Color;
 
-/**
- *
- * @author Franco
- */
+
 public class ModificarDatosUsuario extends javax.swing.JFrame {
 
     /**
@@ -32,7 +29,9 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
     
     public ModificarDatosUsuario(Home h) {
         initComponents();
+        jPanel1.setVisible(false);
         home=h;
+        
     }
 
     /**
@@ -45,11 +44,6 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        nombre = new javax.swing.JLabel();
-        apellido = new javax.swing.JLabel();
-        nombreUsuario = new javax.swing.JLabel();
-        fecha = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         tablaDatos = new javax.swing.JTabbedPane();
         paneModificarlDatos = new javax.swing.JPanel();
@@ -68,9 +62,17 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
         labelContraseñaNueva = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         botonGuardar = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        apellido1 = new javax.swing.JLabel();
+        nombre1 = new javax.swing.JLabel();
+        nombreUsuario1 = new javax.swing.JLabel();
+        fecha1 = new javax.swing.JLabel();
+        botonModificar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Modificar Datos");
+        setTitle("Datos de cuenta");
+        setPreferredSize(new java.awt.Dimension(540, 175));
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -79,17 +81,6 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
         });
 
         jPanel1.setBackground(new java.awt.Color(218, 216, 218));
-
-        jLabel1.setText("Cuenta de Usuario");
-        jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        nombre.setText("Nombre");
-
-        apellido.setText("Apellido");
-
-        nombreUsuario.setText("nombre de Usuario");
-
-        fecha.setText("fecha de nacimiento");
 
         paneModificarlDatos.setBackground(new java.awt.Color(218, 216, 218));
 
@@ -328,56 +319,101 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(198, 198, 198)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(fecha)
-                    .addComponent(nombreUsuario)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(nombre)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(apellido)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(tablaDatos, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(botonGuardar)
-                .addGap(32, 32, 32))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(tablaDatos, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nombre)
-                    .addComponent(apellido))
-                .addGap(18, 18, 18)
-                .addComponent(nombreUsuario)
-                .addGap(18, 18, 18)
-                .addComponent(fecha)
-                .addGap(18, 18, 18)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tablaDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(botonGuardar)
-                .addGap(28, 28, 28))
+                .addContainerGap())
+        );
+
+        jPanel2.setBackground(new java.awt.Color(218, 216, 218));
+
+        jLabel2.setText("Cuenta de Usuario");
+        jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        apellido1.setText("Apellido");
+
+        nombre1.setText("Nombre");
+
+        nombreUsuario1.setText("nombre de Usuario");
+
+        fecha1.setText("fecha de nacimiento");
+
+        botonModificar.setText("MODIFICAR");
+        botonModificar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botonModificarMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(fecha1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(botonModificar)
+                        .addContainerGap())
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nombreUsuario1)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(nombre1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(apellido1)))
+                        .addGap(215, 215, 215))))
+            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nombre1)
+                    .addComponent(apellido1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(nombreUsuario1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(fecha1)
+                    .addComponent(botonModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -581,12 +617,21 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
         home.setEnabled(true);
     }//GEN-LAST:event_formWindowClosing
 
+    private void botonModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonModificarMouseClicked
+        // TODO add your handling code here:
+        jPanel1.setVisible(true);
+        this.setSize(540, 575);
+        this.setLocationRelativeTo(home);
+        
+    }//GEN-LAST:event_botonModificarMouseClicked
+
  
   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel apellido;
+    private javax.swing.JLabel apellido1;
     private javax.swing.JLabel botonGuardar;
+    private javax.swing.JLabel botonModificar;
     private javax.swing.JTextField campoCalle;
     private javax.swing.JTextField campoCiudad;
     private javax.swing.JTextField campoCodigoPostal;
@@ -597,15 +642,16 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
     private javax.swing.JTextField campoNro;
     private javax.swing.JTextField campoProvincia;
     private javax.swing.JTextField campoTelefono;
-    private javax.swing.JLabel fecha;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel fecha1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel labelContraseñaActual;
     private javax.swing.JLabel labelContraseñaNueva;
-    private javax.swing.JLabel nombre;
-    private javax.swing.JLabel nombreUsuario;
+    private javax.swing.JLabel nombre1;
+    private javax.swing.JLabel nombreUsuario1;
     private javax.swing.JPanel paneModificarlDatos;
     private javax.swing.JPanel panelCambiarContraseña;
     private javax.swing.JTabbedPane tablaDatos;
