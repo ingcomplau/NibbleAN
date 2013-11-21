@@ -6,26 +6,26 @@
 
 package motor;
 
-import java.util.LinkedList;
-
 public class Compra {
-  
-    TipoLista tp;
-    LinkedList<TipoLista> lista;
+    Libro libro;
+    int cantidad;
 
-    public Compra() {
-        this.lista = new LinkedList<>();
+    public Compra(Libro libro, int cantidad) {
+        this.libro = libro;
+        this.cantidad = cantidad;
     }
-    
-    public void agregar(Libro l){
- //       if(ya esta en la lista)
- //           suma en uno cantidad
- //       else
-            tp=new TipoLista();
-            tp.setLibro(l);
-            tp.setCantidad(1);
-            lista.add(tp);     
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this)
+            return true;
+        if (!(obj instanceof Compra))
+            return false;
+        if (this.libro == ((Compra)obj).libro){
+            return true;
+        } else {
+            return false;
+        }
     }
-    
-    
+     
 }

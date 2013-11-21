@@ -6,11 +6,10 @@
 
 package visual;
 
-import motor.Compra;
 import motor.Usuario;
 
 public class Home extends javax.swing.JFrame {
-    private Compra listaCarrito;
+    private Carrito carrito;
     private Usuario usuario = null;
 
     public Usuario getUsuario() {

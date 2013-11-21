@@ -34,8 +34,6 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
         this.usuario = usuario;
         this.home=h;
         initComponents();
-        //jPanel1.setVisible(false);
-
         
     }
 
@@ -514,7 +512,6 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_campoCodigoPostalFocusGained
 
     private void campoCiudadFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoCiudadFocusLost
-        // TODO add your handling code here:
         if(campoCiudad.getText().equals("")){
             campoCiudad.setText(" Ciudad");
             campoCiudad.setForeground((new java.awt.Color(153, 153, 153)));
