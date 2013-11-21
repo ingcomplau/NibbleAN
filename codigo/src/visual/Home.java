@@ -7,9 +7,32 @@
 package visual;
 
 import motor.Compra;
+import motor.Usuario;
 
 public class Home extends javax.swing.JFrame {
     private Compra listaCarrito;
+    private Usuario usuario = null;
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+    
+    public void actualizar() {
+        if (usuario != null){
+            //Visibilizar botón cuenta, botón carrito, botón pedidos, botón salir.
+            // Ocultar botón registrarse e identificarse
+            if (usuario.isAdministrador()){
+                // Visibilizar el boton de aministrar.
+            }
+        } else {
+            //Ocultar botón cuenta, botón carrito, botón pedidos, botón salir, botón administrar.
+            //Visibilizar botón registrarse e identificarse
+        }
+    }
     
     public Home() {
         initComponents();
@@ -340,10 +363,8 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_botonPedidosMouseClicked
 
     private void botonSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonSalirMouseClicked
-        // TODO add your handling code here:
-        
-        //habilitar botones home invitado
-        //deshabilitar botones home usuario
+        usuario = null;        
+        this.actualizar();
         //borrar lista carrito
     }//GEN-LAST:event_botonSalirMouseClicked
 
@@ -357,7 +378,7 @@ public class Home extends javax.swing.JFrame {
 
     private void botonCuentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonCuentaMouseClicked
         // TODO add your handling code here:
-        ModificarDatosUsuario md=new ModificarDatosUsuario(this);
+        ModificarDatosUsuario md=new ModificarDatosUsuario(this, usuario);
         md.setLocationRelativeTo(this);
         md.setVisible(true);
         this.setEnabled(false);

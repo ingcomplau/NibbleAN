@@ -12,9 +12,11 @@ package excepciones;
  */
 public class ErrorUsuario extends ErrorPersona {
 
+    private boolean loginInvalido;
     private boolean usuarioExistente;
     private boolean usuarioCorto;
     private boolean usuarioInvalido;
+    private boolean usuarioLargo;
     private boolean claveCorta;
     private boolean telefonoInvalido;
     private boolean telefonoCorto;
@@ -25,11 +27,29 @@ public class ErrorUsuario extends ErrorPersona {
         this.usuarioExistente = false;
         this.usuarioCorto = false;
         this.usuarioInvalido = false;
+        this.usuarioLargo = false;
         this.claveCorta = false;
         this.telefonoInvalido = false;
         this.telefonoCorto = false;
         this.emailInvalido = false;
+        this.loginInvalido = false;
         
+    }
+
+    public boolean isUsuarioLargo() {
+        return usuarioLargo;
+    }
+
+    public void setUsuarioLargo() {
+        this.usuarioLargo = true;
+    }
+
+    public boolean isLoginInvalido() {
+        return loginInvalido;
+    }
+
+    public void setLoginInvalido() {
+        this.loginInvalido = true;
     }
 
     public boolean isUsuarioExistente() {

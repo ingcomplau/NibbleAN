@@ -7,6 +7,9 @@
 package motor;
 
 import excepciones.ErrorDireccion;
+import excepciones.ErrorUsuario;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  *
@@ -19,8 +22,26 @@ public class Direccion {
     private String codigoPostal;
     private Integer provincia;
 
-    public Direccion() {
-
+    public Direccion(String usuario) throws ErrorUsuario {
+        ResultSet resultado = null;  
+        String sql = "SELECT * from usuarios where usuario='"+usuario+"'";
+        try{
+            resultado = Operaciones.consultar(sql);
+            if (resultado != null & !resultado.next()) {
+                Operaciones.cerrar();
+                ErrorUsuario e = new ErrorUsuario();
+                e.setUsuarioInvalido();
+                throw e;
+            } else {                
+                this.calle  = resultado.getString("calle");
+                this.altura =  new Integer(resultado.getInt("altura")).toString();
+                this.localidad = resultado.getString("localidad");
+                this.provincia = resultado.getInt("provincia_id");
+                this.codigoPostal = new Integer(resultado.getInt("c_postal")).toString();  
+                Operaciones.cerrar();
+             }
+            }catch(SQLException ex){
+         }
     }
 
     public String getCalle() {

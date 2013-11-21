@@ -7,6 +7,7 @@
 package visual;
 
 import java.awt.Color;
+import motor.Usuario;
 
 
 public class ModificarDatosUsuario extends javax.swing.JFrame {
@@ -25,12 +26,16 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
     private boolean click8=true;
     private boolean click9=true;
     private boolean click10=true;
-    Home home;
+    private Home home;
+    private Usuario usuario;
     
-    public ModificarDatosUsuario(Home h) {
+    
+    public ModificarDatosUsuario(Home h, Usuario usuario) {
+        this.usuario = usuario;
+        this.home=h;
         initComponents();
-        jPanel1.setVisible(false);
-        home=h;
+        //jPanel1.setVisible(false);
+
         
     }
 
@@ -87,7 +92,7 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
         campoProvincia.setBackground(new java.awt.Color(240, 238, 240));
         campoProvincia.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         campoProvincia.setForeground(new java.awt.Color(153, 153, 153));
-        campoProvincia.setText(" Provincia");
+        campoProvincia.setText("CAMBIAR POR COMBOBOX");
         campoProvincia.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 campoProvinciaMouseClicked(evt);
@@ -107,7 +112,7 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
         campoCiudad.setBackground(new java.awt.Color(240, 238, 240));
         campoCiudad.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         campoCiudad.setForeground(new java.awt.Color(153, 153, 153));
-        campoCiudad.setText(" Ciudad");
+        campoCiudad.setText(usuario.getDireccion().getLocalidad());
         campoCiudad.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 campoCiudadFocusGained(evt);
@@ -120,7 +125,7 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
         campoCodigoPostal.setBackground(new java.awt.Color(240, 238, 240));
         campoCodigoPostal.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         campoCodigoPostal.setForeground(new java.awt.Color(153, 153, 153));
-        campoCodigoPostal.setText(" Codigo Postal");
+        campoCodigoPostal.setText(usuario.getDireccion().getCodigoPostal());
         campoCodigoPostal.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 campoCodigoPostalFocusGained(evt);
@@ -133,7 +138,7 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
         campoCalle.setBackground(new java.awt.Color(240, 238, 240));
         campoCalle.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         campoCalle.setForeground(new java.awt.Color(153, 153, 153));
-        campoCalle.setText(" Calle");
+        campoCalle.setText(usuario.getDireccion().getCalle());
         campoCalle.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 campoCalleFocusGained(evt);
@@ -146,7 +151,7 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
         campoTelefono.setBackground(new java.awt.Color(240, 238, 240));
         campoTelefono.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         campoTelefono.setForeground(new java.awt.Color(153, 153, 153));
-        campoTelefono.setText(" Telefono");
+        campoTelefono.setText(usuario.getTelefono());
         campoTelefono.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 campoTelefonoFocusGained(evt);
@@ -159,7 +164,7 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
         campoNro.setBackground(new java.awt.Color(240, 238, 240));
         campoNro.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         campoNro.setForeground(new java.awt.Color(153, 153, 153));
-        campoNro.setText(" Nro");
+        campoNro.setText(usuario.getDireccion().getAltura());
         campoNro.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 campoNroFocusGained(evt);
@@ -171,7 +176,7 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
 
         campoEmail.setBackground(new java.awt.Color(240, 238, 240));
         campoEmail.setForeground(new java.awt.Color(153, 153, 153));
-        campoEmail.setText("email");
+        campoEmail.setText(usuario.getEmail());
         campoEmail.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         campoEmail.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -313,6 +318,11 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
         tablaDatos.addTab("Cambiar Contraseña", panelCambiarContraseña);
 
         botonGuardar.setText("Guardar");
+        botonGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botonGuardarMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -345,13 +355,13 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
         jLabel2.setText("Cuenta de Usuario");
         jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        apellido1.setText("Apellido");
+        apellido1.setText(usuario.getApellido());
 
-        nombre1.setText("Nombre");
+        nombre1.setText(usuario.getNombre());
 
-        nombreUsuario1.setText("nombre de Usuario");
+        nombreUsuario1.setText(usuario.getUsuario());
 
-        fecha1.setText("fecha de nacimiento");
+        fecha1.setText(usuario.getFechaNacimiento());
 
         botonModificar.setText("MODIFICAR");
         botonModificar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -533,7 +543,7 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
     private void campoNroFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoNroFocusLost
         // TODO add your handling code here:
         if(campoNro.getText().equals("")){
-            campoNro.setText(" Nro");
+            campoNro.setText(" Número");
             campoNro.setForeground((new java.awt.Color(153, 153, 153)));
             click4=true;
         }
@@ -542,7 +552,7 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
     private void campoTelefonoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoTelefonoFocusLost
         // TODO add your handling code here:
         if(campoTelefono.getText().equals("")){
-            campoTelefono.setText(" Telefono");
+            campoTelefono.setText(" Teléfono");
             campoTelefono.setForeground((new java.awt.Color(153, 153, 153)));
             click5=true;
         }
@@ -551,7 +561,7 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
     private void campoEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoEmailFocusLost
         // TODO add your handling code here:
         if(campoEmail.getText().equals("")){
-            campoEmail.setText(" email");
+            campoEmail.setText(" E-mail");
             campoEmail.setForeground((new java.awt.Color(153, 153, 153)));
             click6=true;
         }
@@ -624,6 +634,10 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
         this.setLocationRelativeTo(home);
         
     }//GEN-LAST:event_botonModificarMouseClicked
+
+    private void botonGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonGuardarMouseClicked
+        usuario.modificar();
+    }//GEN-LAST:event_botonGuardarMouseClicked
 
  
   

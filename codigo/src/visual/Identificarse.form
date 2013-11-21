@@ -127,6 +127,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Entrar"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="botonEntrarMouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JPasswordField" name="campoContrase&#xf1;a">
           <Properties>

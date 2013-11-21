@@ -6,7 +6,11 @@
 
 package visual;
 
+import excepciones.ErrorUsuario;
 import java.awt.Color;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import motor.Usuario;
 
 
 public class Identificarse extends javax.swing.JFrame {
@@ -82,6 +86,11 @@ public class Identificarse extends javax.swing.JFrame {
         botonOlvidaste.setText("Olvidaste Contraseña ?");
 
         botonEntrar.setText("Entrar");
+        botonEntrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botonEntrarMouseClicked(evt);
+            }
+        });
 
         campoContraseña.setBackground(new java.awt.Color(240, 238, 240));
         campoContraseña.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
@@ -205,6 +214,15 @@ public class Identificarse extends javax.swing.JFrame {
         this.dispose();
         home.setEnabled(true);
     }//GEN-LAST:event_formWindowClosing
+
+    private void botonEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonEntrarMouseClicked
+        try {
+            home.setUsuario(new Usuario(campoUsuario.getText(), String.valueOf(campoContraseña.getPassword())));
+            home.actualizar();
+        } catch (ErrorUsuario e) {
+            // Visualizar mensaje de error.
+        }
+    }//GEN-LAST:event_botonEntrarMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
