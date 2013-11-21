@@ -603,7 +603,6 @@ public class ModificarLibro extends javax.swing.JFrame {
 
     public void actualizarLA(){
         Operaciones.llenarListaAutores(listaAutores);
-   //     listaAutores.setSelectedIndex(lib.getAutor_id() - 1);
         
     }
     

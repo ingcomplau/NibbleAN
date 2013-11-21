@@ -31,7 +31,7 @@ public class Libro{
   private  String primeras_paginas;
   private  Integer autor_id;
    private Integer idioma_id;
-   private String urltapa;
+   private String urltapa = "/visual/imagen/Resource/TapaLibro.png";
    private boolean existente;
 
     public Libro() {
@@ -56,8 +56,7 @@ public class Libro{
                 autor_id = resultado.getInt("autor_id");
                 this.idioma_id = resultado.getInt("idioma_id");
                 this.urltapa = resultado.getString("urltapa");
-                
-                        
+                          
                 
             }
         }catch(SQLException e){
@@ -138,22 +137,22 @@ public class Libro{
                 e.setPrecioincorrecto();
                 correcto = false;
             } else {
-                if (!(precio.matches("\\d+$"))){ //arreglar chequeo de punto decimal
-                  e.setPrecioincorrecto();
-                  System.err.println("aca");
-                    correcto = false;
-                } else if (Float.parseFloat(precio) < 0){
-                   e.setPrecionegativo();
-                   correcto = false;
-              }
-            }
+                precio = precio.replace(',', '.');
+                try {
+                    if (Float.parseFloat(precio) < 0){
+                        e.setPrecionegativo();
+                        correcto = false;
+                    }
+                } catch (NumberFormatException ex) {
+                     e.setPrecioincorrecto();
+                     correcto = false;
+                }                                       
+            }        
         if (correcto){
             this.precio = precio;
         }else {
             throw e;
         }          
-        
-        
     }
 
     public void setFecha_lanzamiento(Date fecha_lanzamiento) throws ErrorLibro {
@@ -265,18 +264,10 @@ public class Libro{
                 }
                 
                 agregado = true;
-                if (urltapa!=null){
-                     Operaciones.insertar("insert into libros(isbn, titulo, cant_paginas, precio, "
-                    + "fecha_lanzamiento, resumen, primeras_paginas, autor_id, idioma_id, urltapa)"
-                    + "values('"+ this.isbn +"', '"+this.titulo+"',"+Integer.parseInt(this.cant_paginas)+","
-                    +this.precio+",'"+this.fecha_lanzamiento+"','"+this.resumen+"','"+this.primeras_paginas+"',"+this.autor_id+","+this.idioma_id+",'"+this.urltapa+"');");
-                } else {
-                     Operaciones.insertar("insert into libros(isbn, titulo, cant_paginas, precio, "
-                    + "fecha_lanzamiento, resumen, primeras_paginas, autor_id, idioma_id)"
-                    + "values('"+ this.isbn +"', '"+this.titulo+"',"+Integer.parseInt(this.cant_paginas)+","
-                    +this.precio+",'"+this.fecha_lanzamiento+"','"+this.resumen+"','"+this.primeras_paginas+"',"+this.autor_id+","+this.idioma_id+");");
-                }
-               
+                Operaciones.insertar("insert into libros(isbn, titulo, cant_paginas, precio, "
+                + "fecha_lanzamiento, resumen, primeras_paginas, autor_id, idioma_id, urltapa)"
+                + "values('"+ this.isbn +"', '"+this.titulo+"',"+Integer.parseInt(this.cant_paginas)+","
+                +this.precio+",'"+this.fecha_lanzamiento+"','"+this.resumen+"','"+this.primeras_paginas+"',"+this.autor_id+","+this.idioma_id+",'"+this.urltapa+"');");      
             } 
           return agregado;
      }
@@ -299,7 +290,7 @@ public class Libro{
                 
                 Operaciones.insertar("UPDATE libros SET isbn='"+ this.isbn +"', titulo='"+this.titulo+"', cant_paginas='"+Integer.parseInt(this.cant_paginas)+"', "
                  + "precio='"+this.precio+"', fecha_lanzamiento='"+this.fecha_lanzamiento+"', resumen='"+this.resumen+"', "
-                 + "primeras_paginas='"+this.primeras_paginas+"', autor_id='"+this.autor_id+"', idioma_id='"+this.idioma_id+"' WHERE id='"+this.id+"';");
+                 + "primeras_paginas='"+this.primeras_paginas+"', autor_id='"+this.autor_id+"', idioma_id='"+this.idioma_id+"', urltapa='"+this.urltapa+"' WHERE id='"+this.id+"';");
          }
          
      }

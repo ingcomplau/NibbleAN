@@ -26,7 +26,7 @@ public class Conexion{
      */
     public Conexion()
     {
-
+            
     }
     public static void conectar(){
 		try {
