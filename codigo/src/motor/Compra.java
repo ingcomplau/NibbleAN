@@ -21,11 +21,7 @@ public class Compra {
             return true;
         if (!(obj instanceof Compra))
             return false;
-        if (this.libro == ((Compra)obj).libro){
-            return true;
-        } else {
-            return false;
-        }
+        return this.libro == ((Compra)obj).libro;
     }
      
 }

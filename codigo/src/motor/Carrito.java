@@ -6,20 +6,24 @@
 
 package motor;
 
-import java.util.LinkedList;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-public class Carrito extends LinkedList<Compra>{
+public class Carrito extends ListaLibros{
 
-    @Override
-    public boolean add(Compra e) { //Se fija si está el libro y si está solo suma la cantidad, si no lo agrega.
-        if (this.contains(e)){
-            int index = indexOf(e);
-            e.cantidad = e.cantidad + this.get(index).cantidad;
-            return true;
-        } else {
-           return super.add(e);
-        }
+    public Carrito(Usuario usuario) {
+        super(usuario);
     }
-
+    
+    public void comprar(){
+        String fechaDeHoy = (new SimpleDateFormat("dd'-'MMM'-'yyyy")).format(new Date());
+        while (!this.isEmpty()){
+            this.listIterator().next();
+            Operaciones.insertar("insert into compras(usuario_id, libro_id, precio, fecha, cantidad) "
+                    + "values('"+ usuario.getId() +"', '"+this.element().libro.getId()+"',"+this.element().libro.getPrecio()+","
+                    +fechaDeHoy+",'"+this.element().cantidad+"');"); 
+            this.remove();
+        }                     
+    }
  
 }

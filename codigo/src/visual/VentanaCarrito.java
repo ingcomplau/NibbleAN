@@ -6,26 +6,26 @@
 
 package visual;
 
-import motor.Compra;
+import motor.Carrito;
 
 /**
  *
  * @author Franco
  */
-public class Carrito extends javax.swing.JFrame {
+public class VentanaCarrito extends javax.swing.JFrame {
     
-    private Compra listaCarrito;
+    private Carrito carrito;
     Home home;
     
-    public Carrito(Home h){           //despues este se borra
+    public VentanaCarrito(Home h){           //despues este se borra
         initComponents();
         home=h;
     }
     
-    public Carrito(Home h,Compra l) {
-        initComponents();
-        listaCarrito=l;  
+    public VentanaCarrito(Home h, Carrito carrito) {
+        this.carrito = carrito;  
         home=h;
+        initComponents();
     }
 
 
@@ -132,6 +132,11 @@ public class Carrito extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jPanel2);
 
         botonComprar.setText("Comprar");
+        botonComprar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botonComprarMouseClicked(evt);
+            }
+        });
 
         imagenTotal.setText("Total: $");
 
@@ -185,6 +190,11 @@ public class Carrito extends javax.swing.JFrame {
         this.dispose();
         home.setEnabled(true);
     }//GEN-LAST:event_formWindowClosing
+
+    private void botonComprarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonComprarMouseClicked
+        carrito.comprar();
+        carrito = null;
+    }//GEN-LAST:event_botonComprarMouseClicked
 
    
     

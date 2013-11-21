@@ -6,10 +6,11 @@
 
 package visual;
 
+import motor.Carrito;
 import motor.Usuario;
 
 public class Home extends javax.swing.JFrame {
-    private Carrito carrito;
+    private Carrito carrito = null;
     private Usuario usuario = null;
 
     public Usuario getUsuario() {
@@ -347,7 +348,7 @@ public class Home extends javax.swing.JFrame {
 
     private void botonCarritoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonCarritoMouseClicked
         // TODO add your handling code here:
-        Carrito c=new Carrito(this);
+        VentanaCarrito c=new VentanaCarrito(this);
         c.setLocationRelativeTo(this);
         c.setVisible(true);
         this.setEnabled(false);
@@ -362,9 +363,9 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_botonPedidosMouseClicked
 
     private void botonSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonSalirMouseClicked
-        usuario = null;        
+        usuario = null;
+        carrito = null;
         this.actualizar();
-        //borrar lista carrito
     }//GEN-LAST:event_botonSalirMouseClicked
 
     private void botonIdentificarseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonIdentificarseMouseClicked

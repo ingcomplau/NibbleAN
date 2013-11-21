@@ -89,6 +89,10 @@ public class Libro{
         
     }
 
+    public Integer getId() {
+        return id;
+    }
+
     public void setTitulo(String titulo) throws ErrorLibro {
          boolean correcto = true;
         ErrorLibro e = new ErrorLibro();
