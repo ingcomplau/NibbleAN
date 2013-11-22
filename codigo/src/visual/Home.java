@@ -348,7 +348,7 @@ public class Home extends javax.swing.JFrame {
 
     private void botonCarritoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonCarritoMouseClicked
         // TODO add your handling code here:
-        VentanaCarrito c=new VentanaCarrito(this);
+        VentanaCarrito c=new VentanaCarrito(this, carrito);
         c.setLocationRelativeTo(this);
         c.setVisible(true);
         this.setEnabled(false);
@@ -356,7 +356,7 @@ public class Home extends javax.swing.JFrame {
 
     private void botonPedidosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonPedidosMouseClicked
         // TODO add your handling code here:
-        PedidosUsuario pu=new PedidosUsuario(this);
+        PedidosUsuario pu=new PedidosUsuario(this, usuario);
         pu.setLocationRelativeTo(this);
         pu.setVisible(true);
         this.setEnabled(false);

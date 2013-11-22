@@ -6,6 +6,8 @@
 
 package visual;
 
+import motor.Pedidos;
+
 /**
  *
  * @author Manu
@@ -13,10 +15,12 @@ package visual;
 public class PedidosAdmin extends javax.swing.JFrame {
 
     VentanaAdmin va;
+    Pedidos pedidos;
     
     public PedidosAdmin(VentanaAdmin v) {
-        initComponents();
+        pedidos = new Pedidos(null);
         va=v;
+        initComponents();
     }
 
     /**

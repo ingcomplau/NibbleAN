@@ -21,18 +21,18 @@ public class Libro{
 
  
 
-    private Integer id;
-    private String isbn;
-    private String titulo; 
-    private String cant_paginas; 
-   private String precio; 
-   private String fecha_lanzamiento; 
-   private String resumen; 
-  private  String primeras_paginas;
-  private  Integer autor_id;
-   private Integer idioma_id;
-   private String urltapa = "/visual/imagen/Resource/TapaLibro.png";
-   private boolean existente;
+    protected Integer id;
+    protected String isbn;
+    protected String titulo; 
+    protected String cant_paginas; 
+   protected String precio; 
+   protected String fecha_lanzamiento; 
+   protected String resumen; 
+  protected  String primeras_paginas;
+  protected  Integer autor_id;
+   protected Integer idioma_id;
+   protected String urltapa = "/visual/imagen/Resource/TapaLibro.png";
+   protected boolean existente;
 
     public Libro() {
     }

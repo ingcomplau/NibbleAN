@@ -10,6 +10,8 @@ import excepciones.ErrorDireccion;
 import excepciones.ErrorUsuario;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -43,8 +45,34 @@ public class Usuario {
                 e.setUsuarioInvalido();
                 throw e;
             } else {                
+                cargarDatos(resultado);
+             }
+            }catch(SQLException ex){
+         }
+    }
+    
+    
+     protected Usuario(int usuarioId) {
+        existente = true;
+        ResultSet resultado = null;  
+        String sql = "SELECT * from usuarios where usuario_id='"+usuarioId+"'";
+        try{
+            resultado = Operaciones.consultar(sql);
+            if (resultado != null & !resultado.next()) {
+                Operaciones.cerrar();
+                ErrorUsuario e = new ErrorUsuario();
+                e.setUsuarioInvalido();
+            } else {                
+                cargarDatos(resultado);
+            }
+            }catch(SQLException | ErrorUsuario ex){
+                Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
+         }
+    }
+     
+    private void cargarDatos(ResultSet resultado) throws SQLException, ErrorUsuario{
                 this.id  = resultado.getInt("id");
-                this.usuario = usuario;
+                this.usuario = resultado.getString("usuario");
                 this.nombre =  resultado.getString("nombre");
                 this.apellido = resultado.getString("apellido");
                 this.fechaNacimiento = resultado.getString("fecha_nacimiento");
@@ -54,12 +82,10 @@ public class Usuario {
                 this.administrador = resultado.getBoolean("administrador");
                 String aux = usuario;                    
                 Operaciones.cerrar();
-                this.direccion = new Direccion(aux); 
-             }
-            }catch(SQLException ex){
-         }
+                this.direccion = new Direccion(aux);
+ 
     }
-    
+     
     public Integer getId() {
         return id;
     }

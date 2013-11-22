@@ -16,12 +16,8 @@ public class VentanaCarrito extends javax.swing.JFrame {
     
     private Carrito carrito;
     Home home;
-    
-    public VentanaCarrito(Home h){           //despues este se borra
-        initComponents();
-        home=h;
-    }
-    
+   
+  
     public VentanaCarrito(Home h, Carrito carrito) {
         this.carrito = carrito;  
         home=h;

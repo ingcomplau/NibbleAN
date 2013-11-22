@@ -6,14 +6,19 @@
 
 package visual;
 
+import motor.Pedidos;
+import motor.Usuario;
+
 
 public class PedidosUsuario extends javax.swing.JFrame {
 
     Home home;
+    Pedidos pedidos;
     
-    public PedidosUsuario(Home h) {
-        initComponents();
+    public PedidosUsuario(Home h, Usuario usuario) {
+        pedidos = new Pedidos(usuario);
         home=h;
+        initComponents();
     }
 
     /**

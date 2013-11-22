@@ -6,22 +6,19 @@
 
 package motor;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-public class Carrito extends ListaLibros{
+public class Carrito extends ListaCompras{
 
     public Carrito(Usuario usuario) {
         super(usuario);
     }
     
     public void comprar(){
-        String fechaDeHoy = (new SimpleDateFormat("dd'-'MMM'-'yyyy")).format(new Date());
+        
         while (!this.isEmpty()){
             this.listIterator().next();
             Operaciones.insertar("insert into compras(usuario_id, libro_id, precio, fecha, cantidad) "
-                    + "values('"+ usuario.getId() +"', '"+this.element().libro.getId()+"',"+this.element().libro.getPrecio()+","
-                    +fechaDeHoy+",'"+this.element().cantidad+"');"); 
+                    + "values('"+ usuario.getId() +"', '"+this.element().getLibro().getId()+"',"+this.element().getLibro().getPrecio()+","
+                    +this.element().getFecha()+",'"+this.element().getCantidad()+"');"); 
             this.remove();
         }                     
     }

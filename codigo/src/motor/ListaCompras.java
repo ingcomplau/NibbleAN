@@ -12,10 +12,10 @@ import java.util.LinkedList;
  *
  * @author asCii
  */
-public class ListaLibros extends LinkedList<Compra>{
+public abstract class ListaCompras extends LinkedList<Compra>{
     Usuario usuario;
     
-    public ListaLibros(Usuario usuario) {
+    public ListaCompras(Usuario usuario) {
         this.usuario = usuario;
     }
 
@@ -24,7 +24,7 @@ public class ListaLibros extends LinkedList<Compra>{
     public boolean add(Compra e) { //Se fija si está el libro y si está solo suma la cantidad, si no lo agrega.
         if (this.contains(e)){
             int index = indexOf(e);
-            e.cantidad = e.cantidad + this.get(index).cantidad;
+            e.setCantidad(e.getCantidad() + this.get(index).getCantidad()); ;
             return true;
         } else {
            return super.add(e);
