@@ -174,8 +174,15 @@ public class Usuario {
         return clave;
     }
 
-    public void setClave(String clave) {
-        this.clave = clave;
+    public void setClave(String clave) throws ErrorUsuario {
+        if (clave.length() < 4){
+            ErrorUsuario e = new ErrorUsuario();
+            e.setClaveCorta();
+            throw e;
+        } else {
+            this.clave = clave;
+        }
+        
     }
 
     public Direccion getDireccion() {

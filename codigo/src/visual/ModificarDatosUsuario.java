@@ -533,6 +533,7 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
                // modificar.setEnabled(false);
                 ((javax.swing.JTextField) evt.getSource()).requestFocus();
             }
+         }
     }//GEN-LAST:event_campoTelefonoFocusLost
 
     private void campoEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoEmailFocusLost
@@ -554,9 +555,9 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
  
     private void campoContraseñaActualFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoContraseñaActualFocusLost
         // TODO add your handling code here:
-        if (((javax.swing.JTextField) evt.getSource()).getName() != null) {
+        if (((javax.swing.JPasswordField) evt.getSource()).getName() != null) {
             try {
-                usuario.setClave(campoContraseñaActual.getText());
+                usuario.setClave(String.valueOf(campoContraseñaActual.getPassword()));
                 usuario.modificar();
                 errorContraseñaActual.setText(null);                              
             } catch (ErrorUsuario e) {             
@@ -564,15 +565,15 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
                     errorContraseñaActual.setText("Contraseña Corta");
                 }
                //modificar.setEnabled(false);
-                ((javax.swing.JTextField) evt.getSource()).requestFocus();
+                ((javax.swing.JPasswordField) evt.getSource()).requestFocus();
             }
         }
     }//GEN-LAST:event_campoContraseñaActualFocusLost
 
     private void campoContraseñaNuevaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoContraseñaNuevaFocusLost
-         if (((javax.swing.JTextField) evt.getSource()).getName() != null) {
+         if (((javax.swing.JPasswordField) evt.getSource()).getName() != null) {
             try {
-                usuario.setClave(campoContraseñaNueva.getText());
+                usuario.setClave(String.valueOf(campoContraseñaActual.getPassword()));
                 usuario.modificar();
                 errorContraseñaNueva.setText(null);                              
             } catch (ErrorUsuario e) {             
@@ -580,15 +581,15 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
                     errorContraseñaNueva.setText("Contraseña Corta");
                 }
                //modificar.setEnabled(false);
-                ((javax.swing.JTextField) evt.getSource()).requestFocus();
+                ((javax.swing.JPasswordField) evt.getSource()).requestFocus();
             }
         }
     }//GEN-LAST:event_campoContraseñaNuevaFocusLost
 
     private void campoConfirmarContraseñaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoConfirmarContraseñaFocusLost
-         if (((javax.swing.JTextField) evt.getSource()).getName() != null) {
+         if (((javax.swing.JPasswordField) evt.getSource()).getName() != null) {
             try {
-                usuario.setClave(campoContraseñaNueva.getText());
+                usuario.setClave(String.valueOf(campoContraseñaActual.getPassword()));
                 usuario.modificar();
                 errorConfirmarContraseña.setText(null);                              
             } catch (ErrorUsuario e) {             
@@ -596,7 +597,7 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
                     errorConfirmarContraseña.setText("Contraseña Corta");
                 }
                //modificar.setEnabled(false);
-                ((javax.swing.JTextField) evt.getSource()).requestFocus();
+                ((javax.swing.JPasswordField) evt.getSource()).requestFocus();
             }
         }
     }//GEN-LAST:event_campoConfirmarContraseñaFocusLost
