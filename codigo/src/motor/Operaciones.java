@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -133,19 +134,21 @@ public class Operaciones extends Conexion{
      }
     }
      
+
+     
      public static void llenarTablaLibros(DefaultTableModel tableModel){
         resultado = null;  
-        String sql = "SELECT a.isbn,a.titulo,b.apellido ||' '||b.nombre from libros a INNER JOIN autores b on a.autor_id=b.id order by a.titulo";
+        String sql = "SELECT a.isbn,a.titulo,b.apellido ||' '||b.nombre, a.urltapa from libros a INNER JOIN autores b on a.autor_id=b.id order by a.titulo";
         try {
             resultado = consultar(sql);
             if(resultado != null){
                 int numeroColumna = resultado.getMetaData().getColumnCount();              
                 while(resultado.next()){
                     Object []objetos = new Object[numeroColumna];
-                    for(int i = 1;i <= numeroColumna;i++){
+                    for(int i = 1;i <= numeroColumna - 1 ;i++){
                         objetos[i-1] = resultado.getObject(i);
                     }
-                    tableModel.addRow(objetos);
+                    objetos[numeroColumna - 1] = Operaciones.class.getClassLoader().getClass().getResource(resultado.getString(numeroColumna));                    tableModel.addRow(objetos);
                 }
             }
         }catch(SQLException e){

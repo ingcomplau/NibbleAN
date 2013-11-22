@@ -22,21 +22,7 @@ import motor.Libro;
  */
 public class ListadoLibros extends javax.swing.JFrame {
     
-    class ImageRenderer extends DefaultTableCellRenderer {
-        JLabel lbl;
-        ImageIcon icon;
-        public ImageRenderer(String URL) {
-            lbl = new JLabel();
-            icon = new ImageIcon(getClass().getResource(URL));
-        }
         
-        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected,
-            boolean hasFocus, int row, int column) {
-            lbl.setText((String) value);
-            lbl.setIcon(icon);
-        return lbl;
-        }
-    }
     
     VentanaAdmin VA;
     private boolean click=true;
@@ -47,6 +33,7 @@ public class ListadoLibros extends javax.swing.JFrame {
         initComponents();
         VA=V;
         Operaciones.llenarTablaLibros((DefaultTableModel)tablaLibros.getModel());
+   
     }
 
     /**
@@ -147,8 +134,8 @@ public class ListadoLibros extends javax.swing.JFrame {
             tablaLibros.getColumnModel().getColumn(1).setResizable(false);
             tablaLibros.getColumnModel().getColumn(2).setResizable(false);
             tablaLibros.getColumnModel().getColumn(3).setResizable(false);
-            tablaLibros.getColumnModel().getColumn(3).setCellRenderer(new ImageRenderer("/visual/imagen/Resource/TapaLibro.png"));
         }
+        tablaLibros.setDefaultRenderer(Object.class, new CellRenderer());
 
         jPanel1.setBackground(new java.awt.Color(110, 34, 83));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
@@ -280,6 +267,28 @@ public class ListadoLibros extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private class CellRenderer extends DefaultTableCellRenderer
+{
+    private CellRenderer()
+    {
+        //setHorizontalAlignment(JLabel.CENTER);
+    }
+
+    @Override
+    public Component getTableCellRendererComponent(JTable table,
+            Object value, boolean isSelected, boolean hasFocus, int row,
+            int column)
+    {
+        if (column == 3){
+            setText("");
+            setIcon(new ImageIcon("/visual/imagen/Resource/TapaLibro.png")); //ver por que la imagen queda vacia
+        } else
+          setText(value.toString());
+          setIcon(null);
+        return this;
+    }
+}
+    
     private void botonEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonEliminarMouseClicked
         if(this.tablaLibros.getSelectedRowCount()!=0){
              ConfEliminarLibro venEli= new ConfEliminarLibro(this, new Libro(tablaLibros.getValueAt(tablaLibros.getSelectedRow(), 0).toString()));
@@ -400,7 +409,6 @@ public class ListadoLibros extends javax.swing.JFrame {
             tablaLibros.getColumnModel().getColumn(1).setResizable(false);
             tablaLibros.getColumnModel().getColumn(2).setResizable(false);
             tablaLibros.getColumnModel().getColumn(3).setResizable(false);
-            tablaLibros.getColumnModel().getColumn(3).setCellRenderer(new ImageRenderer("/visual/imagen/Resource/TapaLibro.png"));
         }
        Operaciones.llenarTablaLibros((DefaultTableModel)tablaLibros.getModel());
  
