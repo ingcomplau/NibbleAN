@@ -605,12 +605,13 @@ public class AgregarLibro extends javax.swing.JFrame {
         // TODO add your handling code here:
         jPanelImagen.removeAll();
         jPanelImagen.repaint();
+        lib.setUrlTapa(null);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         m.Abrir_Dialogo(jPanelImagen);
-        lib.setUrlTapa(System.getProperty("user.dir")+m.namefile);
+        lib.setUrlTapa("/visual/imagen/Resource/"+m.namefile);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void AñadirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AñadirMouseExited

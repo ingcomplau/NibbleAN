@@ -269,12 +269,7 @@ public class ListadoLibros extends javax.swing.JFrame {
 
     private class CellRenderer extends DefaultTableCellRenderer
 {
-    private CellRenderer()
-    {
-        setHorizontalAlignment(JLabel.CENTER);
-    }
-
-    
+   
     @Override
     public Component getTableCellRendererComponent(JTable table,
             Object value, boolean isSelected, boolean hasFocus, int row,

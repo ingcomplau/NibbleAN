@@ -607,7 +607,7 @@ public class ModificarLibro extends javax.swing.JFrame {
     }
     
     private void AñadirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AñadirMouseClicked
-        // TODO add your handling code here:
+        
         AgregarAutor AA=new AgregarAutor(this);
         AA.setLocationRelativeTo(this);
         AA.setVisible(true);
@@ -615,15 +615,16 @@ public class ModificarLibro extends javax.swing.JFrame {
     }//GEN-LAST:event_AñadirMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+       
         m.Abrir_Dialogo(jPanelImagen);
-        lib.setUrlTapa(System.getProperty("user.dir")+m.namefile);
+        lib.setUrlTapa("/visual/imagen/Resource/"+m.namefile);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+
         jPanelImagen.removeAll();
         jPanelImagen.repaint();
+        lib.setUrlTapa(null);
     }//GEN-LAST:event_jButton2ActionPerformed
     // agregar cambios a las otras cosas.
 

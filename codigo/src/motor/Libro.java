@@ -223,7 +223,10 @@ public class Libro{
     }
     
     public void setUrlTapa(String s){
-        this.urltapa=s;
+        if (s != null)
+            this.urltapa=s;
+        else
+            this.urltapa = "/visual/imagen/Resource/TapaLibro.png";
     }
 
     public String getPrimeras_paginas() {
@@ -300,6 +303,6 @@ public class Libro{
      }
 
      public void eliminar(){
-         Operaciones.insertar("DELETE FROM libros WHERE isbn='"+this.isbn+"';");
+         Operaciones.insertar("DELETE FROM libros WHERE isbn='"+this.isbn+"';"); // Implementar borrado lógico
      }
 }

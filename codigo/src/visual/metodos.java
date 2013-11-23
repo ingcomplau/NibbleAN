@@ -55,7 +55,7 @@ public class metodos {
             //se extrae el fomato de la cadena "f" que contiene la direccion
             String formato = (f.endsWith(".jpg")) ? "jpg" : "png";   
             //ImageIO.write(_image, "jpg", new File("e:/carpeta/imagen2.jpg"));
-            ImageIO.write(_image, formato, new File(f));   //f: nombre archivo
+            ImageIO.write(_image, formato, new File((Home.class.getProtectionDomain().getCodeSource().getLocation().getPath()+"/visual/imagen/Resource/"+f).replace("%20", " ")));   //f: nombre archivo
  } catch (IOException e) {            
             System.out.println("Error al crear el archivo");
  }
@@ -74,7 +74,7 @@ public class metodos {
             try {           
                 //se asigna a "url" el archivo de imagen seleccionado
                 URL url = fileChooser.getSelectedFile().toURL();  
-                String namefile = fileChooser.getSelectedFile().getName();
+                namefile = fileChooser.getSelectedFile().getName();
                 //se lo coloca en memoria
                 cargar_imagen_en_buffer(url);                            
                 //se añade al contenedor
