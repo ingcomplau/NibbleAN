@@ -11,7 +11,6 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
-import javax.swing.ImageIcon;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -148,7 +147,8 @@ public class Operaciones extends Conexion{
                     for(int i = 1;i <= numeroColumna - 1 ;i++){
                         objetos[i-1] = resultado.getObject(i);
                     }
-                    objetos[numeroColumna - 1] = Operaciones.class.getClassLoader().getClass().getResource(resultado.getString(numeroColumna));                    tableModel.addRow(objetos);
+                    objetos[numeroColumna - 1] = resultado.getString(numeroColumna);                    
+                    tableModel.addRow(objetos);
                 }
             }
         }catch(SQLException e){

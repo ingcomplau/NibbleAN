@@ -271,24 +271,27 @@ public class ListadoLibros extends javax.swing.JFrame {
 {
     private CellRenderer()
     {
-        //setHorizontalAlignment(JLabel.CENTER);
+        setHorizontalAlignment(JLabel.CENTER);
     }
 
+    
     @Override
     public Component getTableCellRendererComponent(JTable table,
             Object value, boolean isSelected, boolean hasFocus, int row,
             int column)
     {
+        super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+              
         if (column == 3){
             setText("");
-            setIcon(new ImageIcon("/visual/imagen/Resource/TapaLibro.png")); //ver por que la imagen queda vacia
-        } else
+            setIcon(new ImageIcon(getClass().getResource(value.toString()))); 
+        } else {
           setText(value.toString());
           setIcon(null);
+        }
         return this;
     }
-}
-    
+ }
     private void botonEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonEliminarMouseClicked
         if(this.tablaLibros.getSelectedRowCount()!=0){
              ConfEliminarLibro venEli= new ConfEliminarLibro(this, new Libro(tablaLibros.getValueAt(tablaLibros.getSelectedRow(), 0).toString()));
