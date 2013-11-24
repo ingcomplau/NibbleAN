@@ -219,6 +219,8 @@ public class Identificarse extends javax.swing.JFrame {
         try {
             home.setUsuario(new Usuario(campoUsuario.getText(), String.valueOf(campoContraseña.getPassword())));
             home.actualizar();
+            this.dispose();
+            home.setEnabled(true);
         } catch (ErrorUsuario e) {
             // Visualizar mensaje de error.
         }

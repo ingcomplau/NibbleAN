@@ -115,11 +115,6 @@ public class AgregarLibro extends javax.swing.JFrame {
                 campoIsbnMouseClicked(evt);
             }
         });
-        campoIsbn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoIsbnActionPerformed(evt);
-            }
-        });
         campoIsbn.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 campoIsbnFocusLost(evt);
@@ -403,11 +398,6 @@ public class AgregarLibro extends javax.swing.JFrame {
                 selectIdiomaItemStateChanged(evt);
             }
         });
-        selectIdioma.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                selectIdiomaActionPerformed(evt);
-            }
-        });
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel2.setText("Idioma: ");
@@ -563,10 +553,6 @@ public class AgregarLibro extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void campoIsbnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoIsbnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campoIsbnActionPerformed
-
     private void agregarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregarMouseEntered
         // TODO add your handling code here:
         agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonAgregarFocus.png")));
@@ -586,10 +572,6 @@ public class AgregarLibro extends javax.swing.JFrame {
             campoIsbn.setForeground(Color.black);
     }
     }//GEN-LAST:event_campoIsbnMouseClicked
-
-    private void selectIdiomaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectIdiomaActionPerformed
-
-    }//GEN-LAST:event_selectIdiomaActionPerformed
 
     private void campoCantPagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoCantPagActionPerformed
         // TODO add your handling code here:

@@ -18,6 +18,9 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
      */
     private Home home;
     private Usuario usuario;
+    boolean clickContraseña1=true;
+    boolean clickContraseña2=true;
+    boolean clickContraseña3=true;
     
     
     
@@ -25,6 +28,8 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
         this.usuario = usuario;
         this.home=h;
         initComponents();
+        this.setSize(540, 200);
+        this.jPanel1.setVisible(false);
         
     }
 
@@ -41,7 +46,6 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         tablaDatos = new javax.swing.JTabbedPane();
         paneModificarlDatos = new javax.swing.JPanel();
-        campoProvincia = new javax.swing.JTextField();
         campoCiudad = new javax.swing.JTextField();
         campoCodigoPostal = new javax.swing.JTextField();
         campoCalle = new javax.swing.JTextField();
@@ -50,6 +54,9 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
         campoEmail = new javax.swing.JFormattedTextField();
         errorTelefono = new javax.swing.JLabel();
         errorEmail = new javax.swing.JLabel();
+        provPanel = new javax.swing.JPanel();
+        selecProv = new javax.swing.JComboBox();
+        provLabel = new javax.swing.JLabel();
         panelCambiarContraseña = new javax.swing.JPanel();
         campoContraseñaActual = new javax.swing.JPasswordField();
         campoContraseñaNueva = new javax.swing.JPasswordField();
@@ -82,34 +89,10 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
 
         paneModificarlDatos.setBackground(new java.awt.Color(218, 216, 218));
 
-        campoProvincia.setBackground(new java.awt.Color(240, 238, 240));
-        campoProvincia.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        campoProvincia.setForeground(new java.awt.Color(153, 153, 153));
-        campoProvincia.setText("CAMBIAR POR COMBOBOX");
-        campoProvincia.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                campoProvinciaMouseClicked(evt);
-            }
-        });
-        campoProvincia.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                campoProvinciaFocusLost(evt);
-            }
-        });
-        campoProvincia.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                campoProvinciaKeyPressed(evt);
-            }
-        });
-
         campoCiudad.setBackground(new java.awt.Color(240, 238, 240));
         campoCiudad.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        campoCiudad.setForeground(new java.awt.Color(153, 153, 153));
         campoCiudad.setText(usuario.getDireccion().getLocalidad());
         campoCiudad.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                campoCiudadFocusGained(evt);
-            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 campoCiudadFocusLost(evt);
             }
@@ -117,12 +100,8 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
 
         campoCodigoPostal.setBackground(new java.awt.Color(240, 238, 240));
         campoCodigoPostal.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        campoCodigoPostal.setForeground(new java.awt.Color(153, 153, 153));
         campoCodigoPostal.setText(usuario.getDireccion().getCodigoPostal());
         campoCodigoPostal.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                campoCodigoPostalFocusGained(evt);
-            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 campoCodigoPostalFocusLost(evt);
             }
@@ -130,12 +109,8 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
 
         campoCalle.setBackground(new java.awt.Color(240, 238, 240));
         campoCalle.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        campoCalle.setForeground(new java.awt.Color(153, 153, 153));
         campoCalle.setText(usuario.getDireccion().getCalle());
         campoCalle.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                campoCalleFocusGained(evt);
-            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 campoCalleFocusLost(evt);
             }
@@ -143,12 +118,8 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
 
         campoTelefono.setBackground(new java.awt.Color(240, 238, 240));
         campoTelefono.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        campoTelefono.setForeground(new java.awt.Color(153, 153, 153));
         campoTelefono.setText(usuario.getTelefono());
         campoTelefono.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                campoTelefonoFocusGained(evt);
-            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 campoTelefonoFocusLost(evt);
             }
@@ -156,25 +127,17 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
 
         campoNro.setBackground(new java.awt.Color(240, 238, 240));
         campoNro.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        campoNro.setForeground(new java.awt.Color(153, 153, 153));
         campoNro.setText(usuario.getDireccion().getAltura());
         campoNro.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                campoNroFocusGained(evt);
-            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 campoNroFocusLost(evt);
             }
         });
 
         campoEmail.setBackground(new java.awt.Color(240, 238, 240));
-        campoEmail.setForeground(new java.awt.Color(153, 153, 153));
         campoEmail.setText(usuario.getEmail());
         campoEmail.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         campoEmail.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                campoEmailFocusGained(evt);
-            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 campoEmailFocusLost(evt);
             }
@@ -183,6 +146,38 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
         errorTelefono.setForeground(new java.awt.Color(255, 0, 0));
 
         errorEmail.setForeground(new java.awt.Color(255, 0, 0));
+
+        selecProv.setBackground(new java.awt.Color(218, 216, 218));
+        selecProv.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        selecProv.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                selecProvItemStateChanged(evt);
+            }
+        });
+
+        provLabel.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        provLabel.setText("Provincia:");
+
+        javax.swing.GroupLayout provPanelLayout = new javax.swing.GroupLayout(provPanel);
+        provPanel.setLayout(provPanelLayout);
+        provPanelLayout.setHorizontalGroup(
+            provPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, provPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(provLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(selecProv, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        provPanelLayout.setVerticalGroup(
+            provPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(provPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(provPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(selecProv, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(provLabel))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout paneModificarlDatosLayout = new javax.swing.GroupLayout(paneModificarlDatos);
         paneModificarlDatos.setLayout(paneModificarlDatosLayout);
@@ -194,13 +189,13 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
                     .addComponent(errorEmail)
                     .addComponent(errorTelefono)
                     .addGroup(paneModificarlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(provPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(campoCodigoPostal, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
                         .addGroup(paneModificarlDatosLayout.createSequentialGroup()
                             .addComponent(campoCalle, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(campoNro, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(campoTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
-                        .addComponent(campoProvincia)
                         .addComponent(campoCiudad, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
                         .addComponent(campoEmail)))
                 .addContainerGap(116, Short.MAX_VALUE))
@@ -208,8 +203,9 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
         paneModificarlDatosLayout.setVerticalGroup(
             paneModificarlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(paneModificarlDatosLayout.createSequentialGroup()
-                .addComponent(campoProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addContainerGap()
+                .addComponent(provPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(campoCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(campoCodigoPostal, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -222,7 +218,7 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
                 .addGap(2, 2, 2)
                 .addComponent(errorTelefono)
                 .addGap(2, 2, 2)
-                .addComponent(campoEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
+                .addComponent(campoEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(errorEmail))
         );
@@ -233,12 +229,13 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
 
         campoContraseñaActual.setBackground(new java.awt.Color(240, 238, 240));
         campoContraseñaActual.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        campoContraseñaActual.setForeground(new java.awt.Color(153, 153, 153));
         campoContraseñaActual.setText("asdasd");
-        campoContraseñaActual.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                campoContraseñaActualFocusGained(evt);
+        campoContraseñaActual.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                campoContraseñaActualMouseClicked(evt);
             }
+        });
+        campoContraseñaActual.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 campoContraseñaActualFocusLost(evt);
             }
@@ -246,7 +243,6 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
 
         campoContraseñaNueva.setBackground(new java.awt.Color(240, 238, 240));
         campoContraseñaNueva.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        campoContraseñaNueva.setForeground(new java.awt.Color(153, 153, 153));
         campoContraseñaNueva.setText("asdasd");
         campoContraseñaNueva.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -259,7 +255,6 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
 
         campoConfirmarContraseña.setBackground(new java.awt.Color(240, 238, 240));
         campoConfirmarContraseña.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        campoConfirmarContraseña.setForeground(new java.awt.Color(153, 153, 153));
         campoConfirmarContraseña.setText("asdasd");
         campoConfirmarContraseña.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -449,42 +444,6 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void campoProvinciaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoProvinciaKeyPressed
-
-    }//GEN-LAST:event_campoProvinciaKeyPressed
-
-    private void campoProvinciaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoProvinciaMouseClicked
-
-    }//GEN-LAST:event_campoProvinciaMouseClicked
-
-    private void campoProvinciaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoProvinciaFocusLost
-
-    }//GEN-LAST:event_campoProvinciaFocusLost
-
-    private void campoCiudadFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoCiudadFocusGained
-
-    }//GEN-LAST:event_campoCiudadFocusGained
-
-    private void campoCalleFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoCalleFocusGained
-
-    }//GEN-LAST:event_campoCalleFocusGained
-
-    private void campoNroFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoNroFocusGained
-
-    }//GEN-LAST:event_campoNroFocusGained
-
-    private void campoTelefonoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoTelefonoFocusGained
-
-    }//GEN-LAST:event_campoTelefonoFocusGained
-
-    private void campoEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoEmailFocusGained
-
-    }//GEN-LAST:event_campoEmailFocusGained
-
-    private void campoCodigoPostalFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoCodigoPostalFocusGained
-
-    }//GEN-LAST:event_campoCodigoPostalFocusGained
-
     private void campoCiudadFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoCiudadFocusLost
         if(campoCiudad.getText().equals("")){
             campoCiudad.setText(" Ciudad");
@@ -602,16 +561,20 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_campoConfirmarContraseñaFocusLost
 
-    private void campoContraseñaActualFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoContraseñaActualFocusGained
-    
-    }//GEN-LAST:event_campoContraseñaActualFocusGained
-
     private void campoContraseñaNuevaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoContraseñaNuevaFocusGained
-       
+       if (clickContraseña2) {
+            campoContraseñaNueva.setText(null);
+            clickContraseña2=false;
+            campoContraseñaNueva.setForeground(Color.black);
+    }
     }//GEN-LAST:event_campoContraseñaNuevaFocusGained
 
     private void campoConfirmarContraseñaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoConfirmarContraseñaFocusGained
-        
+        if (clickContraseña3) {
+            campoConfirmarContraseña.setText(null);
+            clickContraseña3=false;
+            campoConfirmarContraseña.setForeground(Color.black);
+    }
     }//GEN-LAST:event_campoConfirmarContraseñaFocusGained
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
@@ -623,14 +586,31 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
     private void botonModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonModificarMouseClicked
         // TODO add your handling code here:
         jPanel1.setVisible(true);
-        this.setSize(540, 575);
+        this.setSize(540, 600);
         this.setLocationRelativeTo(home);
         
     }//GEN-LAST:event_botonModificarMouseClicked
 
     private void botonGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonGuardarMouseClicked
         usuario.modificar();
+        this.dispose();
+        home.setEnabled(true);
+        
     }//GEN-LAST:event_botonGuardarMouseClicked
+
+    private void selecProvItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_selecProvItemStateChanged
+        // TODO add your handling code here:
+        usuario.setProvincia(selecProv.getSelectedIndex());
+    }//GEN-LAST:event_selecProvItemStateChanged
+
+    private void campoContraseñaActualMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoContraseñaActualMouseClicked
+        // TODO add your handling code here:
+        if (clickContraseña1) {
+            campoContraseñaActual.setText(null);
+            clickContraseña1=false;
+            campoContraseñaActual.setForeground(Color.black);
+    }
+    }//GEN-LAST:event_campoContraseñaActualMouseClicked
 
  
   
@@ -647,7 +627,6 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
     private javax.swing.JPasswordField campoContraseñaNueva;
     private javax.swing.JFormattedTextField campoEmail;
     private javax.swing.JTextField campoNro;
-    private javax.swing.JTextField campoProvincia;
     private javax.swing.JTextField campoTelefono;
     private javax.swing.JLabel errorConfirmarContraseña;
     private javax.swing.JLabel errorContraseñaActual;
@@ -666,6 +645,9 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel nombreUsuario1;
     private javax.swing.JPanel paneModificarlDatos;
     private javax.swing.JPanel panelCambiarContraseña;
+    private javax.swing.JLabel provLabel;
+    private javax.swing.JPanel provPanel;
+    private javax.swing.JComboBox selecProv;
     private javax.swing.JTabbedPane tablaDatos;
     // End of variables declaration//GEN-END:variables
 }

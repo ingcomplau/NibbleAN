@@ -190,6 +190,8 @@ public class VentanaCarrito extends javax.swing.JFrame {
     private void botonComprarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonComprarMouseClicked
         carrito.comprar();
         carrito = null;
+        this.dispose();
+        home.setEnabled(true);
     }//GEN-LAST:event_botonComprarMouseClicked
 
    

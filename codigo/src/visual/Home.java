@@ -23,7 +23,7 @@ public class Home extends javax.swing.JFrame {
     
     public void actualizar() {
         if (usuario != null){
-            //Visibilizar botón cuenta, botón carrito, botón pedidos, botón salir.
+            //Visibilizar botón cuenta, botón carrito, botón pedidos, botón salir.         
             // Ocultar botón registrarse e identificarse
             if (usuario.isAdministrador()){
                 // Visibilizar el boton de aministrar.
