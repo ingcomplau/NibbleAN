@@ -204,8 +204,9 @@ public class AgregarLibro extends javax.swing.JFrame {
         areaDesc.setColumns(20);
         areaDesc.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         areaDesc.setForeground(new java.awt.Color(153, 153, 153));
+        areaDesc.setLineWrap(true);
         areaDesc.setRows(5);
-        areaDesc.setText("Descripción del producto");
+        areaDesc.setText("Descripción del producto (Opcional)");
         areaDesc.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         areaDesc.setFocusCycleRoot(true);
         areaDesc.addFocusListener(new java.awt.event.FocusAdapter() {

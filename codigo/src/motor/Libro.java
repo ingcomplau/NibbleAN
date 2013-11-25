@@ -177,8 +177,6 @@ public class Libro{
         this.primeras_paginas = primeras_paginas;
     }
 
-
-
     public void setIdioma_id(Integer idioma_id) {
        this.idioma_id = idioma_id + 1;
     }

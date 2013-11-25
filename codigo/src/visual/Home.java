@@ -6,12 +6,15 @@
 
 package visual;
 
+import java.awt.GridLayout;
 import motor.Carrito;
+import motor.Operaciones;
 import motor.Usuario;
 
 public class Home extends javax.swing.JFrame {
-    private Carrito carrito = null;
+    protected Carrito carrito = null;
     private Usuario usuario = null;
+    
 
     public Usuario getUsuario() {
         return usuario;
@@ -37,6 +40,14 @@ public class Home extends javax.swing.JFrame {
     public Home() {
         initComponents();
         this.setLocationRelativeTo(null);
+        llenarHome();
+       
+    }
+    
+    private void llenarHome(){//se ponen los libros en el home, pongo uno de prueba
+        //Operaciones.
+        this.panelHome.add(new PanelComprarLibro());
+        this.panelHome.setLayout(new GridLayout(1,1));
     }
 
     /**
@@ -57,7 +68,6 @@ public class Home extends javax.swing.JFrame {
         buttonListarTodo = new javax.swing.JLabel();
         botonCarrito = new javax.swing.JLabel();
         botonPedidos = new javax.swing.JLabel();
-        panelCompra = new javax.swing.JPanel();
         botonIdentificarse = new javax.swing.JLabel();
         botonRegistrarse = new javax.swing.JLabel();
         botonAyuda = new javax.swing.JLabel();
@@ -65,10 +75,12 @@ public class Home extends javax.swing.JFrame {
         botonCuenta = new javax.swing.JLabel();
         botonSalir = new javax.swing.JLabel();
         botonAdministrar = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        panelHome = new javax.swing.JPanel();
+        panelCategoria = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Home");
-        setPreferredSize(new java.awt.Dimension(1000, 700));
         setResizable(false);
 
         panelBlanco.setBackground(new java.awt.Color(255, 255, 255));
@@ -165,17 +177,6 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout panelCompraLayout = new javax.swing.GroupLayout(panelCompra);
-        panelCompra.setLayout(panelCompraLayout);
-        panelCompraLayout.setHorizontalGroup(
-            panelCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        panelCompraLayout.setVerticalGroup(
-            panelCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 416, Short.MAX_VALUE)
-        );
-
         botonIdentificarse.setText("IDENTIFICARSE");
         botonIdentificarse.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -213,38 +214,61 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
+        panelHome.setBackground(new java.awt.Color(218, 216, 218));
+        panelHome.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        panelHome.setLayout(new java.awt.GridLayout());
+        jScrollPane1.setViewportView(panelHome);
+
+        javax.swing.GroupLayout panelCategoriaLayout = new javax.swing.GroupLayout(panelCategoria);
+        panelCategoria.setLayout(panelCategoriaLayout);
+        panelCategoriaLayout.setHorizontalGroup(
+            panelCategoriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        panelCategoriaLayout.setVerticalGroup(
+            panelCategoriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout panelBlancoLayout = new javax.swing.GroupLayout(panelBlanco);
         panelBlanco.setLayout(panelBlancoLayout);
         panelBlancoLayout.setHorizontalGroup(
             panelBlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBlancoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(imagenCookBook)
-                .addGap(29, 29, 29)
-                .addGroup(panelBlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(panelBlancoLayout.createSequentialGroup()
-                        .addComponent(panelBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(panelBlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(botonCarrito)
-                            .addComponent(botonIdentificarse)))
-                    .addComponent(panelCompra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelBlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(botonPedidos)
-                    .addComponent(botonRegistrarse))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBlancoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(botonAdministrar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(botonSalir)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(botonCuenta)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(botonContacto)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(botonAyuda)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBlancoLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(botonAdministrar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(botonSalir)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(botonCuenta)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(botonContacto)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(botonAyuda))
+                    .addGroup(panelBlancoLayout.createSequentialGroup()
+                        .addGroup(panelBlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelBlancoLayout.createSequentialGroup()
+                                .addComponent(imagenCookBook)
+                                .addGap(29, 29, 29))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBlancoLayout.createSequentialGroup()
+                                .addComponent(panelCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                        .addGroup(panelBlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(panelBlancoLayout.createSequentialGroup()
+                                .addComponent(panelBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(panelBlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(botonCarrito)
+                                    .addComponent(botonIdentificarse))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(panelBlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(botonPedidos)
+                                    .addComponent(botonRegistrarse))
+                                .addGap(0, 168, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         panelBlancoLayout.setVerticalGroup(
@@ -273,9 +297,11 @@ public class Home extends javax.swing.JFrame {
                     .addComponent(botonCuenta)
                     .addComponent(botonSalir)
                     .addComponent(botonAdministrar))
-                .addGap(13, 13, 13)
-                .addComponent(panelCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(panelBlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(panelCategoria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 483, Short.MAX_VALUE))
+                .addContainerGap(79, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -431,9 +457,11 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel buttonListarTodo;
     private javax.swing.JTextField campoBuscador;
     private javax.swing.JLabel imagenCookBook;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel panelBlanco;
     private javax.swing.JPanel panelBuscador;
-    private javax.swing.JPanel panelCompra;
+    private javax.swing.JPanel panelCategoria;
+    private javax.swing.JPanel panelHome;
     private javax.swing.JComboBox selectBuscar;
     // End of variables declaration//GEN-END:variables
 }

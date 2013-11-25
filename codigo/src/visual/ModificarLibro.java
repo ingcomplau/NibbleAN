@@ -157,6 +157,7 @@ public class ModificarLibro extends javax.swing.JFrame {
         areaDesc.setBackground(new java.awt.Color(240, 238, 240));
         areaDesc.setColumns(20);
         areaDesc.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        areaDesc.setLineWrap(true);
         areaDesc.setRows(5);
         areaDesc.setText(lib.getResumen());
         areaDesc.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));

@@ -10,6 +10,7 @@ import excepciones.ErrorUsuario;
 import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import motor.Carrito;
 import motor.Usuario;
 
 
@@ -219,6 +220,7 @@ public class Identificarse extends javax.swing.JFrame {
         try {
             home.setUsuario(new Usuario(campoUsuario.getText(), String.valueOf(campoContraseña.getPassword())));
             home.actualizar();
+            home.carrito=new Carrito(home.getUsuario());
             this.dispose();
             home.setEnabled(true);
         } catch (ErrorUsuario e) {
