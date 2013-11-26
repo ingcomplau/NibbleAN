@@ -21,7 +21,7 @@ public class Operaciones extends Conexion{
      */
     private static ResultSet resultado = null;
 
-
+  
     
     public Operaciones()
     {
@@ -138,6 +138,31 @@ public class Operaciones extends Conexion{
      public static void llenarTablaLibros(DefaultTableModel tableModel){
         resultado = null;  
         String sql = "SELECT a.isbn,a.titulo,b.apellido ||' '||b.nombre, a.urltapa from libros a INNER JOIN autores b on a.autor_id=b.id order by a.titulo";
+        try {
+            resultado = consultar(sql);
+            if(resultado != null){
+                int numeroColumna = resultado.getMetaData().getColumnCount();              
+                while(resultado.next()){
+                    Object []objetos = new Object[numeroColumna];
+                    for(int i = 1;i <= numeroColumna - 1 ;i++){
+                        objetos[i-1] = resultado.getObject(i);
+                    }
+                    objetos[numeroColumna - 1] = resultado.getString(numeroColumna);                    
+                    tableModel.addRow(objetos);
+                }
+            }
+        }catch(SQLException e){
+        }
+
+        finally
+     {
+        cerrar();
+     }
+    }
+     
+      public static void llenarTablaPedidosAdmin(DefaultTableModel tableModel) {
+         resultado = null;  
+        String sql = "SELECT c.usuario,b.urltapa,b.titulo,d.apellido ||' '||d.nombre,a.precio,a.cantidad,a.fecha,a.estado from compras a INNER JOIN libros b on a.libro_id=b.id  INNER JOIN usuarios c on a.usuario_id=c.id INNER JOIN autores d on b.autor_id=d.id order by c.usuario";
         try {
             resultado = consultar(sql);
             if(resultado != null){

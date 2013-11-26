@@ -16,6 +16,14 @@ public class Home extends javax.swing.JFrame {
     private Usuario usuario = null;
     
 
+    
+    public Home() {
+        initComponents();
+        this.setLocationRelativeTo(null);
+        llenarHome();
+    }
+    
+    
     public Usuario getUsuario() {
         return usuario;
     }
@@ -35,13 +43,6 @@ public class Home extends javax.swing.JFrame {
             //Ocultar botón cuenta, botón carrito, botón pedidos, botón salir, botón administrar.
             //Visibilizar botón registrarse e identificarse
         }
-    }
-    
-    public Home() {
-        initComponents();
-        this.setLocationRelativeTo(null);
-        llenarHome();
-       
     }
     
     private void llenarHome(){//se ponen los libros en el home, pongo uno de prueba

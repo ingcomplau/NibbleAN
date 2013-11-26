@@ -6,6 +6,12 @@
 
 package visual;
 
+import java.awt.Component;
+import javax.swing.ImageIcon;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import motor.Operaciones;
 import motor.Pedidos;
 
 /**
@@ -21,6 +27,9 @@ public class PedidosAdmin extends javax.swing.JFrame {
         pedidos = new Pedidos(null);
         va=v;
         initComponents();
+        this.actualizar();
+        Operaciones.llenarTablaPedidosAdmin((DefaultTableModel)tablaPedidos.getModel());
+ 
     }
 
     /**
@@ -51,17 +60,17 @@ public class PedidosAdmin extends javax.swing.JFrame {
         tablaPedidos.setBackground(new java.awt.Color(218, 216, 218));
         tablaPedidos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Tapa", "Titulo", "Autor", "Precio", "Cantidad", "Fecha de compra", "Estado"
+                "Usuario", "Tapa", "Titulo", "Autor", "Precio", "Cantidad", "Fecha de compra", "Estado"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -113,6 +122,72 @@ public class PedidosAdmin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+      private class CellRenderer extends DefaultTableCellRenderer
+{
+   
+    @Override
+    public Component getTableCellRendererComponent(JTable table,
+            Object value, boolean isSelected, boolean hasFocus, int row,
+            int column)
+    {
+        super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+              
+        if (column == 1){
+            setText("");
+            setIcon(new ImageIcon(getClass().getResource(value.toString()))); 
+        } else {
+          setText(value.toString());
+          setIcon(null);
+        }
+        return this;
+    }
+ }
+     public void actualizar(){
+        tablaPedidos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                
+            },
+            new String [] {
+                "Usuario", "Tapa", "Titulo", "Autor", "Precio", "Cantidad", "Fecha de compra", "Estado"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
+            };
+            
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+             public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+            
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tablaPedidos.setFocusable(false);
+        tablaPedidos.setMinimumSize(new java.awt.Dimension(60, 0));
+        tablaPedidos.setPreferredSize(new java.awt.Dimension(300, 0));
+        tablaPedidos.setRowHeight(180);
+        tablaPedidos.setShowVerticalLines(false);
+        tablaPedidos.getTableHeader().setReorderingAllowed(false);
+        jScrollTablaPedidos.setViewportView(tablaPedidos);
+        if (tablaPedidos.getColumnModel().getColumnCount() > 0) {
+            tablaPedidos.getColumnModel().getColumn(0).setResizable(false);
+            tablaPedidos.getColumnModel().getColumn(1).setResizable(false);
+            tablaPedidos.getColumnModel().getColumn(2).setResizable(false);
+            tablaPedidos.getColumnModel().getColumn(3).setResizable(false);
+            tablaPedidos.getColumnModel().getColumn(4).setResizable(false);
+            tablaPedidos.getColumnModel().getColumn(5).setResizable(false);
+            tablaPedidos.getColumnModel().getColumn(6).setResizable(false);
+            tablaPedidos.getColumnModel().getColumn(7).setResizable(false);
+        }
+        
+        Operaciones.llenarTablaPedidosAdmin((DefaultTableModel)tablaPedidos.getModel());
+    } 
+    
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
         this.dispose();

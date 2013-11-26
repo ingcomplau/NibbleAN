@@ -49,17 +49,17 @@ public class PedidosUsuario extends javax.swing.JFrame {
         tablaPedidos.setBackground(new java.awt.Color(218, 216, 218));
         tablaPedidos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Tapa", "Titulo", "Autor", "Precio", "Cantidad", "Estado"
+                "Tapa", "Titulo", "Autor", "Precio", "Cantidad", "Fecha de compra", "Estado"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {

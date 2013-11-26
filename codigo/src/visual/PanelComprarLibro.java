@@ -6,19 +6,22 @@
 
 package visual;
 
+
 /**
  *
  * @author Franco
  */
 public class PanelComprarLibro extends javax.swing.JPanel {
     private Home home;
+
     /**
      * Creates new form PanelCompraLibro
      */
-    public PanelComprarLibro(Home home) {
+    public PanelComprarLibro(Home h) {
         initComponents();
         inicializar();
-        this.home=home;
+        this.home=h;
+       
     }
     
     private void inicializar(){//aca se inicializa un panel q contiene el libro
@@ -71,6 +74,11 @@ public class PanelComprarLibro extends javax.swing.JPanel {
         });
 
         botonAgregar.setText("boton agregar al carrito");
+        botonAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botonAgregarMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -113,9 +121,13 @@ public class PanelComprarLibro extends javax.swing.JPanel {
         VentanaDetalle ventana=new VentanaDetalle(this.home);       
         ventana.setLocationRelativeTo(this);
         ventana.setVisible(true);
-        this.setEnabled(false);
         this.home.setEnabled(false);
     }//GEN-LAST:event_botonDetalleMouseClicked
+
+    private void botonAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonAgregarMouseClicked
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_botonAgregarMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
