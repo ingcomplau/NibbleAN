@@ -46,7 +46,7 @@ public class Home extends javax.swing.JFrame {
     
     private void llenarHome(){//se ponen los libros en el home, pongo uno de prueba
         //Operaciones.
-        this.panelHome.add(new PanelComprarLibro());
+        this.panelHome.add(new PanelComprarLibro(this));
         this.panelHome.setLayout(new GridLayout(1,1));
     }
 

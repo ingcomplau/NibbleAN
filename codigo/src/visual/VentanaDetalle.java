@@ -11,12 +11,14 @@ package visual;
  * @author Franco
  */
 public class VentanaDetalle extends javax.swing.JFrame {
-
+    private Home home;
     /**
      * Creates new form VentanaDetalle
      */
-    public VentanaDetalle() {
+    public VentanaDetalle(Home home) {
         initComponents();
+        this.home=home;
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -31,14 +33,27 @@ public class VentanaDetalle extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         panelDetalle = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        labelImagen = new javax.swing.JLabel();
         labelTitulo = new javax.swing.JLabel();
+        labelAutor = new javax.swing.JLabel();
+        labelPrecio = new javax.swing.JLabel();
+        labelIsbn = new javax.swing.JLabel();
+        labelClasificacion = new javax.swing.JLabel();
+        labelFormato = new javax.swing.JLabel();
+        labelPaginas = new javax.swing.JLabel();
+        labelPublicacion = new javax.swing.JLabel();
+        labelIdioma = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         etiquetaDetalle = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        areaTexto = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(218, 216, 218));
 
@@ -46,13 +61,45 @@ public class VentanaDetalle extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jLabel1.setPreferredSize(new java.awt.Dimension(128, 162));
+        labelImagen.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        labelImagen.setPreferredSize(new java.awt.Dimension(128, 162));
 
         labelTitulo.setBackground(new java.awt.Color(153, 153, 153));
         labelTitulo.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         labelTitulo.setForeground(new java.awt.Color(153, 153, 153));
         labelTitulo.setText("aca titulo");
+
+        labelAutor.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        labelAutor.setForeground(new java.awt.Color(153, 153, 153));
+        labelAutor.setText("Auto:");
+
+        labelPrecio.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        labelPrecio.setForeground(new java.awt.Color(0, 51, 255));
+        labelPrecio.setText("Precio: $");
+
+        labelIsbn.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        labelIsbn.setForeground(new java.awt.Color(153, 153, 153));
+        labelIsbn.setText("I.S.B.N:");
+
+        labelClasificacion.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        labelClasificacion.setForeground(new java.awt.Color(153, 153, 153));
+        labelClasificacion.setText("Clasificacion:");
+
+        labelFormato.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        labelFormato.setForeground(new java.awt.Color(153, 153, 153));
+        labelFormato.setText("Formato:");
+
+        labelPaginas.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        labelPaginas.setForeground(new java.awt.Color(153, 153, 153));
+        labelPaginas.setText("Paginas:");
+
+        labelPublicacion.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        labelPublicacion.setForeground(new java.awt.Color(153, 153, 153));
+        labelPublicacion.setText("Publicacion:");
+
+        labelIdioma.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        labelIdioma.setForeground(new java.awt.Color(153, 153, 153));
+        labelIdioma.setText("Idioma:");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -62,25 +109,53 @@ public class VentanaDetalle extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(56, 56, 56)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(labelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(52, 52, 52)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelTitulo)
+                            .addComponent(labelClasificacion, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(labelIdioma)
+                            .addComponent(labelPublicacion)
+                            .addComponent(labelPaginas)
+                            .addComponent(labelFormato)
+                            .addComponent(labelIsbn)
+                            .addComponent(labelAutor)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(236, 236, 236)
-                        .addComponent(labelTitulo)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(330, 330, 330)
+                        .addComponent(labelPrecio)))
+                .addContainerGap(233, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addComponent(labelTitulo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(114, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(labelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)
+                        .addComponent(labelPrecio))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(labelAutor)
+                        .addGap(4, 4, 4)
+                        .addComponent(labelIsbn)
+                        .addGap(1, 1, 1)
+                        .addComponent(labelClasificacion)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labelFormato)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labelPaginas)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labelPublicacion)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(labelIdioma)))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
-        etiquetaDetalle.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+        etiquetaDetalle.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         etiquetaDetalle.setForeground(new java.awt.Color(153, 153, 153));
         etiquetaDetalle.setText("Detalles");
 
@@ -89,26 +164,23 @@ public class VentanaDetalle extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(69, 69, 69)
+                .addGap(38, 38, 38)
                 .addComponent(etiquetaDetalle)
-                .addContainerGap(97, Short.MAX_VALUE))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(etiquetaDetalle)
-                .addContainerGap())
+            .addComponent(etiquetaDetalle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jTextArea1.setEditable(false);
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jTextArea1.setForeground(new java.awt.Color(153, 153, 153));
-        jTextArea1.setLineWrap(true);
-        jTextArea1.setRows(5);
-        jTextArea1.setFocusable(false);
-        jScrollPane1.setViewportView(jTextArea1);
+        areaTexto.setEditable(false);
+        areaTexto.setColumns(20);
+        areaTexto.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        areaTexto.setForeground(new java.awt.Color(153, 153, 153));
+        areaTexto.setLineWrap(true);
+        areaTexto.setRows(5);
+        areaTexto.setFocusable(false);
+        jScrollPane2.setViewportView(areaTexto);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -117,12 +189,12 @@ public class VentanaDetalle extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelDetalle, javax.swing.GroupLayout.PREFERRED_SIZE, 969, Short.MAX_VALUE)
+                    .addComponent(panelDetalle, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1))
+                    .addComponent(jScrollPane2))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -131,18 +203,18 @@ public class VentanaDetalle extends javax.swing.JFrame {
                 .addComponent(panelDetalle, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -152,49 +224,32 @@ public class VentanaDetalle extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        this.dispose();
+        this.home.setEnabled(true);
+    }//GEN-LAST:event_formWindowClosing
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VentanaDetalle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VentanaDetalle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VentanaDetalle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VentanaDetalle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VentanaDetalle().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea areaTexto;
     private javax.swing.JLabel etiquetaDetalle;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel labelAutor;
+    private javax.swing.JLabel labelClasificacion;
+    private javax.swing.JLabel labelFormato;
+    private javax.swing.JLabel labelIdioma;
+    private javax.swing.JLabel labelImagen;
+    private javax.swing.JLabel labelIsbn;
+    private javax.swing.JLabel labelPaginas;
+    private javax.swing.JLabel labelPrecio;
+    private javax.swing.JLabel labelPublicacion;
     private javax.swing.JLabel labelTitulo;
     private javax.swing.JLabel panelDetalle;
     // End of variables declaration//GEN-END:variables

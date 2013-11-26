@@ -11,13 +11,14 @@ package visual;
  * @author Franco
  */
 public class PanelComprarLibro extends javax.swing.JPanel {
-
+    private Home home;
     /**
      * Creates new form PanelCompraLibro
      */
-    public PanelComprarLibro() {
+    public PanelComprarLibro(Home home) {
         initComponents();
         inicializar();
+        this.home=home;
     }
     
     private void inicializar(){//aca se inicializa un panel q contiene el libro
@@ -63,6 +64,11 @@ public class PanelComprarLibro extends javax.swing.JPanel {
         jScrollPane1.setViewportView(textoDetalle);
 
         botonDetalle.setText("boton detalle");
+        botonDetalle.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botonDetalleMouseClicked(evt);
+            }
+        });
 
         botonAgregar.setText("boton agregar al carrito");
 
@@ -101,6 +107,15 @@ public class PanelComprarLibro extends javax.swing.JPanel {
                 .addContainerGap(23, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void botonDetalleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonDetalleMouseClicked
+        // TODO add your handling code here:
+        VentanaDetalle ventana=new VentanaDetalle(this.home);       
+        ventana.setLocationRelativeTo(this);
+        ventana.setVisible(true);
+        this.setEnabled(false);
+        this.home.setEnabled(false);
+    }//GEN-LAST:event_botonDetalleMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
