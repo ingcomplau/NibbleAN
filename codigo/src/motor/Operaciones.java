@@ -9,6 +9,7 @@ import excepciones.ErrorAutor;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.LinkedList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
@@ -319,4 +320,38 @@ public class Operaciones extends Conexion{
          cerrar();
      }
     }
+     
+     public LinkedList<Libro> getTodosLosLibros() {
+         LinkedList<Libro> lista = new LinkedList<>();
+         Libro libro;
+         resultado = null;  
+        String sql = "SELECT * from libros order by titulo";
+        try {
+            resultado = consultar(sql);
+            if(resultado != null){            
+                while(resultado.next()){
+                    libro = new Libro();
+                    libro.id  = resultado.getInt("id");
+                    libro.isbn = resultado.getString("isbn");
+                    libro.titulo = resultado.getString("titulo"); 
+                    libro.cant_paginas = new Integer(resultado.getInt("cant_paginas")).toString();
+                    libro.precio = new Float(resultado.getFloat("precio")).toString();
+                    libro.fecha_lanzamiento = resultado.getString("fecha_lanzamiento");
+                    libro.resumen = resultado.getString("resumen");
+                    libro.primeras_paginas = resultado.getString("primeras_paginas");
+                    libro.autor_id = resultado.getInt("autor_id");
+                    libro.idioma_id = resultado.getInt("idioma_id");
+                    libro.urltapa = resultado.getString("urltapa");
+                    lista.add(libro);
+                }
+            }
+        }catch(SQLException e){
+        }
+
+        finally
+     {
+        cerrar();
+     }
+         return lista;
+     }
 }
