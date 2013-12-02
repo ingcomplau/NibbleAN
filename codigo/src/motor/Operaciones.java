@@ -9,6 +9,7 @@ import excepciones.ErrorAutor;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.LinkedList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
@@ -21,7 +22,7 @@ public class Operaciones extends Conexion{
      */
     private static ResultSet resultado = null;
 
-
+  
     
     public Operaciones()
     {
@@ -138,6 +139,31 @@ public class Operaciones extends Conexion{
      public static void llenarTablaLibros(DefaultTableModel tableModel){
         resultado = null;  
         String sql = "SELECT a.isbn,a.titulo,b.apellido ||' '||b.nombre, a.urltapa from libros a INNER JOIN autores b on a.autor_id=b.id order by a.titulo";
+        try {
+            resultado = consultar(sql);
+            if(resultado != null){
+                int numeroColumna = resultado.getMetaData().getColumnCount();              
+                while(resultado.next()){
+                    Object []objetos = new Object[numeroColumna];
+                    for(int i = 1;i <= numeroColumna - 1 ;i++){
+                        objetos[i-1] = resultado.getObject(i);
+                    }
+                    objetos[numeroColumna - 1] = resultado.getString(numeroColumna);                    
+                    tableModel.addRow(objetos);
+                }
+            }
+        }catch(SQLException e){
+        }
+
+        finally
+     {
+        cerrar();
+     }
+    }
+     
+      public static void llenarTablaPedidosAdmin(DefaultTableModel tableModel) {
+         resultado = null;  
+        String sql = "SELECT c.usuario,b.urltapa,b.titulo,d.apellido ||' '||d.nombre,a.precio,a.cantidad,a.fecha,a.estado from compras a INNER JOIN libros b on a.libro_id=b.id  INNER JOIN usuarios c on a.usuario_id=c.id INNER JOIN autores d on b.autor_id=d.id order by c.usuario";
         try {
             resultado = consultar(sql);
             if(resultado != null){
@@ -294,4 +320,38 @@ public class Operaciones extends Conexion{
          cerrar();
      }
     }
+     
+     public LinkedList<Libro> getTodosLosLibros() {
+         LinkedList<Libro> lista = new LinkedList<>();
+         Libro libro;
+         resultado = null;  
+        String sql = "SELECT * from libros order by titulo";
+        try {
+            resultado = consultar(sql);
+            if(resultado != null){            
+                while(resultado.next()){
+                    libro = new Libro();
+                    libro.id  = resultado.getInt("id");
+                    libro.isbn = resultado.getString("isbn");
+                    libro.titulo = resultado.getString("titulo"); 
+                    libro.cant_paginas = new Integer(resultado.getInt("cant_paginas")).toString();
+                    libro.precio = new Float(resultado.getFloat("precio")).toString();
+                    libro.fecha_lanzamiento = resultado.getString("fecha_lanzamiento");
+                    libro.resumen = resultado.getString("resumen");
+                    libro.primeras_paginas = resultado.getString("primeras_paginas");
+                    libro.autor_id = resultado.getInt("autor_id");
+                    libro.idioma_id = resultado.getInt("idioma_id");
+                    libro.urltapa = resultado.getString("urltapa");
+                    lista.add(libro);
+                }
+            }
+        }catch(SQLException e){
+        }
+
+        finally
+     {
+        cerrar();
+     }
+         return lista;
+     }
 }
