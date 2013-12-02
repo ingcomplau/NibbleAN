@@ -66,7 +66,7 @@ public class PanelCarrito extends javax.swing.JPanel {
         labelCantidad.setForeground(new java.awt.Color(153, 153, 153));
         labelCantidad.setText("borrar esto");
 
-        labelEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonEliminar.png"))); // NOI18N
+        labelEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonEliminar (2).png"))); // NOI18N
         labelEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 labelEliminarMouseClicked(evt);
@@ -93,7 +93,7 @@ public class PanelCarrito extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(labelPrecio)
                             .addComponent(labelTitulo))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addComponent(labelEliminar)
                 .addGap(29, 29, 29))
         );
@@ -122,12 +122,12 @@ public class PanelCarrito extends javax.swing.JPanel {
 
     private void labelEliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelEliminarMouseEntered
         // TODO add your handling code here:
-        labelEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonEliminarFocus.png")));
+        labelEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonEliminar (2)Focus.png")));
     }//GEN-LAST:event_labelEliminarMouseEntered
 
     private void labelEliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelEliminarMouseExited
         // TODO add your handling code here:
-        labelEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonEliminar.png")));
+        labelEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonEliminar (2).png")));
     }//GEN-LAST:event_labelEliminarMouseExited
 
 

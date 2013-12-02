@@ -75,7 +75,7 @@ public class VentanaAdmin extends javax.swing.JFrame {
             }
         });
 
-        botonPedidos.setText("PEDIDOS");
+        botonPedidos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/LayerPedidos.png"))); // NOI18N
         botonPedidos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 botonPedidosMouseClicked(evt);
@@ -99,8 +99,8 @@ public class VentanaAdmin extends javax.swing.JFrame {
         VentanaAdminPanelLayout.setVerticalGroup(
             VentanaAdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(VentanaAdminPanelLayout.createSequentialGroup()
-                .addComponent(encabezado, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(93, 93, 93)
+                .addComponent(encabezado)
+                .addGap(69, 69, 69)
                 .addGroup(VentanaAdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(botonAgregarLibro)
                     .addComponent(botonVisualizarLibro))

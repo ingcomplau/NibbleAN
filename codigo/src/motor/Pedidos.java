@@ -42,7 +42,7 @@ public class Pedidos extends ListaCompras {
                }
         } else {
             resultado = null;  
-            String sql = "SELECT * FROM Libros INNER JOIN Compras ON Libros.id=compras.libro_id";
+            String sql = "SELECT * FROM Libros INNER JOIN Compras ON Libros.id=compras.libro_id order by compras.usuario_id";
            try {
             resultado = consultar(sql);
             if(resultado != null){
