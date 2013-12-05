@@ -56,7 +56,6 @@ public class PanelComprarLibro extends javax.swing.JPanel {
         labelTitulo.setText("sdfsdf");
 
         textoDetalle.setEditable(false);
-        textoDetalle.setBackground(new java.awt.Color(218, 216, 218));
         textoDetalle.setColumns(20);
         textoDetalle.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         textoDetalle.setForeground(new java.awt.Color(153, 153, 153));
@@ -66,17 +65,29 @@ public class PanelComprarLibro extends javax.swing.JPanel {
         textoDetalle.setFocusable(false);
         jScrollPane1.setViewportView(textoDetalle);
 
-        botonDetalle.setText("boton detalle");
+        botonDetalle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonDetalles.png"))); // NOI18N
         botonDetalle.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 botonDetalleMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                botonDetalleMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                botonDetalleMouseExited(evt);
+            }
         });
 
-        botonAgregar.setText("boton agregar al carrito");
+        botonAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonAgregarCompr.png"))); // NOI18N
         botonAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 botonAgregarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                botonAgregarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                botonAgregarMouseExited(evt);
             }
         });
 
@@ -88,15 +99,15 @@ public class PanelComprarLibro extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(labelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(botonAgregar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addComponent(botonDetalle))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(labelTitulo)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,11 +119,11 @@ public class PanelComprarLibro extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane1))
                     .addComponent(labelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(botonDetalle)
                     .addComponent(botonAgregar))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -128,6 +139,26 @@ public class PanelComprarLibro extends javax.swing.JPanel {
         // TODO add your handling code here:
        
     }//GEN-LAST:event_botonAgregarMouseClicked
+
+    private void botonAgregarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonAgregarMouseEntered
+        // TODO add your handling code here:
+        this.botonAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonAgregarComprFocus.png")));
+    }//GEN-LAST:event_botonAgregarMouseEntered
+
+    private void botonAgregarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonAgregarMouseExited
+        // TODO add your handling code here:
+        this.botonAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonAgregarCompr.png")));
+    }//GEN-LAST:event_botonAgregarMouseExited
+
+    private void botonDetalleMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonDetalleMouseEntered
+        // TODO add your handling code here:
+        this.botonDetalle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonDetallesFocus.png")));
+    }//GEN-LAST:event_botonDetalleMouseEntered
+
+    private void botonDetalleMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonDetalleMouseExited
+        // TODO add your handling code here:
+        this.botonDetalle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonDetalles.png")));
+    }//GEN-LAST:event_botonDetalleMouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

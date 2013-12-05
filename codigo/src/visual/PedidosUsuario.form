@@ -28,12 +28,12 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="pedidosUsuarioPanel" alignment="0" max="32767" attributes="0"/>
+          <Component id="pedidosUsuarioPanel" min="-2" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="pedidosUsuarioPanel" alignment="0" max="32767" attributes="0"/>
+          <Component id="pedidosUsuarioPanel" min="-2" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -48,28 +48,17 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="286" max="-2" attributes="0"/>
-                  <Component id="encabezado" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="317" max="32767" attributes="0"/>
-              </Group>
-              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                  <Component id="jScrollTablaPedidos" alignment="1" pref="670" max="32767" attributes="0"/>
-              </Group>
+              <Component id="encabezado" max="32767" attributes="0"/>
+              <Component id="jScrollTablaPedidos" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="encabezado" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="446" max="32767" attributes="0"/>
-              </Group>
-              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="0" pref="78" max="32767" attributes="0"/>
-                      <Component id="jScrollTablaPedidos" min="-2" pref="393" max="-2" attributes="0"/>
-                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="jScrollTablaPedidos" min="-2" pref="393" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -155,7 +144,9 @@
         </Container>
         <Component class="javax.swing.JLabel" name="encabezado">
           <Properties>
-            <Property name="text" type="java.lang.String" value="ENCABEZADO"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/visual/imagen/Resource/PanelPedidos.png"/>
+            </Property>
           </Properties>
         </Component>
       </SubComponents>

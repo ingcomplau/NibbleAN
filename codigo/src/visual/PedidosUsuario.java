@@ -74,40 +74,33 @@ public class PedidosUsuario extends javax.swing.JFrame {
         tablaPedidos.getTableHeader().setReorderingAllowed(false);
         jScrollTablaPedidos.setViewportView(tablaPedidos);
 
-        encabezado.setText("ENCABEZADO");
+        encabezado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/PanelPedidos.png"))); // NOI18N
 
         javax.swing.GroupLayout pedidosUsuarioPanelLayout = new javax.swing.GroupLayout(pedidosUsuarioPanel);
         pedidosUsuarioPanel.setLayout(pedidosUsuarioPanelLayout);
         pedidosUsuarioPanelLayout.setHorizontalGroup(
             pedidosUsuarioPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pedidosUsuarioPanelLayout.createSequentialGroup()
-                .addGap(286, 286, 286)
-                .addComponent(encabezado)
-                .addContainerGap(317, Short.MAX_VALUE))
-            .addGroup(pedidosUsuarioPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jScrollTablaPedidos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 670, Short.MAX_VALUE))
+            .addComponent(encabezado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jScrollTablaPedidos)
         );
         pedidosUsuarioPanelLayout.setVerticalGroup(
             pedidosUsuarioPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pedidosUsuarioPanelLayout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(encabezado)
-                .addContainerGap(446, Short.MAX_VALUE))
-            .addGroup(pedidosUsuarioPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pedidosUsuarioPanelLayout.createSequentialGroup()
-                    .addGap(0, 78, Short.MAX_VALUE)
-                    .addComponent(jScrollTablaPedidos, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollTablaPedidos, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pedidosUsuarioPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pedidosUsuarioPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pedidosUsuarioPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pedidosUsuarioPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();

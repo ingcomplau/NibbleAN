@@ -85,24 +85,22 @@ public class PedidosAdmin extends javax.swing.JFrame {
         tablaPedidos.getTableHeader().setReorderingAllowed(false);
         jScrollTablaPedidos.setViewportView(tablaPedidos);
 
-        encabezado.setText("ENCABEZADO");
+        encabezado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/PanelPedidos.png"))); // NOI18N
 
         javax.swing.GroupLayout pedidosAdminPanelLayout = new javax.swing.GroupLayout(pedidosAdminPanel);
         pedidosAdminPanel.setLayout(pedidosAdminPanelLayout);
         pedidosAdminPanelLayout.setHorizontalGroup(
             pedidosAdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollTablaPedidos, javax.swing.GroupLayout.DEFAULT_SIZE, 765, Short.MAX_VALUE)
+            .addComponent(jScrollTablaPedidos)
             .addGroup(pedidosAdminPanelLayout.createSequentialGroup()
-                .addGap(339, 339, 339)
                 .addComponent(encabezado)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         pedidosAdminPanelLayout.setVerticalGroup(
             pedidosAdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pedidosAdminPanelLayout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(encabezado)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addComponent(jScrollTablaPedidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -116,7 +114,7 @@ public class PedidosAdmin extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(pedidosAdminPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 11, Short.MAX_VALUE))
         );
 
         pack();
