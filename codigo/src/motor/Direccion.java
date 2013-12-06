@@ -156,7 +156,7 @@ public class Direccion {
     }
 
     public void setProvincia(Integer provincia) {
-        this.provincia = provincia;
+        this.provincia = provincia + 1;
     }
     
     

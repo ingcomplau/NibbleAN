@@ -28,7 +28,7 @@ public class PanelCarrito extends javax.swing.JPanel {
     
     private void inicializar(){
         this.labelCantidad.setText("Cantidad: "+this.compra.getCantidad());
-        this.labelPrecio.setText("Precio: "+(this.compra.getPrecio()*this.compra.getCantidad()));
+        this.labelPrecio.setText("Precio: "+(this.compra.getPrecio()));
         this.labelTitulo.setText(this.compra.getLibro().getTitulo());
         this.labelImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource(this.compra.getLibro().getUrlTapa())));
         

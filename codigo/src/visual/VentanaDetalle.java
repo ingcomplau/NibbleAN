@@ -6,18 +6,23 @@
 
 package visual;
 
+import javax.swing.ImageIcon;
+import motor.Libro;
+
 /**
  *
  * @author Franco
  */
 public class VentanaDetalle extends javax.swing.JFrame {
     private Home home;
+    private Libro libro;
     /**
      * Creates new form VentanaDetalle
      */
-    public VentanaDetalle(Home home) {
-        initComponents();
+    public VentanaDetalle(Home home, Libro libro) { 
         this.home=home;
+        this.libro = libro;
+        initComponents();
         this.setLocationRelativeTo(null);
     }
 
@@ -43,6 +48,10 @@ public class VentanaDetalle extends javax.swing.JFrame {
         labelPaginas = new javax.swing.JLabel();
         labelPublicacion = new javax.swing.JLabel();
         labelIdioma = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
@@ -62,17 +71,18 @@ public class VentanaDetalle extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
+        labelImagen.setIcon(new ImageIcon(getClass().getResource(libro.getUrlTapa())));
         labelImagen.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         labelImagen.setPreferredSize(new java.awt.Dimension(128, 162));
 
         labelTitulo.setBackground(new java.awt.Color(153, 153, 153));
         labelTitulo.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         labelTitulo.setForeground(new java.awt.Color(153, 153, 153));
-        labelTitulo.setText("aca titulo");
+        labelTitulo.setText(libro.getTitulo());
 
         labelAutor.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         labelAutor.setForeground(new java.awt.Color(153, 153, 153));
-        labelAutor.setText("Auto:");
+        labelAutor.setText("Autor:");
 
         labelPrecio.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         labelPrecio.setForeground(new java.awt.Color(0, 51, 255));
@@ -102,6 +112,14 @@ public class VentanaDetalle extends javax.swing.JFrame {
         labelIdioma.setForeground(new java.awt.Color(153, 153, 153));
         labelIdioma.setText("Idioma:");
 
+        jLabel1.setText(/*libro.getAutor().getNombre() + " " +libro.getAutor().getApellido()*/"");
+
+        jLabel2.setText(libro.getIsbn());
+
+        jLabel3.setText(libro.getCant_paginas());
+
+        jLabel4.setText(libro.getPrecio());
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -114,17 +132,28 @@ public class VentanaDetalle extends javax.swing.JFrame {
                         .addGap(52, 52, 52)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(labelTitulo)
-                            .addComponent(labelClasificacion, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(labelIdioma)
                             .addComponent(labelPublicacion)
-                            .addComponent(labelPaginas)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(labelPaginas)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel3))
                             .addComponent(labelFormato)
-                            .addComponent(labelIsbn)
-                            .addComponent(labelAutor)))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(labelIsbn)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel2))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(labelAutor)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel1))
+                            .addComponent(labelClasificacion)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(330, 330, 330)
-                        .addComponent(labelPrecio)))
-                .addContainerGap(233, Short.MAX_VALUE))
+                        .addComponent(labelPrecio)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel4)))
+                .addContainerGap(193, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,17 +165,25 @@ public class VentanaDetalle extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(labelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(32, 32, 32)
-                        .addComponent(labelPrecio))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelPrecio)
+                            .addComponent(jLabel4)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(labelAutor)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelAutor)
+                            .addComponent(jLabel1))
                         .addGap(4, 4, 4)
-                        .addComponent(labelIsbn)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelIsbn)
+                            .addComponent(jLabel2))
                         .addGap(1, 1, 1)
                         .addComponent(labelClasificacion)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(labelFormato)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(labelPaginas)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelPaginas)
+                            .addComponent(jLabel3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(labelPublicacion)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -162,6 +199,7 @@ public class VentanaDetalle extends javax.swing.JFrame {
         jTextArea1.setForeground(new java.awt.Color(153, 153, 153));
         jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
+        jTextArea1.setText(libro.getResumen());
         jScrollPane1.setViewportView(jTextArea1);
 
         jTabbedPane1.addTab("Detalles", jScrollPane1);
@@ -216,6 +254,10 @@ public class VentanaDetalle extends javax.swing.JFrame {
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

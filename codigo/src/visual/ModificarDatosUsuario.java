@@ -8,6 +8,8 @@ package visual;
 
 import excepciones.ErrorUsuario;
 import java.awt.Color;
+import javax.swing.DefaultComboBoxModel;
+import motor.Operaciones;
 import motor.Usuario;
 
 
@@ -28,8 +30,10 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
         this.usuario = usuario;
         this.home=h;
         initComponents();
-        this.setSize(430, 230);
-        this.jPanel1.setVisible(false);
+        //this.setSize(430, 230);
+        //this.jPanel1.setVisible(false);
+        Operaciones.llenarListaProvincias((DefaultComboBoxModel)selecProv.getModel());
+        selecProv.setSelectedIndex(usuario.getDireccion().getProvincia());
         
     }
 
@@ -149,7 +153,6 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
         errorEmail.setForeground(new java.awt.Color(255, 0, 0));
 
         selecProv.setBackground(new java.awt.Color(218, 216, 218));
-        selecProv.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         selecProv.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 selecProvItemStateChanged(evt);
@@ -312,7 +315,6 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
                         .addGap(6, 6, 6)
                         .addComponent(campoConfirmarContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(errorConfirmarContraseña)
                 .addGap(284, 284, 284))
         );

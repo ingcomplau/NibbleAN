@@ -7,13 +7,16 @@
 package visual;
 
 import java.awt.GridLayout;
+import java.util.LinkedList;
 import motor.Carrito;
+import motor.Libro;
 import motor.Operaciones;
 import motor.Usuario;
 
 public class Home extends javax.swing.JFrame {
     protected Carrito carrito = null;
-    private Usuario usuario = null;
+    protected Usuario usuario = null;
+    private LinkedList<Libro> libros = null;
     
 
     
@@ -33,6 +36,7 @@ public class Home extends javax.swing.JFrame {
     }
     
     public void actualizar() {
+        llenarHome();
         if (usuario != null){
             //Visibilizar botón cuenta, botón carrito, botón pedidos, botón salir.         
             // Ocultar botón registrarse e identificarse
@@ -46,9 +50,15 @@ public class Home extends javax.swing.JFrame {
     }
     
     private void llenarHome(){//se ponen los libros en el home, pongo uno de prueba
-        //Operaciones.
-        this.panelHome.add(new PanelComprarLibro(this));
-        this.panelHome.setLayout(new GridLayout(1,1));
+        panelHome = new javax.swing.JPanel();
+        panelHome.setBackground(new java.awt.Color(218, 216, 218));
+        panelHome.setLayout(new java.awt.GridLayout(1, 0));
+        jScrollPane1.setViewportView(panelHome);
+        this.libros = Operaciones.getTodosLosLibros();
+         for(int i = 0;i < libros.size() ;i++){
+                        this.panelHome.add(new PanelComprarLibro(this, libros.get(i)));
+                    }
+        this.panelHome.setLayout(new GridLayout(libros.size()/2,2));
     }
 
     /**
@@ -286,7 +296,7 @@ public class Home extends javax.swing.JFrame {
         jScrollPane1.setBackground(new java.awt.Color(218, 216, 218));
         jScrollPane1.setBorder(null);
 
-        panelHome.setBackground(new java.awt.Color(255, 255, 255));
+        panelHome.setBackground(new java.awt.Color(218, 216, 218));
         panelHome.setLayout(new java.awt.GridLayout(1, 0));
         jScrollPane1.setViewportView(panelHome);
 

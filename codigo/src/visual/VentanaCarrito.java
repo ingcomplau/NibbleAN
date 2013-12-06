@@ -121,11 +121,10 @@ public class VentanaCarrito extends javax.swing.JFrame {
 
     private void llenar(){
         float suma=0;
-        while(!this.carrito.isEmpty()){
-            this.panelPrincipal.add(new PanelCarrito(this.carrito.element(),this.carrito));
-            suma=suma+(this.carrito.element().getCantidad()*this.carrito.element().getPrecio());
-            this.carrito.iterator().next();
-        }
+         for(int i = 0;i < this.carrito.size() ;i++){
+               this.panelPrincipal.add(new PanelCarrito(this.carrito.get(i),this.carrito));
+               suma=suma+(this.carrito.get(i).getPrecio());
+         }
         this.total.setText("Total: $ "+suma);
         if(this.carrito.size()==0)
             this.panelPrincipal.setLayout(new GridLayout(1,0));//como minimo grid debe tener este valor

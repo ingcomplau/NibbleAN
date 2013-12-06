@@ -113,6 +113,8 @@ public class Operaciones extends Conexion{
      }
     }
      
+     
+     
      public static void llenarListaAutores(JList listaModel){
         resultado = null;
         DefaultListModel x = new javax.swing.DefaultListModel();
@@ -300,8 +302,8 @@ public class Operaciones extends Conexion{
              
     }
     
-        
-     public static void llenarListaIdiomas(DefaultComboBoxModel comboModel){
+    
+    public static void llenarListaIdiomas(DefaultComboBoxModel comboModel){
         resultado = null;
         String sql = "select nombre from idiomas";
         try {
@@ -320,8 +322,28 @@ public class Operaciones extends Conexion{
          cerrar();
      }
     }
+        
+     public static void llenarListaProvincias(DefaultComboBoxModel comboModel){
+        resultado = null;
+        String sql = "select nombre from provincias";
+        try {
+            resultado = consultar(sql);
+            if(resultado != null){
+                while(resultado.next()){
+                   comboModel.addElement(resultado.getObject(1)); 
+                }
+            }
+        }catch(SQLException e){
+            
+        }
+
+        finally
+     {
+         cerrar();
+     }
+    }
      
-     public LinkedList<Libro> getTodosLosLibros() {
+     public static LinkedList<Libro> getTodosLosLibros() {
          LinkedList<Libro> lista = new LinkedList<>();
          Libro libro;
          resultado = null;  

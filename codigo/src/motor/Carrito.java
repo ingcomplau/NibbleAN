@@ -16,9 +16,9 @@ public class Carrito extends ListaCompras{
         
         while (!this.isEmpty()){
             this.listIterator().next();
-            Operaciones.insertar("insert into compras(usuario_id, libro_id, precio, fecha, cantidad) "
-                    + "values('"+ usuario.getId() +"', '"+this.element().getLibro().getId()+"',"+this.element().getLibro().getPrecio()+","
-                    +this.element().getFecha()+",'"+this.element().getCantidad()+"');"); 
+             Operaciones.insertar("insert into compras(usuario_id, libro_id, precio, fecha, cantidad) "
+                    + "values ('"+ usuario.getId() +"','"+this.element().getLibro().getId()+"','"+this.element().getLibro().getPrecio()+"',"
+                     + "'"+this.element().getFecha()+"','"+this.element().getCantidad()+"')");
             this.remove();
         }                     
     }
