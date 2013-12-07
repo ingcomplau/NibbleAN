@@ -23,12 +23,13 @@ public class Direccion {
     private Integer provincia;
 
     public Direccion(String usuario) throws ErrorUsuario {
+        Conexion conexion = new Conexion();
         ResultSet resultado = null;  
         String sql = "SELECT * from usuarios where usuario='"+usuario+"'";
         try{
-            resultado = Operaciones.consultar(sql);
+            resultado = Operaciones.consultar(sql,conexion);
             if (resultado != null & !resultado.next()) {
-                Operaciones.cerrar();
+                Operaciones.cerrar(conexion);
                 ErrorUsuario e = new ErrorUsuario();
                 e.setUsuarioInvalido();
                 throw e;
@@ -38,7 +39,7 @@ public class Direccion {
                 this.localidad = resultado.getString("localidad");
                 this.provincia = resultado.getInt("provincia_id");
                 this.codigoPostal = new Integer(resultado.getInt("c_postal")).toString();  
-                Operaciones.cerrar();
+                Operaciones.cerrar(conexion);
              }
             }catch(SQLException ex){
          }
