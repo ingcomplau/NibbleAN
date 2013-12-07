@@ -298,7 +298,7 @@
             <Component class="javax.swing.JLabel" name="jLabel1">
               <Properties>
                 <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="/*libro.getAutor().getNombre() + &quot; &quot; +libro.getAutor().getApellido()*/&quot;&quot;" type="code"/>
+                  <Connection code="libro.getAutor().getNombre() + &quot; &quot; +libro.getAutor().getApellido()" type="code"/>
                 </Property>
               </Properties>
             </Component>

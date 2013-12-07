@@ -112,7 +112,7 @@ public class VentanaDetalle extends javax.swing.JFrame {
         labelIdioma.setForeground(new java.awt.Color(153, 153, 153));
         labelIdioma.setText("Idioma:");
 
-        jLabel1.setText(/*libro.getAutor().getNombre() + " " +libro.getAutor().getApellido()*/"");
+        jLabel1.setText(libro.getAutor().getNombre() + " " +libro.getAutor().getApellido());
 
         jLabel2.setText(libro.getIsbn());
 
