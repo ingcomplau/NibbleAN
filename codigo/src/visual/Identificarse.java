@@ -146,15 +146,11 @@ public class Identificarse extends javax.swing.JFrame {
                 .addComponent(campoContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(13, 13, 13)
                 .addComponent(errorLog)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
-                        .addComponent(botonOlvidaste)
-                        .addGap(45, 45, 45))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(botonEntrar)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(botonEntrar)
+                    .addComponent(botonOlvidaste))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -236,8 +232,10 @@ public class Identificarse extends javax.swing.JFrame {
             home.carrito=new Carrito(home.getUsuario());
             this.dispose();
             home.setEnabled(true);
+            this.errorLog.setVisible(false);
         } catch (ErrorUsuario e) {
             // Visualizar mensaje de error.
+            this.errorLog.setText(" Usuario o Contraseña Incorrecta");
         }
     }//GEN-LAST:event_botonEntrarMouseClicked
 

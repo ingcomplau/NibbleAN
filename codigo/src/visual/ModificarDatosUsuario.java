@@ -295,28 +295,27 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
                 .addGroup(panelCambiarContraseñaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelCambiarContraseñaLayout.createSequentialGroup()
                         .addGroup(panelCambiarContraseñaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelContraseñaActual)
-                            .addComponent(labelContraseñaNueva))
-                        .addGap(18, 18, 18)
-                        .addGroup(panelCambiarContraseñaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelCambiarContraseñaLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
+                            .addComponent(errorContraseñaActual)
+                            .addComponent(errorContraseñaNueva))
+                        .addGap(257, 328, Short.MAX_VALUE)
+                        .addComponent(errorConfirmarContraseña)
+                        .addGap(7, 87, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCambiarContraseñaLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(panelCambiarContraseñaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCambiarContraseñaLayout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(campoConfirmarContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCambiarContraseñaLayout.createSequentialGroup()
                                 .addGroup(panelCambiarContraseñaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(errorContraseñaActual)
-                                    .addComponent(errorContraseñaNueva))
-                                .addGap(257, 257, 257))
-                            .addGroup(panelCambiarContraseñaLayout.createSequentialGroup()
+                                    .addComponent(labelContraseñaNueva)
+                                    .addComponent(labelContraseñaActual))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(panelCambiarContraseñaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(campoContraseñaActual, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
-                                    .addComponent(campoContraseñaNueva))
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(panelCambiarContraseñaLayout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(6, 6, 6)
-                        .addComponent(campoConfirmarContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addComponent(errorConfirmarContraseña)
-                .addGap(284, 284, 284))
+                                    .addComponent(campoContraseñaNueva, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
+                                    .addComponent(campoContraseñaActual))))
+                        .addContainerGap())))
         );
         panelCambiarContraseñaLayout.setVerticalGroup(
             panelCambiarContraseñaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -509,7 +508,7 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
                 } else if(e.isTelefonoInvalido()){
                     errorTelefono.setText("Numero de telefono incorrecto");
                 }
-               // modificar.setEnabled(false);
+               this.botonGuardar.setEnabled(false);
                 ((javax.swing.JTextField) evt.getSource()).requestFocus();
             }
          }
@@ -570,10 +569,10 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
             try {
                 usuario.setClave(String.valueOf(campoContraseñaActual.getPassword()));
                 usuario.modificar();
-                errorConfirmarContraseña.setText(null);                              
+                errorConfirmarContraseña.setText(null);  
             } catch (ErrorUsuario e) {             
                 if(e.isClaveCorta()){
-                    errorConfirmarContraseña.setText("Contraseña Corta");
+                    errorConfirmarContraseña.setText("Contraseña Corta");   
                 }
                //modificar.setEnabled(false);
                 ((javax.swing.JPasswordField) evt.getSource()).requestFocus();

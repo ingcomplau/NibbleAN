@@ -23,6 +23,13 @@ public class Home extends javax.swing.JFrame {
     public Home() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.botonRegistrarse.setVisible(true);
+        this.botonIdentificarse.setVisible(true);
+        this.botonCuenta.setVisible(false);
+        this.botonConsultar.setVisible(false);
+        this.botonVer.setVisible(false);
+        this.botonSalir.setVisible(false);
+        this.botonAdministrar.setVisible(false);
         llenarHome();   
     }
     
@@ -38,14 +45,29 @@ public class Home extends javax.swing.JFrame {
     public void actualizar() {
         llenarHome();
         if (usuario != null){
-            //Visibilizar botón cuenta, botón carrito, botón pedidos, botón salir.         
+             //Visibilizar botón cuenta, botón carrito, botón pedidos, botón salir.         
             // Ocultar botón registrarse e identificarse
+            this.botonRegistrarse.setVisible(false);
+            this.botonIdentificarse.setVisible(false);
+            this.botonCuenta.setVisible(true);
+            this.botonConsultar.setVisible(true);
+            this.botonVer.setVisible(true);
+            this.botonSalir.setVisible(true);
+            this.botonAdministrar.setVisible(false);
             if (usuario.isAdministrador()){
-                // Visibilizar el boton de aministrar.
+                 // Visibilizar el boton de aministrar.
+                this.botonAdministrar.setVisible(true);
             }
         } else {
             //Ocultar botón cuenta, botón carrito, botón pedidos, botón salir, botón administrar.
             //Visibilizar botón registrarse e identificarse
+            this.botonRegistrarse.setVisible(true);
+            this.botonIdentificarse.setVisible(true);
+            this.botonCuenta.setVisible(false);
+            this.botonConsultar.setVisible(false);
+            this.botonVer.setVisible(false);
+            this.botonSalir.setVisible(false);
+            this.botonAdministrar.setVisible(false);
         }
     }
     
@@ -286,6 +308,11 @@ public class Home extends javax.swing.JFrame {
         botonRegistrarse.setForeground(new java.awt.Color(153, 153, 153));
         botonRegistrarse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonRegistrarse.png"))); // NOI18N
         botonRegistrarse.setToolTipText("");
+        botonRegistrarse.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botonRegistrarseMouseClicked(evt);
+            }
+        });
 
         labelCarrito.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/LayerCarrito.png"))); // NOI18N
 
@@ -555,6 +582,14 @@ public class Home extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.botonVer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonVer.png")));
     }//GEN-LAST:event_botonVerMouseExited
+
+    private void botonRegistrarseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonRegistrarseMouseClicked
+        // TODO add your handling code here:
+        AgregarUsuario au=new AgregarUsuario(this);
+        au.setLocationRelativeTo(this);
+        au.setVisible(true);
+        this.setEnabled(false);
+    }//GEN-LAST:event_botonRegistrarseMouseClicked
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

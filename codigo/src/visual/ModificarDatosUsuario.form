@@ -336,37 +336,36 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="labelContraseñaActual" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="labelContraseñaNueva" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="errorContraseñaActual" min="-2" max="-2" attributes="0"/>
+                                      <Component id="errorContraseñaNueva" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="errorContraseñaActual" min="-2" max="-2" attributes="0"/>
-                                              <Component id="errorContraseñaNueva" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="-2" pref="257" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" attributes="0">
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="campoContraseñaActual" pref="247" max="32767" attributes="0"/>
-                                              <Component id="campoContraseñaNueva" max="32767" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                      </Group>
-                                  </Group>
+                                  <EmptySpace min="257" pref="328" max="32767" attributes="0"/>
+                                  <Component id="errorConfirmarContraseña" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="7" pref="87" max="32767" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                                  <Component id="campoConfirmarContraseña" min="-2" pref="241" max="-2" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="campoConfirmarContraseña" min="-2" pref="254" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="labelContraseñaNueva" min="-2" max="-2" attributes="0"/>
+                                              <Component id="labelContraseñaActual" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="campoContraseñaNueva" pref="254" max="32767" attributes="0"/>
+                                              <Component id="campoContraseñaActual" max="32767" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <Component id="errorConfirmarContraseña" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="284" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
