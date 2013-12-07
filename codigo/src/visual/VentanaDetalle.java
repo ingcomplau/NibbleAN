@@ -23,7 +23,7 @@ public class VentanaDetalle extends javax.swing.JFrame {
         this.home=home;
         this.libro = libro;
         initComponents();
-        this.setLocationRelativeTo(null);
+       
     }
 
     /**

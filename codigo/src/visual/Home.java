@@ -291,12 +291,13 @@ public class Home extends javax.swing.JFrame {
 
         labelPedidios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/LayerPedidos.png"))); // NOI18N
 
-        panelFondo.setBackground(new java.awt.Color(218, 216, 218));
+        panelFondo.setBackground(new java.awt.Color(216, 218, 216));
 
-        jScrollPane1.setBackground(new java.awt.Color(218, 216, 218));
+        jScrollPane1.setBackground(new java.awt.Color(216, 218, 216));
         jScrollPane1.setBorder(null);
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
-        panelHome.setBackground(new java.awt.Color(218, 216, 218));
+        panelHome.setBackground(new java.awt.Color(255, 255, 255));
         panelHome.setLayout(new java.awt.GridLayout(1, 0));
         jScrollPane1.setViewportView(panelHome);
 
@@ -305,9 +306,9 @@ public class Home extends javax.swing.JFrame {
         panelFondoLayout.setHorizontalGroup(
             panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFondoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 845, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(125, 125, 125))
         );
         panelFondoLayout.setVerticalGroup(
             panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -317,7 +318,7 @@ public class Home extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        fondoLayer.setBackground(new java.awt.Color(218, 216, 218));
+        fondoLayer.setBackground(new java.awt.Color(216, 218, 216));
 
         labelLibro.setBackground(new java.awt.Color(218, 216, 218));
         labelLibro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/PanelLibros.png"))); // NOI18N
@@ -328,8 +329,8 @@ public class Home extends javax.swing.JFrame {
             fondoLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(fondoLayerLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(labelLibro)
-                .addContainerGap(137, Short.MAX_VALUE))
+                .addComponent(labelLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 695, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(95, Short.MAX_VALUE))
         );
         fondoLayerLayout.setVerticalGroup(
             fondoLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -351,7 +352,7 @@ public class Home extends javax.swing.JFrame {
                         .addComponent(imagenCookBook, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(panelBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(panelBlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBlancoLayout.createSequentialGroup()
                                 .addComponent(labelPedidios)
@@ -370,9 +371,9 @@ public class Home extends javax.swing.JFrame {
                                 .addComponent(botonRegistrarse))))
                     .addGroup(panelBlancoLayout.createSequentialGroup()
                         .addGap(101, 101, 101)
-                        .addGroup(panelBlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(panelFondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(fondoLayer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(panelBlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(fondoLayer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(panelFondo, javax.swing.GroupLayout.PREFERRED_SIZE, 855, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
