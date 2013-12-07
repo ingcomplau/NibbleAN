@@ -35,17 +35,18 @@ public class Usuario {
 
     public Usuario(String usuario, String clave) throws ErrorUsuario {
         existente = true;
+        Conexion conexion = new Conexion();
         ResultSet resultado = null;  
         String sql = "SELECT * from usuarios where usuario='"+usuario+"' and clave='"+clave+"'";
         try{
-            resultado = Operaciones.consultar(sql);
+            resultado = Operaciones.consultar(sql,conexion);
             if (resultado != null & !resultado.next()) {
-                Operaciones.cerrar();
+                Operaciones.cerrar(conexion);
                 ErrorUsuario e = new ErrorUsuario();
                 e.setUsuarioInvalido();
                 throw e;
             } else {                
-                cargarDatos(resultado);
+                cargarDatos(resultado,conexion);
              }
             }catch(SQLException ex){
          }
@@ -53,24 +54,25 @@ public class Usuario {
     
     
      protected Usuario(int usuarioId) {
+         Conexion conexion = new Conexion();
         existente = true;
         ResultSet resultado = null;  
         String sql = "SELECT * from usuarios where usuario_id='"+usuarioId+"'";
         try{
-            resultado = Operaciones.consultar(sql);
+            resultado = Operaciones.consultar(sql,conexion);
             if (resultado != null & !resultado.next()) {
-                Operaciones.cerrar();
+                Operaciones.cerrar(conexion);
                 ErrorUsuario e = new ErrorUsuario();
                 e.setUsuarioInvalido();
             } else {                
-                cargarDatos(resultado);
+                cargarDatos(resultado,conexion);
             }
             }catch(SQLException | ErrorUsuario ex){
                 Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
          }
     }
      
-    private void cargarDatos(ResultSet resultado) throws SQLException, ErrorUsuario{
+    private void cargarDatos(ResultSet resultado,Conexion conexion) throws SQLException, ErrorUsuario{
                 this.id  = resultado.getInt("id");
                 this.usuario = resultado.getString("usuario");
                 this.nombre =  resultado.getString("nombre");
@@ -79,10 +81,9 @@ public class Usuario {
                 this.telefono = resultado.getString("telefono");
                 this.email = resultado.getString("email");
                 this.clave = resultado.getString("clave");
-                this.administrador = resultado.getBoolean("administrador");
-                String aux = usuario;                    
-                Operaciones.cerrar();
-                this.direccion = new Direccion(aux);
+                this.administrador = resultado.getBoolean("administrador");                
+                Operaciones.cerrar(conexion);
+                this.direccion = new Direccion(usuario);
  
     }
      
