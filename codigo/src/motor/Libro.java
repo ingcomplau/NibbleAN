@@ -6,12 +6,16 @@
 
 package motor;
 
+import excepciones.ErrorAutor;
 import excepciones.ErrorLibro;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -20,7 +24,7 @@ import java.util.Date;
 public class Libro{
 
  
-
+    protected LinkedList<Etiqueta> etiquetas;
     protected Integer id;
     protected String isbn;
     protected String titulo; 
@@ -33,17 +37,21 @@ public class Libro{
    protected Integer idioma_id;
    protected String urltapa = "/visual/imagen/Resource/TapaLibro.png";
    protected boolean existente;
-
+   protected Autor autor;
+    
     public Libro() {
     }
 
   
    public Libro (String isbn){
         existente = true;
+        Conexion conexion = new Conexion();
         ResultSet resultado = null;  
-        String sql = "SELECT * from libros where isbn='"+isbn+"'";
+        String sql = "SELECT libros.*, autores.nombre, autores.apellido, autores.pais_id, "
+                + "autores.fecha_nacimiento, autores.sexo, autores.acerca_de from libros inner join "
+                + "autores on libros.autor_id=autores.id where libros.isbn='"+isbn+"'";
         try {
-            resultado = Operaciones.consultar(sql);
+            resultado = Operaciones.consultar(sql,conexion);
             if(resultado != null){
                 this.id  = resultado.getInt("id");
                 this.isbn = isbn;
@@ -55,8 +63,16 @@ public class Libro{
                 primeras_paginas = resultado.getString("primeras_paginas");
                 autor_id = resultado.getInt("autor_id");
                 this.idioma_id = resultado.getInt("idioma_id");
-                this.urltapa = resultado.getString("urltapa");
-                          
+                this.urltapa = resultado.getString("urltapa");                   
+                try {
+                        try {
+                            this.autor = new Autor(resultado.getString("nombre"), resultado.getString("apellido"), resultado.getInt("pais_id"), new SimpleDateFormat("dd'-'MMM'-'yyyy").parse(resultado.getString("fecha_nacimiento")), resultado.getInt("sexo"), resultado.getString("acerca_de"));
+                        } catch (ParseException ex) {
+                            Logger.getLogger(Operaciones.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    } catch (ErrorAutor ex) {
+                        Logger.getLogger(Operaciones.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 
             }
         }catch(SQLException e){
@@ -64,9 +80,13 @@ public class Libro{
 
         finally
      {
-        Operaciones.cerrar();
+        Operaciones.cerrar(conexion);
      }
    }
+
+    public Autor getAutor() {
+        return autor;
+    }
 
     public void setIsbn (String isbn) throws ErrorLibro {
          boolean correcto = true;
@@ -251,19 +271,20 @@ public class Libro{
     
      public boolean agregar() throws ErrorLibro{
          boolean agregado = false;
+         Conexion conexion = new Conexion();
           if   (isbn != null & titulo != null & cant_paginas != null & precio != null
                  & fecha_lanzamiento != null & autor_id != null ){
               System.out.println(2);
                 ResultSet resultado = null;
-                resultado = Operaciones.consultar("SELECT * from libros where isbn='"+ this.isbn +"'");
+                resultado = Operaciones.consultar("SELECT * from libros where isbn='"+ this.isbn +"'", conexion);
                 try{
                      if (resultado.next()) {
                          ErrorLibro e = new ErrorLibro();
-                         Operaciones.cerrar();
+                         Operaciones.cerrar(conexion);
                          e.setLibroExiste();
                          throw e;
                      } else {
-                         Operaciones.cerrar();
+                         Operaciones.cerrar(conexion);
                      }
                 }catch(SQLException ex){
                 }
@@ -278,17 +299,19 @@ public class Libro{
      }
      
      public void modificar() throws ErrorLibro {
+         
          if (existente){
+             Conexion conexion = new Conexion();
               ResultSet resultado = null;
-                resultado = Operaciones.consultar("SELECT * from libros where isbn='"+ this.isbn +"' and id<>'"+this.id+"'");
+                resultado = Operaciones.consultar("SELECT * from libros where isbn='"+ this.isbn +"' and id<>'"+this.id+"'",conexion);
                 try{
                      if (resultado.next()) {
                          ErrorLibro e = new ErrorLibro();
-                         Operaciones.cerrar();
+                         Operaciones.cerrar(conexion);
                          e.setLibroExiste();
                          throw e;
                      } else {
-                         Operaciones.cerrar();
+                         Operaciones.cerrar(conexion);
                      }
                 }catch(SQLException ex){
                 }
