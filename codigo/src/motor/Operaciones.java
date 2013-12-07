@@ -8,15 +8,18 @@ package motor;
 import excepciones.ErrorAutor;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.LinkedList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class Operaciones extends Conexion{
+public class Operaciones{
     /**
      * Constructor for objects of class Operaciones
      */
@@ -30,11 +33,11 @@ public class Operaciones extends Conexion{
     }
     
   
-    protected static ResultSet consultar(String sql){
-        conectar();
+    protected static ResultSet consultar(String sql, Conexion conexion){
+        conexion.conectar();
         resultado = null;
         try {
-            resultado = Operaciones.consulta.executeQuery(sql);
+            resultado = conexion.getConsulta().executeQuery(sql);
 
         } catch (SQLException e) {
                 System.out.println("Mensaje:"+e.getMessage());
@@ -47,23 +50,24 @@ public class Operaciones extends Conexion{
     
      protected static boolean insertar(String sql){
         boolean valor = true;
-        conectar();
+         Conexion conexion = new Conexion();
+        conexion.conectar();
         try {
-            consulta.executeUpdate(sql);
+            conexion.getConsulta().executeUpdate(sql);
         } catch (SQLException e) {
                 valor = false;
                 JOptionPane.showMessageDialog(null, e.getMessage());
             }      
         finally{  
-           cerrar();
+           cerrar(conexion);
         }
         return valor;
      }
-    protected static void cerrar(){
+     
+    protected static void cerrar(Conexion conexion){
         try
          {
-             Operaciones.consulta.close();
-             Operaciones.conexion.close();
+            conexion.close();
              if(resultado != null){
                 resultado.close();
              }
@@ -76,9 +80,10 @@ public class Operaciones extends Conexion{
   
     public static void consultarPaises(DefaultComboBoxModel comboModel){
         resultado = null;
+        Conexion conexion = new Conexion();
         String sql = "select nombre from paises";
         try {
-            resultado = consultar(sql);
+            resultado = consultar(sql, conexion);
             if(resultado != null){
                 while(resultado.next()){
                    comboModel.addElement(resultado.getObject(1)); 
@@ -90,15 +95,16 @@ public class Operaciones extends Conexion{
 
         finally
      {
-         cerrar();
+         cerrar(conexion);
      }
     }
     
      public static void consultarIdioma(DefaultComboBoxModel comboModel){
         resultado = null;
+        Conexion conexion = new Conexion();
         String sql = "select nombre from idiomas";
         try {
-            resultado = consultar(sql);
+            resultado = consultar(sql, conexion);
             if(resultado != null){
                 while(resultado.next()){
                    comboModel.addElement(resultado.getObject(1)); 
@@ -109,18 +115,19 @@ public class Operaciones extends Conexion{
 
         finally
      {
-        cerrar();
+        cerrar(conexion);
      }
     }
      
      
      
      public static void llenarListaAutores(JList listaModel){
+         Conexion conexion = new Conexion();
         resultado = null;
         DefaultListModel x = new javax.swing.DefaultListModel();
         String sql = "SELECT nombre ||' '|| apellido  FROM autores";
         try {
-            resultado = consultar(sql);
+            resultado = consultar(sql, conexion);
             if(resultado != null){
                 while(resultado.next()){
                    x.addElement(resultado.getObject(1));
@@ -132,7 +139,7 @@ public class Operaciones extends Conexion{
 
         finally
      {
-        cerrar();
+        cerrar(conexion);
      }
     }
      
@@ -140,9 +147,10 @@ public class Operaciones extends Conexion{
      
      public static void llenarTablaLibros(DefaultTableModel tableModel){
         resultado = null;  
+        Conexion conexion = new Conexion();
         String sql = "SELECT a.isbn,a.titulo,b.apellido ||' '||b.nombre, a.urltapa from libros a INNER JOIN autores b on a.autor_id=b.id order by a.titulo";
         try {
-            resultado = consultar(sql);
+            resultado = consultar(sql, conexion);
             if(resultado != null){
                 int numeroColumna = resultado.getMetaData().getColumnCount();              
                 while(resultado.next()){
@@ -159,15 +167,16 @@ public class Operaciones extends Conexion{
 
         finally
      {
-        cerrar();
+        cerrar(conexion);
      }
     }
      
       public static void llenarTablaPedidosAdmin(DefaultTableModel tableModel) {
          resultado = null;  
+         Conexion conexion = new Conexion();
         String sql = "SELECT c.usuario,b.urltapa,b.titulo,d.apellido ||' '||d.nombre,a.precio,a.cantidad,a.fecha,a.estado from compras a INNER JOIN libros b on a.libro_id=b.id  INNER JOIN usuarios c on a.usuario_id=c.id INNER JOIN autores d on b.autor_id=d.id order by c.usuario";
         try {
-            resultado = consultar(sql);
+            resultado = consultar(sql, conexion);
             if(resultado != null){
                 int numeroColumna = resultado.getMetaData().getColumnCount();              
                 while(resultado.next()){
@@ -184,7 +193,7 @@ public class Operaciones extends Conexion{
 
         finally
      {
-        cerrar();
+        cerrar(conexion);
      }
     }
      
@@ -192,11 +201,12 @@ public class Operaciones extends Conexion{
      
          public static void buscadorTituloLibro(DefaultTableModel tableModel,String fraseClave){
         resultado = null;
+        Conexion conexion = new Conexion();
         tableModel.setRowCount(0);
         tableModel.setColumnCount(3);
         String sql = "SELECT a.isbn,a.titulo,b.apellido ||' '||b.nombre FROM libros a INNER JOIN autores b on a.autor_id=b.id WHERE a.titulo='"+fraseClave+"'";
         try {
-            resultado = consultar(sql);
+            resultado = consultar(sql, conexion);
             if(resultado != null){
                 int numeroColumna = resultado.getMetaData().getColumnCount();             
                 while(resultado.next()){
@@ -212,19 +222,20 @@ public class Operaciones extends Conexion{
 
         finally
      {
-        cerrar();
+        cerrar(conexion);
      }
     }
     
          
     public static void buscadorApellidoAutor(DefaultTableModel tableModel,String fraseClave){
         resultado = null;
+        Conexion conexion = new Conexion();
         tableModel.setRowCount(0);
         tableModel.setColumnCount(3);
         String sql = "SELECT a.isbn,a.titulo,b.apellido ||' '||b.nombre FROM libros "
                 + "a INNER JOIN autores b on a.autor_id=b.id WHERE b.apellido='"+fraseClave+"'";
         try {
-            resultado = consultar(sql);
+            resultado = consultar(sql,conexion);
             if(resultado != null){
                 int numeroColumna = resultado.getMetaData().getColumnCount();
              
@@ -240,7 +251,7 @@ public class Operaciones extends Conexion{
         }
         finally
      {
-        cerrar();
+        cerrar(conexion);
      }
     }
     
@@ -272,8 +283,9 @@ public class Operaciones extends Conexion{
             }
      
           resultado = null;
+          Conexion conexion = new Conexion();
           resultado = consultar("SELECT nombre, apellido from autores where apellido='"+ a.getApellido() +"'"
-                + " and nombre='"+ a.getNombre() +"'");
+                + " and nombre='"+ a.getNombre() +"'", conexion);
           try{
               if (resultado.next()) {
                 e.setAutorExistente();
@@ -281,7 +293,7 @@ public class Operaciones extends Conexion{
                }
          }catch(SQLException ex){
         }
-          cerrar();
+          cerrar(conexion);
        
        if (a.getFechaNacimiento() != null){
             fNac = new SimpleDateFormat("dd'-'MMM'-'yyyy").format(a.getFechaNacimiento());
@@ -305,9 +317,10 @@ public class Operaciones extends Conexion{
     
     public static void llenarListaIdiomas(DefaultComboBoxModel comboModel){
         resultado = null;
+        Conexion conexion = new Conexion();
         String sql = "select nombre from idiomas";
         try {
-            resultado = consultar(sql);
+            resultado = consultar(sql, conexion);
             if(resultado != null){
                 while(resultado.next()){
                    comboModel.addElement(resultado.getObject(1)); 
@@ -319,15 +332,16 @@ public class Operaciones extends Conexion{
 
         finally
      {
-         cerrar();
+         cerrar(conexion);
      }
     }
         
      public static void llenarListaProvincias(DefaultComboBoxModel comboModel){
         resultado = null;
+        Conexion conexion = new Conexion();
         String sql = "select nombre from provincias";
         try {
-            resultado = consultar(sql);
+            resultado = consultar(sql,conexion);
             if(resultado != null){
                 while(resultado.next()){
                    comboModel.addElement(resultado.getObject(1)); 
@@ -339,17 +353,20 @@ public class Operaciones extends Conexion{
 
         finally
      {
-         cerrar();
+         cerrar(conexion);
      }
     }
      
      public static LinkedList<Libro> getTodosLosLibros() {
          LinkedList<Libro> lista = new LinkedList<>();
+         Conexion conexion = new Conexion();
          Libro libro;
          resultado = null;  
-        String sql = "SELECT * from libros order by titulo";
+        String sql = "SELECT libros.*, autores.nombre, autores.apellido, autores.pais_id, "
+                + "autores.fecha_nacimiento, autores.sexo, autores.acerca_de from libros inner join "
+                + "autores on libros.autor_id=autores.id order by titulo";
         try {
-            resultado = consultar(sql);
+            resultado = consultar(sql, conexion);
             if(resultado != null){            
                 while(resultado.next()){
                     libro = new Libro();
@@ -363,7 +380,16 @@ public class Operaciones extends Conexion{
                     libro.primeras_paginas = resultado.getString("primeras_paginas");
                     libro.autor_id = resultado.getInt("autor_id");
                     libro.idioma_id = resultado.getInt("idioma_id");
-                    libro.urltapa = resultado.getString("urltapa");
+                    libro.urltapa = resultado.getString("urltapa");                 
+                    try {
+                        try {
+                            libro.autor = new Autor(resultado.getString("nombre"), resultado.getString("apellido"), resultado.getInt("pais_id"), new SimpleDateFormat("dd'-'MMM'-'yyyy").parse(resultado.getString("fecha_nacimiento")), resultado.getInt("sexo"), resultado.getString("acerca_de"));
+                        } catch (ParseException ex) {
+                            Logger.getLogger(Operaciones.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    } catch (ErrorAutor ex) {
+                        Logger.getLogger(Operaciones.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                     lista.add(libro);
                 }
             }
@@ -372,7 +398,7 @@ public class Operaciones extends Conexion{
 
         finally
      {
-        cerrar();
+        cerrar(conexion);
      }
          return lista;
      }
