@@ -30,8 +30,8 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
         this.usuario = usuario;
         this.home=h;
         initComponents();
-        //this.setSize(430, 230);
-        //this.jPanel1.setVisible(false);
+        this.setSize(430, 250);
+        this.jPanel1.setVisible(false);
         Operaciones.llenarListaProvincias((DefaultComboBoxModel)selecProv.getModel());
         selecProv.setSelectedIndex(usuario.getDireccion().getProvincia());
         
@@ -455,7 +455,7 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -605,7 +605,7 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
     private void botonModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonModificarMouseClicked
         // TODO add your handling code here:
         jPanel1.setVisible(true);
-        this.setSize(430, 675);
+        this.setSize(430, 695);
         this.setLocationRelativeTo(home);
         
     }//GEN-LAST:event_botonModificarMouseClicked

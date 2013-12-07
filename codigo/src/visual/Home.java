@@ -30,6 +30,8 @@ public class Home extends javax.swing.JFrame {
         this.botonVer.setVisible(false);
         this.botonSalir.setVisible(false);
         this.botonAdministrar.setVisible(false);
+        this.labelPedididos.setVisible(false);
+        this.labelCarrito.setVisible(false);
         llenarHome();   
     }
     
@@ -51,6 +53,8 @@ public class Home extends javax.swing.JFrame {
             this.botonIdentificarse.setVisible(false);
             this.botonCuenta.setVisible(true);
             this.botonConsultar.setVisible(true);
+            this.labelPedididos.setVisible(true);
+            this.labelCarrito.setVisible(true);
             this.botonVer.setVisible(true);
             this.botonSalir.setVisible(true);
             this.botonAdministrar.setVisible(false);
@@ -68,6 +72,8 @@ public class Home extends javax.swing.JFrame {
             this.botonVer.setVisible(false);
             this.botonSalir.setVisible(false);
             this.botonAdministrar.setVisible(false);
+            this.labelPedididos.setVisible(false);
+            this.labelCarrito.setVisible(false);
         }
     }
     
@@ -99,23 +105,25 @@ public class Home extends javax.swing.JFrame {
         selectBuscar = new javax.swing.JComboBox();
         buttonBuscar = new javax.swing.JLabel();
         buttonListarTodo = new javax.swing.JLabel();
-        botonVer = new javax.swing.JLabel();
-        botonConsultar = new javax.swing.JLabel();
-        botonIdentificarse = new javax.swing.JLabel();
         panelOpciones = new javax.swing.JPanel();
         botonSalir = new javax.swing.JLabel();
         botonCuenta = new javax.swing.JLabel();
         botonContacto = new javax.swing.JLabel();
         botonAyuda = new javax.swing.JLabel();
         botonAdministrar = new javax.swing.JLabel();
-        botonRegistrarse = new javax.swing.JLabel();
-        labelCarrito = new javax.swing.JLabel();
-        labelPedidios = new javax.swing.JLabel();
         panelFondo = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         panelHome = new javax.swing.JPanel();
         fondoLayer = new javax.swing.JPanel();
         labelLibro = new javax.swing.JLabel();
+        panelContenedor1 = new javax.swing.JPanel();
+        botonRegistrarse = new javax.swing.JLabel();
+        botonIdentificarse = new javax.swing.JLabel();
+        panelContenedor2 = new javax.swing.JPanel();
+        botonVer = new javax.swing.JLabel();
+        labelCarrito = new javax.swing.JLabel();
+        labelPedididos = new javax.swing.JLabel();
+        botonConsultar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Home");
@@ -201,46 +209,9 @@ public class Home extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
-        botonVer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonVer.png"))); // NOI18N
-        botonVer.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                botonVerMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                botonVerMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                botonVerMouseExited(evt);
-            }
-        });
-
-        botonConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonConsultar.png"))); // NOI18N
-        botonConsultar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                botonConsultarMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                botonConsultarMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                botonConsultarMouseExited(evt);
-            }
-        });
-
-        botonIdentificarse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonIdentificarse.png"))); // NOI18N
-        botonIdentificarse.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                botonIdentificarseMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                botonIdentificarseMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                botonIdentificarseMouseExited(evt);
-            }
-        });
-
         panelOpciones.setBackground(new java.awt.Color(51, 51, 51));
+        panelOpciones.setMaximumSize(new java.awt.Dimension(473, 19));
+        panelOpciones.setMinimumSize(new java.awt.Dimension(473, 19));
 
         botonSalir.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         botonSalir.setForeground(new java.awt.Color(255, 255, 255));
@@ -304,20 +275,6 @@ public class Home extends javax.swing.JFrame {
                 .addComponent(botonAdministrar))
         );
 
-        botonRegistrarse.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        botonRegistrarse.setForeground(new java.awt.Color(153, 153, 153));
-        botonRegistrarse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonRegistrarse.png"))); // NOI18N
-        botonRegistrarse.setToolTipText("");
-        botonRegistrarse.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                botonRegistrarseMouseClicked(evt);
-            }
-        });
-
-        labelCarrito.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/LayerCarrito.png"))); // NOI18N
-
-        labelPedidios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/LayerPedidos.png"))); // NOI18N
-
         panelFondo.setBackground(new java.awt.Color(216, 218, 216));
 
         jScrollPane1.setBackground(new java.awt.Color(216, 218, 216));
@@ -357,7 +314,7 @@ public class Home extends javax.swing.JFrame {
             .addGroup(fondoLayerLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(labelLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 695, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(95, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         fondoLayerLayout.setVerticalGroup(
             fondoLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -365,6 +322,117 @@ public class Home extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(labelLibro)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        panelContenedor1.setBackground(new java.awt.Color(255, 255, 255));
+        panelContenedor1.setMaximumSize(new java.awt.Dimension(149, 89));
+        panelContenedor1.setMinimumSize(new java.awt.Dimension(149, 89));
+
+        botonRegistrarse.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        botonRegistrarse.setForeground(new java.awt.Color(153, 153, 153));
+        botonRegistrarse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonRegistrarse.png"))); // NOI18N
+        botonRegistrarse.setToolTipText("");
+        botonRegistrarse.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botonRegistrarseMouseClicked(evt);
+            }
+        });
+
+        botonIdentificarse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonIdentificarse.png"))); // NOI18N
+        botonIdentificarse.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botonIdentificarseMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                botonIdentificarseMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                botonIdentificarseMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelContenedor1Layout = new javax.swing.GroupLayout(panelContenedor1);
+        panelContenedor1.setLayout(panelContenedor1Layout);
+        panelContenedor1Layout.setHorizontalGroup(
+            panelContenedor1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelContenedor1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelContenedor1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(botonRegistrarse)
+                    .addComponent(botonIdentificarse))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        panelContenedor1Layout.setVerticalGroup(
+            panelContenedor1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelContenedor1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(botonRegistrarse)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(botonIdentificarse)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        panelContenedor2.setBackground(new java.awt.Color(255, 255, 255));
+        panelContenedor2.setMinimumSize(new java.awt.Dimension(247, 86));
+
+        botonVer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonVer.png"))); // NOI18N
+        botonVer.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botonVerMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                botonVerMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                botonVerMouseExited(evt);
+            }
+        });
+
+        labelCarrito.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/LayerCarrito.png"))); // NOI18N
+
+        labelPedididos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/LayerPedidos.png"))); // NOI18N
+
+        botonConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonConsultar.png"))); // NOI18N
+        botonConsultar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botonConsultarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                botonConsultarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                botonConsultarMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelContenedor2Layout = new javax.swing.GroupLayout(panelContenedor2);
+        panelContenedor2.setLayout(panelContenedor2Layout);
+        panelContenedor2Layout.setHorizontalGroup(
+            panelContenedor2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelContenedor2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelContenedor2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelContenedor2Layout.createSequentialGroup()
+                        .addComponent(labelPedididos)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                        .addComponent(labelCarrito))
+                    .addGroup(panelContenedor2Layout.createSequentialGroup()
+                        .addComponent(botonConsultar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(botonVer)))
+                .addContainerGap())
+        );
+        panelContenedor2Layout.setVerticalGroup(
+            panelContenedor2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelContenedor2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(panelContenedor2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelCarrito)
+                    .addComponent(labelPedididos))
+                .addGap(18, 18, 18)
+                .addGroup(panelContenedor2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(botonConsultar)
+                    .addComponent(botonVer)))
         );
 
         javax.swing.GroupLayout panelBlancoLayout = new javax.swing.GroupLayout(panelBlanco);
@@ -379,63 +447,34 @@ public class Home extends javax.swing.JFrame {
                         .addComponent(imagenCookBook, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(panelBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(panelBlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBlancoLayout.createSequentialGroup()
-                                .addComponent(labelPedidios)
-                                .addGap(29, 29, 29))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBlancoLayout.createSequentialGroup()
-                                .addComponent(botonConsultar)
-                                .addGap(18, 18, 18)))
-                        .addGroup(panelBlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(panelBlancoLayout.createSequentialGroup()
-                                .addComponent(botonVer)
-                                .addGap(42, 42, 42)
-                                .addComponent(botonIdentificarse))
-                            .addGroup(panelBlancoLayout.createSequentialGroup()
-                                .addComponent(labelCarrito)
-                                .addGap(32, 32, 32)
-                                .addComponent(botonRegistrarse))))
+                        .addGap(26, 26, 26)
+                        .addComponent(panelContenedor2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(panelContenedor1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(panelBlancoLayout.createSequentialGroup()
                         .addGap(101, 101, 101)
-                        .addGroup(panelBlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(fondoLayer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(panelFondo, javax.swing.GroupLayout.PREFERRED_SIZE, 855, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGroup(panelBlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(panelFondo, javax.swing.GroupLayout.PREFERRED_SIZE, 855, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fondoLayer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         panelBlancoLayout.setVerticalGroup(
             panelBlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBlancoLayout.createSequentialGroup()
                 .addGroup(panelBlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBlancoLayout.createSequentialGroup()
-                        .addGroup(panelBlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(panelBlancoLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(labelPedidios))
-                            .addGroup(panelBlancoLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(labelCarrito)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(panelBlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(botonConsultar)
-                            .addComponent(botonVer))
-                        .addGap(38, 38, 38))
                     .addGroup(panelBlancoLayout.createSequentialGroup()
-                        .addGroup(panelBlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelBlancoLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(panelBlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(imagenCookBook, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(panelBlancoLayout.createSequentialGroup()
-                                        .addComponent(botonRegistrarse)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(botonIdentificarse))))
-                            .addGroup(panelBlancoLayout.createSequentialGroup()
-                                .addGap(23, 23, 23)
-                                .addComponent(panelBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addComponent(panelOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(23, 23, 23)
+                        .addComponent(panelBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelBlancoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(panelContenedor1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addGroup(panelBlancoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(panelBlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(panelContenedor2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(imagenCookBook, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(panelOpciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(fondoLayer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -453,9 +492,7 @@ public class Home extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(panelBlanco, javax.swing.GroupLayout.PREFERRED_SIZE, 702, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(panelBlanco, javax.swing.GroupLayout.PREFERRED_SIZE, 702, Short.MAX_VALUE)
         );
 
         pack();
@@ -642,9 +679,11 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelCarrito;
     private javax.swing.JLabel labelLibro;
-    private javax.swing.JLabel labelPedidios;
+    private javax.swing.JLabel labelPedididos;
     private javax.swing.JPanel panelBlanco;
     private javax.swing.JPanel panelBuscador;
+    private javax.swing.JPanel panelContenedor1;
+    private javax.swing.JPanel panelContenedor2;
     private javax.swing.JPanel panelFondo;
     private javax.swing.JPanel panelHome;
     private javax.swing.JPanel panelOpciones;

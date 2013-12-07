@@ -194,6 +194,7 @@ public class AgregarUsuario extends javax.swing.JFrame {
         campoContraseña.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         campoContraseña.setForeground(new java.awt.Color(153, 153, 153));
         campoContraseña.setText("jPasswordField1");
+        campoContraseña.setMinimumSize(new java.awt.Dimension(201, 25));
         campoContraseña.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 campoContraseñaFocusGained(evt);
@@ -207,6 +208,7 @@ public class AgregarUsuario extends javax.swing.JFrame {
         campoConfContraseña.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         campoConfContraseña.setForeground(new java.awt.Color(153, 153, 153));
         campoConfContraseña.setText("jPasswordField2");
+        campoConfContraseña.setMinimumSize(new java.awt.Dimension(201, 25));
         campoConfContraseña.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 campoConfContraseñaFocusGained(evt);
