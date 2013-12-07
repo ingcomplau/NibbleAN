@@ -16,8 +16,8 @@ import javax.swing.JOptionPane;
  * @version (a version number or a date)
  */
 public class Conexion{
-	static Connection conexion;
-	static Statement consulta;
+	private Connection conexion;
+	private Statement consulta;
 	static public final String ruta = System.getProperty("user.dir")+"\\cookbook.sqlite";
       
 
@@ -26,9 +26,8 @@ public class Conexion{
      */
     public Conexion()
     {
-            
     }
-    public static void conectar(){
+    public void conectar(){
 		try {
 	            Class.forName("org.sqlite.JDBC");
 	        }
@@ -42,5 +41,17 @@ public class Conexion{
                             JOptionPane.showMessageDialog(null, e.getMessage());
                         }
 	}
+
+    public Connection getConexion() {
+        return conexion;
+    }
+
+    public Statement getConsulta() {
+        return consulta;
+    }
     
+    public void close() throws SQLException{
+              consulta.close();
+             conexion.close();
+    }
 }
