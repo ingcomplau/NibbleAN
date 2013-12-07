@@ -21,12 +21,13 @@ public class Pedidos extends ListaCompras {
      
       public Pedidos(Usuario usuario) { 
         super(usuario);
+        Conexion conexion = new Conexion();
         ResultSet resultado;
         if (usuario != null){
             resultado = null;  
             String sql = "SELECT * FROM Libros INNER JOIN Compras ON Libros.id=compras.libro_id where compras.usuario_id='"+usuario.getId()+"'";
            try {
-            resultado = consultar(sql);
+            resultado = consultar(sql,conexion);
             if(resultado != null){
                 Libro libaux;
                 while(resultado.next()){
@@ -38,13 +39,14 @@ public class Pedidos extends ListaCompras {
         }
 
         finally{
-            cerrar();
+            cerrar(conexion);
                }
         } else {
             resultado = null;  
             String sql = "SELECT * FROM Libros INNER JOIN Compras ON Libros.id=compras.libro_id order by compras.usuario_id";
            try {
-            resultado = consultar(sql);
+               
+            resultado = consultar(sql,conexion);
             if(resultado != null){
                 Libro libaux;
                 while(resultado.next()){
@@ -56,7 +58,7 @@ public class Pedidos extends ListaCompras {
         }
 
         finally{
-            cerrar();
+            cerrar(conexion);
                }
         }
     }
