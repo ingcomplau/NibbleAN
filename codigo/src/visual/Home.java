@@ -563,7 +563,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonBuscarMouseEntered
 
     private void buttonListarTodoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonListarTodoMouseClicked
-        //this.actualizar();
+        this.actualizar();
     }//GEN-LAST:event_buttonListarTodoMouseClicked
 
     private void buttonListarTodoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonListarTodoMouseEntered

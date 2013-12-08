@@ -479,9 +479,9 @@ public class Operaciones{
         cerrar(conexion);
      }
         if (!(etiqueta == null)){ 
-            for (Libro l : lista){
-                if (!l.etiquetas.contains(etiqueta)){
-                    lista.iterator().remove();
+            for (Object l : lista.toArray()){
+                if (!((Libro)l).etiquetas.contains(etiqueta)){
+                    lista.remove((Libro)l);
                 }
             }
         } 
