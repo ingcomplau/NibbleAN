@@ -8,12 +8,15 @@ package motor;
 
 import excepciones.ErrorAutor;
 import excepciones.ErrorLibro;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectInputStream;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -24,7 +27,7 @@ import java.util.logging.Logger;
 public class Libro{
 
  
-    protected LinkedList<Etiqueta> etiquetas;
+    protected Etiquetas etiquetas;
     protected Integer id;
     protected String isbn;
     protected String titulo; 
@@ -40,6 +43,7 @@ public class Libro{
    protected Autor autor;
     
     public Libro() {
+        etiquetas = new Etiquetas();
     }
 
   
@@ -63,17 +67,20 @@ public class Libro{
                 primeras_paginas = resultado.getString("primeras_paginas");
                 autor_id = resultado.getInt("autor_id");
                 this.idioma_id = resultado.getInt("idioma_id");
-                this.urltapa = resultado.getString("urltapa");                   
+                this.urltapa = resultado.getString("urltapa"); 
+                ByteArrayInputStream bytes = new ByteArrayInputStream(resultado.getBytes("etiquetas"));
+                ObjectInputStream in;
                 try {
-                        try {
-                            this.autor = new Autor(resultado.getString("nombre"), resultado.getString("apellido"), resultado.getInt("pais_id"), new SimpleDateFormat("dd'-'MMM'-'yyyy").parse(resultado.getString("fecha_nacimiento")), resultado.getInt("sexo"), resultado.getString("acerca_de"));
-                        } catch (ParseException ex) {
-                            Logger.getLogger(Operaciones.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                    } catch (ErrorAutor ex) {
-                        Logger.getLogger(Operaciones.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                
+                    in = new ObjectInputStream(bytes);
+                    etiquetas = (Etiquetas)in.readObject();
+                } catch (        IOException | ClassNotFoundException ex) {
+                    Logger.getLogger(Libro.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                try {
+                    this.autor = new Autor(resultado.getString("nombre"), resultado.getString("apellido"), resultado.getInt("pais_id"), new SimpleDateFormat("dd'-'MMM'-'yyyy").parse(resultado.getString("fecha_nacimiento")), resultado.getInt("sexo"), resultado.getString("acerca_de"));
+               } catch (ErrorAutor | ParseException ex) {
+                        Logger.getLogger(Operaciones.class.getName()).log(Level.SEVERE, null, ex);             
+            }
             }
         }catch(SQLException e){
         }
@@ -130,6 +137,10 @@ public class Libro{
         }     
        
         
+    }
+
+    public Etiquetas getEtiquetas() {
+        return etiquetas;
     }
 
     public void setCant_paginas(String cant_paginas) throws ErrorLibro {
@@ -273,9 +284,8 @@ public class Libro{
          boolean agregado = false;
          Conexion conexion = new Conexion();
           if   (isbn != null & titulo != null & cant_paginas != null & precio != null
-                 & fecha_lanzamiento != null & autor_id != null ){
-                ResultSet resultado = null;
-                resultado = Operaciones.consultar("SELECT * from libros where isbn='"+ this.isbn +"'", conexion);
+                 & fecha_lanzamiento != null & autor_id != null & etiquetas.element() != null ){
+                ResultSet resultado = Operaciones.consultar("SELECT * from libros where isbn='"+ this.isbn +"'", conexion);
                 try{
                      if (resultado.next()) {
                          ErrorLibro e = new ErrorLibro();
@@ -290,9 +300,9 @@ public class Libro{
                 
                 agregado = true;
                 Operaciones.insertar("insert into libros(isbn, titulo, cant_paginas, precio, "
-                + "fecha_lanzamiento, resumen, primeras_paginas, autor_id, idioma_id, urltapa)"
+                + "fecha_lanzamiento, resumen, primeras_paginas, autor_id, idioma_id, urltapa, etiquetas)"
                 + "values('"+ this.isbn +"', '"+this.titulo+"',"+Integer.parseInt(this.cant_paginas)+","
-                +this.precio+",'"+this.fecha_lanzamiento+"','"+this.resumen+"','"+this.primeras_paginas+"',"+this.autor_id+","+this.idioma_id+",'"+this.urltapa+"');");      
+                +this.precio+",'"+this.fecha_lanzamiento+"','"+this.resumen+"','"+this.primeras_paginas+"',"+this.autor_id+","+this.idioma_id+",'"+this.urltapa+"',"+this.etiquetas.toByteArray()+");");      
             } 
           return agregado;
      }
@@ -317,7 +327,7 @@ public class Libro{
                 
                 Operaciones.insertar("UPDATE libros SET isbn='"+ this.isbn +"', titulo='"+this.titulo+"', cant_paginas='"+Integer.parseInt(this.cant_paginas)+"', "
                  + "precio='"+this.precio+"', fecha_lanzamiento='"+this.fecha_lanzamiento+"', resumen='"+this.resumen+"', "
-                 + "primeras_paginas='"+this.primeras_paginas+"', autor_id='"+this.autor_id+"', idioma_id='"+this.idioma_id+"', urltapa='"+this.urltapa+"' WHERE id='"+this.id+"';");
+                 + "primeras_paginas='"+this.primeras_paginas+"', autor_id='"+this.autor_id+"', idioma_id='"+this.idioma_id+"', urltapa='"+this.urltapa+"', etiquetas="+this.etiquetas.toByteArray()+" WHERE id='"+this.id+"';");
          }
          
      }
