@@ -6,6 +6,7 @@
 
 package visual;
 
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.util.LinkedList;
 import motor.Carrito;
@@ -17,6 +18,7 @@ public class Home extends javax.swing.JFrame {
     protected Carrito carrito = null;
     protected Usuario usuario = null;
     private LinkedList<Libro> libros = null;
+    private boolean click=true;
     
 
     
@@ -129,9 +131,14 @@ public class Home extends javax.swing.JFrame {
         setTitle("Home");
         setResizable(false);
 
-        panelBlanco.setBackground(new java.awt.Color(255, 255, 255));
+        panelBlanco.setBackground(new java.awt.Color(249, 248, 248));
 
-        imagenCookBook.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/Logo.png"))); // NOI18N
+        imagenCookBook.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/LogoCookbook.png"))); // NOI18N
+        imagenCookBook.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                imagenCookBookMouseEntered(evt);
+            }
+        });
 
         panelBuscador.setBackground(new java.awt.Color(110, 34, 83));
         panelBuscador.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
@@ -324,7 +331,7 @@ public class Home extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        panelContenedor1.setBackground(new java.awt.Color(255, 255, 255));
+        panelContenedor1.setBackground(new java.awt.Color(249, 248, 248));
         panelContenedor1.setMaximumSize(new java.awt.Dimension(149, 89));
         panelContenedor1.setMinimumSize(new java.awt.Dimension(149, 89));
 
@@ -378,7 +385,7 @@ public class Home extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        panelContenedor2.setBackground(new java.awt.Color(255, 255, 255));
+        panelContenedor2.setBackground(new java.awt.Color(249, 248, 248));
         panelContenedor2.setMinimumSize(new java.awt.Dimension(247, 86));
 
         botonVer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonVer.png"))); // NOI18N
@@ -476,9 +483,11 @@ public class Home extends javax.swing.JFrame {
                         .addComponent(panelContenedor1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                     .addGroup(panelBlancoLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(panelBlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(panelBlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(panelContenedor2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(imagenCookBook, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(panelBlancoLayout.createSequentialGroup()
+                                .addComponent(imagenCookBook, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(panelOpciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
@@ -506,11 +515,11 @@ public class Home extends javax.swing.JFrame {
 
     private void campoBuscadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoBuscadorMouseClicked
         // TODO add your handling code here:
-        /*  if (click) {
+          if (click) {
             campoBuscador.setText(null);
             click=false;
             campoBuscador.setForeground(Color.black);
-        }*/
+        }
     }//GEN-LAST:event_campoBuscadorMouseClicked
 
     private void buttonBuscarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonBuscarMouseExited
@@ -643,6 +652,11 @@ public class Home extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.botonRegistrarse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonRegistrarse.png")));
     }//GEN-LAST:event_botonRegistrarseMouseExited
+
+    private void imagenCookBookMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imagenCookBookMouseEntered
+        // TODO add your handling code here:
+        this.imagenCookBook.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/LogoCookbookFocus.png")));
+    }//GEN-LAST:event_imagenCookBookMouseEntered
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
