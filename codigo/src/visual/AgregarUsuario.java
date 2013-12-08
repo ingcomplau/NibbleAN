@@ -163,12 +163,19 @@ public class AgregarUsuario extends javax.swing.JFrame {
         campoNombre.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         campoNombre.setForeground(new java.awt.Color(153, 153, 153));
         campoNombre.setText(" Nombre");
-        campoNombre.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                campoNombreFocusGained(evt);
+        campoNombre.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                campoNombreMouseClicked(evt);
             }
+        });
+        campoNombre.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 campoNombreFocusLost(evt);
+            }
+        });
+        campoNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                campoNombreKeyPressed(evt);
             }
         });
 
@@ -438,14 +445,6 @@ public class AgregarUsuario extends javax.swing.JFrame {
          botonRegistrarse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonRegistrarse2.png")));
     }//GEN-LAST:event_botonRegistrarseMouseExited
 
-    private void campoNombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoNombreFocusGained
-        if(clickNombre){
-            clickNombre=false;
-            campoNombre.setText("");
-            campoNombre.setForeground(Color.black);
-        }
-    }//GEN-LAST:event_campoNombreFocusGained
-
     private void campoApellidoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoApellidoFocusGained
         if(clickApellido){
             clickApellido=false;
@@ -621,10 +620,13 @@ public class AgregarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     private void botonRegistrarseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonRegistrarseMouseClicked
+        boolean agregado=true;
+        
         if (checkAceptar.isSelected()){
                     try {
             usuario.setEmail(campoEmail.getText());
         } catch (ErrorUsuario e) {
+            agregado=false;
             usuario = new Usuario();
             //Manejar error
             if(e.isEmailInvalido()){
@@ -634,6 +636,7 @@ public class AgregarUsuario extends javax.swing.JFrame {
                 try {
             usuario.setNombre(campoNombre.getText());
         } catch (ErrorUsuario e) {
+            agregado=false;
             usuario = new Usuario();
             //Manejar error
             if(e.isNombreCorto()){
@@ -651,6 +654,7 @@ public class AgregarUsuario extends javax.swing.JFrame {
         try {
             usuario.setApellido(campoApellido.getText());
         } catch (ErrorUsuario e) {
+            agregado=false;
             usuario = new Usuario();
             //Manejar error
             if(e.isApellidoCorto()){
@@ -668,6 +672,7 @@ public class AgregarUsuario extends javax.swing.JFrame {
         try {
             usuario.setUsuario(campoNombreUsuario.getText());
         } catch (ErrorUsuario e) {
+            agregado=false;
             usuario = new Usuario();
             //Manejar error
             if(e.isUsuarioCorto()){
@@ -685,6 +690,7 @@ public class AgregarUsuario extends javax.swing.JFrame {
         try {
             usuario.getDireccion().setLocalidad(campoCiudad.getText());
         } catch (ErrorDireccion e) {
+            agregado=false;
             usuario = new Usuario();
             //Manejar error
             if(e.isCalleCorta()){
@@ -702,6 +708,7 @@ public class AgregarUsuario extends javax.swing.JFrame {
         try {
             usuario.getDireccion().setCodigoPostal(campoCodigoPostal.getText());
         } catch (ErrorDireccion e) {
+            agregado=false;
             usuario = new Usuario();
             //Manejar error
             if(e.isAlturaIncorrecta()){
@@ -711,18 +718,21 @@ public class AgregarUsuario extends javax.swing.JFrame {
         try {
             usuario.getDireccion().setCalle(campoCalle.getText());
         } catch (ErrorDireccion e) {
+            agregado=false;
             usuario = new Usuario();
             //Manejar error
         }
         try {
             usuario.getDireccion().setAltura(campoNro.getText());
         } catch (ErrorDireccion e) {
+            agregado=false;
             usuario = new Usuario();
             //Manejar error
         }
         try {
             usuario.setTelefono(campoTelefono.getText());
         } catch (ErrorUsuario e) {
+            agregado=false;
             usuario = new Usuario();
             //Manejar error
             if(e.isTelefonoCorto()){
@@ -738,6 +748,7 @@ public class AgregarUsuario extends javax.swing.JFrame {
             try {
                 usuario.setClave(String.valueOf(campoContraseña.getPassword()));
             } catch (ErrorUsuario e) {
+                agregado=false;
                 usuario = new Usuario();
                 //Manejar error
                 if(e.isClaveCorta()){
@@ -750,6 +761,7 @@ public class AgregarUsuario extends javax.swing.JFrame {
         try {
             usuario.agregar();
         } catch (ErrorUsuario e) {
+            agregado=false;
             //Manejar error
             if(e.isUsuarioExistente()){
                 
@@ -761,8 +773,30 @@ public class AgregarUsuario extends javax.swing.JFrame {
                 errorTerminos.setText("Debe aceptar los terminos y condiciones");
             }
         }
+         if (agregado){
+           this.dispose();
+           home.setEnabled(true);
+        }
         
     }//GEN-LAST:event_botonRegistrarseMouseClicked
+
+    private void campoNombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoNombreMouseClicked
+        // TODO add your handling code here:
+        if(clickNombre){
+            clickNombre=false;
+            campoNombre.setText("");
+            campoNombre.setForeground(Color.black);
+        }
+    }//GEN-LAST:event_campoNombreMouseClicked
+
+    private void campoNombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoNombreKeyPressed
+        // TODO add your handling code here:
+        if(clickNombre){
+            clickNombre=false;
+            campoNombre.setText("");
+            campoNombre.setForeground(Color.black);
+        }
+    }//GEN-LAST:event_campoNombreKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
