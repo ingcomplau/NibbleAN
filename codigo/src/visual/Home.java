@@ -313,7 +313,7 @@ public class Home extends javax.swing.JFrame {
             fondoLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(fondoLayerLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(labelLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 695, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(labelLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 834, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         fondoLayerLayout.setVerticalGroup(
@@ -333,8 +333,14 @@ public class Home extends javax.swing.JFrame {
         botonRegistrarse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonRegistrarse.png"))); // NOI18N
         botonRegistrarse.setToolTipText("");
         botonRegistrarse.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                botonRegistrarseMouseExited(evt);
+            }
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 botonRegistrarseMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                botonRegistrarseMouseEntered(evt);
             }
         });
 
@@ -627,6 +633,16 @@ public class Home extends javax.swing.JFrame {
         au.setVisible(true);
         this.setEnabled(false);
     }//GEN-LAST:event_botonRegistrarseMouseClicked
+
+    private void botonRegistrarseMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonRegistrarseMouseEntered
+        // TODO add your handling code here:
+        this.botonRegistrarse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonRegistrarseFocus.png")));
+    }//GEN-LAST:event_botonRegistrarseMouseEntered
+
+    private void botonRegistrarseMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonRegistrarseMouseExited
+        // TODO add your handling code here:
+        this.botonRegistrarse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonRegistrarse.png")));
+    }//GEN-LAST:event_botonRegistrarseMouseExited
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

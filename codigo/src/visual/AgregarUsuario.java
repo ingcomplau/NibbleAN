@@ -241,14 +241,14 @@ public class AgregarUsuario extends javax.swing.JFrame {
 
         botonRegistrarse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonRegistrarse2.png"))); // NOI18N
         botonRegistrarse.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                botonRegistrarseMouseExited(evt);
+            }
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 botonRegistrarseMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 botonRegistrarseMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                botonRegistrarseMouseExited(evt);
             }
         });
 
@@ -627,12 +627,26 @@ public class AgregarUsuario extends javax.swing.JFrame {
         } catch (ErrorUsuario e) {
             usuario = new Usuario();
             //Manejar error
+            if(e.isEmailInvalido()){
+                errorEmail.setText("Se ingreso un Email invalido");
+            }
         }
                 try {
             usuario.setNombre(campoNombre.getText());
         } catch (ErrorUsuario e) {
             usuario = new Usuario();
             //Manejar error
+            if(e.isNombreCorto()){
+                
+            }else{
+                if(e.isNombreLargo()){
+                    
+                }else{
+                    if(e.isNombreInvalido()){
+                        
+                    }
+                }
+            }
         }
         try {
             usuario.setApellido(campoApellido.getText());

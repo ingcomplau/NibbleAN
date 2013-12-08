@@ -423,9 +423,9 @@
             </Property>
           </Properties>
           <Events>
+            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="botonRegistrarseMouseExited"/>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="botonRegistrarseMouseClicked"/>
             <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="botonRegistrarseMouseEntered"/>
-            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="botonRegistrarseMouseExited"/>
           </Events>
         </Component>
         <Component class="javax.swing.JCheckBox" name="checkAceptar">
