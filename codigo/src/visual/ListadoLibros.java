@@ -32,7 +32,6 @@ public class ListadoLibros extends javax.swing.JFrame {
         initComponents();
         VA=V;
         Operaciones.llenarTablaLibros((DefaultTableModel)tablaLibros.getModel());
-   
     }
 
     /**

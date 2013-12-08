@@ -28,9 +28,30 @@ public class PedidosAdmin extends javax.swing.JFrame {
         va=v;
         initComponents();
         this.actualizar();
-        Operaciones.llenarTablaPedidosAdmin((DefaultTableModel)tablaPedidos.getModel());
+        Operaciones.llenarTablaPedidosAdmin((DefaultTableModel)jTable2.getModel());
  
     }
+    
+        private class CellRenderer extends DefaultTableCellRenderer
+{
+   
+    @Override
+    public Component getTableCellRendererComponent(JTable table,
+            Object value, boolean isSelected, boolean hasFocus, int row,
+            int column)
+    {
+        super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+              
+        if (column == 3){
+            setText("");
+            setIcon(new ImageIcon(getClass().getResource(value.toString()))); 
+        } else {
+          setText(value.toString());
+          setIcon(null);
+        }
+        return this;
+    }
+ }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -42,9 +63,9 @@ public class PedidosAdmin extends javax.swing.JFrame {
     private void initComponents() {
 
         pedidosAdminPanel = new javax.swing.JPanel();
-        jScrollTablaPedidos = new javax.swing.JScrollPane();
-        tablaPedidos = new javax.swing.JTable();
         encabezado = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Pedidos");
@@ -57,51 +78,37 @@ public class PedidosAdmin extends javax.swing.JFrame {
 
         pedidosAdminPanel.setBackground(new java.awt.Color(218, 216, 218));
 
-        tablaPedidos.setBackground(new java.awt.Color(218, 216, 218));
-        tablaPedidos.setModel(new javax.swing.table.DefaultTableModel(
+        encabezado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/PanelPedidos.png"))); // NOI18N
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+
             },
             new String [] {
-                "Usuario", "Tapa", "Titulo", "Autor", "Precio", "Cantidad", "Fecha de compra", "Estado"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
-            };
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
             }
-        });
-        tablaPedidos.setFocusable(false);
-        tablaPedidos.setMinimumSize(new java.awt.Dimension(60, 0));
-        tablaPedidos.setPreferredSize(new java.awt.Dimension(300, 0));
-        tablaPedidos.setRowHeight(180);
-        tablaPedidos.setShowVerticalLines(false);
-        tablaPedidos.getTableHeader().setReorderingAllowed(false);
-        jScrollTablaPedidos.setViewportView(tablaPedidos);
-
-        encabezado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/PanelPedidos.png"))); // NOI18N
+        ));
+        jScrollPane1.setViewportView(jTable2);
 
         javax.swing.GroupLayout pedidosAdminPanelLayout = new javax.swing.GroupLayout(pedidosAdminPanel);
         pedidosAdminPanel.setLayout(pedidosAdminPanelLayout);
         pedidosAdminPanelLayout.setHorizontalGroup(
             pedidosAdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollTablaPedidos)
             .addGroup(pedidosAdminPanelLayout.createSequentialGroup()
                 .addComponent(encabezado)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(pedidosAdminPanelLayout.createSequentialGroup()
+                .addGap(88, 88, 88)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 559, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pedidosAdminPanelLayout.setVerticalGroup(
             pedidosAdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pedidosAdminPanelLayout.createSequentialGroup()
                 .addComponent(encabezado)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                .addComponent(jScrollTablaPedidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -114,34 +121,15 @@ public class PedidosAdmin extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(pedidosAdminPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 11, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-      private class CellRenderer extends DefaultTableCellRenderer
-{
-   
-    @Override
-    public Component getTableCellRendererComponent(JTable table,
-            Object value, boolean isSelected, boolean hasFocus, int row,
-            int column)
-    {
-        super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-              
-        if (column == 1){
-            setText("");
-            setIcon(new ImageIcon(getClass().getResource(value.toString()))); 
-        } else {
-          setText(value.toString());
-          setIcon(null);
-        }
-        return this;
-    }
- }
+
      public void actualizar(){
-        tablaPedidos.setModel(new javax.swing.table.DefaultTableModel(
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 
             },
@@ -165,25 +153,24 @@ public class PedidosAdmin extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        tablaPedidos.setFocusable(false);
-        tablaPedidos.setMinimumSize(new java.awt.Dimension(60, 0));
-        tablaPedidos.setPreferredSize(new java.awt.Dimension(300, 0));
-        tablaPedidos.setRowHeight(180);
-        tablaPedidos.setShowVerticalLines(false);
-        tablaPedidos.getTableHeader().setReorderingAllowed(false);
-        jScrollTablaPedidos.setViewportView(tablaPedidos);
-        if (tablaPedidos.getColumnModel().getColumnCount() > 0) {
-            tablaPedidos.getColumnModel().getColumn(0).setResizable(false);
-            tablaPedidos.getColumnModel().getColumn(1).setResizable(false);
-            tablaPedidos.getColumnModel().getColumn(2).setResizable(false);
-            tablaPedidos.getColumnModel().getColumn(3).setResizable(false);
-            tablaPedidos.getColumnModel().getColumn(4).setResizable(false);
-            tablaPedidos.getColumnModel().getColumn(5).setResizable(false);
-            tablaPedidos.getColumnModel().getColumn(6).setResizable(false);
-            tablaPedidos.getColumnModel().getColumn(7).setResizable(false);
+        jTable2.setFocusable(false);
+        jTable2.setMinimumSize(new java.awt.Dimension(60, 0));
+        jTable2.setPreferredSize(new java.awt.Dimension(300, 0));
+        jTable2.setRowHeight(180);
+        jTable2.setShowVerticalLines(false);
+        jTable2.getTableHeader().setReorderingAllowed(false);
+        if (jTable2.getColumnModel().getColumnCount() > 0) {
+            jTable2.getColumnModel().getColumn(0).setResizable(false);
+            jTable2.getColumnModel().getColumn(1).setResizable(false);
+            jTable2.getColumnModel().getColumn(2).setResizable(false);
+            jTable2.getColumnModel().getColumn(3).setResizable(false);
+            jTable2.getColumnModel().getColumn(4).setResizable(false);
+            jTable2.getColumnModel().getColumn(5).setResizable(false);
+            jTable2.getColumnModel().getColumn(6).setResizable(false);
+            jTable2.getColumnModel().getColumn(7).setResizable(false);
         }
         
-        Operaciones.llenarTablaPedidosAdmin((DefaultTableModel)tablaPedidos.getModel());
+        Operaciones.llenarTablaPedidosAdmin((DefaultTableModel)jTable2.getModel());
     } 
     
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
@@ -199,8 +186,8 @@ public class PedidosAdmin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel encabezado;
-    private javax.swing.JScrollPane jScrollTablaPedidos;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable2;
     private javax.swing.JPanel pedidosAdminPanel;
-    private javax.swing.JTable tablaPedidos;
     // End of variables declaration//GEN-END:variables
 }
