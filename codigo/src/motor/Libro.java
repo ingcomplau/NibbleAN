@@ -10,7 +10,6 @@ import excepciones.ErrorAutor;
 import excepciones.ErrorLibro;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -67,7 +66,8 @@ public class Libro{
                 primeras_paginas = resultado.getString("primeras_paginas");
                 autor_id = resultado.getInt("autor_id");
                 this.idioma_id = resultado.getInt("idioma_id");
-                this.urltapa = resultado.getString("urltapa"); 
+                this.urltapa = resultado.getString("urltapa");
+                if (resultado.getBytes("etiquetas") != null){
                 ByteArrayInputStream bytes = new ByteArrayInputStream(resultado.getBytes("etiquetas"));
                 ObjectInputStream in;
                 try {
@@ -75,6 +75,9 @@ public class Libro{
                     etiquetas = (Etiquetas)in.readObject();
                 } catch (        IOException | ClassNotFoundException ex) {
                     Logger.getLogger(Libro.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                 } else {
+                    etiquetas = new Etiquetas();
                 }
                 try {
                     this.autor = new Autor(resultado.getString("nombre"), resultado.getString("apellido"), resultado.getInt("pais_id"), new SimpleDateFormat("dd'-'MMM'-'yyyy").parse(resultado.getString("fecha_nacimiento")), resultado.getInt("sexo"), resultado.getString("acerca_de"));
@@ -299,10 +302,12 @@ public class Libro{
                 }
                 
                 agregado = true;
-                Operaciones.insertar("insert into libros(isbn, titulo, cant_paginas, precio, "
+                etiquetas.agregar();
+                String query = "insert into libros(isbn, titulo, cant_paginas, precio, "
                 + "fecha_lanzamiento, resumen, primeras_paginas, autor_id, idioma_id, urltapa, etiquetas)"
                 + "values('"+ this.isbn +"', '"+this.titulo+"',"+Integer.parseInt(this.cant_paginas)+","
-                +this.precio+",'"+this.fecha_lanzamiento+"','"+this.resumen+"','"+this.primeras_paginas+"',"+this.autor_id+","+this.idioma_id+",'"+this.urltapa+"',"+this.etiquetas.toByteArray()+");");      
+                +this.precio+",'"+this.fecha_lanzamiento+"','"+this.resumen+"','"+this.primeras_paginas+"',"+this.autor_id+","+this.idioma_id+",'"+this.urltapa+"', ?);";
+                Operaciones.blob(query,this.etiquetas.toByteArray());
             } 
           return agregado;
      }
@@ -325,14 +330,18 @@ public class Libro{
                 }catch(SQLException ex){
                 }
                 
-                Operaciones.insertar("UPDATE libros SET isbn='"+ this.isbn +"', titulo='"+this.titulo+"', cant_paginas='"+Integer.parseInt(this.cant_paginas)+"', "
+                 String query = "UPDATE libros SET isbn='"+ this.isbn +"', titulo='"+this.titulo+"', cant_paginas='"+Integer.parseInt(this.cant_paginas)+"', "
                  + "precio='"+this.precio+"', fecha_lanzamiento='"+this.fecha_lanzamiento+"', resumen='"+this.resumen+"', "
-                 + "primeras_paginas='"+this.primeras_paginas+"', autor_id='"+this.autor_id+"', idioma_id='"+this.idioma_id+"', urltapa='"+this.urltapa+"', etiquetas="+this.etiquetas.toByteArray()+" WHERE id='"+this.id+"';");
+                 + "primeras_paginas='"+this.primeras_paginas+"', autor_id='"+this.autor_id+"', idioma_id='"+this.idioma_id+"', urltapa='"+this.urltapa+"', etiquetas= ? WHERE id='"+this.id+"';";
+                Operaciones.blob(query,this.etiquetas.toByteArray());
          }
          
      }
 
      public void eliminar(){
+         for(String e : etiquetas){
+             etiquetas.remove(e);
+         }
          Operaciones.insertar("DELETE FROM libros WHERE isbn='"+this.isbn+"';"); // Implementar borrado lógico
      }
 }

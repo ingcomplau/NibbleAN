@@ -34,7 +34,8 @@ public class Home extends javax.swing.JFrame {
         this.botonAdministrar.setVisible(false);
         this.labelPedididos.setVisible(false);
         this.labelCarrito.setVisible(false);
-        llenarHome();   
+        llenarHome(null); 
+        Operaciones.llenarListaEtiquetas(listaEtiquetas);
     }
     
     
@@ -47,7 +48,8 @@ public class Home extends javax.swing.JFrame {
     }
     
     public void actualizar() {
-        llenarHome();
+        llenarHome(null);
+        Operaciones.llenarListaEtiquetas(listaEtiquetas);
         if (usuario != null){
              //Visibilizar botón cuenta, botón carrito, botón pedidos, botón salir.         
             // Ocultar botón registrarse e identificarse
@@ -79,12 +81,12 @@ public class Home extends javax.swing.JFrame {
         }
     }
     
-    private void llenarHome(){//se ponen los libros en el home, pongo uno de prueba
+    private void llenarHome(String etiqueta){
         panelHome = new javax.swing.JPanel();
         panelHome.setBackground(new java.awt.Color(218, 216, 218));
         panelHome.setLayout(new java.awt.GridLayout(1, 0));
         jScrollPane1.setViewportView(panelHome);
-        this.libros = Operaciones.getTodosLosLibros();
+        this.libros = Operaciones.getTodosLosLibros(etiqueta);
          for(int i = 0;i < libros.size() ;i++){
                         this.panelHome.add(new PanelComprarLibro(this, libros.get(i)));
                     }
@@ -126,6 +128,8 @@ public class Home extends javax.swing.JFrame {
         labelCarrito = new javax.swing.JLabel();
         labelPedididos = new javax.swing.JLabel();
         botonConsultar = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        listaEtiquetas = new javax.swing.JList();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Home");
@@ -451,6 +455,13 @@ public class Home extends javax.swing.JFrame {
                     .addComponent(botonVer)))
         );
 
+        listaEtiquetas.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                listaEtiquetasValueChanged(evt);
+            }
+        });
+        jScrollPane2.setViewportView(listaEtiquetas);
+
         javax.swing.GroupLayout panelBlancoLayout = new javax.swing.GroupLayout(panelBlanco);
         panelBlanco.setLayout(panelBlancoLayout);
         panelBlancoLayout.setHorizontalGroup(
@@ -468,7 +479,9 @@ public class Home extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(panelContenedor1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(panelBlancoLayout.createSequentialGroup()
-                        .addGap(101, 101, 101)
+                        .addContainerGap()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addGroup(panelBlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(panelFondo, javax.swing.GroupLayout.PREFERRED_SIZE, 855, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(fondoLayer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
@@ -479,17 +492,13 @@ public class Home extends javax.swing.JFrame {
             .addGroup(panelBlancoLayout.createSequentialGroup()
                 .addGroup(panelBlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelBlancoLayout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(panelBlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(panelContenedor1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(panelContenedor2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(panelBlancoLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(panelContenedor1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                            .addGroup(panelBlancoLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(panelBlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(panelContenedor2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(panelBlancoLayout.createSequentialGroup()
-                                        .addComponent(imagenCookBook, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE)))))
+                                .addComponent(imagenCookBook, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(panelBlancoLayout.createSequentialGroup()
                         .addGap(21, 21, 21)
@@ -497,9 +506,12 @@ public class Home extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(panelOpciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(fondoLayer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(panelFondo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelBlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelBlancoLayout.createSequentialGroup()
+                        .addComponent(fondoLayer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(panelFondo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(64, 64, 64))
         );
 
@@ -534,15 +546,19 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonBuscarMouseExited
 
     private void buttonBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonBuscarMouseClicked
-        // TODO add your handling code here:
-        /*  if("Titulo del Libro".equals(selectBuscar.getSelectedItem().toString())){
-            Operaciones.buscadorTituloLibro((DefaultTableModel)tablaLibros.getModel(),campoBuscador.getText());
+        panelHome = new javax.swing.JPanel();
+        panelHome.setBackground(new java.awt.Color(218, 216, 218));
+        panelHome.setLayout(new java.awt.GridLayout(1, 0));
+        jScrollPane1.setViewportView(panelHome);
+        if("Titulo del Libro".equals(selectBuscar.getSelectedItem().toString())){
+                this.libros = Operaciones.buscar("titulo",campoBuscador.getText());        
+        } else if("Apellido del Autor".equals(selectBuscar.getSelectedItem().toString())){
+               this.libros = Operaciones.buscar("apellido",campoBuscador.getText());
         }
-        else{
-            if("Apellido del Autor".equals(selectBuscar.getSelectedItem().toString())){
-                Operaciones.buscadorApellidoAutor((DefaultTableModel)tablaLibros.getModel(),campoBuscador.getText());
-            }
-        }*/
+        for(int i = 0;i < libros.size() ;i++){
+                        this.panelHome.add(new PanelComprarLibro(this, libros.get(i)));
+                    }
+        this.panelHome.setLayout(new GridLayout(libros.size()/2,2));
     }//GEN-LAST:event_buttonBuscarMouseClicked
 
     private void buttonBuscarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonBuscarMouseEntered
@@ -551,7 +567,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonBuscarMouseEntered
 
     private void buttonListarTodoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonListarTodoMouseClicked
-        //this.actualizar();
+        this.actualizar();
     }//GEN-LAST:event_buttonListarTodoMouseClicked
 
     private void buttonListarTodoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonListarTodoMouseEntered
@@ -669,6 +685,10 @@ public class Home extends javax.swing.JFrame {
         this.imagenCookBook.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/LogoCookbook.png")));
     }//GEN-LAST:event_imagenCookBookMouseExited
 
+    private void listaEtiquetasValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaEtiquetasValueChanged
+        llenarHome((String)listaEtiquetas.getSelectedValue());
+    }//GEN-LAST:event_listaEtiquetasValueChanged
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -718,9 +738,11 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JPanel fondoLayer;
     private javax.swing.JLabel imagenCookBook;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel labelCarrito;
     private javax.swing.JLabel labelLibro;
     private javax.swing.JLabel labelPedididos;
+    private javax.swing.JList listaEtiquetas;
     private javax.swing.JPanel panelBlanco;
     private javax.swing.JPanel panelBuscador;
     private javax.swing.JPanel panelContenedor1;
