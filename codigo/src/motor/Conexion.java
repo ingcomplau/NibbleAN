@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  * @version (a version number or a date)
  */
 public class Conexion{
-	private Connection conexion;
+	public Connection conexion;
 	private Statement consulta;
 	static public final String ruta = System.getProperty("user.dir")+"\\cookbook.sqlite";
       

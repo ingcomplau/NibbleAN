@@ -36,20 +36,23 @@ public class Etiquetas extends LinkedList<String>{
 
     @Override
     public boolean add(String e) {
-        Conexion conexion = new Conexion();
-        ResultSet resultado = Operaciones.consultar("SELECT * from etiquetas where nombre='"+ e +"'", conexion);
-        try{
+        if (!this.contains(e)){
+              Conexion conexion = new Conexion();
+            ResultSet resultado = Operaciones.consultar("SELECT * from etiquetas where nombre='"+ e +"'", conexion);     
+            try{    
              if (!resultado.next()) {
+                Operaciones.cerrar(conexion);  
                Operaciones.insertar("insert into etiquetas (nombre) values ('"+e+"')");
             } else {
-               Operaciones.insertar("update etiquetas set cant='"+(resultado.getInt("cant") + 1)+"' where nombre='"+e+"'");
+                 Operaciones.cerrar(conexion); 
              }
-        Operaciones.cerrar(conexion);        
-        } catch(SQLException ex){
+            } catch(SQLException ex){
         
-        }
-    return super.add(e);
-
+            }
+            return super.add(e);
+        } else {
+            return false;
+        }   
     }
 
     @Override
@@ -58,8 +61,10 @@ public class Etiquetas extends LinkedList<String>{
         String e = (String) o;
         ResultSet resultado = Operaciones.consultar("SELECT * from etiquetas where nombre='"+ e +"'", conexion);
         try{
-            if (resultado.getInt("cant") != 1) {
-              Operaciones.insertar("update etiquetas set cant='"+(resultado.getInt("cant") - 1)+"' where nombre='"+e+"'");
+            int cantaux = resultado.getInt("cant");
+            Operaciones.cerrar(conexion);
+            if (cantaux >= 1) {
+                Operaciones.insertar("update etiquetas set cant='"+(cantaux - 1)+"' where nombre='"+e+"'");
           } else {
               Operaciones.insertar("DELETE FROM etiquetas WHERE nombre='"+e+"';");
             }
@@ -82,9 +87,17 @@ public class Etiquetas extends LinkedList<String>{
         return null; 
     }
     
-    
-    
-    public void cargarTodas(){
+    public void agregar(){
+        for (String e : this){
+             Conexion conexion = new Conexion();
+            ResultSet resultado = Operaciones.consultar("SELECT * from etiquetas where nombre='"+ e +"'", conexion);     
+            try{
+               int cantaux = resultado.getInt("cant");
+               Operaciones.cerrar(conexion);  
+               Operaciones.insertar("update etiquetas set cant='"+ (cantaux + 1) +"' where nombre='"+e+"'");
+            } catch(SQLException ex){
         
+            }
+        }
     }
 }

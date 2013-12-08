@@ -6,6 +6,10 @@ package motor;
 
 
 import excepciones.ErrorAutor;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -24,6 +28,26 @@ public class Operaciones{
      * Constructor for objects of class Operaciones
      */
     private static ResultSet resultado = null;
+
+    public static boolean blob(String query, byte[] toByteArray) {
+        boolean valor = true;
+         Conexion conexion = new Conexion();
+        conexion.conectar();
+        try {
+             PreparedStatement pstmt = conexion.conexion.prepareStatement(query);
+             pstmt.setBytes(1, toByteArray);
+             pstmt.executeUpdate();
+             //conexion.conexion.commit();
+        } catch (SQLException e) {
+                valor = false;
+                JOptionPane.showMessageDialog(null, e.getMessage());
+            }      
+        finally{  
+           cerrar(conexion);
+        }
+        return valor;
+       
+    }
 
   
     
@@ -316,9 +340,53 @@ public class Operaciones{
     
     
     public static void llenarListaIdiomas(DefaultComboBoxModel comboModel){
+ 
         resultado = null;
         Conexion conexion = new Conexion();
         String sql = "select nombre from idiomas";
+        try {
+            resultado = consultar(sql, conexion);
+            if(resultado != null){
+                while(resultado.next()){
+                   comboModel.addElement(resultado.getObject(1)); 
+                }
+            }
+        }catch(SQLException e){
+            
+        }
+
+        finally
+     {
+         cerrar(conexion);
+     }
+    }
+    public static void llenarListaEtiquetas(JList listaModel){
+         Conexion conexion = new Conexion();
+        resultado = null;
+        DefaultListModel x = new javax.swing.DefaultListModel();
+        x.removeAllElements();
+        String sql = "select nombre from etiquetas";
+        try {
+            resultado = consultar(sql, conexion);
+            if(resultado != null){
+                while(resultado.next()){
+                   x.addElement(resultado.getObject(1));
+                }
+            }
+            listaModel.setModel(x);
+        }catch(SQLException e){
+        }
+
+        finally
+     {
+        cerrar(conexion);
+     }
+    }
+    public static void llenarListaEtiquetas(DefaultComboBoxModel comboModel){
+        comboModel.removeAllElements();
+        resultado = null;
+        Conexion conexion = new Conexion();
+        String sql = "select nombre from etiquetas";
         try {
             resultado = consultar(sql, conexion);
             if(resultado != null){
@@ -357,7 +425,7 @@ public class Operaciones{
      }
     }
      
-     public static LinkedList<Libro> getTodosLosLibros() {
+     public static LinkedList<Libro> getTodosLosLibros(String etiqueta) {
          LinkedList<Libro> lista = new LinkedList<>();
          Conexion conexion = new Conexion();
          Libro libro;
@@ -380,7 +448,17 @@ public class Operaciones{
                     libro.primeras_paginas = resultado.getString("primeras_paginas");
                     libro.autor_id = resultado.getInt("autor_id");
                     libro.idioma_id = resultado.getInt("idioma_id");
-                    libro.urltapa = resultado.getString("urltapa");                 
+                    libro.urltapa = resultado.getString("urltapa");                  
+                    if (resultado.getBytes("etiquetas") != null){
+                        ByteArrayInputStream bytes = new ByteArrayInputStream(resultado.getBytes("etiquetas"));
+                        ObjectInputStream in;
+                    try {
+                        in = new ObjectInputStream(bytes);
+                        libro.etiquetas = (Etiquetas)in.readObject();
+                    } catch (        IOException |ClassNotFoundException ex) {
+                        Logger.getLogger(Libro.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    }
                     try {
                         try {
                             libro.autor = new Autor(resultado.getString("nombre"), resultado.getString("apellido"), resultado.getInt("pais_id"), new SimpleDateFormat("dd'-'MMM'-'yyyy").parse(resultado.getString("fecha_nacimiento")), resultado.getInt("sexo"), resultado.getString("acerca_de"));
@@ -400,6 +478,13 @@ public class Operaciones{
      {
         cerrar(conexion);
      }
-         return lista;
+        if (!(etiqueta == null)){ 
+            for (Libro l : lista){
+                if (!l.etiquetas.contains(etiqueta)){
+                    lista.iterator().remove();
+                }
+            }
+        } 
+        return lista;
      }
 }
