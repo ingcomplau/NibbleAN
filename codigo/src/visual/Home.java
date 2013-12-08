@@ -546,15 +546,19 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonBuscarMouseExited
 
     private void buttonBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonBuscarMouseClicked
-        // TODO add your handling code here:
-        /*  if("Titulo del Libro".equals(selectBuscar.getSelectedItem().toString())){
-            Operaciones.buscadorTituloLibro((DefaultTableModel)tablaLibros.getModel(),campoBuscador.getText());
+        panelHome = new javax.swing.JPanel();
+        panelHome.setBackground(new java.awt.Color(218, 216, 218));
+        panelHome.setLayout(new java.awt.GridLayout(1, 0));
+        jScrollPane1.setViewportView(panelHome);
+        if("Titulo del Libro".equals(selectBuscar.getSelectedItem().toString())){
+                this.libros = Operaciones.buscar("titulo",campoBuscador.getText());        
+        } else if("Apellido del Autor".equals(selectBuscar.getSelectedItem().toString())){
+               this.libros = Operaciones.buscar("apellido",campoBuscador.getText());
         }
-        else{
-            if("Apellido del Autor".equals(selectBuscar.getSelectedItem().toString())){
-                Operaciones.buscadorApellidoAutor((DefaultTableModel)tablaLibros.getModel(),campoBuscador.getText());
-            }
-        }*/
+        for(int i = 0;i < libros.size() ;i++){
+                        this.panelHome.add(new PanelComprarLibro(this, libros.get(i)));
+                    }
+        this.panelHome.setLayout(new GridLayout(libros.size()/2,2));
     }//GEN-LAST:event_buttonBuscarMouseClicked
 
     private void buttonBuscarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonBuscarMouseEntered

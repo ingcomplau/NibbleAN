@@ -49,7 +49,127 @@ public class Operaciones{
        
     }
 
+    public static LinkedList<Libro> buscar(String text, String cadena) {
+        LinkedList<Libro> lista = new LinkedList<>();
+         Conexion conexion = new Conexion();
+         Libro libro;
+         resultado = null;
+         String sql = null;
+        if (text.equals("titulo")){
+            sql = "SELECT libros.*, autores.nombre, autores.apellido, autores.pais_id, "
+                + "autores.fecha_nacimiento, autores.sexo, autores.acerca_de from libros inner join "
+                + "autores on libros.autor_id=autores.id where titulo like '%"+cadena+"%' order by titulo";
+        } else if (text.equals("apellido")){
+            sql = "SELECT libros.* , autores.nombre, autores.apellido, autores.pais_id, "
+                    + "autores.fecha_nacimiento, autores.sexo, autores.acerca_de from libros inner join "
+                    + "autores on libros.autor_id=autores.id where autores.apellido like '%"+cadena+"%' order by titulo";
+        }
+        try {
+            resultado = consultar(sql, conexion);
+            if(resultado != null){            
+                while(resultado.next()){
+                    libro = new Libro();
+                    libro.id  = resultado.getInt("id");
+                    libro.isbn = resultado.getString("isbn");
+                    libro.titulo = resultado.getString("titulo"); 
+                    libro.cant_paginas = new Integer(resultado.getInt("cant_paginas")).toString();
+                    libro.precio = new Float(resultado.getFloat("precio")).toString();
+                    libro.fecha_lanzamiento = resultado.getString("fecha_lanzamiento");
+                    libro.resumen = resultado.getString("resumen");
+                    libro.primeras_paginas = resultado.getString("primeras_paginas");
+                    libro.autor_id = resultado.getInt("autor_id");
+                    libro.idioma_id = resultado.getInt("idioma_id");
+                    libro.urltapa = resultado.getString("urltapa");                  
+                    if (resultado.getBytes("etiquetas") != null){
+                        ByteArrayInputStream bytes = new ByteArrayInputStream(resultado.getBytes("etiquetas"));
+                        ObjectInputStream in;
+                    try {
+                        in = new ObjectInputStream(bytes);
+                        libro.etiquetas = (Etiquetas)in.readObject();
+                    } catch (        IOException |ClassNotFoundException ex) {
+                        Logger.getLogger(Libro.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    }
+                    try {
+                        try {
+                            libro.autor = new Autor(resultado.getString("nombre"), resultado.getString("apellido"), resultado.getInt("pais_id"), new SimpleDateFormat("dd'-'MMM'-'yyyy").parse(resultado.getString("fecha_nacimiento")), resultado.getInt("sexo"), resultado.getString("acerca_de"));
+                        } catch (ParseException ex) {
+                            Logger.getLogger(Operaciones.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    } catch (ErrorAutor ex) {
+                        Logger.getLogger(Operaciones.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    lista.add(libro);
+                }
+            }
+        }catch(SQLException e){
+        }
+
+        finally
+     {
+        cerrar(conexion);
+     }
+        return lista;
+    }
+
   
+         public static void buscadorTituloLibro(DefaultTableModel tableModel,String fraseClave){
+        resultado = null;
+        Conexion conexion = new Conexion();
+        tableModel.setRowCount(0);
+        tableModel.setColumnCount(3);
+        String sql = "SELECT a.isbn,a.titulo,b.apellido ||' '||b.nombre FROM libros a INNER JOIN autores b on a.autor_id=b.id WHERE a.titulo like '%"+fraseClave+"%'";
+        try {
+            resultado = consultar(sql, conexion);
+            if(resultado != null){
+                int numeroColumna = resultado.getMetaData().getColumnCount();             
+ while(resultado.next()){
+                    Object []objetos = new Object[numeroColumna];
+                    for(int i = 1;i <= numeroColumna - 1 ;i++){
+                        objetos[i-1] = resultado.getObject(i);
+                    }
+                    objetos[numeroColumna - 1] = resultado.getString(numeroColumna);                    
+                    tableModel.addRow(objetos);
+                }
+            }
+        }catch(SQLException e){
+        }
+
+        finally
+     {
+        cerrar(conexion);
+     }
+    }
+    
+         
+    public static void buscadorApellidoAutor(DefaultTableModel tableModel,String fraseClave){
+        resultado = null;
+        Conexion conexion = new Conexion();
+        tableModel.setRowCount(0);
+        tableModel.setColumnCount(3);
+        String sql = "SELECT a.isbn,a.titulo,b.apellido ||' '||b.nombre FROM libros "
+                + "a INNER JOIN autores b on a.autor_id=b.id WHERE b.apellido like '%"+fraseClave+"%'";
+        try {
+            resultado = consultar(sql,conexion);
+            if(resultado != null){
+                int numeroColumna = resultado.getMetaData().getColumnCount();
+             
+                while(resultado.next()){
+                    Object []objetos = new Object[numeroColumna];
+                    for(int i = 1;i <= numeroColumna - 1 ;i++){
+                        objetos[i-1] = resultado.getObject(i);
+                    }
+                    objetos[numeroColumna - 1] = resultado.getString(numeroColumna);                    
+                    tableModel.addRow(objetos);
+                }
+            }
+        }catch(SQLException e){
+        }
+        finally
+     {
+        cerrar(conexion);
+     }
+    }
     
     public Operaciones()
     {
@@ -221,63 +341,8 @@ public class Operaciones{
      }
     }
      
-
-     
-         public static void buscadorTituloLibro(DefaultTableModel tableModel,String fraseClave){
-        resultado = null;
-        Conexion conexion = new Conexion();
-        tableModel.setRowCount(0);
-        tableModel.setColumnCount(3);
-        String sql = "SELECT a.isbn,a.titulo,b.apellido ||' '||b.nombre FROM libros a INNER JOIN autores b on a.autor_id=b.id WHERE a.titulo='"+fraseClave+"'";
-        try {
-            resultado = consultar(sql, conexion);
-            if(resultado != null){
-                int numeroColumna = resultado.getMetaData().getColumnCount();             
-                while(resultado.next()){
-                    Object []objetos = new Object[numeroColumna];
-                    for(int i = 1;i <= numeroColumna;i++){
-                        objetos[i-1] = resultado.getObject(i);
-                    }
-                    tableModel.addRow(objetos);
-                }
-            }
-        }catch(SQLException e){
-        }
-
-        finally
-     {
-        cerrar(conexion);
-     }
-    }
+   
     
-         
-    public static void buscadorApellidoAutor(DefaultTableModel tableModel,String fraseClave){
-        resultado = null;
-        Conexion conexion = new Conexion();
-        tableModel.setRowCount(0);
-        tableModel.setColumnCount(3);
-        String sql = "SELECT a.isbn,a.titulo,b.apellido ||' '||b.nombre FROM libros "
-                + "a INNER JOIN autores b on a.autor_id=b.id WHERE b.apellido='"+fraseClave+"'";
-        try {
-            resultado = consultar(sql,conexion);
-            if(resultado != null){
-                int numeroColumna = resultado.getMetaData().getColumnCount();
-             
-                while(resultado.next()){
-                    Object []objetos = new Object[numeroColumna];
-                    for(int i = 1;i <= numeroColumna;i++){
-                        objetos[i-1] = resultado.getObject(i);
-                    }
-                    tableModel.addRow(objetos);
-                }
-            }
-        }catch(SQLException e){
-        }
-        finally
-     {
-        cerrar(conexion);
-     }
-    }
     
     public static boolean agregarAutor(Autor a) throws ErrorAutor { 
         ErrorAutor e = new ErrorAutor();

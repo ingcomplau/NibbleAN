@@ -218,9 +218,9 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buttonBuscarMouseExited"/>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buttonBuscarMouseClicked"/>
                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buttonBuscarMouseEntered"/>
+                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buttonBuscarMouseExited"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="buttonListarTodo">
