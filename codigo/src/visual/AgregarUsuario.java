@@ -628,7 +628,7 @@ public class AgregarUsuario extends javax.swing.JFrame {
             usuario = new Usuario();
             //Manejar error
             if(e.isEmailInvalido()){
-                errorEmail.setText("Se ingreso un Email invalido");
+                errorEmail.setText("Formato de Email invalido");
             }
         }
                 try {
@@ -637,13 +637,13 @@ public class AgregarUsuario extends javax.swing.JFrame {
             usuario = new Usuario();
             //Manejar error
             if(e.isNombreCorto()){
-                
+                errorNombre.setText("Nombre corto");
             }else{
                 if(e.isNombreLargo()){
-                    
+                    errorNombre.setText("Nombre largo");
                 }else{
                     if(e.isNombreInvalido()){
-                        
+                        errorNombre.setText("Nombre invalido");
                     }
                 }
             }
@@ -653,12 +653,34 @@ public class AgregarUsuario extends javax.swing.JFrame {
         } catch (ErrorUsuario e) {
             usuario = new Usuario();
             //Manejar error
+            if(e.isApellidoCorto()){
+              errorApellido.setText("Apellido corto");    
+            }else{
+                if(e.isApellidoLargo()){
+                    errorApellido.setText("Apellido largo");
+                }else{
+                    if(e.isApellidoInvalido()){
+                        errorApellido.setText("Apellido invalido");
+                    }
+                }
+            }
         }
         try {
             usuario.setUsuario(campoNombreUsuario.getText());
         } catch (ErrorUsuario e) {
             usuario = new Usuario();
             //Manejar error
+            if(e.isUsuarioCorto()){
+                errorNombreUsuario.setText("Usuario corto");
+            }else{
+                if(e.isUsuarioLargo()){
+                   errorNombreUsuario.setText("Nombre largo"); 
+                }else{
+                        if(e.isUsuarioInvalido()){
+                            errorNombreUsuario.setText("Nombre invalido");
+                        }
+                }
+            }
         }
         try {
             usuario.getDireccion().setLocalidad(campoCiudad.getText());

@@ -316,7 +316,7 @@ public class AgregarAutor extends javax.swing.JFrame {
             } else if (e.isNombreLargo()){
                 errorNombre.setText("Nombre Largo");
             } else if (e.isNombreInvalido()){
-                errorNombre.setText("Nobre invalido");
+                errorNombre.setText("Nombre invalido");
             } else errorNombre.setText(null);
             if(e.isApellidoCorto()){
                 errorApellido.setText("Apellido corto");
