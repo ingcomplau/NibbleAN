@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 
 package motor;
 
@@ -10,6 +6,8 @@ import excepciones.ErrorDireccion;
 import excepciones.ErrorUsuario;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -31,6 +29,7 @@ public class Usuario {
     private Boolean existente;
 
     public Usuario() {
+        direccion = new Direccion();
     }
 
     public Usuario(String usuario, String clave) throws ErrorUsuario {
@@ -143,8 +142,8 @@ public class Usuario {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(String fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
+    public void setFechaNacimiento(Date fechaNacimiento) {
+        this.fechaNacimiento = new SimpleDateFormat("dd'-'MMM'-'yyyy").format(fechaNacimiento);
     }
 
     public String getUsuario() {
@@ -223,8 +222,8 @@ public class Usuario {
     }
 
     public void setEmail(String email) throws ErrorUsuario{
-         if (!(email.matches("^[_A-Za-z0-9-\\\\+]+(\\\\.[_A-Za-z0-9-]+)*\n"
-                 + "@[A-Za-z0-9-]+(\\\\.[A-Za-z0-9]+)*(\\\\.[A-Za-z]{2,})$"))) {
+         if (!(email.matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+		+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$"))) {
                 ErrorUsuario e = new ErrorUsuario();
                 e.setEmailInvalido();
                 throw e;
@@ -269,6 +268,33 @@ public class Usuario {
          
      }
     
+     public boolean agregar() throws ErrorUsuario {
+         boolean agregado = false;
+         Conexion conexion = new Conexion();
+          if   (nombre != null & usuario != null & fechaNacimiento != null & apellido != null
+                & clave != null & direccion.getCalle() != null & direccion.getAltura() != null 
+                & direccion.getLocalidad() != null & direccion.getCodigoPostal() != null 
+                & direccion.getProvincia() != null  & telefono != null & email != null ){
+                ResultSet resultado = null;
+                resultado = Operaciones.consultar("SELECT * from usuarios where usuario='"+ this.usuario +"'", conexion);
+                try{
+                     if (resultado.next()) {
+                         ErrorUsuario e = new ErrorUsuario();
+                         Operaciones.cerrar(conexion);
+                         e.setUsuarioExistente();
+                         throw e;
+                     } else {
+                         Operaciones.cerrar(conexion);
+                     }
+                }catch(SQLException ex){
+                }
+                
+                agregado = true;
+                Operaciones.insertar("insert into usuarios (nombre, apellido, fecha_nacimiento, usuario, clave, altura, provincia_id, c_postal, calle, telefono, email, localidad) "
+                        + "values ('"+this.nombre+"','"+this.apellido+"','"+this.fechaNacimiento+"','"+this.usuario+"','"+this.clave+"','"+this.direccion.getAltura()+"','"+this.direccion.getProvincia()+"','"+this.direccion.getCodigoPostal()+"','"+this.direccion.getCalle()+"','"+this.telefono+"','"+this.email+"','"+this.direccion.getLocalidad()+"')");
+            } 
+          return agregado;
+     }
 
     
     

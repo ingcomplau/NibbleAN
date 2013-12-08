@@ -45,6 +45,10 @@ public class Direccion {
          }
     }
 
+    public Direccion() {
+        
+    }
+
     public String getCalle() {
         return calle;
     }

@@ -274,7 +274,6 @@ public class Libro{
          Conexion conexion = new Conexion();
           if   (isbn != null & titulo != null & cant_paginas != null & precio != null
                  & fecha_lanzamiento != null & autor_id != null ){
-              System.out.println(2);
                 ResultSet resultado = null;
                 resultado = Operaciones.consultar("SELECT * from libros where isbn='"+ this.isbn +"'", conexion);
                 try{

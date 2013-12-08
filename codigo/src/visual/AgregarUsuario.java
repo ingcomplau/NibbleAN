@@ -6,7 +6,12 @@
 
 package visual;
 
+import excepciones.ErrorDireccion;
+import excepciones.ErrorUsuario;
 import java.awt.Color;
+import javax.swing.DefaultComboBoxModel;
+import motor.Operaciones;
+import motor.Usuario;
 
 /**
  *
@@ -26,10 +31,13 @@ public class AgregarUsuario extends javax.swing.JFrame {
     private boolean clickConfContraseña=true;
     private boolean clickEmail=true;
     private Home home;
+    private Usuario usuario;
     
     public AgregarUsuario(Home home) {
+        usuario = new Usuario();
         this.home=home;
         initComponents();
+        Operaciones.llenarListaProvincias((DefaultComboBoxModel)selectProv.getModel());
        
     }
 
@@ -58,7 +66,7 @@ public class AgregarUsuario extends javax.swing.JFrame {
         campoEmail = new javax.swing.JFormattedTextField();
         botonRegistrarse = new javax.swing.JLabel();
         checkAceptar = new javax.swing.JCheckBox();
-        jComboBox2 = new javax.swing.JComboBox();
+        selectProv = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         fNac = new com.toedter.calendar.JDateChooser();
@@ -233,6 +241,9 @@ public class AgregarUsuario extends javax.swing.JFrame {
 
         botonRegistrarse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonRegistrarse2.png"))); // NOI18N
         botonRegistrarse.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botonRegistrarseMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 botonRegistrarseMouseEntered(evt);
             }
@@ -246,8 +257,6 @@ public class AgregarUsuario extends javax.swing.JFrame {
         checkAceptar.setForeground(new java.awt.Color(153, 153, 153));
         checkAceptar.setText(" Aceptar términos y condiciones");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(153, 153, 153));
         jLabel1.setText("Provincia: ");
@@ -258,6 +267,7 @@ public class AgregarUsuario extends javax.swing.JFrame {
 
         fNac.setBackground(new java.awt.Color(218, 216, 218));
         fNac.setMinSelectableDate(new java.util.Date(-14830977525000L));
+        fNac.getDateEditor().setEnabled(false);
 
         labelContraeña.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         labelContraeña.setForeground(new java.awt.Color(153, 153, 153));
@@ -300,7 +310,6 @@ public class AgregarUsuario extends javax.swing.JFrame {
                                     .addComponent(errorTelefono)
                                     .addComponent(campoTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(campoCodigoPostal, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(campoCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(errorNombreUsuario)
                                     .addComponent(errorApellido)
                                     .addComponent(campoNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -312,14 +321,16 @@ public class AgregarUsuario extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(fNac, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel1)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(campoCalle, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(campoNro, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(labelContraeña))))
+                                    .addComponent(labelContraeña)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                            .addComponent(jLabel1)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(selectProv, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(campoCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -362,7 +373,7 @@ public class AgregarUsuario extends javax.swing.JFrame {
                     .addComponent(fNac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(selectProv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addGap(1, 1, 1)
                 .addComponent(campoCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -589,7 +600,7 @@ public class AgregarUsuario extends javax.swing.JFrame {
 
     private void campoConfContraseñaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoConfContraseñaFocusLost
         if(campoConfContraseña.getText().equals("")){
-            campoConfContraseña.setText("***************");
+            campoConfContraseña.setText("***********");
             campoConfContraseña.setForeground((new java.awt.Color(153, 153, 153)));
             clickConfContraseña=true;
         }
@@ -608,6 +619,83 @@ public class AgregarUsuario extends javax.swing.JFrame {
         this.dispose();
         home.setEnabled(true);
     }//GEN-LAST:event_formWindowClosing
+
+    private void botonRegistrarseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonRegistrarseMouseClicked
+        if (checkAceptar.isSelected()){
+                    try {
+            usuario.setEmail(campoEmail.getText());
+        } catch (ErrorUsuario e) {
+            usuario = new Usuario();
+            //Manejar error
+        }
+                try {
+            usuario.setNombre(campoNombre.getText());
+        } catch (ErrorUsuario e) {
+            usuario = new Usuario();
+            //Manejar error
+        }
+        try {
+            usuario.setApellido(campoApellido.getText());
+        } catch (ErrorUsuario e) {
+            usuario = new Usuario();
+            //Manejar error
+        }
+        try {
+            usuario.setUsuario(campoNombreUsuario.getText());
+        } catch (ErrorUsuario e) {
+            usuario = new Usuario();
+            //Manejar error
+        }
+        try {
+            usuario.getDireccion().setLocalidad(campoCiudad.getText());
+        } catch (ErrorDireccion e) {
+            usuario = new Usuario();
+            //Manejar error
+        }
+        try {
+            usuario.getDireccion().setCodigoPostal(campoCodigoPostal.getText());
+        } catch (ErrorDireccion e) {
+            usuario = new Usuario();
+            //Manejar error
+        }
+        try {
+            usuario.getDireccion().setCalle(campoCalle.getText());
+        } catch (ErrorDireccion e) {
+            usuario = new Usuario();
+            //Manejar error
+        }
+        try {
+            usuario.getDireccion().setAltura(campoNro.getText());
+        } catch (ErrorDireccion e) {
+            usuario = new Usuario();
+            //Manejar error
+        }
+        try {
+            usuario.setTelefono(campoTelefono.getText());
+        } catch (ErrorUsuario e) {
+            usuario = new Usuario();
+            //Manejar error
+        }
+        if ((String.valueOf(campoContraseña.getPassword())).equals(String.valueOf(campoConfContraseña.getPassword()))){
+            try {
+                usuario.setClave(String.valueOf(campoContraseña.getPassword()));
+            } catch (ErrorUsuario e) {
+                usuario = new Usuario();
+                //Manejar error
+            }
+        }
+        usuario.getDireccion().setProvincia(selectProv.getSelectedIndex());
+        usuario.setFechaNacimiento(fNac.getDate());
+        try {
+            usuario.agregar();
+        } catch (ErrorUsuario e) {
+            //Manejar error
+        }
+        } else {
+            //Manejar error de que no se selecciono aceptar terminos y condiciones
+        }
+        
+    }//GEN-LAST:event_botonRegistrarseMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -632,7 +720,6 @@ public class AgregarUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel errorTelefono;
     private javax.swing.JLabel errorTerminos;
     private com.toedter.calendar.JDateChooser fNac;
-    private javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
@@ -640,5 +727,6 @@ public class AgregarUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel labelConfirmar;
     private javax.swing.JLabel labelContraeña;
     private javax.swing.JLabel panelRegistrarse;
+    private javax.swing.JComboBox selectProv;
     // End of variables declaration//GEN-END:variables
 }
