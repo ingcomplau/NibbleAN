@@ -687,12 +687,26 @@ public class AgregarUsuario extends javax.swing.JFrame {
         } catch (ErrorDireccion e) {
             usuario = new Usuario();
             //Manejar error
+            if(e.isCalleCorta()){
+                
+            }else{
+                if(e.isCalleLarga()){
+                    
+                }else{
+                    if(e.isCalleInvalida()){
+                        
+                    }
+                }
+            }
         }
         try {
             usuario.getDireccion().setCodigoPostal(campoCodigoPostal.getText());
         } catch (ErrorDireccion e) {
             usuario = new Usuario();
             //Manejar error
+            if(e.isAlturaIncorrecta()){
+                
+            }
         }
         try {
             usuario.getDireccion().setCalle(campoCalle.getText());
@@ -711,6 +725,14 @@ public class AgregarUsuario extends javax.swing.JFrame {
         } catch (ErrorUsuario e) {
             usuario = new Usuario();
             //Manejar error
+            if(e.isTelefonoCorto()){
+                
+            }else{
+                if(e.isTelefonoInvalido()){
+                    
+                }
+            }
+            
         }
         if ((String.valueOf(campoContraseña.getPassword())).equals(String.valueOf(campoConfContraseña.getPassword()))){
             try {
@@ -718,6 +740,9 @@ public class AgregarUsuario extends javax.swing.JFrame {
             } catch (ErrorUsuario e) {
                 usuario = new Usuario();
                 //Manejar error
+                if(e.isClaveCorta()){
+                    
+                }
             }
         }
         usuario.getDireccion().setProvincia(selectProv.getSelectedIndex());
@@ -726,9 +751,15 @@ public class AgregarUsuario extends javax.swing.JFrame {
             usuario.agregar();
         } catch (ErrorUsuario e) {
             //Manejar error
+            if(e.isUsuarioExistente()){
+                
+            }
         }
         } else {
             //Manejar error de que no se selecciono aceptar terminos y condiciones
+            if(checkAceptar.isSelected()==false){
+                errorTerminos.setText("Debe aceptar los terminos y condiciones");
+            }
         }
         
     }//GEN-LAST:event_botonRegistrarseMouseClicked
