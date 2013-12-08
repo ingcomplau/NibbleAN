@@ -135,6 +135,9 @@ public class Home extends javax.swing.JFrame {
 
         imagenCookBook.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/LogoCookbook.png"))); // NOI18N
         imagenCookBook.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                imagenCookBookMouseExited(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 imagenCookBookMouseEntered(evt);
             }
@@ -458,9 +461,9 @@ public class Home extends javax.swing.JFrame {
                     .addGroup(panelBlancoLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(imagenCookBook, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(panelBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
+                        .addGap(40, 40, 40)
                         .addComponent(panelContenedor2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(panelContenedor1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -476,19 +479,22 @@ public class Home extends javax.swing.JFrame {
             .addGroup(panelBlancoLayout.createSequentialGroup()
                 .addGroup(panelBlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelBlancoLayout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(panelBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelBlancoLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(panelContenedor1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                    .addGroup(panelBlancoLayout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(panelBlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(panelContenedor2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(panelBlancoLayout.createSequentialGroup()
-                                .addComponent(imagenCookBook, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addContainerGap()
+                                .addComponent(panelContenedor1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                            .addGroup(panelBlancoLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(panelBlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(panelContenedor2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(panelBlancoLayout.createSequentialGroup()
+                                        .addComponent(imagenCookBook, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE)))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(panelBlancoLayout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(panelBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(panelOpciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(fondoLayer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -657,6 +663,11 @@ public class Home extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.imagenCookBook.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/LogoCookbookFocus.png")));
     }//GEN-LAST:event_imagenCookBookMouseEntered
+
+    private void imagenCookBookMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imagenCookBookMouseExited
+        // TODO add your handling code here:
+        this.imagenCookBook.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/LogoCookbook.png")));
+    }//GEN-LAST:event_imagenCookBookMouseExited
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
