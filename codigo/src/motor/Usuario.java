@@ -205,7 +205,7 @@ public class Usuario {
                 if (!(telefono.matches("[0-9]+$"))){
                   e.setTelefonoInvalido();
                     correcto = false;
-                } else if (Integer.parseInt(telefono) <= 0){
+                } else if (Float.parseFloat(telefono) <= 0){
                    e.setTelefonoInvalido();
                    correcto = false;
               }

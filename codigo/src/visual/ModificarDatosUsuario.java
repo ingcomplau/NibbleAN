@@ -32,8 +32,9 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
         initComponents();
         this.setSize(430, 250);
         this.jPanel1.setVisible(false);
+        int provincia_id = usuario.getDireccion().getProvincia() - 1;
         Operaciones.llenarListaProvincias((DefaultComboBoxModel)selecProv.getModel());
-        selecProv.setSelectedIndex(usuario.getDireccion().getProvincia());
+        selecProv.setSelectedIndex(provincia_id);
         
     }
 
