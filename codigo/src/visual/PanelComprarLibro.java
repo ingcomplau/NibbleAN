@@ -54,20 +54,19 @@ public class PanelComprarLibro extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setBorder(new javax.swing.border.MatteBorder(null));
+        setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         labelImagen.setIcon(new ImageIcon(getClass().getResource(libro.getUrlTapa())));
         labelImagen.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         labelImagen.setPreferredSize(new java.awt.Dimension(128, 162));
 
-        labelTitulo.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        labelTitulo.setForeground(new java.awt.Color(153, 153, 153));
+        labelTitulo.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         labelTitulo.setText(libro.getTitulo());
 
         textoDetalle.setEditable(false);
         textoDetalle.setColumns(20);
         textoDetalle.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        textoDetalle.setForeground(new java.awt.Color(153, 153, 153));
+        textoDetalle.setForeground(new java.awt.Color(102, 102, 102));
         textoDetalle.setLineWrap(true);
         textoDetalle.setRows(5);
         textoDetalle.setText(libro.getResumen());
@@ -101,10 +100,13 @@ public class PanelComprarLibro extends javax.swing.JPanel {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jLabel1.setText("Precio:");
 
+        labelPrecio.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         labelPrecio.setText(libro.getPrecio());
 
+        jLabel2.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel2.setText("$");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -114,22 +116,23 @@ public class PanelComprarLibro extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(labelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(botonAgregar)
-                            .addGap(18, 18, 18)
-                            .addComponent(botonDetalle))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelTitulo)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(labelPrecio)))
+                        .addGap(49, 49, 49)
+                        .addComponent(botonAgregar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(botonDetalle))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(labelPrecio))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelTitulo))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -148,9 +151,9 @@ public class PanelComprarLibro extends javax.swing.JPanel {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(labelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(botonDetalle)
-                    .addComponent(botonAgregar))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(botonAgregar)
+                    .addComponent(botonDetalle))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents

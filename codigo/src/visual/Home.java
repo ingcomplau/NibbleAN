@@ -91,6 +91,7 @@ public class Home extends javax.swing.JFrame {
     }
     
     private void llenarHome(String etiqueta){
+        int cantfilas;
         panelHome = new javax.swing.JPanel();
         panelHome.setBackground(new java.awt.Color(218, 216, 218));
         panelHome.setLayout(new java.awt.GridLayout(1, 0));
@@ -99,7 +100,14 @@ public class Home extends javax.swing.JFrame {
          for(int i = 0;i < libros.size() ;i++){
                         this.panelHome.add(new PanelComprarLibro(this, libros.get(i)));
                     }
-        this.panelHome.setLayout(new GridLayout(libros.size()/2,2));
+    
+        if(libros.size() % 2==0){
+            cantfilas=libros.size()/2;
+        }else{
+            cantfilas=(libros.size()/2)+1;
+        }
+            
+        this.panelHome.setLayout(new GridLayout(cantfilas,2));
     }
 
     /**
