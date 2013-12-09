@@ -329,7 +329,7 @@ public class Libro{
                      }
                 }catch(SQLException ex){
                 }
-                
+                etiquetas.agregar();
                  String query = "UPDATE libros SET isbn='"+ this.isbn +"', titulo='"+this.titulo+"', cant_paginas='"+Integer.parseInt(this.cant_paginas)+"', "
                  + "precio='"+this.precio+"', fecha_lanzamiento='"+this.fecha_lanzamiento+"', resumen='"+this.resumen+"', "
                  + "primeras_paginas='"+this.primeras_paginas+"', autor_id='"+this.autor_id+"', idioma_id='"+this.idioma_id+"', urltapa='"+this.urltapa+"', etiquetas= ? WHERE id='"+this.id+"';";

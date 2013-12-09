@@ -21,8 +21,10 @@ import java.util.logging.Logger;
  */
 
 public class Etiquetas extends LinkedList<String>{
+    private boolean modificado = false;
     
     public byte[] toByteArray() {
+        modificado = false;
         ByteArrayOutputStream stream = new ByteArrayOutputStream(); 
         try {
             ObjectOutputStream out = new ObjectOutputStream(stream);
@@ -36,6 +38,7 @@ public class Etiquetas extends LinkedList<String>{
 
     @Override
     public boolean add(String e) {
+        modificado = true;
         if (!this.contains(e)){
               Conexion conexion = new Conexion();
             ResultSet resultado = Operaciones.consultar("SELECT * from etiquetas where nombre='"+ e +"'", conexion);     
@@ -57,6 +60,7 @@ public class Etiquetas extends LinkedList<String>{
 
     @Override
     public boolean remove(Object o) {
+        modificado = true;
         Conexion conexion = new Conexion();
         String e = (String) o;
         ResultSet resultado = Operaciones.consultar("SELECT * from etiquetas where nombre='"+ e +"'", conexion);
@@ -88,7 +92,8 @@ public class Etiquetas extends LinkedList<String>{
     }
     
     public void agregar(){
-        for (String e : this){
+        if (modificado){
+             for (String e : this){
              Conexion conexion = new Conexion();
             ResultSet resultado = Operaciones.consultar("SELECT * from etiquetas where nombre='"+ e +"'", conexion);     
             try{
@@ -99,5 +104,7 @@ public class Etiquetas extends LinkedList<String>{
         
             }
         }
+        }
+       
     }
 }
