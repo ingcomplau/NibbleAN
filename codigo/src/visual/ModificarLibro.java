@@ -51,7 +51,6 @@ public class ModificarLibro extends javax.swing.JFrame {
         campoCantPag = new javax.swing.JTextField();
         campoPrecio = new javax.swing.JTextField();
         campoTitulo = new javax.swing.JTextField();
-        campoPrimPag = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         areaDesc = new javax.swing.JTextArea();
@@ -161,11 +160,6 @@ public class ModificarLibro extends javax.swing.JFrame {
                 campoTituloKeyTyped(evt);
             }
         });
-
-        campoPrimPag.setBackground(new java.awt.Color(240, 238, 240));
-        campoPrimPag.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        campoPrimPag.setText(lib.getPrimeras_paginas());
-        campoPrimPag.setPreferredSize(new java.awt.Dimension(165, 34));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/PanelModificarLibro.png"))); // NOI18N
 
@@ -482,8 +476,7 @@ public class ModificarLibro extends javax.swing.JFrame {
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ModificarLibroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(errorPrecio)
                                         .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(errorFecha))
-                                    .addComponent(campoPrimPag, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(errorFecha))))
                             .addGroup(ModificarLibroPanelLayout.createSequentialGroup()
                                 .addGroup(ModificarLibroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(errorIsbn)
@@ -532,9 +525,7 @@ public class ModificarLibro extends javax.swing.JFrame {
                     .addComponent(errorCantPag)
                     .addComponent(errorFecha))
                 .addGap(2, 2, 2)
-                .addGroup(ModificarLibroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(campoPrimPag, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campoTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(campoTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(errorTitulo)
                 .addGap(20, 20, 20)
@@ -822,7 +813,6 @@ public class ModificarLibro extends javax.swing.JFrame {
     private javax.swing.JTextField campoCantPag;
     private javax.swing.JTextField campoIsbn;
     private javax.swing.JTextField campoPrecio;
-    private javax.swing.JTextField campoPrimPag;
     private javax.swing.JTextField campoTitulo;
     private javax.swing.JLabel errorCantPag;
     private javax.swing.JLabel errorFecha;

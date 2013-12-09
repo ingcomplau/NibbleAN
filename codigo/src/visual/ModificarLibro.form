@@ -100,7 +100,6 @@
                                           <Component id="jPanel6" min="-2" pref="320" max="-2" attributes="0"/>
                                           <Component id="errorFecha" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="campoPrimPag" alignment="1" min="-2" pref="320" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" attributes="0">
@@ -167,10 +166,7 @@
                       <Component id="errorFecha" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="campoPrimPag" min="-2" pref="25" max="-2" attributes="0"/>
-                      <Component id="campoTitulo" alignment="0" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="campoTitulo" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="errorTitulo" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
@@ -304,22 +300,6 @@
             <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campoTituloFocusLost"/>
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="campoTituloKeyTyped"/>
           </Events>
-        </Component>
-        <Component class="javax.swing.JTextField" name="campoPrimPag">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="f0" green="ee" red="f0" type="rgb"/>
-            </Property>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="SansSerif" size="14" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="lib.getPrimeras_paginas()" type="code"/>
-            </Property>
-            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[165, 34]"/>
-            </Property>
-          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
