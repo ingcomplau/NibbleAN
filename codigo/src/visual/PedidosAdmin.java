@@ -90,13 +90,15 @@ public class PedidosAdmin extends javax.swing.JFrame {
             tablaPedidos.getColumnModel().getColumn(3).setResizable(false);
             tablaPedidos.getColumnModel().getColumn(3).setPreferredWidth(70);
             tablaPedidos.getColumnModel().getColumn(4).setResizable(false);
-            tablaPedidos.getColumnModel().getColumn(4).setPreferredWidth(30);
+            tablaPedidos.getColumnModel().getColumn(4).setPreferredWidth(20);
             tablaPedidos.getColumnModel().getColumn(5).setResizable(false);
             tablaPedidos.getColumnModel().getColumn(5).setPreferredWidth(10);
             tablaPedidos.getColumnModel().getColumn(6).setResizable(false);
             tablaPedidos.getColumnModel().getColumn(6).setPreferredWidth(40);
             tablaPedidos.getColumnModel().getColumn(7).setResizable(false);
-            tablaPedidos.getColumnModel().getColumn(7).setPreferredWidth(25);
+            tablaPedidos.getColumnModel().getColumn(7).setPreferredWidth(35);
+            tablaPedidos.getColumnModel().getColumn(8).setResizable(false);
+            tablaPedidos.getColumnModel().getColumn(8).setPreferredWidth(10);
         }
         Operaciones.llenarTablaPedidosAdmin((DefaultTableModel) tablaPedidos.getModel());
         tablaPedidos.setDefaultRenderer(Object.class, new CellRenderer());
@@ -171,27 +173,29 @@ public class PedidosAdmin extends javax.swing.JFrame {
             tablaPedidos.getColumnModel().getColumn(3).setResizable(false);
             tablaPedidos.getColumnModel().getColumn(3).setPreferredWidth(70);
             tablaPedidos.getColumnModel().getColumn(4).setResizable(false);
-            tablaPedidos.getColumnModel().getColumn(4).setPreferredWidth(30);
+            tablaPedidos.getColumnModel().getColumn(4).setPreferredWidth(20);
             tablaPedidos.getColumnModel().getColumn(5).setResizable(false);
             tablaPedidos.getColumnModel().getColumn(5).setPreferredWidth(10);
             tablaPedidos.getColumnModel().getColumn(6).setResizable(false);
             tablaPedidos.getColumnModel().getColumn(6).setPreferredWidth(40);
             tablaPedidos.getColumnModel().getColumn(7).setResizable(false);
-            tablaPedidos.getColumnModel().getColumn(7).setPreferredWidth(25);
+            tablaPedidos.getColumnModel().getColumn(7).setPreferredWidth(35);
+            tablaPedidos.getColumnModel().getColumn(8).setResizable(false);
+            tablaPedidos.getColumnModel().getColumn(8).setPreferredWidth(10);
         }
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/PanelPedidos.png"))); // NOI18N
 
         cambiarEstado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonModif.png"))); // NOI18N
         cambiarEstado.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                cambiarEstadoMouseExited(evt);
-            }
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 cambiarEstadoMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 cambiarEstadoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                cambiarEstadoMouseExited(evt);
             }
         });
 
@@ -210,7 +214,7 @@ public class PedidosAdmin extends javax.swing.JFrame {
                 .addGap(325, 325, 325)
                 .addComponent(cambiarEstado)
                 .addGap(18, 18, 18)
-                .addComponent(comboEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(comboEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
