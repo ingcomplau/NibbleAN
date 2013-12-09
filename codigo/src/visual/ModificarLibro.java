@@ -164,7 +164,7 @@ public class ModificarLibro extends javax.swing.JFrame {
 
         campoPrimPag.setBackground(new java.awt.Color(240, 238, 240));
         campoPrimPag.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        campoPrimPag.setText(" Primeras Paginas");
+        campoPrimPag.setText(lib.getPrimeras_paginas());
         campoPrimPag.setPreferredSize(new java.awt.Dimension(165, 34));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/PanelModificarLibro.png"))); // NOI18N
