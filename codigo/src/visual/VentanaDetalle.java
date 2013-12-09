@@ -23,7 +23,9 @@ public class VentanaDetalle extends javax.swing.JFrame {
         this.home=home;
         this.libro = libro;
         initComponents();
-       
+        if((this.home.usuario==null)||(this.home.usuario.isAdministrador())){
+          botonComprar.setVisible(false);
+        }
     }
 
     /**
@@ -53,6 +55,9 @@ public class VentanaDetalle extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        botonHojear = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        botonComprar = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
@@ -70,11 +75,11 @@ public class VentanaDetalle extends javax.swing.JFrame {
 
         panelDetalle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/panelDetalle.JPG"))); // NOI18N
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBackground(new java.awt.Color(249, 248, 248));
 
         labelImagen.setIcon(new ImageIcon(getClass().getResource(libro.getUrlTapa())));
         labelImagen.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        labelImagen.setPreferredSize(new java.awt.Dimension(128, 162));
+        labelImagen.setPreferredSize(new java.awt.Dimension(100, 147));
 
         labelTitulo.setBackground(new java.awt.Color(153, 153, 153));
         labelTitulo.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
@@ -123,6 +128,28 @@ public class VentanaDetalle extends javax.swing.JFrame {
 
         jLabel5.setText(libro.getEtiquetas().toString());
 
+        botonHojear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonHojear.png"))); // NOI18N
+        botonHojear.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                botonHojearMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                botonHojearMouseEntered(evt);
+            }
+        });
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/LogoComp.png"))); // NOI18N
+
+        botonComprar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonAgregarCompr.png"))); // NOI18N
+        botonComprar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                botonComprarMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                botonComprarMouseEntered(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -130,9 +157,13 @@ public class VentanaDetalle extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(56, 56, 56)
-                        .addComponent(labelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(52, 52, 52)
+                        .addGap(37, 37, 37)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(botonHojear)))
+                        .addGap(71, 71, 71)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(labelTitulo)
                             .addComponent(labelIdioma)
@@ -155,11 +186,17 @@ public class VentanaDetalle extends javax.swing.JFrame {
                                 .addComponent(jLabel1))
                             .addComponent(labelClasificacion)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(330, 330, 330)
-                        .addComponent(labelPrecio)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel4)))
-                .addContainerGap(193, Short.MAX_VALUE))
+                        .addGap(199, 199, 199)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(labelPrecio)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel4))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addGap(163, 163, 163)
+                                .addComponent(botonComprar)))))
+                .addContainerGap(342, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,12 +205,6 @@ public class VentanaDetalle extends javax.swing.JFrame {
                 .addComponent(labelTitulo)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(labelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labelPrecio)
-                            .addComponent(jLabel4)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(labelAutor)
@@ -193,10 +224,27 @@ public class VentanaDetalle extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(labelPublicacion)
-                            .addComponent(jLabel5))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(labelIdioma)))
-                .addContainerGap(65, Short.MAX_VALUE))
+                            .addComponent(jLabel5)))
+                    .addComponent(labelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labelIdioma))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(botonHojear)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelPrecio)
+                    .addComponent(jLabel4))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(botonComprar)
+                        .addGap(38, 38, 38))))
         );
 
         jTabbedPane1.setFocusable(false);
@@ -219,7 +267,7 @@ public class VentanaDetalle extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelDetalle, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(panelDetalle, javax.swing.GroupLayout.PREFERRED_SIZE, 915, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jTabbedPane1))
                 .addContainerGap())
@@ -257,16 +305,39 @@ public class VentanaDetalle extends javax.swing.JFrame {
         this.home.setEnabled(true);
     }//GEN-LAST:event_formWindowClosing
 
+    private void botonHojearMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonHojearMouseEntered
+        // TODO add your handling code here:
+         botonHojear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonHojearFocus.png")));
+    }//GEN-LAST:event_botonHojearMouseEntered
+
+    private void botonHojearMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonHojearMouseExited
+        // TODO add your handling code here:
+         botonHojear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonHojear.png")));
+    }//GEN-LAST:event_botonHojearMouseExited
+
+    private void botonComprarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonComprarMouseEntered
+        // TODO add your handling code here:
+        botonComprar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonAgregarCompr.png")));
+    }//GEN-LAST:event_botonComprarMouseEntered
+
+    private void botonComprarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonComprarMouseExited
+        // TODO add your handling code here:
+        botonComprar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonAgregarComprFocus.png")));
+    }//GEN-LAST:event_botonComprarMouseExited
+
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel botonComprar;
+    private javax.swing.JLabel botonHojear;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
