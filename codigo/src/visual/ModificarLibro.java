@@ -422,9 +422,11 @@ public class ModificarLibro extends javax.swing.JFrame {
 
         jTextArea1.setBackground(new java.awt.Color(240, 238, 240));
         jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
         jTextArea1.setForeground(new java.awt.Color(51, 51, 51));
         jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
+        jTextArea1.setText(lib.getPrimeras_paginas());
         jTextArea1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jTextArea1FocusLost(evt);

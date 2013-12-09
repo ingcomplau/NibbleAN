@@ -43,23 +43,23 @@ public class VentanaDetalle extends javax.swing.JFrame {
         panelDetalle = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         labelImagen = new javax.swing.JLabel();
-        labelTitulo = new javax.swing.JLabel();
-        labelAutor = new javax.swing.JLabel();
-        labelPrecio = new javax.swing.JLabel();
-        labelIsbn = new javax.swing.JLabel();
-        labelClasificacion = new javax.swing.JLabel();
-        labelFormato = new javax.swing.JLabel();
-        labelPaginas = new javax.swing.JLabel();
-        labelPublicacion = new javax.swing.JLabel();
-        labelIdioma = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         botonHojear = new javax.swing.JLabel();
-        compraSeg = new javax.swing.JLabel();
         botonComprar = new javax.swing.JLabel();
+        compraSeg = new javax.swing.JLabel();
+        labelPrecio = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        labelIdioma = new javax.swing.JLabel();
+        labelPublicacion = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        labelPaginas = new javax.swing.JLabel();
+        labelFormato = new javax.swing.JLabel();
+        labelClasificacion = new javax.swing.JLabel();
+        labelIsbn = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        labelAutor = new javax.swing.JLabel();
+        labelTitulo = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
@@ -83,181 +83,183 @@ public class VentanaDetalle extends javax.swing.JFrame {
         labelImagen.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         labelImagen.setPreferredSize(new java.awt.Dimension(100, 147));
 
-        labelTitulo.setBackground(new java.awt.Color(153, 153, 153));
-        labelTitulo.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-        labelTitulo.setForeground(new java.awt.Color(153, 153, 153));
-        labelTitulo.setText(libro.getTitulo());
-
-        labelAutor.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        labelAutor.setForeground(new java.awt.Color(153, 153, 153));
-        labelAutor.setText("Autor:");
-
-        labelPrecio.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-        labelPrecio.setForeground(new java.awt.Color(0, 51, 255));
-        labelPrecio.setText("Precio: $");
-
-        labelIsbn.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        labelIsbn.setForeground(new java.awt.Color(153, 153, 153));
-        labelIsbn.setText("I.S.B.N:");
-
-        labelClasificacion.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        labelClasificacion.setForeground(new java.awt.Color(153, 153, 153));
-        labelClasificacion.setText("Clasificacion:");
-
-        labelFormato.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        labelFormato.setForeground(new java.awt.Color(153, 153, 153));
-        labelFormato.setText("Formato:");
-
-        labelPaginas.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        labelPaginas.setForeground(new java.awt.Color(153, 153, 153));
-        labelPaginas.setText("Paginas:");
-
-        labelPublicacion.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        labelPublicacion.setForeground(new java.awt.Color(153, 153, 153));
-        labelPublicacion.setText("Etiquetas:");
-
-        labelIdioma.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        labelIdioma.setForeground(new java.awt.Color(153, 153, 153));
-        labelIdioma.setText("Idioma:");
-
-        jLabel1.setText(libro.getAutor().getNombre() + " " +libro.getAutor().getApellido());
-
-        jLabel2.setText(libro.getIsbn());
-
-        jLabel3.setText(libro.getCant_paginas());
-
-        jLabel4.setText(libro.getPrecio());
-
-        jLabel5.setText(libro.getEtiquetas().toString());
-
         botonHojear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonHojear.png"))); // NOI18N
         botonHojear.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                botonHojearMouseExited(evt);
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botonHojearMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 botonHojearMouseEntered(evt);
             }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                botonHojearMouseExited(evt);
+            }
         });
-
-        compraSeg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/LogoComp.png"))); // NOI18N
 
         botonComprar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonAgregarCompr.png"))); // NOI18N
         botonComprar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                botonComprarMouseExited(evt);
-            }
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 botonComprarMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 botonComprarMouseEntered(evt);
             }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                botonComprarMouseExited(evt);
+            }
         });
+
+        compraSeg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/LogoComp.png"))); // NOI18N
+
+        labelPrecio.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        labelPrecio.setForeground(new java.awt.Color(51, 51, 51));
+        labelPrecio.setText("Precio: $");
+
+        jLabel4.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        jLabel4.setText(libro.getPrecio());
+
+        labelIdioma.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        labelIdioma.setForeground(new java.awt.Color(102, 102, 102));
+        labelIdioma.setText("Idioma:");
+
+        labelPublicacion.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        labelPublicacion.setForeground(new java.awt.Color(102, 102, 102));
+        labelPublicacion.setText("Etiquetas:");
+
+        jLabel5.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel5.setText(libro.getEtiquetas().toString());
+
+        jLabel3.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel3.setText(libro.getCant_paginas());
+
+        labelPaginas.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        labelPaginas.setForeground(new java.awt.Color(102, 102, 102));
+        labelPaginas.setText("Paginas:");
+
+        labelFormato.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        labelFormato.setForeground(new java.awt.Color(102, 102, 102));
+        labelFormato.setText("Formato:");
+
+        labelClasificacion.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        labelClasificacion.setForeground(new java.awt.Color(102, 102, 102));
+        labelClasificacion.setText("Clasificacion:");
+
+        labelIsbn.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        labelIsbn.setForeground(new java.awt.Color(102, 102, 102));
+        labelIsbn.setText("I.S.B.N:");
+
+        jLabel2.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel2.setText(libro.getIsbn());
+
+        jLabel1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel1.setText(libro.getAutor().getNombre() + " " +libro.getAutor().getApellido());
+
+        labelAutor.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        labelAutor.setForeground(new java.awt.Color(102, 102, 102));
+        labelAutor.setText("Autor:");
+
+        labelTitulo.setBackground(new java.awt.Color(153, 153, 153));
+        labelTitulo.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        labelTitulo.setText(libro.getTitulo());
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(46, 46, 46)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(botonHojear)))
-                        .addGap(71, 71, 71)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelTitulo)
-                            .addComponent(labelIdioma)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(labelPublicacion)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel5))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(labelPaginas)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel3))
-                            .addComponent(labelFormato)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(labelIsbn)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel2))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(labelAutor)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel1))
-                            .addComponent(labelClasificacion)))
+                        .addGap(10, 10, 10)
+                        .addComponent(botonHojear)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelTitulo)
+                    .addComponent(labelIdioma)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(199, 199, 199)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(labelPrecio)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel4))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(compraSeg)
-                                .addGap(163, 163, 163)
-                                .addComponent(botonComprar)))))
-                .addContainerGap(342, Short.MAX_VALUE))
+                        .addComponent(labelPublicacion)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel5))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(labelPrecio)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel4))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(labelPaginas)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel3))
+                    .addComponent(labelFormato)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(labelIsbn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel2))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(labelAutor)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel1))
+                    .addComponent(labelClasificacion)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(compraSeg)
+                        .addGap(18, 18, 18)
+                        .addComponent(botonComprar)))
+                .addContainerGap(279, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(labelTitulo)
-                .addGap(18, 18, 18)
+                .addGap(51, 51, 51)
+                .addComponent(labelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(botonHojear)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labelAutor)
-                            .addComponent(jLabel1))
-                        .addGap(4, 4, 4)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labelIsbn)
-                            .addComponent(jLabel2))
-                        .addGap(1, 1, 1)
-                        .addComponent(labelClasificacion)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(labelFormato)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labelPaginas)
-                            .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labelPublicacion)
-                            .addComponent(jLabel5)))
-                    .addComponent(labelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(labelIdioma))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(botonHojear)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelPrecio)
-                    .addComponent(jLabel4))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(compraSeg)
-                        .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(botonComprar)
-                        .addGap(38, 38, 38))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(botonComprar))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(labelTitulo)
+                        .addGap(11, 11, 11)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(147, 147, 147)
+                                .addComponent(labelIdioma))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(labelAutor)
+                                    .addComponent(jLabel1))
+                                .addGap(4, 4, 4)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(labelIsbn)
+                                    .addComponent(jLabel2))
+                                .addGap(1, 1, 1)
+                                .addComponent(labelClasificacion)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(labelFormato)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(labelPaginas)
+                                    .addComponent(jLabel3))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(labelPublicacion)
+                                    .addComponent(jLabel5))))
+                        .addGap(15, 15, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelPrecio)
+                            .addComponent(jLabel4))
+                        .addGap(28, 28, 28)
+                        .addComponent(compraSeg)))
+                .addGap(71, 71, 71))
         );
 
         jTabbedPane1.setFocusable(false);
 
         jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jTextArea1.setForeground(new java.awt.Color(153, 153, 153));
+        jTextArea1.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        jTextArea1.setForeground(new java.awt.Color(51, 51, 51));
         jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
         jTextArea1.setText(libro.getResumen());
@@ -272,8 +274,8 @@ public class VentanaDetalle extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelDetalle, javax.swing.GroupLayout.PREFERRED_SIZE, 915, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelDetalle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jTabbedPane1))
                 .addContainerGap())
         );
@@ -283,22 +285,20 @@ public class VentanaDetalle extends javax.swing.JFrame {
                 .addComponent(panelDetalle, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(22, Short.MAX_VALUE))
         );
-
-        jTabbedPane1.getAccessibleContext().setAccessibleDescription("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -320,20 +320,28 @@ public class VentanaDetalle extends javax.swing.JFrame {
          botonHojear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonHojear.png")));
     }//GEN-LAST:event_botonHojearMouseExited
 
-    private void botonComprarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonComprarMouseEntered
-        // TODO add your handling code here:
-        botonComprar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonAgregarCompr.png")));
-    }//GEN-LAST:event_botonComprarMouseEntered
-
-    private void botonComprarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonComprarMouseExited
-        // TODO add your handling code here:
-        botonComprar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonAgregarComprFocus.png")));
-    }//GEN-LAST:event_botonComprarMouseExited
-
     private void botonComprarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonComprarMouseClicked
         // TODO add your handling code here:
         home.carrito.add(new Compra(home.usuario,libro,1));
     }//GEN-LAST:event_botonComprarMouseClicked
+
+    private void botonComprarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonComprarMouseEntered
+        // TODO add your handling code here:
+        botonComprar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonAgregarComprFocus.png")));
+    }//GEN-LAST:event_botonComprarMouseEntered
+
+    private void botonComprarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonComprarMouseExited
+        // TODO add your handling code here:
+        botonComprar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonAgregarCompr.png")));
+    }//GEN-LAST:event_botonComprarMouseExited
+
+    private void botonHojearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonHojearMouseClicked
+        // TODO add your handling code here:
+        VentanaHojear vh=new VentanaHojear(this,libro.getPrimeras_paginas());
+        vh.setLocationRelativeTo(this);
+        vh.setVisible(true);
+        this.setEnabled(false);
+    }//GEN-LAST:event_botonHojearMouseClicked
 
     /**
      * @param args the command line arguments
