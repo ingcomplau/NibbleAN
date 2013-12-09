@@ -73,9 +73,11 @@ public class Home extends javax.swing.JFrame {
                  this.labelCarrito.setVisible(true);
                  this.botonVer.setVisible(true);
             }
+            this.labelUser.setText(usuario.getNombre()+" "+usuario.getApellido()+"        Usuario: "+usuario.getUsuario());
         } else {
             //Ocultar botón cuenta, botón carrito, botón pedidos, botón salir, botón administrar.
             //Visibilizar botón registrarse e identificarse
+            this.labelUser.setText("");
             this.botonRegistrarse.setVisible(true);
             this.botonIdentificarse.setVisible(true);
             this.botonCuenta.setVisible(false);
@@ -122,6 +124,7 @@ public class Home extends javax.swing.JFrame {
         botonContacto = new javax.swing.JLabel();
         botonAyuda = new javax.swing.JLabel();
         botonAdministrar = new javax.swing.JLabel();
+        labelUser = new javax.swing.JLabel();
         panelFondo = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         panelHome = new javax.swing.JPanel();
@@ -271,12 +274,17 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
+        labelUser.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        labelUser.setForeground(new java.awt.Color(255, 255, 255));
+
         javax.swing.GroupLayout panelOpcionesLayout = new javax.swing.GroupLayout(panelOpciones);
         panelOpciones.setLayout(panelOpcionesLayout);
         panelOpcionesLayout.setHorizontalGroup(
             panelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelOpcionesLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(labelUser)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(botonAdministrar)
                 .addGap(18, 18, 18)
                 .addComponent(botonSalir)
@@ -295,7 +303,8 @@ public class Home extends javax.swing.JFrame {
                 .addComponent(botonCuenta)
                 .addComponent(botonContacto)
                 .addComponent(botonAyuda)
-                .addComponent(botonAdministrar))
+                .addComponent(botonAdministrar)
+                .addComponent(labelUser))
         );
 
         panelFondo.setBackground(new java.awt.Color(216, 218, 216));
@@ -483,6 +492,15 @@ public class Home extends javax.swing.JFrame {
             .addGroup(panelBlancoLayout.createSequentialGroup()
                 .addGroup(panelBlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelBlancoLayout.createSequentialGroup()
+                        .addGap(52, 52, 52)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(51, 51, 51)
+                        .addGroup(panelBlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(panelFondo, javax.swing.GroupLayout.PREFERRED_SIZE, 855, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fondoLayer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(panelBlancoLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(imagenCookBook, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -496,16 +514,7 @@ public class Home extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(labelCantCarrito)
                                 .addGap(108, 108, 108)))
-                        .addComponent(panelContenedor1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(panelBlancoLayout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(51, 51, 51)
-                        .addGroup(panelBlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(panelFondo, javax.swing.GroupLayout.PREFERRED_SIZE, 855, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(fondoLayer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(panelContenedor1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         panelBlancoLayout.setVerticalGroup(
@@ -769,6 +778,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel labelCarrito;
     private javax.swing.JLabel labelLibro;
     private javax.swing.JLabel labelPedididos;
+    private javax.swing.JLabel labelUser;
     private javax.swing.JList listaEtiquetas;
     private javax.swing.JPanel panelBlanco;
     private javax.swing.JPanel panelBuscador;

@@ -389,6 +389,7 @@ public class ModificarLibro extends javax.swing.JFrame {
         jLabel6.setText("Nueva etiqueta:");
 
         listaEtiquetas.setModel(new DefaultListModel());
+        listaEtiquetas.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane3.setViewportView(listaEtiquetas);
 
         jLabel8.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N

@@ -278,6 +278,7 @@ public class AgregarLibro extends javax.swing.JFrame {
         jLabel1.setText("Lista de autores");
 
         listaEtiquetas.setModel(new DefaultListModel());
+        listaEtiquetas.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane2.setViewportView(listaEtiquetas);
 
         jLabel8.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
