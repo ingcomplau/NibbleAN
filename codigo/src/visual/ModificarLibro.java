@@ -34,6 +34,7 @@ public class ModificarLibro extends javax.swing.JFrame {
         listaAutores.setSelectedIndex(lib.getAutor_id() - 1);
          Operaciones.llenarListaEtiquetas((DefaultComboBoxModel)selectEtiquetas.getModel());
          llenarListaEtiquetas();
+         m.mostrarImagen(jPanelImagen, lib.getUrlTapa());
     }
 
     /**
@@ -565,7 +566,7 @@ public class ModificarLibro extends javax.swing.JFrame {
     }//GEN-LAST:event_botonListaEtiquetasMouseClicked
 
     private void botonTextoEtiquetaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonTextoEtiquetaMouseClicked
-        if (!textoEtiqueta.getText().equals(null)){
+        if (!(textoEtiqueta.getText() == null)){
             lib.getEtiquetas().add(textoEtiqueta.getText());
             textoEtiqueta.setText("");
             Operaciones.llenarListaEtiquetas((DefaultComboBoxModel)selectEtiquetas.getModel());

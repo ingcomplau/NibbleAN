@@ -2,6 +2,7 @@ package visual;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
@@ -83,12 +84,21 @@ public class metodos {
                 p.repaint();
                 guardar_imagen(namefile);           
             } 
-            catch (IOException ex) {                
+            catch (MalformedURLException ex) {                
                 System.err.println( ex.getMessage() );
             } 
         }
     }
-}
+    
+    public void mostrarImagen(JPanel p, String urlTapa){
+        URL url = getClass().getResource(urlTapa);
+        cargar_imagen_en_buffer(url);
+        p.add(new mipanel(Obtener_imagen_de_Buffer(), p.getSize()));
+        p.setVisible(true);
+        p.repaint(); 
+        }
+    }
+
     
        /*public void Guardar_Dialogo(){
        //JFileChooser fileChooser = new JFileChooser();       
