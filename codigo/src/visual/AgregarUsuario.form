@@ -69,7 +69,11 @@
                                       <Component id="campoEmail" min="-2" pref="251" max="-2" attributes="0"/>
                                       <Component id="errorTelefono" min="-2" max="-2" attributes="0"/>
                                       <Component id="campoTelefono" min="-2" pref="251" max="-2" attributes="0"/>
-                                      <Component id="campoCodigoPostal" min="-2" pref="251" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <Component id="campoCodigoPostal" min="-2" pref="251" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="errorCodigoPostal" min="-2" max="-2" attributes="0"/>
+                                      </Group>
                                       <Component id="errorNombreUsuario" min="-2" max="-2" attributes="0"/>
                                       <Component id="errorApellido" min="-2" max="-2" attributes="0"/>
                                       <Component id="campoNombreUsuario" min="-2" pref="251" max="-2" attributes="0"/>
@@ -85,6 +89,8 @@
                                           <Component id="campoCalle" min="-2" pref="135" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="campoNro" min="-2" pref="98" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="errorCalle" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <Component id="labelContraeña" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
@@ -157,11 +163,15 @@
                   <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                   <Component id="campoCiudad" min="-2" pref="34" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="campoCodigoPostal" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="campoCodigoPostal" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                      <Component id="errorCodigoPostal" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="campoCalle" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                       <Component id="campoNro" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                      <Component id="errorCalle" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="campoTelefono" min="-2" pref="34" max="-2" attributes="0"/>
@@ -555,6 +565,10 @@
               <Color blue="0" green="0" red="ff" type="rgb"/>
             </Property>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="errorCalle">
+        </Component>
+        <Component class="javax.swing.JLabel" name="errorCodigoPostal">
         </Component>
       </SubComponents>
     </Container>

@@ -79,6 +79,8 @@ public class AgregarUsuario extends javax.swing.JFrame {
         labelConfirmar = new javax.swing.JLabel();
         errorTerminos = new javax.swing.JLabel();
         errorContraseña = new javax.swing.JLabel();
+        errorCalle = new javax.swing.JLabel();
+        errorCodigoPostal = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Registrarse");
@@ -248,14 +250,14 @@ public class AgregarUsuario extends javax.swing.JFrame {
 
         botonRegistrarse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonRegistrarse2.png"))); // NOI18N
         botonRegistrarse.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                botonRegistrarseMouseExited(evt);
-            }
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 botonRegistrarseMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 botonRegistrarseMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                botonRegistrarseMouseExited(evt);
             }
         });
 
@@ -316,7 +318,10 @@ public class AgregarUsuario extends javax.swing.JFrame {
                                     .addComponent(campoEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(errorTelefono)
                                     .addComponent(campoTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(campoCodigoPostal, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(campoCodigoPostal, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(errorCodigoPostal))
                                     .addComponent(errorNombreUsuario)
                                     .addComponent(errorApellido)
                                     .addComponent(campoNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -330,7 +335,9 @@ public class AgregarUsuario extends javax.swing.JFrame {
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(campoCalle, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(campoNro, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(campoNro, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(errorCalle))
                                     .addComponent(labelContraeña)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
@@ -385,11 +392,14 @@ public class AgregarUsuario extends javax.swing.JFrame {
                 .addGap(1, 1, 1)
                 .addComponent(campoCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(campoCodigoPostal, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(campoCodigoPostal, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(errorCodigoPostal))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(campoCalle, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campoNro, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(campoNro, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(errorCalle))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(campoTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -694,13 +704,13 @@ public class AgregarUsuario extends javax.swing.JFrame {
             usuario = new Usuario();
             //Manejar error
             if(e.isCalleCorta()){
-                
+                errorCalle.setText("Calle demasiado corta");
             }else{
                 if(e.isCalleLarga()){
-                    
+                    errorCalle.setText("Calle demasiado larga");
                 }else{
                     if(e.isCalleInvalida()){
-                        
+                        errorCalle.setText("Calle invalida");
                     }
                 }
             }
@@ -736,10 +746,10 @@ public class AgregarUsuario extends javax.swing.JFrame {
             usuario = new Usuario();
             //Manejar error
             if(e.isTelefonoCorto()){
-                
+                errorTelefono.setText("Telefono demasiado corto");
             }else{
                 if(e.isTelefonoInvalido()){
-                    
+                    errorTelefono.setText("Telefono invalido");
                 }
             }
             
@@ -752,7 +762,7 @@ public class AgregarUsuario extends javax.swing.JFrame {
                 usuario = new Usuario();
                 //Manejar error
                 if(e.isClaveCorta()){
-                    
+                    errorContraseña.setText("Clave corta");
                 }
             }
         }
@@ -764,7 +774,7 @@ public class AgregarUsuario extends javax.swing.JFrame {
             agregado=false;
             //Manejar error
             if(e.isUsuarioExistente()){
-                
+                errorNombreUsuario.setText("Usuario ya existente");
             }
         }
         } else {
@@ -814,6 +824,8 @@ public class AgregarUsuario extends javax.swing.JFrame {
     private javax.swing.JTextField campoTelefono;
     private javax.swing.JCheckBox checkAceptar;
     private javax.swing.JLabel errorApellido;
+    private javax.swing.JLabel errorCalle;
+    private javax.swing.JLabel errorCodigoPostal;
     private javax.swing.JLabel errorContraseña;
     private javax.swing.JLabel errorEmail;
     private javax.swing.JLabel errorNombre;
