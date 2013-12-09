@@ -315,6 +315,32 @@ public class Operaciones{
      }
     }
      
+     public static void llenarTablaPedidos(DefaultTableModel tableModel,Usuario usuario){
+        resultado = null;  
+        Conexion conexion = new Conexion();
+        String sql = "SELECT b.urltapa,b.titulo,d.apellido ||' '||d.nombre,a.precio,a.cantidad,a.fecha,a.estado from compras a INNER JOIN libros b on a.libro_id=b.id  INNER JOIN usuarios c on a.usuario_id=c.id INNER JOIN autores d on b.autor_id=d.id where a.usuario_id='"+usuario.getId()+"'";
+        try {
+            resultado = consultar(sql, conexion);
+            if(resultado != null){
+                int numeroColumna = resultado.getMetaData().getColumnCount();              
+                while(resultado.next()){
+                    Object []objetos = new Object[numeroColumna];
+                    for(int i = 1;i <= numeroColumna - 1 ;i++){
+                        objetos[i-1] = resultado.getObject(i);
+                    }
+                    objetos[numeroColumna - 1] = resultado.getString(numeroColumna);                    
+                    tableModel.addRow(objetos);
+                }
+            }
+        }catch(SQLException e){
+        }
+
+        finally
+     {
+        cerrar(conexion);
+     }
+    }
+     
       public static void llenarTablaPedidosAdmin(DefaultTableModel tableModel) {
          resultado = null;  
          Conexion conexion = new Conexion();

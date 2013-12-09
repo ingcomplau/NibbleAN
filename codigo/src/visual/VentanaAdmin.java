@@ -34,6 +34,7 @@ public class VentanaAdmin extends javax.swing.JFrame {
         botonAgregarLibro = new javax.swing.JLabel();
         botonVisualizarLibro = new javax.swing.JLabel();
         botonPedidos = new javax.swing.JLabel();
+        botonEstadisticas = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Ventana Administrador");
@@ -74,10 +75,26 @@ public class VentanaAdmin extends javax.swing.JFrame {
             }
         });
 
-        botonPedidos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/LayerPedidos.png"))); // NOI18N
+        botonPedidos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ConsultarPedidos.png"))); // NOI18N
         botonPedidos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                botonPedidosMouseExited(evt);
+            }
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 botonPedidosMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                botonPedidosMouseEntered(evt);
+            }
+        });
+
+        botonEstadisticas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonEstadisticas.png"))); // NOI18N
+        botonEstadisticas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                botonEstadisticasMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                botonEstadisticasMouseEntered(evt);
             }
         });
 
@@ -87,32 +104,36 @@ public class VentanaAdmin extends javax.swing.JFrame {
             VentanaAdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(encabezado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(VentanaAdminPanelLayout.createSequentialGroup()
-                .addGap(75, 75, 75)
+                .addGap(57, 57, 57)
                 .addGroup(VentanaAdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(botonAgregarLibro)
-                    .addComponent(botonPedidos, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(botonVisualizarLibro)
-                .addGap(72, 72, 72))
+                    .addComponent(botonVisualizarLibro)
+                    .addComponent(botonAgregarLibro))
+                .addGap(44, 44, 44)
+                .addGroup(VentanaAdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(botonPedidos)
+                    .addComponent(botonEstadisticas))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         VentanaAdminPanelLayout.setVerticalGroup(
             VentanaAdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(VentanaAdminPanelLayout.createSequentialGroup()
                 .addComponent(encabezado)
-                .addGap(69, 69, 69)
-                .addGroup(VentanaAdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(botonAgregarLibro)
-                    .addComponent(botonVisualizarLibro))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
-                .addComponent(botonPedidos, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42))
+                .addGap(59, 59, 59)
+                .addGroup(VentanaAdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(botonAgregarLibro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(botonPedidos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(46, 46, 46)
+                .addGroup(VentanaAdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(botonVisualizarLibro)
+                    .addComponent(botonEstadisticas))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(VentanaAdminPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(VentanaAdminPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 533, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -175,6 +196,26 @@ public class VentanaAdmin extends javax.swing.JFrame {
         home.setEnabled(true);
     }//GEN-LAST:event_formWindowClosing
 
+    private void botonEstadisticasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonEstadisticasMouseEntered
+        // TODO add your handling code here:
+        botonEstadisticas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonEstadisticasFocus.png")));
+    }//GEN-LAST:event_botonEstadisticasMouseEntered
+
+    private void botonEstadisticasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonEstadisticasMouseExited
+        // TODO add your handling code here:
+        botonEstadisticas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonEstadisticas.png")));
+    }//GEN-LAST:event_botonEstadisticasMouseExited
+
+    private void botonPedidosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonPedidosMouseEntered
+        // TODO add your handling code here:
+        botonPedidos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ConsultarPedidosFocus.png")));
+    }//GEN-LAST:event_botonPedidosMouseEntered
+
+    private void botonPedidosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonPedidosMouseExited
+        // TODO add your handling code here:
+        botonPedidos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ConsultarPedidos.png")));
+    }//GEN-LAST:event_botonPedidosMouseExited
+
     
     /**
      * @param args the command line arguments
@@ -183,6 +224,7 @@ public class VentanaAdmin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel VentanaAdminPanel;
     private javax.swing.JLabel botonAgregarLibro;
+    private javax.swing.JLabel botonEstadisticas;
     private javax.swing.JLabel botonPedidos;
     private javax.swing.JLabel botonVisualizarLibro;
     private javax.swing.JLabel encabezado;

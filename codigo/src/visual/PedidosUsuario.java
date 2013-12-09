@@ -6,20 +6,36 @@
 
 package visual;
 
+import java.awt.Component;
+import javax.swing.ImageIcon;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import motor.Operaciones;
 import motor.Pedidos;
 import motor.Usuario;
 
-
+/**
+ *
+ * @author launote
+ */
 public class PedidosUsuario extends javax.swing.JFrame {
 
-    Home home;
+    /**
+     * Creates new form PedidosUsuario
+     */
+     Home home;
     Pedidos pedidos;
     
     public PedidosUsuario(Home h, Usuario usuario) {
         pedidos = new Pedidos(usuario);
         home=h;
         initComponents();
+        Operaciones.llenarTablaPedidos((DefaultTableModel)tablaPedidos.getModel(),usuario);
+        tablaPedidos.setDefaultRenderer(Object.class, new CellRenderer());
     }
+  
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -30,10 +46,10 @@ public class PedidosUsuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        pedidosUsuarioPanel = new javax.swing.JPanel();
-        jScrollTablaPedidos = new javax.swing.JScrollPane();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
         tablaPedidos = new javax.swing.JTable();
-        encabezado = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Pedidos");
@@ -44,15 +60,14 @@ public class PedidosUsuario extends javax.swing.JFrame {
             }
         });
 
-        pedidosUsuarioPanel.setBackground(new java.awt.Color(218, 216, 218));
+        jPanel1.setBackground(new java.awt.Color(218, 216, 218));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/PanelPedidos.png"))); // NOI18N
 
         tablaPedidos.setBackground(new java.awt.Color(218, 216, 218));
         tablaPedidos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "Tapa", "Titulo", "Autor", "Precio", "Cantidad", "Fecha de compra", "Estado"
@@ -67,40 +82,57 @@ public class PedidosUsuario extends javax.swing.JFrame {
             }
         });
         tablaPedidos.setFocusable(false);
-        tablaPedidos.setMinimumSize(new java.awt.Dimension(60, 0));
-        tablaPedidos.setPreferredSize(new java.awt.Dimension(300, 0));
         tablaPedidos.setRowHeight(180);
+        tablaPedidos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tablaPedidos.setShowVerticalLines(false);
         tablaPedidos.getTableHeader().setReorderingAllowed(false);
-        jScrollTablaPedidos.setViewportView(tablaPedidos);
+        jScrollPane1.setViewportView(tablaPedidos);
+        if (tablaPedidos.getColumnModel().getColumnCount() > 0) {
+            tablaPedidos.getColumnModel().getColumn(0).setResizable(false);
+            tablaPedidos.getColumnModel().getColumn(0).setPreferredWidth(40);
+            tablaPedidos.getColumnModel().getColumn(1).setResizable(false);
+            tablaPedidos.getColumnModel().getColumn(1).setPreferredWidth(160);
+            tablaPedidos.getColumnModel().getColumn(2).setResizable(false);
+            tablaPedidos.getColumnModel().getColumn(2).setPreferredWidth(80);
+            tablaPedidos.getColumnModel().getColumn(3).setResizable(false);
+            tablaPedidos.getColumnModel().getColumn(3).setPreferredWidth(30);
+            tablaPedidos.getColumnModel().getColumn(4).setResizable(false);
+            tablaPedidos.getColumnModel().getColumn(4).setPreferredWidth(15);
+            tablaPedidos.getColumnModel().getColumn(5).setResizable(false);
+            tablaPedidos.getColumnModel().getColumn(5).setPreferredWidth(40);
+            tablaPedidos.getColumnModel().getColumn(6).setResizable(false);
+            tablaPedidos.getColumnModel().getColumn(6).setPreferredWidth(25);
+        }
 
-        encabezado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/PanelPedidos.png"))); // NOI18N
-
-        javax.swing.GroupLayout pedidosUsuarioPanelLayout = new javax.swing.GroupLayout(pedidosUsuarioPanel);
-        pedidosUsuarioPanel.setLayout(pedidosUsuarioPanelLayout);
-        pedidosUsuarioPanelLayout.setHorizontalGroup(
-            pedidosUsuarioPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(encabezado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jScrollTablaPedidos)
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
-        pedidosUsuarioPanelLayout.setVerticalGroup(
-            pedidosUsuarioPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pedidosUsuarioPanelLayout.createSequentialGroup()
-                .addComponent(encabezado)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollTablaPedidos, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pedidosUsuarioPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pedidosUsuarioPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -112,15 +144,31 @@ public class PedidosUsuario extends javax.swing.JFrame {
         home.setEnabled(true);
     }//GEN-LAST:event_formWindowClosing
 
-    /**
-     * @param args the command line arguments
-     */
-    
+        private class CellRenderer extends DefaultTableCellRenderer
+{
+   
+    @Override
+    public Component getTableCellRendererComponent(JTable table,
+            Object value, boolean isSelected, boolean hasFocus, int row,
+            int column)
+    {
+        super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+              
+        if (column == 0){
+            setText("");
+            setIcon(new ImageIcon(getClass().getResource(value.toString()))); 
+        } else {
+          setText(value.toString());
+          setIcon(null);
+        }
+        return this;
+    }
+ }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel encabezado;
-    private javax.swing.JScrollPane jScrollTablaPedidos;
-    private javax.swing.JPanel pedidosUsuarioPanel;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tablaPedidos;
     // End of variables declaration//GEN-END:variables
 }
