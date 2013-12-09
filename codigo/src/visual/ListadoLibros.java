@@ -129,9 +129,13 @@ public class ListadoLibros extends javax.swing.JFrame {
         jScrollPaneTablaLibros.setViewportView(tablaLibros);
         if (tablaLibros.getColumnModel().getColumnCount() > 0) {
             tablaLibros.getColumnModel().getColumn(0).setResizable(false);
+            tablaLibros.getColumnModel().getColumn(0).setPreferredWidth(40);
             tablaLibros.getColumnModel().getColumn(1).setResizable(false);
+            tablaLibros.getColumnModel().getColumn(1).setPreferredWidth(140);
             tablaLibros.getColumnModel().getColumn(2).setResizable(false);
+            tablaLibros.getColumnModel().getColumn(2).setPreferredWidth(80);
             tablaLibros.getColumnModel().getColumn(3).setResizable(false);
+            tablaLibros.getColumnModel().getColumn(3).setPreferredWidth(30);
         }
         tablaLibros.setDefaultRenderer(Object.class, new CellRenderer());
 
