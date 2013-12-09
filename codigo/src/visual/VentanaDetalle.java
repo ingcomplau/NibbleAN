@@ -7,6 +7,7 @@
 package visual;
 
 import javax.swing.ImageIcon;
+import motor.Compra;
 import motor.Libro;
 
 /**
@@ -144,6 +145,9 @@ public class VentanaDetalle extends javax.swing.JFrame {
         botonComprar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 botonComprarMouseExited(evt);
+            }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botonComprarMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 botonComprarMouseEntered(evt);
@@ -324,6 +328,11 @@ public class VentanaDetalle extends javax.swing.JFrame {
         // TODO add your handling code here:
         botonComprar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonAgregarComprFocus.png")));
     }//GEN-LAST:event_botonComprarMouseExited
+
+    private void botonComprarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonComprarMouseClicked
+        // TODO add your handling code here:
+        home.carrito.add(new Compra(home.usuario,libro,1));
+    }//GEN-LAST:event_botonComprarMouseClicked
 
     /**
      * @param args the command line arguments
