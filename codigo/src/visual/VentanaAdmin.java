@@ -196,7 +196,9 @@ public class VentanaAdmin extends javax.swing.JFrame {
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
         this.dispose();
+        home.actualizar();
         home.setEnabled(true);
+        
     }//GEN-LAST:event_formWindowClosing
 
     private void botonEstadisticasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonEstadisticasMouseEntered

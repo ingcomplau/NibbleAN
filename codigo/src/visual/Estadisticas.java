@@ -38,7 +38,14 @@ public class Estadisticas extends javax.swing.JFrame {
         jCalendarCombo2 = new org.freixas.jcalendar.JCalendarCombo();
         jLabel3 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Estadisticas");
+        setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(218, 216, 218));
 
@@ -91,6 +98,12 @@ public class Estadisticas extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        this.dispose();
+        va.setEnabled(true);
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
