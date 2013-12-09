@@ -51,14 +51,14 @@ public class VentanaAdmin extends javax.swing.JFrame {
 
         botonAgregarLibro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonAgregarLibro.png"))); // NOI18N
         botonAgregarLibro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                botonAgregarLibroMouseExited(evt);
+            }
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 botonAgregarLibroMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 botonAgregarLibroMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                botonAgregarLibroMouseExited(evt);
             }
         });
 
@@ -92,6 +92,9 @@ public class VentanaAdmin extends javax.swing.JFrame {
         botonEstadisticas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 botonEstadisticasMouseExited(evt);
+            }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botonEstadisticasMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 botonEstadisticasMouseEntered(evt);
@@ -215,6 +218,14 @@ public class VentanaAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
         botonPedidos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ConsultarPedidos.png")));
     }//GEN-LAST:event_botonPedidosMouseExited
+
+    private void botonEstadisticasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonEstadisticasMouseClicked
+        // TODO add your handling code here:
+        Estadisticas AL=new Estadisticas(this);
+        AL.setLocationRelativeTo(this);
+        AL.setVisible(true);
+        this.setEnabled(false);
+    }//GEN-LAST:event_botonEstadisticasMouseClicked
 
     
     /**
