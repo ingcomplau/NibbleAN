@@ -165,7 +165,6 @@ public class PanelComprarLibro extends javax.swing.JPanel {
 
     private void botonAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonAgregarMouseClicked
         home.carrito.add(new Compra(home.usuario,libro,1));
-       
     }//GEN-LAST:event_botonAgregarMouseClicked
 
     private void botonAgregarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonAgregarMouseEntered
