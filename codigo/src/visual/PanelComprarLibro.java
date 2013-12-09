@@ -27,7 +27,7 @@ public class PanelComprarLibro extends javax.swing.JPanel {
         this.home=h;
         this.libro =libro;
         initComponents();
-        if (home.usuario == null){
+        if ((home.usuario == null)||(home.usuario.isAdministrador())){
             botonAgregar.setVisible(false);
         }
        
