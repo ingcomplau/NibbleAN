@@ -56,15 +56,21 @@ public class Home extends javax.swing.JFrame {
             this.botonRegistrarse.setVisible(false);
             this.botonIdentificarse.setVisible(false);
             this.botonCuenta.setVisible(true);
-            this.botonConsultar.setVisible(true);
-            this.labelPedididos.setVisible(true);
-            this.labelCarrito.setVisible(true);
-            this.botonVer.setVisible(true);
-            this.botonSalir.setVisible(true);
-            this.botonAdministrar.setVisible(false);
+            this.botonSalir.setVisible(true);       
             if (usuario.isAdministrador()){
                  // Visibilizar el boton de aministrar.
                 this.botonAdministrar.setVisible(true);
+                this.botonConsultar.setVisible(false);
+                this.labelPedididos.setVisible(false);
+                this.labelCarrito.setVisible(false);
+                this.botonVer.setVisible(false);
+            }
+            else{
+                 this.botonAdministrar.setVisible(false);
+                 this.botonConsultar.setVisible(true);
+                 this.labelPedididos.setVisible(true);
+                 this.labelCarrito.setVisible(true);
+                 this.botonVer.setVisible(true);
             }
         } else {
             //Ocultar botón cuenta, botón carrito, botón pedidos, botón salir, botón administrar.
