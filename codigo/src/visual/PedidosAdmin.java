@@ -49,6 +49,59 @@ public class PedidosAdmin extends javax.swing.JFrame {
     }
  }
        
+ public void actualizar(){
+      tablaPedidos.setBackground(new java.awt.Color(218, 216, 218));
+        tablaPedidos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Usuario", "Tapa", "Titulo", "Autor", "Precio", "Cantidad", "Fecha", "Estado", "Codigo Pedido"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tablaPedidos.setFocusable(false);
+        tablaPedidos.setRowHeight(180);
+        tablaPedidos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tablaPedidos.setShowVerticalLines(false);
+        tablaPedidos.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tablaPedidos);
+        if (tablaPedidos.getColumnModel().getColumnCount() > 0) {
+            tablaPedidos.getColumnModel().getColumn(0).setResizable(false);
+            tablaPedidos.getColumnModel().getColumn(0).setPreferredWidth(45);
+            tablaPedidos.getColumnModel().getColumn(1).setResizable(false);
+            tablaPedidos.getColumnModel().getColumn(1).setPreferredWidth(50);
+            tablaPedidos.getColumnModel().getColumn(2).setResizable(false);
+            tablaPedidos.getColumnModel().getColumn(2).setPreferredWidth(150);
+            tablaPedidos.getColumnModel().getColumn(3).setResizable(false);
+            tablaPedidos.getColumnModel().getColumn(3).setPreferredWidth(70);
+            tablaPedidos.getColumnModel().getColumn(4).setResizable(false);
+            tablaPedidos.getColumnModel().getColumn(4).setPreferredWidth(30);
+            tablaPedidos.getColumnModel().getColumn(5).setResizable(false);
+            tablaPedidos.getColumnModel().getColumn(5).setPreferredWidth(10);
+            tablaPedidos.getColumnModel().getColumn(6).setResizable(false);
+            tablaPedidos.getColumnModel().getColumn(6).setPreferredWidth(40);
+            tablaPedidos.getColumnModel().getColumn(7).setResizable(false);
+            tablaPedidos.getColumnModel().getColumn(7).setPreferredWidth(25);
+        }
+        Operaciones.llenarTablaPedidosAdmin((DefaultTableModel) tablaPedidos.getModel());
+        tablaPedidos.setDefaultRenderer(Object.class, new CellRenderer());
+ }
+       
        
 
     /**
@@ -64,6 +117,8 @@ public class PedidosAdmin extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaPedidos = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
+        cambiarEstado = new javax.swing.JLabel();
+        comboEstado = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Pedidos");
@@ -82,14 +137,14 @@ public class PedidosAdmin extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Usuario", "Tapa", "Titulo", "Autor", "Precio", "Cantidad", "Fecha", "Estado"
+                "Usuario", "Tapa", "Titulo", "Autor", "Precio", "Cantidad", "Fecha", "Estado", "Codigo Pedido"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -127,6 +182,21 @@ public class PedidosAdmin extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/PanelPedidos.png"))); // NOI18N
 
+        cambiarEstado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonModif.png"))); // NOI18N
+        cambiarEstado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                cambiarEstadoMouseExited(evt);
+            }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cambiarEstadoMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                cambiarEstadoMouseEntered(evt);
+            }
+        });
+
+        comboEstado.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ENVIADO", "CANCELADO" }));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -136,13 +206,24 @@ public class PedidosAdmin extends javax.swing.JFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane1))
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(325, 325, 325)
+                .addComponent(cambiarEstado)
+                .addGap(18, 18, 18)
+                .addComponent(comboEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 399, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 331, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(cambiarEstado)
+                    .addComponent(comboEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -167,11 +248,31 @@ public class PedidosAdmin extends javax.swing.JFrame {
         va.setEnabled(true);
     }//GEN-LAST:event_formWindowClosing
 
+    private void cambiarEstadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cambiarEstadoMouseClicked
+        // TODO add your handling code here:
+        if(this.tablaPedidos.getSelectedRowCount()!=0){
+             Operaciones.actualizarEstado(tablaPedidos.getValueAt(tablaPedidos.getSelectedRow(), 8).toString(),comboEstado.getSelectedIndex());
+        }
+        this.actualizar();
+    }//GEN-LAST:event_cambiarEstadoMouseClicked
+
+    private void cambiarEstadoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cambiarEstadoMouseEntered
+        // TODO add your handling code here:
+        cambiarEstado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonModifFocus.png")));
+    }//GEN-LAST:event_cambiarEstadoMouseEntered
+
+    private void cambiarEstadoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cambiarEstadoMouseExited
+        // TODO add your handling code here:
+        cambiarEstado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonModif.png")));
+    }//GEN-LAST:event_cambiarEstadoMouseExited
+
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel cambiarEstado;
+    private javax.swing.JComboBox comboEstado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

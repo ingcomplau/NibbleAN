@@ -112,7 +112,20 @@ public class Operaciones{
         return lista;
     }
 
-  
+   public static void actualizarEstado(String idPedido,int estadoId){
+       String estado=new String();
+       
+       if(estadoId==0){
+           estado="ENVIADO";
+       }
+       else{
+           if(estadoId==1){
+               estado="CANCELADO";
+           }
+       }
+       insertar("UPDATE compras SET estado='"+estado+"'WHERE id='"+idPedido+"'");
+    }
+   
          public static void buscadorTituloLibro(DefaultTableModel tableModel,String fraseClave){
         resultado = null;
         Conexion conexion = new Conexion();
@@ -344,7 +357,7 @@ public class Operaciones{
       public static void llenarTablaPedidosAdmin(DefaultTableModel tableModel) {
          resultado = null;  
          Conexion conexion = new Conexion();
-        String sql = "SELECT c.usuario,b.urltapa,b.titulo,d.apellido ||' '||d.nombre,a.precio,a.cantidad,a.fecha,a.estado from compras a INNER JOIN libros b on a.libro_id=b.id  INNER JOIN usuarios c on a.usuario_id=c.id INNER JOIN autores d on b.autor_id=d.id order by c.usuario";
+        String sql = "SELECT c.usuario,b.urltapa,b.titulo,d.apellido ||' '||d.nombre,a.precio,a.cantidad,a.fecha,a.estado,a.id from compras a INNER JOIN libros b on a.libro_id=b.id  INNER JOIN usuarios c on a.usuario_id=c.id INNER JOIN autores d on b.autor_id=d.id order by c.usuario";
         try {
             resultado = consultar(sql, conexion);
             if(resultado != null){
