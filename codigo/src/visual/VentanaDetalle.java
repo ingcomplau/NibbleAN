@@ -26,6 +26,7 @@ public class VentanaDetalle extends javax.swing.JFrame {
         initComponents();
         if((this.home.usuario==null)||(this.home.usuario.isAdministrador())){
           botonComprar.setVisible(false);
+          compraSeg.setVisible(false);
         }
     }
 
@@ -57,7 +58,7 @@ public class VentanaDetalle extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         botonHojear = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        compraSeg = new javax.swing.JLabel();
         botonComprar = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -139,7 +140,7 @@ public class VentanaDetalle extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/LogoComp.png"))); // NOI18N
+        compraSeg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/LogoComp.png"))); // NOI18N
 
         botonComprar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonAgregarCompr.png"))); // NOI18N
         botonComprar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -197,7 +198,7 @@ public class VentanaDetalle extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel4))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel6)
+                                .addComponent(compraSeg)
                                 .addGap(163, 163, 163)
                                 .addComponent(botonComprar)))))
                 .addContainerGap(342, Short.MAX_VALUE))
@@ -244,7 +245,7 @@ public class VentanaDetalle extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel6)
+                        .addComponent(compraSeg)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(botonComprar)
@@ -341,12 +342,12 @@ public class VentanaDetalle extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel botonComprar;
     private javax.swing.JLabel botonHojear;
+    private javax.swing.JLabel compraSeg;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
