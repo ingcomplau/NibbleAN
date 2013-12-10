@@ -29,6 +29,7 @@ public class PanelCarrito extends javax.swing.JPanel {
         this.labelPrecio.setText("Precio: "+(this.compra.getPrecio()));
         this.labelTitulo.setText(this.compra.getLibro().getTitulo());
         this.labelImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource(this.compra.getLibro().getUrlTapa())));
+        this.labelAutor.setText(this.compra.getLibro().getAutor().getNombre()+" "+this.compra.getLibro().getAutor().getApellido());
         
     }
     /**
@@ -45,8 +46,10 @@ public class PanelCarrito extends javax.swing.JPanel {
         labelPrecio = new javax.swing.JLabel();
         labelCantidad = new javax.swing.JLabel();
         botonEliminar = new javax.swing.JLabel();
+        labelAutor = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(218, 216, 218));
+        setBorder(javax.swing.BorderFactory.createEtchedBorder());
         setPreferredSize(new java.awt.Dimension(400, 182));
 
         labelImagen.setPreferredSize(new java.awt.Dimension(100, 147));
@@ -55,11 +58,11 @@ public class PanelCarrito extends javax.swing.JPanel {
         labelTitulo.setText("Titulo");
 
         labelPrecio.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        labelPrecio.setText("borrar esto 2");
+        labelPrecio.setText("Precio");
 
         labelCantidad.setBackground(new java.awt.Color(153, 153, 153));
         labelCantidad.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        labelCantidad.setText("borrar esto");
+        labelCantidad.setText("Cantidad");
 
         botonEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonEliminar.png"))); // NOI18N
         botonEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -74,6 +77,9 @@ public class PanelCarrito extends javax.swing.JPanel {
             }
         });
 
+        labelAutor.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        labelAutor.setText("Autor");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -83,16 +89,14 @@ public class PanelCarrito extends javax.swing.JPanel {
                 .addComponent(labelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelTitulo)
-                            .addComponent(labelPrecio))
-                        .addContainerGap(189, Short.MAX_VALUE))
+                    .addComponent(labelTitulo)
+                    .addComponent(labelPrecio)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(labelCantidad)
-                        .addGap(35, 35, 35)
-                        .addComponent(botonEliminar)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(54, 54, 54)
+                        .addComponent(botonEliminar))
+                    .addComponent(labelAutor))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -101,13 +105,15 @@ public class PanelCarrito extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(labelTitulo)
-                        .addGap(51, 51, 51)
+                        .addGap(18, 18, 18)
+                        .addComponent(labelAutor)
+                        .addGap(19, 19, 19)
                         .addComponent(labelPrecio)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(labelCantidad))
                     .addComponent(labelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonEliminar, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -123,7 +129,7 @@ public class PanelCarrito extends javax.swing.JPanel {
 
     private void botonEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonEliminarMouseClicked
         // TODO add your handling code here:
-        
+         this.setVisible(false);
          this.vc.carrito.remove(this.compra);
          this.vc.limpiarPanel();
          this.vc.llenar();
@@ -133,6 +139,7 @@ public class PanelCarrito extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel botonEliminar;
+    private javax.swing.JLabel labelAutor;
     private javax.swing.JLabel labelCantidad;
     private javax.swing.JLabel labelImagen;
     private javax.swing.JLabel labelPrecio;
