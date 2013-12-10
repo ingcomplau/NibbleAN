@@ -123,7 +123,7 @@ public class VentanaCarrito extends javax.swing.JFrame {
                this.panelPrincipal.add(new PanelCarrito(this.carrito.get(i),this));
                suma=suma+(this.carrito.get(i).getPrecio());
          }
-        this.total.setText("Total: $ "+suma);
+        this.total.setText("Total: $ "+Math.rint(suma*100)/100);
         if(this.carrito.size()==0)
             this.panelPrincipal.setLayout(new GridLayout(1,0));//como minimo grid debe tener este valor
         else

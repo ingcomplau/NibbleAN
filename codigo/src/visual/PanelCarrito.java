@@ -26,7 +26,7 @@ public class PanelCarrito extends javax.swing.JPanel {
     
     private void inicializar(){
         this.labelCantidad.setText("Cantidad: "+this.compra.getCantidad());
-        this.labelPrecio.setText("Precio: "+(this.compra.getPrecio()));
+        this.labelPrecio.setText("Precio: $"+(Math.rint(this.compra.getPrecio()*100)/100));
         this.labelTitulo.setText(this.compra.getLibro().getTitulo());
         this.labelImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource(this.compra.getLibro().getUrlTapa())));
         this.labelAutor.setText(this.compra.getLibro().getAutor().getNombre()+" "+this.compra.getLibro().getAutor().getApellido());
@@ -77,7 +77,7 @@ public class PanelCarrito extends javax.swing.JPanel {
             }
         });
 
-        labelAutor.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        labelAutor.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         labelAutor.setText("Autor");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -89,14 +89,17 @@ public class PanelCarrito extends javax.swing.JPanel {
                 .addComponent(labelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelTitulo)
-                    .addComponent(labelPrecio)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(labelCantidad)
-                        .addGap(54, 54, 54)
-                        .addComponent(botonEliminar))
-                    .addComponent(labelAutor))
-                .addContainerGap(64, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelTitulo)
+                            .addComponent(labelAutor)
+                            .addComponent(labelCantidad))
+                        .addContainerGap(214, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(labelPrecio)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(botonEliminar)
+                        .addGap(19, 19, 19))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,12 +108,12 @@ public class PanelCarrito extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(labelTitulo)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(labelAutor)
-                        .addGap(19, 19, 19)
-                        .addComponent(labelPrecio)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(labelCantidad))
+                        .addComponent(labelCantidad)
+                        .addGap(18, 18, 18)
+                        .addComponent(labelPrecio))
                     .addComponent(labelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonEliminar, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap(20, Short.MAX_VALUE))
