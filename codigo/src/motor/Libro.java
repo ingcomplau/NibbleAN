@@ -34,7 +34,7 @@ public class Libro{
    protected String precio; 
    protected String fecha_lanzamiento; 
    protected String resumen = ""; 
-  protected  String primeras_paginas;
+  protected  String primeras_paginas = "";
   protected  Integer autor_id;
    protected Integer idioma_id;
    protected String urltapa = "/visual/imagen/Resource/TapaLibro.png";
