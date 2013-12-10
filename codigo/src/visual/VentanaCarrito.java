@@ -16,7 +16,7 @@ import motor.Carrito;
  */
 public class VentanaCarrito extends javax.swing.JFrame {
     
-    private Carrito carrito;
+    protected Carrito carrito;
     Home home;
 
    
@@ -74,23 +74,21 @@ public class VentanaCarrito extends javax.swing.JFrame {
             }
         });
 
-        total.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        total.setForeground(new java.awt.Color(153, 153, 153));
+        total.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        total.setForeground(new java.awt.Color(51, 51, 51));
 
         javax.swing.GroupLayout carritoPanelLayout = new javax.swing.GroupLayout(carritoPanel);
         carritoPanel.setLayout(carritoPanelLayout);
         carritoPanelLayout.setHorizontalGroup(
             carritoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, carritoPanelLayout.createSequentialGroup()
+            .addComponent(encabezado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(carritoPanelLayout.createSequentialGroup()
                 .addGap(119, 119, 119)
                 .addComponent(total)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(botonComprar)
                 .addContainerGap())
-            .addGroup(carritoPanelLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addComponent(encabezado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jScrollPane1)
         );
         carritoPanelLayout.setVerticalGroup(
             carritoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -109,7 +107,7 @@ public class VentanaCarrito extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(carritoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(carritoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -119,10 +117,10 @@ public class VentanaCarrito extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void llenar(){
+    protected void llenar(){
         float suma=0;
          for(int i = 0;i < this.carrito.size() ;i++){
-               this.panelPrincipal.add(new PanelCarrito(this.carrito.get(i),this.carrito));
+               this.panelPrincipal.add(new PanelCarrito(this.carrito.get(i),this));
                suma=suma+(this.carrito.get(i).getPrecio());
          }
         this.total.setText("Total: $ "+suma);
@@ -155,6 +153,9 @@ public class VentanaCarrito extends javax.swing.JFrame {
         this.botonComprar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonComprar.png")));
     }//GEN-LAST:event_botonComprarMouseExited
 
+    protected void limpiarPanel(){
+        this.panelPrincipal.removeAll();
+    }
    
     
     

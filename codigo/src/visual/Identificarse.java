@@ -8,6 +8,7 @@ package visual;
 
 import excepciones.ErrorUsuario;
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import motor.Carrito;
@@ -112,6 +113,11 @@ public class Identificarse extends javax.swing.JFrame {
                 campoContraseñaFocusLost(evt);
             }
         });
+        campoContraseña.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                campoContraseñaKeyPressed(evt);
+            }
+        });
 
         errorLog.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         errorLog.setForeground(new java.awt.Color(255, 0, 0));
@@ -198,6 +204,20 @@ public class Identificarse extends javax.swing.JFrame {
             click=false;
             campoUsuario.setForeground(Color.black);
         }
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+             try {
+            home.setUsuario(new Usuario(campoUsuario.getText(), String.valueOf(campoContraseña.getPassword())));
+            home.actualizar();
+            home.carrito=new Carrito(home.getUsuario());
+            this.dispose();
+            home.setEnabled(true);
+            this.errorLog.setVisible(false);
+        } catch (ErrorUsuario e) {
+            // Visualizar mensaje de error.
+            this.errorLog.setText(" Usuario o Contraseña Incorrecta");
+        }
+        }
+        
     }//GEN-LAST:event_campoUsuarioKeyPressed
 
     private void campoContraseñaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoContraseñaFocusGained
@@ -248,6 +268,23 @@ public class Identificarse extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.botonEntrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonEntrar.png")));
     }//GEN-LAST:event_botonEntrarMouseExited
+
+    private void campoContraseñaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoContraseñaKeyPressed
+        // TODO add your handling code here:
+         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+             try {
+            home.setUsuario(new Usuario(campoUsuario.getText(), String.valueOf(campoContraseña.getPassword())));
+            home.actualizar();
+            home.carrito=new Carrito(home.getUsuario());
+            this.dispose();
+            home.setEnabled(true);
+            this.errorLog.setVisible(false);
+        } catch (ErrorUsuario e) {
+            // Visualizar mensaje de error.
+            this.errorLog.setText(" Usuario o Contraseña Incorrecta");
+        }
+        }
+    }//GEN-LAST:event_campoContraseñaKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

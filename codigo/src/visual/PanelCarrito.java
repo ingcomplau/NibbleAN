@@ -6,7 +6,6 @@
 
 package visual;
 
-import motor.Carrito;
 import motor.Compra;
 
 /**
@@ -15,14 +14,13 @@ import motor.Compra;
  */
 public class PanelCarrito extends javax.swing.JPanel {
     Compra compra;
-    Carrito carrito;
-    /**
-     * Creates new form PanelCarrito
-     */
-    public PanelCarrito(Compra compra,Carrito carrito) {
+    VentanaCarrito vc;
+   
+    
+    public PanelCarrito(Compra compra,VentanaCarrito VC) {
         initComponents();
         this.compra=compra;
-        this.carrito=carrito;
+        this.vc=VC;
         inicializar();
     }
     
@@ -46,36 +44,33 @@ public class PanelCarrito extends javax.swing.JPanel {
         labelTitulo = new javax.swing.JLabel();
         labelPrecio = new javax.swing.JLabel();
         labelCantidad = new javax.swing.JLabel();
-        labelEliminar = new javax.swing.JLabel();
+        botonEliminar = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(218, 216, 218));
         setPreferredSize(new java.awt.Dimension(400, 182));
 
-        labelImagen.setPreferredSize(new java.awt.Dimension(128, 162));
+        labelImagen.setPreferredSize(new java.awt.Dimension(100, 147));
 
-        labelTitulo.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        labelTitulo.setForeground(new java.awt.Color(153, 153, 153));
+        labelTitulo.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         labelTitulo.setText("Titulo");
 
-        labelPrecio.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        labelPrecio.setForeground(new java.awt.Color(153, 153, 153));
+        labelPrecio.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         labelPrecio.setText("borrar esto 2");
 
         labelCantidad.setBackground(new java.awt.Color(153, 153, 153));
-        labelCantidad.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        labelCantidad.setForeground(new java.awt.Color(153, 153, 153));
+        labelCantidad.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         labelCantidad.setText("borrar esto");
 
-        labelEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonEliminar (2).png"))); // NOI18N
-        labelEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+        botonEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonEliminar.png"))); // NOI18N
+        botonEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                labelEliminarMouseClicked(evt);
+                botonEliminarMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                labelEliminarMouseEntered(evt);
+                botonEliminarMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                labelEliminarMouseExited(evt);
+                botonEliminarMouseExited(evt);
             }
         });
 
@@ -84,18 +79,20 @@ public class PanelCarrito extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(labelCantidad)
+                .addContainerGap()
+                .addComponent(labelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(labelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelPrecio)
-                            .addComponent(labelTitulo))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
-                .addComponent(labelEliminar)
-                .addGap(29, 29, 29))
+                            .addComponent(labelTitulo)
+                            .addComponent(labelPrecio))
+                        .addContainerGap(189, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(labelCantidad)
+                        .addGap(35, 35, 35)
+                        .addComponent(botonEliminar)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,35 +102,38 @@ public class PanelCarrito extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(labelTitulo)
                         .addGap(51, 51, 51)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labelPrecio)
-                            .addComponent(labelEliminar))
+                        .addComponent(labelPrecio)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(labelCantidad))
-                    .addComponent(labelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(labelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonEliminar, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void labelEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelEliminarMouseClicked
-       this.setVisible(false);
-       this.carrito.remove(this.compra);
-    }//GEN-LAST:event_labelEliminarMouseClicked
-
-    private void labelEliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelEliminarMouseEntered
+    private void botonEliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonEliminarMouseEntered
         // TODO add your handling code here:
-        labelEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonEliminar (2)Focus.png")));
-    }//GEN-LAST:event_labelEliminarMouseEntered
+        botonEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonEliminarFocus.png")));
+    }//GEN-LAST:event_botonEliminarMouseEntered
 
-    private void labelEliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelEliminarMouseExited
+    private void botonEliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonEliminarMouseExited
         // TODO add your handling code here:
-        labelEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonEliminar (2).png")));
-    }//GEN-LAST:event_labelEliminarMouseExited
+        botonEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonEliminar.png")));
+    }//GEN-LAST:event_botonEliminarMouseExited
+
+    private void botonEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonEliminarMouseClicked
+        // TODO add your handling code here:
+        
+         this.vc.carrito.remove(this.compra);
+         this.vc.limpiarPanel();
+         this.vc.llenar();
+         
+    }//GEN-LAST:event_botonEliminarMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel botonEliminar;
     private javax.swing.JLabel labelCantidad;
-    private javax.swing.JLabel labelEliminar;
     private javax.swing.JLabel labelImagen;
     private javax.swing.JLabel labelPrecio;
     private javax.swing.JLabel labelTitulo;
