@@ -40,6 +40,7 @@ public class Libro{
    protected String urltapa = "/visual/imagen/Resource/TapaLibro.png";
    protected boolean existente;
    protected Autor autor;
+   protected String idioma = "";
     
     public Libro() {
         etiquetas = new Etiquetas();
@@ -93,6 +94,22 @@ public class Libro{
         Operaciones.cerrar(conexion);
      }
    }
+
+    public String getIdioma() {
+        if (idioma.equals("")){
+            Conexion conexion = new Conexion();
+              ResultSet resultado = null;
+                resultado = Operaciones.consultar("SELECT nombre from idiomas where id='"+ this.idioma_id +"'",conexion);
+                try{
+                        idioma = resultado.getString("nombre");
+                         Operaciones.cerrar(conexion);
+                     
+                }catch(SQLException ex){
+        }
+        
+    }
+        return idioma;
+    }
 
     public Autor getAutor() {
         return autor;
