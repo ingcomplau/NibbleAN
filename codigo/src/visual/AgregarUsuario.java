@@ -87,6 +87,19 @@ public class AgregarUsuario extends javax.swing.JFrame {
         fechaInv = new javax.swing.JLabel();
         errorCalle = new javax.swing.JLabel();
         errorNro = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Registrarse");
@@ -313,6 +326,32 @@ public class AgregarUsuario extends javax.swing.JFrame {
 
         errorNro.setForeground(new java.awt.Color(255, 0, 0));
 
+        jLabel4.setText("*");
+
+        jLabel5.setText("*");
+
+        jLabel6.setText("*");
+
+        jLabel7.setText("*");
+
+        jLabel8.setText("*");
+
+        jLabel10.setText("*");
+
+        jLabel11.setText("*");
+
+        jLabel12.setText("*");
+
+        jLabel13.setText("*");
+
+        jLabel14.setText("*");
+
+        jLabel15.setText("*");
+
+        jLabel16.setText("*");
+
+        jLabel17.setText("*Campos obligatorios");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -320,55 +359,85 @@ public class AgregarUsuario extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(campoTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(campoCodigoPostal, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(campoCalle, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(campoNro, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(campoCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(jLabel3)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(selectProv, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(errorCiudad)
-                        .addComponent(errorCodigoPostal)
-                        .addComponent(jLabel9))
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(errorTelefono)
-                        .addComponent(campoEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(errorEmail))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(labelContraeña)
                         .addGap(18, 18, 18)
-                        .addComponent(campoContraseña, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(campoContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(labelConfirmar)
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(errorContraseña)
-                            .addComponent(campoConfContraseña, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(jLabel2)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(fNac, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(campoNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(campoApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(campoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(errorNombre)
-                        .addComponent(errorApellido)
-                        .addComponent(errorNombreUsuario)
-                        .addComponent(fechaInv))
+                            .addComponent(campoConfContraseña, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(checkAceptar)
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(21, 21, 21)
-                                .addComponent(errorTerminos)))
-                        .addGap(28, 28, 28)
-                        .addComponent(botonRegistrarse)))
+                                .addComponent(jLabel14)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(campoTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel10)
+                                    .addComponent(jLabel11)
+                                    .addComponent(jLabel12))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(campoCodigoPostal, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(campoCalle, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(6, 6, 6)
+                                        .addComponent(jLabel13)
+                                        .addGap(6, 6, 6)
+                                        .addComponent(campoNro, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(campoCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel3)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(selectProv, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(errorCiudad)
+                                    .addComponent(errorCodigoPostal)
+                                    .addComponent(jLabel9)))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel15)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(errorTelefono)
+                                    .addComponent(campoEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(errorEmail)
+                                        .addGap(191, 191, 191)
+                                        .addComponent(jLabel16))))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(checkAceptar)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGap(21, 21, 21)
+                                        .addComponent(errorTerminos))
+                                    .addComponent(jLabel17))
+                                .addGap(28, 28, 28)
+                                .addComponent(botonRegistrarse))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel7))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(fNac, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(campoNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(campoApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(campoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(errorNombre)
+                                    .addComponent(errorApellido)
+                                    .addComponent(errorNombreUsuario)
+                                    .addComponent(fechaInv))))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(errorNro)
                 .addGap(20, 20, 20))
@@ -380,71 +449,107 @@ public class AgregarUsuario extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(108, Short.MAX_VALUE)
-                .addComponent(campoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(campoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(errorNombre)
                 .addGap(4, 4, 4)
-                .addComponent(campoApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(campoApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
                 .addGap(4, 4, 4)
                 .addComponent(errorApellido)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campoNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(campoNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(errorNombreUsuario)
                 .addGap(25, 25, 25)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2)
-                    .addComponent(fNac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(fNac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel7)
+                        .addComponent(jLabel2)))
                 .addGap(1, 1, 1)
                 .addComponent(fechaInv)
-                .addGap(3, 3, 3)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(selectProv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(selectProv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel8)))
                 .addGap(18, 18, 18)
-                .addComponent(campoCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(campoCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10))
                 .addGap(1, 1, 1)
                 .addComponent(errorCiudad)
                 .addGap(3, 3, 3)
-                .addComponent(campoCodigoPostal, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(campoCodigoPostal, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11))
                 .addGap(3, 3, 3)
                 .addComponent(errorCodigoPostal)
-                .addGap(1, 1, 1)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(campoCalle, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campoNro, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(errorNro))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(campoCalle, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(campoNro, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(errorNro)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel12))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel13)))
                 .addGap(1, 1, 1)
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(errorCalle)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campoTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(campoTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel14))
                 .addGap(1, 1, 1)
                 .addComponent(errorTelefono)
                 .addGap(3, 3, 3)
-                .addComponent(campoEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(campoEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel15))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(errorEmail)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(campoContraseña, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
-                    .addComponent(labelContraeña))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(campoConfContraseña, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
-                    .addComponent(labelConfirmar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(errorContraseña)
-                .addGap(26, 26, 26)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(botonRegistrarse)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(checkAceptar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(errorTerminos)))
-                .addGap(26, 26, 26))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(campoContraseña, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                            .addComponent(labelContraeña))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(campoConfContraseña, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                            .addComponent(labelConfirmar))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(errorContraseña)
+                        .addGap(26, 26, 26)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(botonRegistrarse)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(checkAceptar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(errorTerminos)))
+                        .addGap(1, 1, 1)
+                        .addComponent(jLabel17)
+                        .addContainerGap())
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel16)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
 
         jScrollPane1.setViewportView(jPanel2);
@@ -454,17 +559,20 @@ public class AgregarUsuario extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jScrollPane1)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jLabel1)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 551, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -487,165 +595,13 @@ public class AgregarUsuario extends javax.swing.JFrame {
         home.setEnabled(true);
     }//GEN-LAST:event_formWindowClosing
 
-    private void campoNombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoNombreFocusGained
-        if(clickNombre){
-            clickNombre=false;
-            campoNombre.setText("");
-            campoNombre.setForeground(Color.black);
+    private void campoConfContraseñaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoConfContraseñaFocusLost
+        if(campoConfContraseña.getText().equals("")){
+            campoConfContraseña.setText("***********");
+            campoConfContraseña.setForeground((new java.awt.Color(153, 153, 153)));
+            clickConfContraseña=true;
         }
-    }//GEN-LAST:event_campoNombreFocusGained
-
-    private void campoNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoNombreFocusLost
-        if(campoNombre.getText().equals("")){
-            campoNombre.setText(" Nombre");
-            campoNombre.setForeground((new java.awt.Color(153, 153, 153)));
-            clickNombre=true;
-        }
-    }//GEN-LAST:event_campoNombreFocusLost
-
-    private void campoApellidoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoApellidoFocusGained
-        if(clickApellido){
-            clickApellido=false;
-            campoApellido.setText("");
-            campoApellido.setForeground(Color.black);
-        }
-    }//GEN-LAST:event_campoApellidoFocusGained
-
-    private void campoApellidoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoApellidoFocusLost
-        if(campoApellido.getText().equals("")){
-            campoApellido.setText(" Apellido");
-            campoApellido.setForeground((new java.awt.Color(153, 153, 153)));
-            clickApellido=true;
-        }
-    }//GEN-LAST:event_campoApellidoFocusLost
-
-    private void campoNombreUsuarioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoNombreUsuarioFocusGained
-        if(clickNombreUsuario){
-            clickNombreUsuario=false;
-            campoNombreUsuario.setText("");
-            campoNombreUsuario.setForeground(Color.black);
-        }
-    }//GEN-LAST:event_campoNombreUsuarioFocusGained
-
-    private void campoNombreUsuarioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoNombreUsuarioFocusLost
-        if(campoNombreUsuario.getText().equals("")){
-            campoNombreUsuario.setText(" Nombre de Usuario");
-            campoNombreUsuario.setForeground((new java.awt.Color(153, 153, 153)));
-            clickNombreUsuario=true;
-        }
-    }//GEN-LAST:event_campoNombreUsuarioFocusLost
-
-    private void campoCiudadFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoCiudadFocusGained
-        if(clickCiudad){
-            clickCiudad=false;
-            campoCiudad.setText("");
-            campoCiudad.setForeground(Color.black);
-        }
-    }//GEN-LAST:event_campoCiudadFocusGained
-
-    private void campoCiudadFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoCiudadFocusLost
-        if(campoCiudad.getText().equals("")){
-            campoCiudad.setText(" Ciudad");
-            campoCiudad.setForeground((new java.awt.Color(153, 153, 153)));
-            clickCiudad=true;
-        }
-    }//GEN-LAST:event_campoCiudadFocusLost
-
-    private void campoCodigoPostalFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoCodigoPostalFocusGained
-        if(clickCodPostal){
-            clickCodPostal=false;
-            campoCodigoPostal.setText("");
-            campoCodigoPostal.setForeground(Color.black);
-        }
-    }//GEN-LAST:event_campoCodigoPostalFocusGained
-
-    private void campoCodigoPostalFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoCodigoPostalFocusLost
-        if(campoCodigoPostal.getText().equals("")){
-            campoCodigoPostal.setText(" Codigo Postal");
-            campoCodigoPostal.setForeground((new java.awt.Color(153, 153, 153)));
-            clickCodPostal=true;
-        }
-    }//GEN-LAST:event_campoCodigoPostalFocusLost
-
-    private void campoCalleFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoCalleFocusGained
-        if(clickCalle){
-            clickCalle=false;
-            campoCalle.setText("");
-            campoCalle.setForeground(Color.black);
-        }
-    }//GEN-LAST:event_campoCalleFocusGained
-
-    private void campoCalleFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoCalleFocusLost
-        if(campoCalle.getText().equals("")){
-            campoCalle.setText(" Nombre");
-            campoCalle.setForeground((new java.awt.Color(153, 153, 153)));
-            clickCalle=true;
-        }
-    }//GEN-LAST:event_campoCalleFocusLost
-
-    private void campoNroFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoNroFocusGained
-        if(clickNro){
-            clickNro=false;
-            campoNro.setText("");
-            campoNro.setForeground(Color.black);
-        }
-    }//GEN-LAST:event_campoNroFocusGained
-
-    private void campoNroFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoNroFocusLost
-        if(campoNro.getText().equals("")){
-            campoNro.setText(" Nro");
-            campoNro.setForeground((new java.awt.Color(153, 153, 153)));
-            clickNro=true;
-        }
-    }//GEN-LAST:event_campoNroFocusLost
-
-    private void campoTelefonoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoTelefonoFocusGained
-        if(clickTelefono){
-            clickTelefono=false;
-            campoTelefono.setText("");
-            campoTelefono.setForeground(Color.black);
-        }
-    }//GEN-LAST:event_campoTelefonoFocusGained
-
-    private void campoTelefonoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoTelefonoFocusLost
-        if(campoTelefono.getText().equals("")){
-            campoTelefono.setText(" Nombre");
-            campoTelefono.setForeground((new java.awt.Color(153, 153, 153)));
-            clickTelefono=true;
-        }
-    }//GEN-LAST:event_campoTelefonoFocusLost
-
-    private void campoEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoEmailFocusGained
-        if(clickEmail){
-            clickEmail=false;
-            campoEmail.setText("");
-            campoEmail.setForeground(Color.black);
-        }
-    }//GEN-LAST:event_campoEmailFocusGained
-
-    private void campoEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoEmailFocusLost
-        if(campoEmail.getText().equals("")){
-            campoEmail.setText(" Email");
-            campoEmail.setForeground((new java.awt.Color(153, 153, 153)));
-            clickEmail=true;
-        }
-    }//GEN-LAST:event_campoEmailFocusLost
-
-    private void campoContraseñaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoContraseñaFocusGained
-        if(clickContraseña){
-            clickContraseña=false;
-            campoContraseña.setText("");
-            campoContraseña.setForeground(Color.black);
-        }
-    }//GEN-LAST:event_campoContraseñaFocusGained
-
-    private void campoContraseñaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoContraseñaFocusLost
-        if(campoContraseña.getText().equals("")){
-            campoContraseña.setText("***************");
-            campoContraseña.setForeground((new java.awt.Color(153, 153, 153)));
-            clickContraseña=true;
-        }
-    }//GEN-LAST:event_campoContraseñaFocusLost
+    }//GEN-LAST:event_campoConfContraseñaFocusLost
 
     private void campoConfContraseñaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoConfContraseñaFocusGained
         if(clickConfContraseña){
@@ -655,185 +611,332 @@ public class AgregarUsuario extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_campoConfContraseñaFocusGained
 
-    private void campoConfContraseñaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoConfContraseñaFocusLost
-        if(campoConfContraseña.getText().equals("")){
-            campoConfContraseña.setText("***********");
-            campoConfContraseña.setForeground((new java.awt.Color(153, 153, 153)));
-            clickConfContraseña=true;
+    private void campoContraseñaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoContraseñaFocusLost
+        if(campoContraseña.getText().equals("")){
+            campoContraseña.setText("***************");
+            campoContraseña.setForeground((new java.awt.Color(153, 153, 153)));
+            clickContraseña=true;
         }
-    }//GEN-LAST:event_campoConfContraseñaFocusLost
+    }//GEN-LAST:event_campoContraseñaFocusLost
+
+    private void campoContraseñaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoContraseñaFocusGained
+        if(clickContraseña){
+            clickContraseña=false;
+            campoContraseña.setText("");
+            campoContraseña.setForeground(Color.black);
+        }
+    }//GEN-LAST:event_campoContraseñaFocusGained
+
+    private void campoEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoEmailFocusLost
+        if(campoEmail.getText().equals("")){
+            campoEmail.setText(" Email");
+            campoEmail.setForeground((new java.awt.Color(153, 153, 153)));
+            clickEmail=true;
+        }
+    }//GEN-LAST:event_campoEmailFocusLost
+
+    private void campoEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoEmailFocusGained
+        if(clickEmail){
+            clickEmail=false;
+            campoEmail.setText("");
+            campoEmail.setForeground(Color.black);
+        }
+    }//GEN-LAST:event_campoEmailFocusGained
+
+    private void campoTelefonoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoTelefonoFocusLost
+        if(campoTelefono.getText().equals("")){
+            campoTelefono.setText(" Nombre");
+            campoTelefono.setForeground((new java.awt.Color(153, 153, 153)));
+            clickTelefono=true;
+        }
+    }//GEN-LAST:event_campoTelefonoFocusLost
+
+    private void campoTelefonoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoTelefonoFocusGained
+        if(clickTelefono){
+            clickTelefono=false;
+            campoTelefono.setText("");
+            campoTelefono.setForeground(Color.black);
+        }
+    }//GEN-LAST:event_campoTelefonoFocusGained
+
+    private void campoNroFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoNroFocusLost
+        if(campoNro.getText().equals("")){
+            campoNro.setText(" Nro");
+            campoNro.setForeground((new java.awt.Color(153, 153, 153)));
+            clickNro=true;
+        }
+    }//GEN-LAST:event_campoNroFocusLost
+
+    private void campoNroFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoNroFocusGained
+        if(clickNro){
+            clickNro=false;
+            campoNro.setText("");
+            campoNro.setForeground(Color.black);
+        }
+    }//GEN-LAST:event_campoNroFocusGained
+
+    private void campoCalleFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoCalleFocusLost
+        if(campoCalle.getText().equals("")){
+            campoCalle.setText(" Nombre");
+            campoCalle.setForeground((new java.awt.Color(153, 153, 153)));
+            clickCalle=true;
+        }
+    }//GEN-LAST:event_campoCalleFocusLost
+
+    private void campoCalleFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoCalleFocusGained
+        if(clickCalle){
+            clickCalle=false;
+            campoCalle.setText("");
+            campoCalle.setForeground(Color.black);
+        }
+    }//GEN-LAST:event_campoCalleFocusGained
+
+    private void campoCodigoPostalFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoCodigoPostalFocusLost
+        if(campoCodigoPostal.getText().equals("")){
+            campoCodigoPostal.setText(" Codigo Postal");
+            campoCodigoPostal.setForeground((new java.awt.Color(153, 153, 153)));
+            clickCodPostal=true;
+        }
+    }//GEN-LAST:event_campoCodigoPostalFocusLost
+
+    private void campoCodigoPostalFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoCodigoPostalFocusGained
+        if(clickCodPostal){
+            clickCodPostal=false;
+            campoCodigoPostal.setText("");
+            campoCodigoPostal.setForeground(Color.black);
+        }
+    }//GEN-LAST:event_campoCodigoPostalFocusGained
+
+    private void campoCiudadFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoCiudadFocusLost
+        if(campoCiudad.getText().equals("")){
+            campoCiudad.setText(" Ciudad");
+            campoCiudad.setForeground((new java.awt.Color(153, 153, 153)));
+            clickCiudad=true;
+        }
+    }//GEN-LAST:event_campoCiudadFocusLost
+
+    private void campoCiudadFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoCiudadFocusGained
+        if(clickCiudad){
+            clickCiudad=false;
+            campoCiudad.setText("");
+            campoCiudad.setForeground(Color.black);
+        }
+    }//GEN-LAST:event_campoCiudadFocusGained
+
+    private void campoNombreUsuarioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoNombreUsuarioFocusLost
+        if(campoNombreUsuario.getText().equals("")){
+            campoNombreUsuario.setText(" Nombre de Usuario");
+            campoNombreUsuario.setForeground((new java.awt.Color(153, 153, 153)));
+            clickNombreUsuario=true;
+        }
+    }//GEN-LAST:event_campoNombreUsuarioFocusLost
+
+    private void campoNombreUsuarioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoNombreUsuarioFocusGained
+        if(clickNombreUsuario){
+            clickNombreUsuario=false;
+            campoNombreUsuario.setText("");
+            campoNombreUsuario.setForeground(Color.black);
+        }
+    }//GEN-LAST:event_campoNombreUsuarioFocusGained
+
+    private void campoApellidoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoApellidoFocusLost
+        if(campoApellido.getText().equals("")){
+            campoApellido.setText(" Apellido");
+            campoApellido.setForeground((new java.awt.Color(153, 153, 153)));
+            clickApellido=true;
+        }
+    }//GEN-LAST:event_campoApellidoFocusLost
+
+    private void campoApellidoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoApellidoFocusGained
+        if(clickApellido){
+            clickApellido=false;
+            campoApellido.setText("");
+            campoApellido.setForeground(Color.black);
+        }
+    }//GEN-LAST:event_campoApellidoFocusGained
+
+    private void campoNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoNombreFocusLost
+        if(campoNombre.getText().equals("")){
+            campoNombre.setText(" Nombre");
+            campoNombre.setForeground((new java.awt.Color(153, 153, 153)));
+            clickNombre=true;
+        }
+    }//GEN-LAST:event_campoNombreFocusLost
+
+    private void campoNombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoNombreFocusGained
+        if(clickNombre){
+            clickNombre=false;
+            campoNombre.setText("");
+            campoNombre.setForeground(Color.black);
+        }
+    }//GEN-LAST:event_campoNombreFocusGained
 
     private void botonRegistrarseMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonRegistrarseMouseEntered
         // TODO add your handling code here:
         botonRegistrarse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonRegistrarseFocus2.png")));
     }//GEN-LAST:event_botonRegistrarseMouseEntered
 
-    private void botonRegistrarseMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonRegistrarseMouseExited
-        // TODO add your handling code here:
-        botonRegistrarse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonRegistrarse2.png")));
-    }//GEN-LAST:event_botonRegistrarseMouseExited
-
     private void botonRegistrarseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonRegistrarseMouseClicked
         // TODO add your handling code here:
         if (checkAceptar.isSelected()){
-            errorTerminos.setText("");         
+            errorTerminos.setText("");
             try {
-            usuario.setEmail(campoEmail.getText());
-        } catch (ErrorUsuario e) {
-            usuario = new Usuario();
-            //Manejar error
-            if(e.isEmailInvalido()){
-                errorEmail.setText("Formato de Email invalido");
-            }
-        }
-                try {
-            usuario.setNombre(campoNombre.getText());
-        } catch (ErrorUsuario e) {
-            usuario = new Usuario();
-            //Manejar error
-            if(e.isNombreCorto()){
-                errorNombre.setText("Nombre corto");
-            }else{
-                if(e.isNombreLargo()){
-                    errorNombre.setText("Nombre largo");
-                }else{
-                    if(e.isNombreInvalido()){
-                        errorNombre.setText("Nombre invalido");
-                    }
-                }
-            }
-        }
-        try {
-            usuario.setApellido(campoApellido.getText());
-        } catch (ErrorUsuario e) {
-            usuario = new Usuario();
-            //Manejar error
-            if(e.isApellidoCorto()){
-              errorApellido.setText("Apellido corto");    
-            }else{
-                if(e.isApellidoLargo()){
-                    errorApellido.setText("Apellido largo");
-                }else{
-                    if(e.isApellidoInvalido()){
-                        errorApellido.setText("Apellido invalido");
-                    }
-                }
-            }
-        }
-        try {
-            usuario.setUsuario(campoNombreUsuario.getText());
-        } catch (ErrorUsuario e) {
-            usuario = new Usuario();
-            //Manejar error
-            if(e.isUsuarioCorto()){
-                errorNombreUsuario.setText("Usuario corto");
-            }else{
-                if(e.isUsuarioLargo()){
-                   errorNombreUsuario.setText("Nombre largo"); 
-                }else{
-                        if(e.isUsuarioInvalido()){
-                            errorNombreUsuario.setText("Nombre invalido");
-                        }
-                }
-            }
-        }
-        try {
-            usuario.getDireccion().setLocalidad(campoCiudad.getText());
-        } catch (ErrorDireccion e) {
-            usuario = new Usuario();
-            //Manejar error
-            if(e.isLocalidadCorta()){
-              errorCiudad.setText("Ciudad corta");      
-            }else{
-                if(e.isLocalidadIncorrecta()){
-                  errorCiudad.setText("Ciudad larga");  
-            }
-        }
-        }
-        try {
-            usuario.getDireccion().setCodigoPostal(campoCodigoPostal.getText());
-        } catch (ErrorDireccion e) {
-            usuario = new Usuario();
-            //Manejar error
-            if(e.isCodigoIncorrecto()){
-                errorCodigoPostal.setText("Codigo Postal invalido");
-            }
-        }
-        try {
-            usuario.getDireccion().setCalle(campoCalle.getText());
-        } catch (ErrorDireccion e) {
-            usuario = new Usuario();
-            //Manejar error
-            if(e.isCalleCorta()){
-                errorCalle.setText("Calle Corta");
-            }else{
-                if(e.isCalleLarga()){
-                     errorCalle.setText("Calle Larga");
-                }else{
-                    if(e.isCalleInvalida()){
-                         errorCalle.setText("Calle Invalida");
-                    }
-                }
-            }
-        }
-        try {
-            usuario.getDireccion().setAltura(campoNro.getText());
-        } catch (ErrorDireccion e) {
-            usuario = new Usuario();
-            //Manejar error
-            if(e.isAlturaCorta()){
-               errorNro.setText("Numero corto"); 
-            }else{
-                if(e.isAlturaIncorrecta()){
-                    errorNro.setText("Numero invalido");
-                }
-            }
-        }
-        try {
-            usuario.setTelefono(campoTelefono.getText());
-        } catch (ErrorUsuario e) {
-            usuario = new Usuario();
-            //Manejar error
-            if(e.isTelefonoCorto()){
-                errorTelefono.setText("Telefono corto");
-            }else{
-                if(e.isTelefonoInvalido()){
-                    errorTelefono.setText("Telefono invalido");
-                }
-            }
-            
-        }
-        if ((String.valueOf(campoContraseña.getPassword())).equals(String.valueOf(campoConfContraseña.getPassword()))){
-            try {
-                usuario.setClave(String.valueOf(campoContraseña.getPassword()));
+                usuario.setEmail(campoEmail.getText());
             } catch (ErrorUsuario e) {
                 usuario = new Usuario();
                 //Manejar error
-                if(e.isClaveCorta()){
-                    
+                if(e.isEmailInvalido()){
+                    errorEmail.setText("Formato de Email invalido");
                 }
             }
-        }
-        usuario.getDireccion().setProvincia(selectProv.getSelectedIndex());
-        try{
-            usuario.setFechaNacimiento(fNac.getDate());
-            fechaInv.setText("");
-        }
-        catch (ErrorUsuario e){
-            usuario=new Usuario();
-            if(e.isFechaInvalida()){
-                fechaInv.setText("Se debe seleccionar una fecha");
+            try {
+                usuario.setNombre(campoNombre.getText());
+            } catch (ErrorUsuario e) {
+                usuario = new Usuario();
+                //Manejar error
+                if(e.isNombreCorto()){
+                    errorNombre.setText("Nombre corto");
+                }else{
+                    if(e.isNombreLargo()){
+                        errorNombre.setText("Nombre largo");
+                    }else{
+                        if(e.isNombreInvalido()){
+                            errorNombre.setText("Nombre invalido");
+                        }
+                    }
+                }
             }
-        }
-        
-        try {
-            usuario.agregar();
-        } catch (ErrorUsuario e) {
-            //Manejar error
-            if(e.isUsuarioExistente()){
-                errorNombreUsuario.setText("Nombre de usuario existente");
+            try {
+                usuario.setApellido(campoApellido.getText());
+            } catch (ErrorUsuario e) {
+                usuario = new Usuario();
+                //Manejar error
+                if(e.isApellidoCorto()){
+                    errorApellido.setText("Apellido corto");
+                }else{
+                    if(e.isApellidoLargo()){
+                        errorApellido.setText("Apellido largo");
+                    }else{
+                        if(e.isApellidoInvalido()){
+                            errorApellido.setText("Apellido invalido");
+                        }
+                    }
+                }
             }
-        }
+            try {
+                usuario.setUsuario(campoNombreUsuario.getText());
+            } catch (ErrorUsuario e) {
+                usuario = new Usuario();
+                //Manejar error
+                if(e.isUsuarioCorto()){
+                    errorNombreUsuario.setText("Usuario corto");
+                }else{
+                    if(e.isUsuarioLargo()){
+                        errorNombreUsuario.setText("Nombre largo");
+                    }else{
+                        if(e.isUsuarioInvalido()){
+                            errorNombreUsuario.setText("Nombre invalido");
+                        }
+                    }
+                }
+            }
+            try {
+                usuario.getDireccion().setLocalidad(campoCiudad.getText());
+            } catch (ErrorDireccion e) {
+                usuario = new Usuario();
+                //Manejar error
+                if(e.isLocalidadCorta()){
+                    errorCiudad.setText("Ciudad corta");
+                }else{
+                    if(e.isLocalidadIncorrecta()){
+                        errorCiudad.setText("Ciudad larga");
+                    }
+                }
+            }
+            try {
+                usuario.getDireccion().setCodigoPostal(campoCodigoPostal.getText());
+            } catch (ErrorDireccion e) {
+                usuario = new Usuario();
+                //Manejar error
+                if(e.isCodigoIncorrecto()){
+                    errorCodigoPostal.setText("Codigo Postal invalido");
+                }
+            }
+            try {
+                usuario.getDireccion().setCalle(campoCalle.getText());
+            } catch (ErrorDireccion e) {
+                usuario = new Usuario();
+                //Manejar error
+                if(e.isCalleCorta()){
+                    errorCalle.setText("Calle Corta");
+                }else{
+                    if(e.isCalleLarga()){
+                        errorCalle.setText("Calle Larga");
+                    }else{
+                        if(e.isCalleInvalida()){
+                            errorCalle.setText("Calle Invalida");
+                        }
+                    }
+                }
+            }
+            try {
+                usuario.getDireccion().setAltura(campoNro.getText());
+            } catch (ErrorDireccion e) {
+                usuario = new Usuario();
+                //Manejar error
+                if(e.isAlturaCorta()){
+                    errorNro.setText("Numero corto");
+                }else{
+                    if(e.isAlturaIncorrecta()){
+                        errorNro.setText("Numero invalido");
+                    }
+                }
+            }
+            try {
+                usuario.setTelefono(campoTelefono.getText());
+            } catch (ErrorUsuario e) {
+                usuario = new Usuario();
+                //Manejar error
+                if(e.isTelefonoCorto()){
+                    errorTelefono.setText("Telefono corto");
+                }else{
+                    if(e.isTelefonoInvalido()){
+                        errorTelefono.setText("Telefono invalido");
+                    }
+                }
+
+            }
+            if ((String.valueOf(campoContraseña.getPassword())).equals(String.valueOf(campoConfContraseña.getPassword()))){
+                try {
+                    usuario.setClave(String.valueOf(campoContraseña.getPassword()));
+                } catch (ErrorUsuario e) {
+                    usuario = new Usuario();
+                    //Manejar error
+                    if(e.isClaveCorta()){
+
+                    }
+                }
+            }
+            usuario.getDireccion().setProvincia(selectProv.getSelectedIndex());
+            try{
+                usuario.setFechaNacimiento(fNac.getDate());
+                fechaInv.setText("");
+            }
+            catch (ErrorUsuario e){
+                usuario=new Usuario();
+                if(e.isFechaInvalida()){
+                    fechaInv.setText("Se debe seleccionar una fecha");
+                }
+            }
+
+            try {
+                usuario.agregar();
+            } catch (ErrorUsuario e) {
+                //Manejar error
+                if(e.isUsuarioExistente()){
+                    errorNombreUsuario.setText("Nombre de usuario existente");
+                }
+            }
         } else {
             //Manejar error de que no se selecciono aceptar terminos y condiciones
             if(checkAceptar.isSelected()==false){
@@ -841,6 +944,11 @@ public class AgregarUsuario extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_botonRegistrarseMouseClicked
+
+    private void botonRegistrarseMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonRegistrarseMouseExited
+        // TODO add your handling code here:
+        botonRegistrarse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonRegistrarse2.png")));
+    }//GEN-LAST:event_botonRegistrarseMouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -871,8 +979,21 @@ public class AgregarUsuario extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser fNac;
     private javax.swing.JLabel fechaInv;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
