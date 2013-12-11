@@ -768,7 +768,7 @@ public class ModificarLibro extends javax.swing.JFrame {
 
     private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
         // TODO add your handling code here:
-         if (!(textoEtiqueta.getText().length() == 0)){
+         if (!(textoEtiqueta.getText().length() == 0) && !(textoEtiqueta.getText().trim().isEmpty())){
             lib.getEtiquetas().add(textoEtiqueta.getText());
             textoEtiqueta.setText("");
             Operaciones.llenarListaEtiquetas((DefaultComboBoxModel)selectEtiquetas.getModel());
