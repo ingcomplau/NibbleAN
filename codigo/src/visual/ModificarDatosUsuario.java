@@ -6,6 +6,7 @@
 
 package visual;
 
+import excepciones.ErrorDireccion;
 import excepciones.ErrorUsuario;
 import java.awt.Color;
 import javax.swing.DefaultComboBoxModel;
@@ -57,11 +58,15 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
         campoTelefono = new javax.swing.JTextField();
         campoNro = new javax.swing.JTextField();
         campoEmail = new javax.swing.JFormattedTextField();
-        errorTelefono = new javax.swing.JLabel();
-        errorEmail = new javax.swing.JLabel();
         provPanel = new javax.swing.JPanel();
         selecProv = new javax.swing.JComboBox();
         provLabel = new javax.swing.JLabel();
+        errorEmail = new javax.swing.JLabel();
+        errorTelefono = new javax.swing.JLabel();
+        errorCalle = new javax.swing.JLabel();
+        errorNro = new javax.swing.JLabel();
+        errorCiudad = new javax.swing.JLabel();
+        errorCod = new javax.swing.JLabel();
         panelCambiarContraseña = new javax.swing.JPanel();
         campoContraseñaActual = new javax.swing.JPasswordField();
         campoContraseñaNueva = new javax.swing.JPasswordField();
@@ -103,6 +108,11 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
                 campoCiudadFocusLost(evt);
             }
         });
+        campoCiudad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                campoCiudadKeyTyped(evt);
+            }
+        });
 
         campoCodigoPostal.setBackground(new java.awt.Color(240, 238, 240));
         campoCodigoPostal.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
@@ -110,6 +120,11 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
         campoCodigoPostal.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 campoCodigoPostalFocusLost(evt);
+            }
+        });
+        campoCodigoPostal.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                campoCodigoPostalKeyTyped(evt);
             }
         });
 
@@ -121,6 +136,11 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
                 campoCalleFocusLost(evt);
             }
         });
+        campoCalle.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                campoCalleKeyTyped(evt);
+            }
+        });
 
         campoTelefono.setBackground(new java.awt.Color(240, 238, 240));
         campoTelefono.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
@@ -128,6 +148,11 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
         campoTelefono.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 campoTelefonoFocusLost(evt);
+            }
+        });
+        campoTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                campoTelefonoKeyTyped(evt);
             }
         });
 
@@ -139,6 +164,11 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
                 campoNroFocusLost(evt);
             }
         });
+        campoNro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                campoNroKeyTyped(evt);
+            }
+        });
 
         campoEmail.setBackground(new java.awt.Color(240, 238, 240));
         campoEmail.setText(usuario.getEmail());
@@ -148,10 +178,11 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
                 campoEmailFocusLost(evt);
             }
         });
-
-        errorTelefono.setForeground(new java.awt.Color(255, 0, 0));
-
-        errorEmail.setForeground(new java.awt.Color(255, 0, 0));
+        campoEmail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                campoEmailKeyTyped(evt);
+            }
+        });
 
         selecProv.setBackground(new java.awt.Color(218, 216, 218));
         selecProv.addItemListener(new java.awt.event.ItemListener() {
@@ -184,28 +215,44 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        errorEmail.setForeground(new java.awt.Color(255, 0, 0));
+
+        errorTelefono.setForeground(new java.awt.Color(255, 0, 0));
+
+        errorCalle.setForeground(new java.awt.Color(255, 0, 0));
+
+        errorNro.setForeground(new java.awt.Color(255, 0, 0));
+
+        errorCiudad.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        errorCiudad.setForeground(new java.awt.Color(255, 0, 0));
+
+        errorCod.setForeground(new java.awt.Color(255, 0, 0));
+
         javax.swing.GroupLayout paneModificarlDatosLayout = new javax.swing.GroupLayout(paneModificarlDatos);
         paneModificarlDatos.setLayout(paneModificarlDatosLayout);
         paneModificarlDatosLayout.setHorizontalGroup(
             paneModificarlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(paneModificarlDatosLayout.createSequentialGroup()
-                .addGap(81, 81, 81)
+                .addGap(93, 93, 93)
                 .addGroup(paneModificarlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(errorCod)
+                    .addComponent(campoCodigoPostal, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(paneModificarlDatosLayout.createSequentialGroup()
-                        .addComponent(campoEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(paneModificarlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(errorEmail)
-                            .addComponent(errorTelefono)))
-                    .addGroup(paneModificarlDatosLayout.createSequentialGroup()
-                        .addComponent(campoCalle, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(21, 21, 21)
-                        .addComponent(campoNro, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(errorCalle)
+                        .addGap(131, 131, 131)
+                        .addComponent(errorNro))
+                    .addComponent(errorTelefono)
+                    .addComponent(errorEmail)
+                    .addComponent(campoEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(campoCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(provPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campoCodigoPostal, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campoTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(76, Short.MAX_VALUE))
+                    .addComponent(campoTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(errorCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(paneModificarlDatosLayout.createSequentialGroup()
+                        .addComponent(campoCalle, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(campoNro, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
         paneModificarlDatosLayout.setVerticalGroup(
             paneModificarlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -214,20 +261,29 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
                 .addComponent(provPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(campoCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(39, 39, 39)
                 .addComponent(campoCodigoPostal, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(errorCiudad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(errorCod)
+                .addGap(22, 22, 22)
                 .addGroup(paneModificarlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(campoCalle, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(campoNro, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(13, 13, 13)
+                .addGap(18, 18, 18)
+                .addGroup(paneModificarlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(errorCalle, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(errorNro, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(campoTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(11, 11, 11)
-                .addComponent(campoEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(errorTelefono)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-                .addComponent(errorEmail))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(campoEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(errorEmail)
+                .addContainerGap())
         );
 
         tablaDatos.addTab("Modificar Datos", paneModificarlDatos);
@@ -236,7 +292,6 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
 
         campoContraseñaActual.setBackground(new java.awt.Color(240, 238, 240));
         campoContraseñaActual.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        campoContraseñaActual.setText("asdasd");
         campoContraseñaActual.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 campoContraseñaActualMouseClicked(evt);
@@ -247,10 +302,14 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
                 campoContraseñaActualFocusLost(evt);
             }
         });
+        campoContraseñaActual.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                campoContraseñaActualKeyTyped(evt);
+            }
+        });
 
         campoContraseñaNueva.setBackground(new java.awt.Color(240, 238, 240));
         campoContraseñaNueva.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        campoContraseñaNueva.setText("asdasd");
         campoContraseñaNueva.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 campoContraseñaNuevaFocusGained(evt);
@@ -259,16 +318,25 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
                 campoContraseñaNuevaFocusLost(evt);
             }
         });
+        campoContraseñaNueva.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                campoContraseñaNuevaKeyTyped(evt);
+            }
+        });
 
         campoConfirmarContraseña.setBackground(new java.awt.Color(240, 238, 240));
         campoConfirmarContraseña.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        campoConfirmarContraseña.setText("asdasd");
         campoConfirmarContraseña.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 campoConfirmarContraseñaFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 campoConfirmarContraseñaFocusLost(evt);
+            }
+        });
+        campoConfirmarContraseña.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                campoConfirmarContraseñaKeyTyped(evt);
             }
         });
 
@@ -295,28 +363,28 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(panelCambiarContraseñaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelCambiarContraseñaLayout.createSequentialGroup()
-                        .addGroup(panelCambiarContraseñaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(errorContraseñaActual)
-                            .addComponent(errorContraseñaNueva))
-                        .addGap(257, 328, Short.MAX_VALUE)
-                        .addComponent(errorConfirmarContraseña)
-                        .addGap(7, 87, Short.MAX_VALUE))
+                        .addComponent(errorContraseñaNueva)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(errorContraseñaActual)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCambiarContraseñaLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(panelCambiarContraseñaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCambiarContraseñaLayout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(campoConfirmarContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCambiarContraseñaLayout.createSequentialGroup()
-                                .addGroup(panelCambiarContraseñaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(labelContraseñaNueva)
-                                    .addComponent(labelContraseñaActual))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(panelCambiarContraseñaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(campoContraseñaNueva, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
-                                    .addComponent(campoContraseñaActual))))
-                        .addContainerGap())))
+                        .addGap(0, 8, Short.MAX_VALUE)
+                        .addGroup(panelCambiarContraseñaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(errorConfirmarContraseña)
+                            .addGroup(panelCambiarContraseñaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCambiarContraseñaLayout.createSequentialGroup()
+                                    .addComponent(jLabel4)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(campoConfirmarContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCambiarContraseñaLayout.createSequentialGroup()
+                                    .addGroup(panelCambiarContraseñaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(labelContraseñaNueva)
+                                        .addComponent(labelContraseñaActual))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(panelCambiarContraseñaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(campoContraseñaNueva, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
+                                        .addComponent(campoContraseñaActual)))))))
+                .addContainerGap())
         );
         panelCambiarContraseñaLayout.setVerticalGroup(
             panelCambiarContraseñaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -337,9 +405,9 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
                 .addGroup(panelCambiarContraseñaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(campoConfirmarContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(errorConfirmarContraseña)
-                .addContainerGap(81, Short.MAX_VALUE))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
 
         tablaDatos.addTab("Cambiar Contraseña", panelCambiarContraseña);
@@ -348,6 +416,9 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
         botonGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 botonGuardarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                botonGuardarMouseEntered(evt);
             }
         });
 
@@ -465,34 +536,83 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void campoCiudadFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoCiudadFocusLost
-        if(campoCiudad.getText().equals("")){
-            campoCiudad.setText(" Ciudad");
-            campoCiudad.setForeground((new java.awt.Color(153, 153, 153)));
-        }
+// TODO add your handling code here:
+         if (((javax.swing.JTextField) evt.getSource()).getName() != null) {
+            try {
+                usuario.getDireccion().setLocalidad(campoCiudad.getText());
+                botonGuardar.setEnabled(true);
+                errorCiudad.setText(null);                              
+            } catch (ErrorDireccion e) {
+                //Procesar visualización de error.
+                if(e.isLocalidadCorta()){
+                    errorCiudad.setText("Localidad corta");
+                } else if(e.isLocalidadIncorrecta()){
+                    errorCiudad.setText("Localidad invalida");
+                }
+               this.botonGuardar.setEnabled(false);
+                ((javax.swing.JTextField) evt.getSource()).requestFocus();
+            }
+         }
     }//GEN-LAST:event_campoCiudadFocusLost
 
     private void campoCodigoPostalFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoCodigoPostalFocusLost
-        // TODO add your handling code here:
-        if(campoCodigoPostal.getText().equals("")){
-            campoCodigoPostal.setText(" Codigo Postal");
-            campoCodigoPostal.setForeground((new java.awt.Color(153, 153, 153)));         
-        }
+// TODO add your handling code here:
+         if (((javax.swing.JTextField) evt.getSource()).getName() != null) {
+            try {
+                usuario.setCodigoPostal(campoCodigoPostal.getText());
+                botonGuardar.setEnabled(true);
+                errorCod.setText(null);                              
+            } catch (ErrorDireccion e) {
+                //Procesar visualización de error.
+               if(e.isCodigoIncorrecto()){
+                    errorCod.setText("Codigo postal incorrecto");
+                } 
+               this.botonGuardar.setEnabled(false);
+                ((javax.swing.JTextField) evt.getSource()).requestFocus();
+            }
+         }
     }//GEN-LAST:event_campoCodigoPostalFocusLost
 
     private void campoCalleFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoCalleFocusLost
-        // TODO add your handling code here:
-        if(campoCalle.getText().equals("")){
-            campoCalle.setText(" Calle");
-            campoCalle.setForeground((new java.awt.Color(153, 153, 153)));
-        }
+      // TODO add your handling code here:
+         if (((javax.swing.JTextField) evt.getSource()).getName() != null) {
+            try {
+                usuario.setCalle(campoCalle.getText());
+                botonGuardar.setEnabled(true);
+                errorCalle.setText(null);                              
+            } catch (ErrorDireccion e) {
+                //Procesar visualización de error.
+                if(e.isCalleCorta()){
+                    errorCalle.setText("Calle corta");
+                } else if(e.isCalleInvalida()){
+                    errorCalle.setText("Calle invalida");
+                }else if(e.isCalleLarga()){
+                    errorCalle.setText("Calle larga");
+                }
+               this.botonGuardar.setEnabled(false);
+                ((javax.swing.JTextField) evt.getSource()).requestFocus();
+            }
+         }
     }//GEN-LAST:event_campoCalleFocusLost
 
     private void campoNroFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoNroFocusLost
-        // TODO add your handling code here:
-        if(campoNro.getText().equals("")){
-            campoNro.setText(" Número");
-            campoNro.setForeground((new java.awt.Color(153, 153, 153)));
-        }
+       // TODO add your handling code here:
+         if (((javax.swing.JTextField) evt.getSource()).getName() != null) {
+            try {
+                usuario.setAltura(campoNro.getText());
+                botonGuardar.setEnabled(true);
+                errorNro.setText(null);                              
+            } catch (ErrorDireccion e) {
+                //Procesar visualización de error.
+                if(e.isAlturaCorta()){
+                    errorNro.setText("Altura corta");
+                } else if(e.isAlturaIncorrecta()){
+                    errorNro.setText("Altura invalida");
+                }
+               this.botonGuardar.setEnabled(false);
+                ((javax.swing.JTextField) evt.getSource()).requestFocus();
+            }
+         }
     }//GEN-LAST:event_campoNroFocusLost
 
     private void campoTelefonoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoTelefonoFocusLost
@@ -500,7 +620,7 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
          if (((javax.swing.JTextField) evt.getSource()).getName() != null) {
             try {
                 usuario.setTelefono(campoTelefono.getText());
-                //modificar.setEnabled(true);
+                botonGuardar.setEnabled(true);
                 errorTelefono.setText(null);                              
             } catch (ErrorUsuario e) {
                 //Procesar visualización de error.
@@ -520,13 +640,13 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
         if (((javax.swing.JTextField) evt.getSource()).getName() != null) {
             try {
                 usuario.setEmail(campoEmail.getText());
-                //modificar.setEnabled(true);
+                botonGuardar.setEnabled(true);
                 errorEmail.setText(null);                              
             } catch (ErrorUsuario e) {             
                 if(e.isEmailInvalido()){
                     errorEmail.setText("Email invalido");
                 }
-               //modificar.setEnabled(false);
+               botonGuardar.setEnabled(false);
                 ((javax.swing.JTextField) evt.getSource()).requestFocus();
             }
         }
@@ -535,31 +655,29 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
     private void campoContraseñaActualFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoContraseñaActualFocusLost
         // TODO add your handling code here:
         if (((javax.swing.JPasswordField) evt.getSource()).getName() != null) {
-            try {
-                usuario.setClave(String.valueOf(campoContraseñaActual.getPassword()));
-                usuario.modificar();
+             if (usuario.getClave().equals(String.valueOf(campoContraseñaActual.getPassword()))){
+   
+                botonGuardar.setEnabled(false);
                 errorContraseñaActual.setText(null);                              
-            } catch (ErrorUsuario e) {             
-                if(e.isClaveCorta()){
-                    errorContraseñaActual.setText("Contraseña Corta");
-                }
-               //modificar.setEnabled(false);
+            }else{
+                 errorContraseñaActual.setText("Contraseña invalida");                
+               botonGuardar.setEnabled(false);
                 ((javax.swing.JPasswordField) evt.getSource()).requestFocus();
-            }
+             }
         }
     }//GEN-LAST:event_campoContraseñaActualFocusLost
 
     private void campoContraseñaNuevaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoContraseñaNuevaFocusLost
          if (((javax.swing.JPasswordField) evt.getSource()).getName() != null) {
             try {
-                usuario.setClave(String.valueOf(campoContraseñaActual.getPassword()));
-                usuario.modificar();
+                usuario.setClave(String.valueOf(campoContraseñaNueva.getPassword()));
+                botonGuardar.setEnabled(false);
                 errorContraseñaNueva.setText(null);                              
             } catch (ErrorUsuario e) {             
                 if(e.isClaveCorta()){
                     errorContraseñaNueva.setText("Contraseña Corta");
                 }
-               //modificar.setEnabled(false);
+               botonGuardar.setEnabled(false);
                 ((javax.swing.JPasswordField) evt.getSource()).requestFocus();
             }
         }
@@ -567,34 +685,24 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
 
     private void campoConfirmarContraseñaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoConfirmarContraseñaFocusLost
          if (((javax.swing.JPasswordField) evt.getSource()).getName() != null) {
-            try {
-                usuario.setClave(String.valueOf(campoContraseñaActual.getPassword()));
-                usuario.modificar();
-                errorConfirmarContraseña.setText(null);  
-            } catch (ErrorUsuario e) {             
-                if(e.isClaveCorta()){
-                    errorConfirmarContraseña.setText("Contraseña Corta");   
-                }
-               //modificar.setEnabled(false);
-                ((javax.swing.JPasswordField) evt.getSource()).requestFocus();
-            }
+             if ((String.valueOf(campoContraseñaNueva.getPassword())).equals(String.valueOf(campoConfirmarContraseña.getPassword()))){
+               botonGuardar.setEnabled(true);
+                errorConfirmarContraseña.setText(null);                              
+            
+             }else{
+                 errorConfirmarContraseña.setText("Contraseñas no coinciden");
+                 ((javax.swing.JPasswordField) evt.getSource()).requestFocus();
+                 botonGuardar.setEnabled(false);
+             }
         }
     }//GEN-LAST:event_campoConfirmarContraseñaFocusLost
 
     private void campoContraseñaNuevaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoContraseñaNuevaFocusGained
-       if (clickContraseña2) {
-            campoContraseñaNueva.setText(null);
-            clickContraseña2=false;
-            campoContraseñaNueva.setForeground(Color.black);
-    }
+
     }//GEN-LAST:event_campoContraseñaNuevaFocusGained
 
     private void campoConfirmarContraseñaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoConfirmarContraseñaFocusGained
-        if (clickContraseña3) {
-            campoConfirmarContraseña.setText(null);
-            clickContraseña3=false;
-            campoConfirmarContraseña.setForeground(Color.black);
-    }
+
     }//GEN-LAST:event_campoConfirmarContraseñaFocusGained
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
@@ -612,10 +720,11 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_botonModificarMouseClicked
 
     private void botonGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonGuardarMouseClicked
+        if(botonGuardar.isEnabled()){
         usuario.modificar();
         this.dispose();
         home.setEnabled(true);
-        
+        }
     }//GEN-LAST:event_botonGuardarMouseClicked
 
     private void selecProvItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_selecProvItemStateChanged
@@ -624,12 +733,7 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_selecProvItemStateChanged
 
     private void campoContraseñaActualMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoContraseñaActualMouseClicked
-        // TODO add your handling code here:
-        if (clickContraseña1) {
-            campoContraseñaActual.setText(null);
-            clickContraseña1=false;
-            campoContraseñaActual.setForeground(Color.black);
-    }
+
     }//GEN-LAST:event_campoContraseñaActualMouseClicked
 
     private void botonModificarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonModificarMouseEntered
@@ -641,6 +745,47 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
         // TODO add your handling code here:
                 this.botonModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonModificar.png")));
     }//GEN-LAST:event_botonModificarMouseExited
+
+    private void campoEmailKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoEmailKeyTyped
+        ((javax.swing.JTextField) evt.getSource()).setName("ch");
+    }//GEN-LAST:event_campoEmailKeyTyped
+
+    private void campoTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoTelefonoKeyTyped
+        ((javax.swing.JTextField) evt.getSource()).setName("ch");
+    }//GEN-LAST:event_campoTelefonoKeyTyped
+
+    private void campoCalleKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoCalleKeyTyped
+        ((javax.swing.JTextField) evt.getSource()).setName("ch");
+    }//GEN-LAST:event_campoCalleKeyTyped
+
+    private void campoNroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoNroKeyTyped
+        ((javax.swing.JTextField) evt.getSource()).setName("ch");
+    }//GEN-LAST:event_campoNroKeyTyped
+
+    private void campoCodigoPostalKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoCodigoPostalKeyTyped
+        ((javax.swing.JTextField) evt.getSource()).setName("ch");
+    }//GEN-LAST:event_campoCodigoPostalKeyTyped
+
+    private void campoCiudadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoCiudadKeyTyped
+        ((javax.swing.JTextField) evt.getSource()).setName("ch");
+    }//GEN-LAST:event_campoCiudadKeyTyped
+
+    private void campoContraseñaActualKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoContraseñaActualKeyTyped
+       ((javax.swing.JTextField) evt.getSource()).setName("ch");
+    }//GEN-LAST:event_campoContraseñaActualKeyTyped
+
+    private void campoContraseñaNuevaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoContraseñaNuevaKeyTyped
+       ((javax.swing.JTextField) evt.getSource()).setName("ch");
+    }//GEN-LAST:event_campoContraseñaNuevaKeyTyped
+
+    private void campoConfirmarContraseñaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoConfirmarContraseñaKeyTyped
+        ((javax.swing.JTextField) evt.getSource()).setName("ch");
+    }//GEN-LAST:event_campoConfirmarContraseñaKeyTyped
+
+    private void botonGuardarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonGuardarMouseEntered
+        botonGuardar.requestFocus();
+  
+    }//GEN-LAST:event_botonGuardarMouseEntered
 
  
   
@@ -658,10 +803,14 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField campoEmail;
     private javax.swing.JTextField campoNro;
     private javax.swing.JTextField campoTelefono;
+    private javax.swing.JLabel errorCalle;
+    private javax.swing.JLabel errorCiudad;
+    private javax.swing.JLabel errorCod;
     private javax.swing.JLabel errorConfirmarContraseña;
     private javax.swing.JLabel errorContraseñaActual;
     private javax.swing.JLabel errorContraseñaNueva;
     private javax.swing.JLabel errorEmail;
+    private javax.swing.JLabel errorNro;
     private javax.swing.JLabel errorTelefono;
     private javax.swing.JLabel fecha1;
     private javax.swing.JLabel jLabel1;
