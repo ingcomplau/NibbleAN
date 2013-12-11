@@ -424,7 +424,7 @@ public class Operaciones{
           cerrar(conexion);
        
        if (a.getFechaNacimiento() != null){
-            fNac = new SimpleDateFormat("dd'-'MMM'-'yyyy").format(a.getFechaNacimiento());
+            fNac = a.getFechaNacimiento();
         } else {
             e.setFechaInvalida();
             correcto = false;
