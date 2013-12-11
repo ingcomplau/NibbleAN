@@ -932,7 +932,7 @@ public class AgregarLibro extends javax.swing.JFrame {
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
         // TODO add your handling code here:
-        if (!textoEtiqueta.getText().equals(null)){
+        if (!(textoEtiqueta.getText().length() == 0)){
             lib.getEtiquetas().add(textoEtiqueta.getText());
         textoEtiqueta.setText("");
         Operaciones.llenarListaEtiquetas((DefaultComboBoxModel)selectEtiquetas.getModel());
