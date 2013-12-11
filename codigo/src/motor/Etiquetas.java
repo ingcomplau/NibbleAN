@@ -63,8 +63,8 @@ public class Etiquetas extends LinkedList<String>{
         modificado = true;
         Conexion conexion = new Conexion();
         String e = (String) o;
-        ResultSet resultado = Operaciones.consultar("SELECT * from etiquetas where nombre='"+ e +"'", conexion);
-        try{
+        ResultSet resultado = Operaciones.consultar("SELECT * from etiquetas where  nombre='"+ e +"'", conexion);
+        try{    
             int cantaux = resultado.getInt("cant");
             Operaciones.cerrar(conexion);
             if (cantaux >= 1) {

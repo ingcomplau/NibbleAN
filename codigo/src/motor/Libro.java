@@ -359,6 +359,6 @@ public class Libro{
          for(String e : etiquetas){
              etiquetas.remove(e);
          }
-         Operaciones.insertar("DELETE FROM libros WHERE isbn='"+this.isbn+"';"); // Implementar borrado lógico
+         Operaciones.insertar("UPDATE libros set eliminado=1  WHERE isbn='"+this.isbn+"';"); 
      }
 }

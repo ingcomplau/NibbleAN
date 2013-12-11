@@ -58,11 +58,11 @@ public class Operaciones{
         if (text.equals("titulo")){
             sql = "SELECT libros.*, autores.nombre, autores.apellido, autores.pais_id, "
                 + "autores.fecha_nacimiento, autores.sexo, autores.acerca_de from libros inner join "
-                + "autores on libros.autor_id=autores.id where titulo like '%"+cadena+"%' order by titulo";
+                + "autores on libros.autor_id=autores.id WHERE titulo like '%"+cadena+"%'  and libros.eliminado==0 order by titulo";
         } else if (text.equals("apellido")){
             sql = "SELECT libros.* , autores.nombre, autores.apellido, autores.pais_id, "
                     + "autores.fecha_nacimiento, autores.sexo, autores.acerca_de from libros inner join "
-                    + "autores on libros.autor_id=autores.id where autores.apellido like '%"+cadena+"%' order by titulo";
+                    + "autores on libros.autor_id=autores.id WHERE autores.apellido like '%"+cadena+"%'  and libros.eliminado==0  order by titulo";
         }
         try {
             resultado = consultar(sql, conexion);
@@ -131,7 +131,7 @@ public class Operaciones{
         Conexion conexion = new Conexion();
         tableModel.setRowCount(0);
         tableModel.setColumnCount(3);
-        String sql = "SELECT a.isbn,a.titulo,b.apellido ||' '||b.nombre FROM libros a INNER JOIN autores b on a.autor_id=b.id WHERE a.titulo like '%"+fraseClave+"%'";
+        String sql = "SELECT a.isbn,a.titulo,b.apellido ||' '||b.nombre FROM libros a INNER JOIN autores b on a.autor_id=b.id WHERE a.eliminado==0 and a.titulo like '%"+fraseClave+"%'";
         try {
             resultado = consultar(sql, conexion);
             if(resultado != null){
@@ -161,7 +161,7 @@ public class Operaciones{
         tableModel.setRowCount(0);
         tableModel.setColumnCount(3);
         String sql = "SELECT a.isbn,a.titulo,b.apellido ||' '||b.nombre FROM libros "
-                + "a INNER JOIN autores b on a.autor_id=b.id WHERE b.apellido like '%"+fraseClave+"%'";
+                + "a INNER JOIN autores b on a.autor_id=b.id WHERE a.eliminado== 0 and b.apellido like '%"+fraseClave+"%'";
         try {
             resultado = consultar(sql,conexion);
             if(resultado != null){
@@ -305,7 +305,7 @@ public class Operaciones{
      public static void llenarTablaLibros(DefaultTableModel tableModel){
         resultado = null;  
         Conexion conexion = new Conexion();
-        String sql = "SELECT a.isbn,a.titulo,b.apellido ||' '||b.nombre, a.urltapa from libros a INNER JOIN autores b on a.autor_id=b.id order by a.titulo";
+        String sql = "SELECT a.isbn,a.titulo,b.apellido ||' '||b.nombre, a.urltapa from libros a INNER JOIN autores b on a.autor_id=b.id WHERE a.eliminado==0 order by a.titulo";
         try {
             resultado = consultar(sql, conexion);
             if(resultado != null){
@@ -536,7 +536,7 @@ public class Operaciones{
          resultado = null;  
         String sql = "SELECT libros.*, autores.nombre, autores.apellido, autores.pais_id, "
                 + "autores.fecha_nacimiento, autores.sexo, autores.acerca_de from libros inner join "
-                + "autores on libros.autor_id=autores.id order by titulo";
+                + "autores on libros.autor_id=autores.id WHERE libros.eliminado==0 order by titulo";
         try {
             resultado = consultar(sql, conexion);
             if(resultado != null){            
