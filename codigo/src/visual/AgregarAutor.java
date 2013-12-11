@@ -137,6 +137,7 @@ public class AgregarAutor extends javax.swing.JFrame {
         jLabel3.setText("Fecha de Nacimiento:");
 
         fNac.setMinSelectableDate(new java.util.Date(-14830977525000L));
+        fNac.getDateEditor().setEnabled(false);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
