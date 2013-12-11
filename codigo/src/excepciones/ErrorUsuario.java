@@ -21,6 +21,7 @@ public class ErrorUsuario extends ErrorPersona {
     private boolean telefonoInvalido;
     private boolean telefonoCorto;
     private boolean emailInvalido;
+    private boolean fechaInvalida;
     
     public ErrorUsuario() {
         super();
@@ -33,6 +34,7 @@ public class ErrorUsuario extends ErrorPersona {
         this.telefonoCorto = false;
         this.emailInvalido = false;
         this.loginInvalido = false;
+        this.fechaInvalida=false;
         
     }
 
@@ -42,6 +44,14 @@ public class ErrorUsuario extends ErrorPersona {
 
     public void setUsuarioLargo() {
         this.usuarioLargo = true;
+    }
+
+    public boolean isFechaInvalida() {
+        return fechaInvalida;
+    }
+
+    public void setFechaInvalida() {
+        this.fechaInvalida = true;
     }
 
     public boolean isLoginInvalido() {
