@@ -71,8 +71,10 @@ public class PanelComprarLibro extends javax.swing.JPanel {
         textoDetalle.setRows(5);
         textoDetalle.setText(libro.getResumen());
         textoDetalle.setAutoscrolls(false);
+        textoDetalle.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         textoDetalle.setFocusable(false);
         jScrollPane1.setViewportView(textoDetalle);
+        textoDetalle.setCaretPosition(0);
 
         botonDetalle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visual/imagen/Resource/ButtonDetalles.png"))); // NOI18N
         botonDetalle.addMouseListener(new java.awt.event.MouseAdapter() {

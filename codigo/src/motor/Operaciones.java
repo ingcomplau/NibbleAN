@@ -469,7 +469,7 @@ public class Operaciones{
         resultado = null;
         DefaultListModel x = new javax.swing.DefaultListModel();
         x.removeAllElements();
-        String sql = "select nombre from etiquetas";
+        String sql = "select nombre from etiquetas order by nombre";
         try {
             resultado = consultar(sql, conexion);
             if(resultado != null){
@@ -490,7 +490,7 @@ public class Operaciones{
         comboModel.removeAllElements();
         resultado = null;
         Conexion conexion = new Conexion();
-        String sql = "select nombre from etiquetas";
+        String sql = "select nombre from etiquetas order by nombre";
         try {
             resultado = consultar(sql, conexion);
             if(resultado != null){

@@ -326,6 +326,7 @@ public class Home extends javax.swing.JFrame {
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setBorder(null);
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane1.setWheelScrollingEnabled(true);
 
         panelHome.setBackground(new java.awt.Color(216, 218, 216));
         panelHome.setLayout(new java.awt.GridLayout(1, 0));
