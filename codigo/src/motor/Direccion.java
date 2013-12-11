@@ -111,13 +111,10 @@ public class Direccion {
         ErrorDireccion e = new ErrorDireccion();
         
         if ((localidad.length() == 0) | (localidad.equals(" Localidad"))) {
-                e.setCalleCorta();
-                correcto = false;
-            } else if (localidad.length() > 100) {
-                e.setCalleLarga();
+                e.setLocalidadCorta();
                 correcto = false;
             } else if (!(localidad.matches("[a-zA-Z0-9\\s]+$"))){
-                e.setCalleInvalida();
+                e.setLocalidadIncorrecta();
                 correcto = false;
             }
             
@@ -138,14 +135,14 @@ public class Direccion {
          boolean correcto = true;
         ErrorDireccion e = new ErrorDireccion();
              if (codigoPostal.equals(" Código postal")) {
-                e.setAlturaIncorrecta();
+                e.setCodigoIncorrecto();
                 correcto = false;
             } else {
                 if (!(codigoPostal.matches("[0-9]+$"))){
-                  e.setAlturaIncorrecta();
+                  e.setCodigoIncorrecto();
                     correcto = false;
                 } else if (Integer.parseInt(codigoPostal) <= 0){
-                   e.setAlturaIncorrecta();
+                   e.setCodigoIncorrecto();
                    correcto = false;
               }
             }

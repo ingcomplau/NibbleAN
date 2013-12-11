@@ -142,8 +142,15 @@ public class Usuario {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(Date fechaNacimiento) {
-        this.fechaNacimiento = new SimpleDateFormat("dd'-'MMM'-'yyyy").format(fechaNacimiento);
+    public void setFechaNacimiento(Date fechaNacimiento) throws ErrorUsuario {
+       
+        if (fechaNacimiento != null){
+            this.fechaNacimiento = new SimpleDateFormat("dd'-'MMM'-'yyyy").format(fechaNacimiento);
+        } else {
+            ErrorUsuario e=new ErrorUsuario();
+            e.setFechaInvalida();
+            throw e;
+        }  
     }
 
     public String getUsuario() {
